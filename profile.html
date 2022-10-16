@@ -8,11 +8,22 @@
       .form-control{
         border: none; 
         background-color: transparent; 
-        box-shadow: none;
       }
 
       .form-label{
         margin: 0 10px 0 0;
+      }
+
+      .formLabelContainer{
+        width: 15%;
+      }
+
+      .formInputContainer{
+        width: 85%;
+      }
+
+      .formInputContainer > input:focus {
+        box-shadow: none;
       }
     </style>
   </head>
@@ -58,6 +69,7 @@
     <!-- Container -->
     <div class="container">
       <div class="row">
+        <!-- Left side bar for menu selection (Edit profile / Change Password) -->
         <div id="profile-LeftBar" class="col-3" style="border: 3px solid red;">
           <ul>
             <li>Edit Profile</li>
@@ -65,24 +77,40 @@
           </ul>
         </div>
         <div id="profile-RightBar" class="col-9" style="border: 3px solid blue;">
-          <!-- form -->
+          <!-- Right side bar for form display of information -->
           <form>
             <h3>Your Profile</h3>
-            <div class="mb-3 rounded-pill d-flex align-items-center border border-dark px-3">
-              <label for="profile-username" class="form-label">Username: </label>
-              <input type="text" class="form-control" id="profile-username">
+            <div class="mb-3 mx-1 px-3 rounded-pill border border-dark d-flex align-items-center">
+              <div class="formLabelContainer">
+                <label for="profile-username" class="form-label">Username: </label>
+              </div>
+              <div class="formInputContainer">
+                <input type="text" class="form-control" id="profile-username">
+              </div>
             </div>
-            <div class="mb-3 rounded-pill d-flex align-items-center border border-dark px-3">
-              <label for="profile-firstname" class="form-label">First Name: </label>
-              <input type="text" class="form-control" id="profile-firstname">
+            <div class="mb-3 mx-1 px-3 rounded-pill border border-dark d-flex align-items-center">
+              <div class="formLabelContainer">
+                <label for="profile-firstname" class="form-label">First Name: </label>
+              </div>
+              <div class="formInputContainer">
+                <input type="text" class="form-control" id="profile-firstname">
+              </div>
             </div>
-            <div class="mb-3 rounded-pill d-flex align-items-center border border-dark px-3">
-              <label for="profile-lastname" class="form-label">Last Name: </label>
-              <input type="text" class="form-control" id="profile-lastname">
+            <div class="mb-3 mx-1 px-3 rounded-pill border border-dark d-flex align-items-center">
+              <div class="formLabelContainer">
+                <label for="profile-lastname" class="form-label">Last Name: </label>
+              </div>
+              <div class="formInputContainer">
+                <input type="text" class="form-control" id="profile-lastname">
+              </div>
             </div>
-            <div class="mb-3 rounded-pill d-flex align-items-center border border-dark px-3">
-              <label for="profile-email" class="form-label">Email: </label>
-              <input type="text" class="form-control" id="profile-email">
+            <div class="mb-3 mx-1 px-3 rounded-pill border border-dark d-flex align-items-center">
+              <div class="formLabelContainer">
+                <label for="profile-email" class="form-label">Email: </label>
+              </div>
+              <div class="formInputContainer">
+                <input type="text" class="form-control" id="profile-email">
+              </div>
             </div>
             
             <button type="submit" class="btn btn-primary">Submit</button>
