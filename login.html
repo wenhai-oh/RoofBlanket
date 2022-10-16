@@ -10,45 +10,48 @@
 
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row"> 
       <div class="text-center">
-      <!-- Register (Hidden) -->
-      <div class="register" id='register' style="width:50%;">
-        <h2 style="margin:40px 0px">Create Account</h2>
-        <input class="mb-3 form-control" type="text" name="newUsername" placeholder="Username: "><br>
-        <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: "><br>
-        <input class="mb-3 form-control" type="text" name="newAddress" placeholder="Address: "><br>
-        <input class="mb-3 form-control" type="password" name="newPassword" placeholder="Password: "><br>
-        <input class="mb-3 form-control" type="password" name="newConfirmPassword" placeholder="Confirm Password: "><br><br><br>
-        <button class="btn btn-primary mb-3" type="submit" name="create">Create</button>
-        <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeRegister()">Cancel</button>
-      </div>
+        <!-- Register (Hidden) -->
+        <div class="register" id='register'>
+          <h2 style="margin:40px 0px">Create Account</h2>
+          <input class="mb-3 form-control" type="text" name="newUsername" placeholder="Username: "><br>
+          <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: "><br>
+          <input class="mb-3 form-control" type="text" name="newAddress" placeholder="Address: "><br>
+          <input class="mb-3 form-control" type="password" name="newPassword" placeholder="Password: "><br>
+          <input class="mb-3 form-control" type="password" name="newConfirmPassword" placeholder="Confirm Password: "><br><br><br>
+          <button class="btn btn-primary mb-3" type="submit" name="create">Create</button>
+          <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeRegister()">Cancel</button>
+        </div>
 
-      <!-- Reset Password (Hidden) -->
-      <div class="reset" id='reset' style="width:50%;">
-        <h2 style="margin:40px 0px">Reset Password</h2>
-        <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: "><br>
-        <button class="btn btn-primary mb-3" type="submit" name="create">Reset</button>
-        <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
-      </div>
 
-      <!-- Main Login -->
-        <img src="icons/profile.png" style="width:100px; height:100px;" class="mb-3">
-        <h2 class="mb-3">Login</h2>
-        <form action="">
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Username" style="width:50%; margin: auto;">
-          </div>
-          <div class="mb-3">
-            <input type="password" class="form-control" placeholder="Password" style="width:50%; margin:auto">
-          </div>
-          <button class="btn btn-primary mb-3" type="submit" name="login">Login</button>
-        </form>
+        <!-- Reset Password (Hidden) -->
+        <div class="reset" id='reset'>
+          <h2 style="margin:40px 0px">Reset Password</h2>
+          <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: "><br>
+          <button class="btn btn-primary mb-3" type="submit" name="create">Reset</button>
+          <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
+        </div>
 
-        <a href="#" onclick="openRegister()">Sign up Here</a><br>
-        <a href="#" onclick="openReset()">Forget Password?</a><br>
-        <hr>
-        <button class="btn btn-primary mb-3" type="submit">Sign in With Google</button>
+        <!-- Main Login -->
+        <div id="main">
+          <img src="icons/profile.png" style="width:100px; height:100px;" class="mb-3">
+          <h2 class="mb-3">Login</h2>
+          <form action="">
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Username" style="width:50%; margin: auto;">
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" placeholder="Password" style="width:50%; margin:auto">
+            </div>
+            <button class="btn btn-primary mb-3" type="submit" name="login">Login</button>
+          </form>
+  
+          <a href="#" onclick="openRegister()">Sign up Here</a><br>
+          <a href="#" onclick="openReset()">Forget Password?</a><br>
+          <hr>
+          <button class="btn btn-primary mb-3" type="submit">Sign in With Google</button>
+        </div>
       </div>
     </div>
   </div>
@@ -60,18 +63,23 @@
   <script>
     let register = document.getElementById('register')
     let forget = document.getElementById('reset')
+    let main = document.getElementById('main')
 
     function openRegister() {
       register.classList.add('open-register')
+      main.classList.add('blur')
     }
     function closeRegister() {
       register.classList.remove('open-register')
+      main.classList.remove('blur')
     }
     function openReset() {
       forget.classList.add('open-reset')
+      main.classList.add('blur')
     }
     function closeReset() {
       forget.classList.remove('open-reset')
+      main.classList.remove('blur')
     }
   </script>
 
@@ -83,15 +91,21 @@
     margin-top: 120px;
   }
   .register, .reset {
-    background-color: aqua;
+    background-color: beige;
     border-radius: 5%;
-    text-align: center;
     padding: 20px;
     position: absolute;
     visibility: hidden;
+    width: 50%;
+    top: 10%;
+    left: 25%;
+    z-index: 1;
   }
   .open-register {
     visibility: visible;
+  }
+  .blur {
+    filter: blur(5px);
   }
   .open-reset {
     visibility: visible;
