@@ -27,7 +27,9 @@
         overflow: hidden;
       }
 
-      #profileImage{
+      #profileImage,
+      #edit-profile,
+      #change-password {
         cursor: pointer;
       }
 
@@ -111,8 +113,8 @@
         <!-- Left side bar for menu selection (Edit profile / Change Password) -->
         <div id="profile-LeftBar" class="col-lg-2 col-12" style="border: 3px solid red;">
           <ul>
-            <li>Edit Profile</li>
-            <li>Change Password</li>
+            <li id="edit-profile">Edit Profile</li>
+            <li id="change-password">Change Password</li>
           </ul>
         </div>
         
@@ -121,7 +123,7 @@
 
         <div id="profile-RightBar" class="col-lg-9 col-12" style="border: 3px solid blue;">
           <!-- Right side bar for form display of information -->
-          <form>
+          <form class="p-3">
             <!-- Circle profile photo -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <div id="profile-row">
@@ -129,7 +131,7 @@
                 <img id="profileImage" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" />
               </div>
               <label for="imageUpload" id="select-image-label">Select Image</label>
-              <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="">
+              <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo">
             </div>
             <!-- end of Circle profile photo -->
 
@@ -171,7 +173,9 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="d-flex justify-content-end px-1 mt-4">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
           </form>
         </div>
       </div>
