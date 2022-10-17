@@ -19,3 +19,7 @@
     min-height: 300px;
     /* object-fit: fill; */
 }
+
+#map {
+    height: 400px;
+}
