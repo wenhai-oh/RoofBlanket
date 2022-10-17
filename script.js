@@ -121,8 +121,10 @@ function displayEditProfileForm()
     let editProfileBtn = document.getElementById("edit-profile-btn")
     let changePasswordBtn = document.getElementById("change-password-btn")
 
-    editProfileBtn.style.color = "blue"
-    changePasswordBtn.style.color = "black"
+    editProfileBtn.style.borderLeft = "3px solid black"
+    editProfileBtn.style.paddingLeft = "4px"
+    changePasswordBtn.style.paddingLeft = "7px"
+    changePasswordBtn.style.borderLeft = "none"
 }
 
 function displayChangePasswordForm()
@@ -139,8 +141,10 @@ function displayChangePasswordForm()
     let editProfileBtn = document.getElementById("edit-profile-btn")
     let changePasswordBtn = document.getElementById("change-password-btn")
 
-    editProfileBtn.style.color = "black"
-    changePasswordBtn.style.color = "blue"
+    editProfileBtn.style.borderLeft = "none"
+    editProfileBtn.style.paddingLeft = "7px"
+    changePasswordBtn.style.paddingLeft = "4px"
+    changePasswordBtn.style.borderLeft = "3px solid black"
 }
 // ****************************************************
 // End of Profile.html Scripts
