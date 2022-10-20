@@ -19,6 +19,13 @@
 
       #profile-LeftBar li {
         list-style: none;
+        height: 36px;
+        display: flex;
+        align-items: center;
+      }
+
+      #profile-RightBar {
+        margin: 0 auto;
       }
 
       #profile-container img {
@@ -59,6 +66,11 @@
       .form-control {
         border: none; 
         background-color: transparent; 
+      }
+
+      .form-heading {
+        margin-top: 20px;
+        margin-bottom: 30px;
       }
 
       .form-label {
@@ -118,10 +130,10 @@
 
     
     <!-- Container -->
-    <div class="container pt-5">
+    <div class="container mt-5">
       <div class="row">
         <!-- Left side bar for menu selection (Edit profile / Change Password) -->
-        <div id="profile-LeftBar" class="col-lg-2 col-12">
+        <div id="profile-LeftBar" class="col-lg-2 col-12 mb-5">
           <ul>
             <li id="edit-profile-btn" onclick="displayEditProfileForm()">Edit Profile</li>
             <li id="change-password-btn" onclick="displayChangePasswordForm()">Change Password</li>
@@ -129,9 +141,9 @@
         </div>
         
         <!-- empty for spacing -->
-        <div class="col-1"></div>
+        <div class="col-lg-1 col-0"></div>
 
-        <div id="profile-RightBar" class="col-lg-9 col-12 border border-dark rounded p-4">
+        <div id="profile-RightBar" class="col-lg-9 col-11 border border-dark rounded p-4">
           <!-- Right side bar for form display of information -->
           <form id = edit-profile-container>
             <!-- Circle profile photo -->
@@ -145,7 +157,7 @@
             </div>
             <!-- end of Circle profile photo -->
 
-            <h3>Your Profile</h3>
+            <h3 class="form-heading">Your Profile</h3>
 
             <div class="mb-3 mx-1 px-3 rounded-pill border border-dark d-flex align-items-center">
               <div class="formLabelContainer">
@@ -188,11 +200,11 @@
             </div>
           </form>
           <form id="change-password-container">
-            <h3>Change Password</h3>
+            <h3 class="form-heading">Change Password</h3>
 
             <div class="mb-3 mx-1 px-3 rounded-pill border border-dark d-flex align-items-center">
               <div class="formLabelContainer">
-                <label for="profile-current-password" class="form-label">Current Password: </label>
+                <label for="profile-current-password" class="form-label">Current: </label>
               </div>
               <div class="formInputContainer">
                 <input type="text" class="form-control" id="profile-current-password">
@@ -201,7 +213,7 @@
 
             <div class="mb-3 mx-1 px-3 rounded-pill border border-dark d-flex align-items-center">
               <div class="formLabelContainer">
-                <label for="profile-new-password" class="form-label">New Password: </label>
+                <label for="profile-new-password" class="form-label">New:</label>
               </div>
               <div class="formInputContainer">
                 <input type="text" class="form-control" id="profile-new-password">
@@ -210,7 +222,7 @@
 
             <div class="mb-3 mx-1 px-3 rounded-pill border border-dark d-flex align-items-center">
               <div class="formLabelContainer">
-                <label for="profile-confirm-password" class="form-label">Confirm Password: </label>
+                <label for="profile-confirm-password" class="form-label">Confirm: </label>
               </div>
               <div class="formInputContainer">
                 <input type="text" class="form-control" id="profile-confirm-password">
