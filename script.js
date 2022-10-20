@@ -1,7 +1,20 @@
 // ****************************************************
 // Start of Map Script
 // ****************************************************
-let map = {}
+// mapListing portion
+// dummy location
+let dbLocationList = [[35.66962384382411, 139.6430907463442],[35.66976330016642, 139.64738591458215],[35.66962384382411, 139.6600996125663]]
+let currentLocation = dbLocationList[0]
+var mapListing = L.map('mapListing').setView(currentLocation, 13);
+L.marker(currentLocation).addTo(mapListing)
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(mapListing);
+
+// mapUpdate portion
+var mapUpdate = {}
 let locationsList = []
 
 function getLocation() {
@@ -18,17 +31,17 @@ function showPosition(position) {
     let latitude = position.coords.latitude
     let longitude = position.coords.longitude
 
-    map = L.map('map').setView([latitude, longitude], 13);
+    mapUpdate = L.map('mapUpdate').setView([latitude, longitude], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-    var marker = L.marker([latitude, longitude]).addTo(map);
+    }).addTo(mapUpdate);
+    var marker = L.marker([latitude, longitude]).addTo(mapUpdate);
     marker.bindPopup("<p style=color:red;>You are here</p>").openPopup();
 
     var popup = L.popup();
 
     // Script for adding marker on map click
-    map.on('click', onMapClick);
+    mapUpdate.on('click', onMapClick);
 }
 
 function onMapClick(e) {
@@ -56,7 +69,7 @@ function onMapClick(e) {
             marker.on("popupopen", onPopupOpen);
             return marker;
         }
-    }).addTo(map);
+    }).addTo(mapUpdate);
 
     // add location to list
     let location = [e.latlng.lat, e.latlng.lng]
@@ -71,7 +84,7 @@ function onPopupOpen() {
     // console.log(tempMarker)
     // To remove marker on click of delete button in the popup of marker
     $(".marker-delete-button:visible").click(function() {
-        map.removeLayer(tempMarker);
+        mapUpdate.removeLayer(tempMarker);
         // remove from location list
         let lat = tempMarker["_latlng"].lat
         let long = tempMarker["_latlng"].lng
