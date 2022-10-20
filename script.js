@@ -4,19 +4,17 @@
 let map = {}
 let locationsList = []
 
-function getLocation() 
-{
-if (navigator.geolocation) 
-{
-    navigator.geolocation.getCurrentPosition(showPosition);
-} 
-else { 
-    alert("Geolocation is not supported by this browser.")
-}
+function getLocation() {
+    if (navigator.geolocation) 
+    {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } 
+    else { 
+        alert("Geolocation is not supported by this browser.")
+    }
 }
 
-function showPosition(position) 
-{
+function showPosition(position) {
     let latitude = position.coords.latitude
     let longitude = position.coords.longitude
 
@@ -34,8 +32,7 @@ function showPosition(position)
 }
 
 function onMapClick(e) {
-    var geojsonFeature = 
-    {
+    var geojsonFeature = {
         "type": "Feature",
         "properties": {},
         "geometry":
@@ -48,8 +45,7 @@ function onMapClick(e) {
     var marker;
 
     L.geoJson(geojsonFeature, {
-        pointToLayer: function(feature, latlng)
-            {
+        pointToLayer: function(feature, latlng) {
                 marker = L.marker(e.latlng, {
                 title: "Location",
                 alt: "Location",
@@ -84,9 +80,8 @@ function onPopupOpen() {
     });
 }
 
-function removeLatLng(location) 
 // gets an array of latitude and longitude [x, y] and removes them from the location list array.
-{
+function removeLatLng(location) {
     for (index in locationsList)
     {
         if (locationsList[index][0] == location[0] && locationsList[index][1] == location[1])
@@ -107,8 +102,7 @@ function removeLatLng(location)
 // ****************************************************
 // Start of Profile.html Scripts
 // ****************************************************
-function displayEditProfileForm()
-{
+function displayEditProfileForm() {
     // show edit-profile-container, hide change-password-container
     // console.log("edit profile")
     let editProfileForm = document.getElementById("edit-profile-container")
@@ -127,8 +121,7 @@ function displayEditProfileForm()
     changePasswordBtn.style.borderLeft = "none"
 }
 
-function displayChangePasswordForm()
-{
+function displayChangePasswordForm() {
     // show change-password-container, hide edit-profile-container
     // console.log("change password")
     let editProfileForm = document.getElementById("edit-profile-container")
