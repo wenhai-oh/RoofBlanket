@@ -15,7 +15,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // mapUpdate portion
 var mapUpdate = {}
-let locationsList = []
+var locationsList = []
 
 function getLocation() {
     if (navigator.geolocation) 
