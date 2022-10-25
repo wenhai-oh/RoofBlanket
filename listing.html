@@ -258,26 +258,163 @@
       }
 
       document.querySelector("#upload").addEventListener("change", (e) => { 
-      if (window.File && window.FileReader && window.FileList && window.Blob) {
-        const files = e.target.files;
-        const output = document.querySelector("#result");
-        output.innerHTML = "";
-        for (let i = 0; i < files.length; i++) {
-          if (!files[i].type.match("image")) continue;
-            const picReader = new FileReader();
-            picReader.addEventListener("load", function (event) {
-              const picFile = event.target;
-              const div = document.createElement("div");
-              div.innerHTML = `<img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>`;
-              output.appendChild(div);
-            });
-            picReader.readAsDataURL(files[i]);
-          }
-      } else {
-        alert("Your browser does not support File API");
-      }
-    });
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+          const files = e.target.files;
+          const output = document.querySelector("#result");
+          output.innerHTML = "";
+          for (let i = 0; i < files.length; i++) {
+            if (!files[i].type.match("image")) continue;
+              const picReader = new FileReader();
+              picReader.addEventListener("load", function (event) {
+                const picFile = event.target;
+                const div = document.createElement("div");
+                div.innerHTML = `<img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>`;
+                output.appendChild(div);
+              });
+              picReader.readAsDataURL(files[i]);
+            }
+        } else {
+          alert("Your browser does not support File API");
+        }
+      });
 
+    // ****************************************************
+    // Start of Map Script
+    // KEEP MAP SCRIPT AS INTERNAL JS
+    // DO NOT MOVE TO EXTERNAL JS
+    // ****************************************************
+    // mapListing portion
+    // dummy location (1 line) - to be retrieved from DB of known locations for the homeless person
+    let dbLocationList = [[35.66962384382411, 139.6430907463442],[35.66976330016642, 139.64738591458215],[35.66962384382411, 139.6600996125663]]
+
+    let currentLocation = dbLocationList[0]
+    var mapListing = L.map('mapListing').setView(currentLocation, 13);
+    L.marker(currentLocation).addTo(mapListing)
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(mapListing);
+
+    // add markers of all known homeless person location from location list
+    for (index = 1; index < dbLocationList.length; index++)
+    {
+      console.log(index, dbLocationList[index])
+      L.marker(dbLocationList[index]).addTo(mapListing)
+    }
+
+    // mapUpdate portion
+    var mapUpdate = {}
+    var locationsList = []
+
+    // gets the location of the user and calls a method to add marker of user current location
+    function getLocation() {
+      if (navigator.geolocation) 
+      {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } 
+      else { 
+        alert("Geolocation is not supported by this browser.")
+      }
+    }
+
+    /* 
+      add marker to show current location of the user
+      add all markers of known locations of the homeless person
+    */
+    function showPosition(position) {
+      let latitude = position.coords.latitude
+      let longitude = position.coords.longitude
+
+      mapUpdate = L.map('mapUpdate').setView([latitude, longitude], 13);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(mapUpdate);
+      var marker = L.marker([latitude, longitude]).addTo(mapUpdate);
+      // change marker of user current location to red
+      marker._icon.classList.add("huechange");
+      marker.bindPopup("<p style=color:red;>You are here</p>").openPopup();
+
+      var popup = L.popup();
+
+      // Script for adding marker on map click
+      mapUpdate.on('click', onMapClick);
+
+      // add markers of all known homeless person location from location list
+      for (index = 0; index < dbLocationList.length; index++)
+    {
+      console.log(index, dbLocationList[index])
+      L.marker(dbLocationList[index]).addTo(mapUpdate)
+    }
+    }
+
+    function onMapClick(e) {
+      var geojsonFeature = {
+        "type": "Feature",
+        "properties": {},
+        "geometry":
+        {
+          "type": "Point",
+          "coordinates": [e.latlng.lat, e.latlng.lng]
+        }
+      }
+
+      var marker;
+
+      L.geoJson(geojsonFeature, {
+        pointToLayer: function(feature, latlng) {
+          marker = L.marker(e.latlng, {
+            title: "Location",
+            alt: "Location",
+            riseOnHover: true,
+            // draggable: true,
+          }).bindPopup("<input type='button' value='Remove' class='marker-delete-button'/>");
+
+          marker.on("popupopen", onPopupOpen);
+          return marker;
+        }
+      }).addTo(mapUpdate);
+
+      // add location to list
+      let location = [e.latlng.lat, e.latlng.lng]
+      // console.log(location)
+      locationsList.push(location)
+      // console.log(locationsList)
+    }
+
+    // Function to handle delete as well as other events on marker popup open
+    function onPopupOpen() {
+      var tempMarker = this;
+      // console.log(tempMarker)
+      // To remove marker on click of delete button in the popup of marker
+      $(".marker-delete-button:visible").click(function() {
+        mapUpdate.removeLayer(tempMarker);
+        // remove from location list
+        let lat = tempMarker["_latlng"].lat
+        let long = tempMarker["_latlng"].lng
+        let location = [lat, long]
+        removeLatLng(location)
+      });
+    }
+
+    // gets an array of latitude and longitude [x, y] and removes them from the location list array.
+    function removeLatLng(location) {
+      for (index in locationsList)
+      {
+        if (locationsList[index][0] == location[0] && locationsList[index][1] == location[1])
+        {
+          // remove from array using index
+          if (index > -1)
+          {
+              locationsList.splice(index, 1)
+              console.log(locationsList)
+          }
+        }
+      }
+    }
+    // ****************************************************
+    // End of Map Script
+    // ****************************************************
     </script>
   </body>
 

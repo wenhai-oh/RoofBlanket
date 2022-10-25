@@ -24,3 +24,12 @@
 #mapListing {
     height: 400px;
 }
+
+#mapListing {
+    z-index: 0;
+}
+
+/* To change color of the marker indicating user current location */
+img.huechange { 
+    filter: hue-rotate(120deg); 
+}
