@@ -14,16 +14,19 @@
     <div class="row text-center my-5"> 
 
         <!-- Register Pop Up Box (Hidden by Default) -->
-        <div class="register" id='register'>
-          <h2 class="my-3">Create Account</h2>
-          <input class="mb-3 form-control" type="text" name="newUsername" placeholder="Username: " id="newUsername"><br>
-          <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: " id="newEmail"><br>
-          <input class="mb-3 form-control" type="text" name="newAddress" placeholder="Address: " id="newAddress"><br>
-          <input class="mb-3 form-control" type="password" name="newPassword" placeholder="Password: " id="newPassword"><br>
-          <input class="mb-3 form-control" type="password" name="newConfirmPassword" placeholder="Confirm Password: " id="newConfirmPassword"><br>
-          <button class="btn btn-primary mb-3 registerbutton" type="submit" name="create">Create</button>
-          <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeRegister()">Cancel</button>
-        </div>
+        <form action="" id="user_inputs" class="registerbutton">
+          <div class="register" id='register'>
+            <h2 class="my-3">Create Account</h2>
+            <input class="mb-3 form-control" type="text" name="newUsername" placeholder="Username: " id="newUsername"><br>
+            <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: " id="newEmail"><br>
+            <input class="mb-3 form-control" type="text" name="newAddress" placeholder="Address: " id="newAddress"><br>
+            <input class="mb-3 form-control" type="password" name="newPassword" placeholder="Password: " id="newPassword"><br>
+            <input class="mb-3 form-control" type="password" name="newConfirmPassword" placeholder="Confirm Password: " id="newConfirmPassword"><br>
+            <button class="btn btn-primary mb-3 registerbutton" type="submit" name="create">Create</button>
+            <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeRegister()">Cancel</button>
+          </div>
+        </form>
+
 
 
         <!-- Reset Password Pop Up Box (Hidden by Default) -->
