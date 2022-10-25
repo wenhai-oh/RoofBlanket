@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row text-center my-5"> 
+
+        <!-- Register Pop Up Box (Hidden by Default) -->
+        <div class="register" id='register'>
+          <h2 class="my-3">Create Account</h2>
+          <input class="mb-3 form-control" type="text" name="newUsername" placeholder="Username: " id="newUsername"><br>
+          <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: " id="newEmail"><br>
+          <input class="mb-3 form-control" type="text" name="newAddress" placeholder="Address: " id="newAddress"><br>
+          <input class="mb-3 form-control" type="password" name="newPassword" placeholder="Password: " id="newPassword"><br>
+          <input class="mb-3 form-control" type="password" name="newConfirmPassword" placeholder="Confirm Password: " id="newConfirmPassword"><br>
+          <button class="btn btn-primary mb-3 registerbutton" type="submit" name="create">Create</button>
+          <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeRegister()">Cancel</button>
+        </div>
+
+
+        <!-- Reset Password Pop Up Box (Hidden by Default) -->
+        <div class="reset" id='reset'>
+          <h2 class="my-3">Reset Password</h2>
+          <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: "><br>
+          <button class="btn btn-primary mb-3" type="submit" name="create">Reset</button>
+          <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
+        </div>
+
+        <!-- Main Login (Shown First) -->
+        <div id="main">
+          <img src="icons/profile.png" style="width:100px; height:100px;" class="mb-3">
+          <h2 class="mb-3">Login</h2>
+          <form action="">
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Username" style="width:50%; margin: auto;">
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" placeholder="Password" style="width:50%; margin:auto">
+            </div>
+            <button class="btn btn-primary mb-3" type="submit" name="login">Login</button>
+          </form>
+  
+          <a href="#" onclick="openRegister()">Sign up Here</a><br>
+          <a href="#" onclick="openReset()">Forget Password?</a><br>
+          <hr>
+          <button class="btn btn-primary mb-3" type="submit">Sign in With Google</button>
+        </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+
+  <script src="./bundle.js"></script>
+
+  <script>
+    let register = document.getElementById('register')
+    let forget = document.getElementById('reset')
+    let main = document.getElementById('main')
+
+    function openRegister() {
+      register.classList.add('open-visible')
+      main.classList.add('blur')
+    }
+    function closeRegister() {
+      register.classList.remove('open-visible')
+      main.classList.remove('blur')
+    }
+    function openReset() {
+      forget.classList.add('open-visible')
+      main.classList.add('blur')
+    }
+    function closeReset() {
+      forget.classList.remove('open-visible')
+      main.classList.remove('blur')
+    }
+  </script>
+
+</body>
+
+<style>
+  .container {
+    width: 80%;
+  }
+  .register, .reset {
+    background-color: beige;
+    border-radius: 5%;
+    padding: 20px;
+    position: absolute;
+    visibility: hidden;
+    width: 50%;
+    top: 10%;
+    left: 25%;
+    z-index: 1;
+  }
+  .open-visible {
+    visibility: visible;
+  }
+  .blur {
+    filter: blur(5px);
+  }
+</style>
+
+</html>
+
