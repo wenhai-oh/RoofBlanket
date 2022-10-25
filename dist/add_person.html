@@ -74,11 +74,11 @@
             </div>
             <!-- Person Age -->
             <div class="mb-3 mt-3">
-              <input type="number" class="form-control" placeholder="Age: " id="age">
+              <input type="number" class="form-control" placeholder="Age: " id="age" min="20" max="100">
             </div>
             <!-- API Integration Here for Location-->
             <div class="mb-3 mt-3">
-              <input type="text" class="form-control" placeholder="Location: " id="location">
+              <input type="text" class="form-control" placeholder="Location: " id="location" required>
             </div>
             <!-- Person Duration of Stay -->
             <div class="d-flex">
@@ -162,7 +162,7 @@
             </div>
             <!-- Person Description -->
             <div class="mb-3" name="description">
-              <textarea class="form-control" rows="6" id="description" placeholder="Description: "></textarea>
+              <textarea class="form-control" rows="6" id="description" placeholder="Please describe the person of interest.." required></textarea>
             </div>
             <!-- Buttons -->
             <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
