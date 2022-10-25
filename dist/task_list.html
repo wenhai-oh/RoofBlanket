@@ -48,16 +48,41 @@
     <div class="container-fluid" style="width: 80%;">
 
       <!-- Add Employment Details Pop Up Box (Hidden By Default) -->
-      <div class='employment text-center' id='employment'>
-        <h2 class="my-3">Add Employment Information</h2>
-        <input class="mb-3 form-control" type="text" name="newUsername" placeholder="Username: "><br>
-        <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: "><br>
-        <input class="mb-3 form-control" type="text" name="newAddress" placeholder="Address: "><br>
-        <input class="mb-3 form-control" type="password" name="newPassword" placeholder="Password: "><br>
-        <input class="mb-3 form-control" type="password" name="newConfirmPassword" placeholder="Confirm Password: "><br>
-        <button class="btn btn-primary mb-3" type="submit" name="submit">Submit</button>
-        <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeEmployment()">Cancel</button>
-      </div>
+      <form action="">
+        <div class='employment text-center' id='employment'>
+          <h2 class="my-3">Add Employment Information</h2>
+  
+          <div class="container skillsets">
+            <label for="skillsets"> Skills</label>
+            <select class="form-select" name="skillsets" placeholder="skills" aria-label="Default select example">
+              <option selected value="none"> None</option>
+              <option value="art">Arts and Craft</option>
+              <option value="computer">Computer skills</option>
+              <option value="cleaning">Cleaning</option>
+              <option value="sales">sales</option>
+            </select>
+          </div>
+          
+          <div class="container education p-3">
+            <label for="Education"> Education</label>
+            <select class="form-select" name="skillsets" aria-label="Default select example">
+              <option selected value="nlevels">N Levels</option>
+              <option value="olevels">O Levels</option>
+              <option value="degree">Undergraduate Degree</option>
+              <option value="masters">Masters</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+
+          <div class="container notes p-3">
+            <textarea name="notes" id="notes" cols="30" rows="5" placeholder="Add additional information here..." width="100"></textarea>
+          </div>
+          
+          <button class="btn btn-primary mb-3" type="submit" name="submit">Submit</button>
+          <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeEmployment()">Cancel</button>
+        </div>
+      </form>
+      
 
       <!-- Release Pop Up Box (Hidden By Default) Data Fetch Here -->
       <div class='release text-center' id='release'>
