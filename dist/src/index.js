@@ -43,20 +43,17 @@ if (addHomeless != null){
     // console.log(displayRadioValue("specialneeds"))
     // console.log(displayRadioValue("employment"))
     // console.log(document.getElementById("description").value)
-    let file = document.getElementById("upload")
-    console.log(file)
-    console.log(e.target)
-
+  
     // Uploading to firestore
     addDoc(homelessRef, {
-      // name: document.getElementById("person_name").value,
-      // age: document.getElementById("age").value,
-      // location: document.getElementById("location").value,
-      // duration: document.getElementById("duration").value,
-      // gender: displayRadioValue("gender"),
-      // specialneeds: displayRadioValue("specialneeds"),
-      // employment: displayRadioValue("employment"),
-      // description: document.getElementById("description").value
+      name: document.getElementById("person_name").value,
+      age: document.getElementById("age").value,
+      location: document.getElementById("location").value,
+      duration: document.getElementById("duration").value,
+      gender: displayRadioValue("gender"),
+      specialneeds: displayRadioValue("specialneeds"),
+      employment: displayRadioValue("employment"),
+      description: document.getElementById("description").value
     })
     .then(() => {
       console.log("====== END: SAVING HOMELESS POST TO FIRESTORE ======")
@@ -125,7 +122,6 @@ if (deleteHomeless != null ) {
   deleteDoc(delhomelessRef)
   .then(() => {
     // sth
-    console.log("====== END: DELETING HOMELESS POST TO FIRESTORE ======")
   })
 }
 
@@ -147,33 +143,35 @@ if (deleteHomeless != null ) {
 
 // index.html - Seeking Shelter
 
-// function retrieveHomeless() {
-//   let shelterObjList = []
-//   onSnapshot(homelessRef, (snapshot) => {
-//       snapshot.docs.forEach((doc) => {
-//       shelterObjList.push({...doc.data(), id: doc.id})
-//       })
-//     console.log(shelterObjList)
-//   })
-// }
-// retrieveHomeless()
+function retrieveHomeless() {
+  let shelterObjList = []
+  onSnapshot(homelessRef, (snapshot) => {
+      snapshot.docs.forEach((doc) => {
+      shelterObjList.push({...doc.data(), id: doc.id})
+      })
+    console.log(shelterObjList)
+    return shelterObjList
+  })
+}
+retrieveHomeless()
 
 // index.html - Seeking Employment
-// const employmentQuery = query(homelessRef, where("employment", "==", "yes"))
-// function retrieveWantEmployment(query) {
-//   let employmentObjList = []
-//   onSnapshot(query, (snapshot) => {
-//     snapshot.docs.forEach((doc) => {
-//     employmentObjList.push({...doc.data(), id: doc.id})
-//     })
-//   console.log(employmentObjList)
-//   return employmentObjList
-//   })
-// }
-// retrieveWantEmployment(employmentQuery)
+
+const employmentQuery = query(homelessRef, where("employment", "==", "yes"))
+function retrieveWantEmployment() {
+  let employmentObjList = []
+  onSnapshot(employmentQuery, (snapshot) => {
+    snapshot.docs.forEach((doc) => {
+    employmentObjList.push({...doc.data(), id: doc.id})
+    })
+  console.log(employmentObjList)
+  return employmentObjList
+  })
+}
+retrieveWantEmployment()
 
 // task_list.html
-// retrieveHomeless()
+retrieveHomeless()
 
 
 // ============= FUNCTIONS =============
@@ -202,19 +200,5 @@ function displayRadioValue(radio_name) {
   }
 }
 
-// Get a reference to the file input
-// const fileInput = document.querySelector('#upload');
 
-// Listen for the change event so we can capture the file
-// fileInput.addEventListener('change', (e) => {
-//     // Get a reference to the file
-//     const file = e.target.files[0];
 
-//     // Encode the file using the FileReader API
-//     const reader = new FileReader();
-//     reader.onloadend = () => {
-//         console.log(reader.result);
-//         // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
-//     };
-//     reader.readAsDataURL(file);
-// });
