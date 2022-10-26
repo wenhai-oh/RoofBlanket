@@ -10,13 +10,14 @@
     
     <!-- This link connect html file to overall stylesheet named styles.css-->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- This Link connects to freeawesome icons -->
+    <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
+
     <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
-    <!-- This section is scripts for Google Map API -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDzYcc7UvCEeHuUgpcvplM0COLpkSrdl4&libraries=places"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
   </head>
 
 
@@ -59,44 +60,80 @@
     </nav>
     <!-- End Of Sticky Top Nav Bar Section -->
 
+    <!-- Form Creation -->
+    <div class="container mt-5">
+      <!-- Start of Form Section-->
+      <form>
+        <div class="row">
 
-    <!-- Start Of Body Content-->   
-    <div class="container my-2 form_content" id="main">
-      <div class="row firstrow" id="firstrow">
-        <h2 class="mt-3">Who are you Listing</h2>
-        <p class="fw-light">Being nice goes a long way</p>
-        <!-- Add Image Side (Left) -->
-        <div class="col-md-4 image text-center">
-        <form action="" id="user_inputs">
-          <div class="image-drawer my-3">
-            <img src="./icons/add_image.png" height="80px" width="80px" class="mb-2">
-
-            <!-- For Uploading Image -->
-            <input id="upload" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
-            <hr>
-            <!-- Display Image Uploaded -->
-            <output id="result">
+          <!--Header Listing Form-->
+          <h4>Who are you listing?</h4>
+          <!--First Field (1st Row)-->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="Full Name"/>
+            <div class="input-icon">
+              <i class="fa fa-user"></i>
+            </div>
           </div>
+          <!-- Second Field (2nd Row)-->
+          <div class="input-group input-group-icon">
+            <input type="number" placeholder="Age" max="80" min="20"/>
+            <div class="input-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+          </div>
+          <!-- Third Field (3rd Row)-->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="Location"/>
+            <div class="input-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+          </div>
+          <!-- End Of Field Section-->
         </div>
 
-        <!-- Input Side (Right)-->
-        <div class="col-md-8 input" name="person_details">
-            <!-- Person Name -->
-            <div class="mb-3 mt-3">
-              <input type="text" class="form-control" placeholder="Person Name: " id="person_name" required>
+        <div class="row">
+          <!-- Special Needs Col -->
+          <div class="col-half">
+            <h4>Special Needs?</h4>
+            <div class="input-group">
+              <input id="special-yes" type="radio" name="specialneeds" value="yes"/>
+              <label for="special-yes">Yes</label>
+              <input id="special-no" type="radio" name="specialneeds" value="no"/>
+              <label for="special-no">No</label>
             </div>
-            <!-- Person Age -->
-            <div class="mb-3 mt-3">
-              <input type="number" class="form-control" placeholder="Age: " id="age" min="20" max="100">
+          </div>
+          <!-- Gender Col -->
+          <div class="col-half">
+            <h4>Gender</h4>
+            <div class="input-group">
+              <input id="gender-male" type="radio" name="gender" value="male"/>
+              <label for="gender-male">Male</label>
+              <input id="gender-female" type="radio" name="gender" value="female"/>
+              <label for="gender-female">Female</label>
             </div>
-            <!-- API Integration Here for Location-->
-            <div class="mb-3 mt-3">
-              <input type="text" class="form-control" placeholder="Location: " id="location" required>
+          </div>
+          <!--End Of 4th Row-->
+        </div>
+
+        <!-- Start of 5th Row -->
+        <!-- Seeking Employment -->
+        <div class="row">
+          <div class="col-half">
+            <h4>Seeking Employment?</h4>
+            <div class="input-group">
+              <input id="employment-yes" type="radio" name="employment" value="yes"/>
+              <label for="employment-yes">Yes</label>
+              <input id="employment-no" type="radio" name="employment" value="no"/>
+              <label for="employment-no">No</label>
             </div>
-            <!-- Person Duration of Stay -->
-            <div class="d-flex">
-              <p class="col-6-md mt-1" style="margin-right: 10px;">Duration: </p>
-              <select class="form-select" style="height: 38px;" id='duration'>
+          </div>
+
+          <!-- Duration of Stay -->
+          <div class="col-half">
+            <h4>Duration of Stay (Months)</h4>
+            <div class="input-group">
+              <select class="form-select" style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;" id='duration'>
                 <option value="1" default>1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -111,82 +148,67 @@
                 <option value="12">12</option>
               </select>
             </div>
-
-            <!-- Person Gender -->
-            <div id="gender_container" class="d-flex justify-content-between">
-              <p class="align-items-start">Gender: </p>
-              <div class="gender-values" id="gender_selection">
-
-                <!--Male-->
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
-                  <label class="form-check-label" for="male">
-                    Male
-                  </label>
-                </div>
-
-                <!-- Female -->
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                  <label class="form-check-label" for="female">
-                    Female
-                  </label>
-                </div>
-                
-        
-              </div>
-            </div>
-
-            <!-- Person Special  -->
-            <div id="special" class="d-flex justify-content-between" >
-              <p>Special Needs: </p>
-              
-              <div class="special-values" >
-                <!-- Yes -->
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="specialneeds" value="yes">
-                  <label class="form-check-label" for="inlineCheckbox1">Yes</label>
-                </div>
-                <!-- No -->
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="specialneeds" value="no" checked>
-                  <label class="form-check-label" for="inlineCheckbox2">No</label>
-                </div>
-              </div>
-              
-            </div>
-            <!-- Person Employment -->
-            <div id="employment" class="d-flex justify-content-between">
-              <p>Seeking Employment: </p>
-              <div class="employment-values">
-                <!-- Yes -->
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="employment" value="yes" checked>
-                  <label class="form-check-label" for="inlineCheckbox1">Yes</label>
-                </div>
-                <!-- No -->
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="employment" value="no">
-                  <label class="form-check-label" for="inlineCheckbox2">No</label>
-                </div>
-              </div>
-              
-            </div>
-            <!-- Person Description -->
-            <div class="mb-3" name="description">
-              <textarea class="form-control" rows="6" id="description" placeholder="Please describe the person of interest.." required></textarea>
-            </div>
-            <!-- Buttons -->
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-              <button class="btn btn-light me-md-2" type="button">Cancel</button>
-              <button class="btn btn-danger" type="submit" onclick="getLatLng()">Upload</button>
-            </div>
-          </form>
+          </div>
         </div>
-      </div>
+
+        <!-- Description + Upload Image Row -->
+        <div class="row">
+          <div class="col-half">
+            <h4>Description</h4>
+            <div class="input-group">
+              <div class="mb-3" name="description">
+                <textarea class="form-control" rows="6" cols="100" id="description" placeholder="Please describe the person of interest.." required style="color: black;">
+                </textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image -->
+          <div class="col-half">
+            <h4>Upload Image</h4>
+            <div class="input-group">
+              <!-- Add Image Side (Right) -->
+                <form action="" id="user_inputs">
+                  <div class="image-drawer">
+                    <i class="fa-solid fa-image"></i>
+
+                    <!-- For Uploading Image -->
+                    <input id="upload" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
+
+                    <!-- Display Image Uploaded -->
+                    <output id="result">
+                  </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Of Desc + Image Upload Row-->
+
+        <!-- Terms & Condition Row -->
+        <div class="row">
+          <h4>Terms and Conditions</h4>
+          <div class="input-group">
+            <input id="terms" type="checkbox"/>
+            <label for="terms">I accept the terms and conditions for listing on this platform, and hereby confirm I have read the privacy policy.</label>
+          </div>
+        </div>
+        <!-- End Of Terms & Condition Row-->
+
+
+      <!--Here We input Upload or cancel button-->
+        <div class="listing-button d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+          <button class="list-btn" type="button">Cancel</button>
+          <button class="list-btn" type="submit" >Upload</button>
+        </div>
+      <!-- End Of Form and Buttons Section-->
+      </form>
     </div>
+
+    <!-- Backend Database -->
     <script src="bundle.js"> </script>
+
+    <!-- Boot Strap Java CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 
     <!-- For uploading Image-->
     <script>
@@ -201,7 +223,7 @@
             picReader.addEventListener("load", function (event) {
               const picFile = event.target;
               const div = document.createElement("div");
-              div.innerHTML = `<img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>`;
+              div.innerHTML = <img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>;
               output.appendChild(div);
             });
             picReader.readAsDataURL(files[i]);
@@ -235,5 +257,9 @@
             });
         }
     </script>
+  </body>
+</html>
+
+
   </body>
 </html>
