@@ -18,6 +18,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
+
+    <!-- This section contains the script needed for Google autocomplete API -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDzYcc7UvCEeHuUgpcvplM0COLpkSrdl4&libraries=places"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
   </head>
 
 
@@ -84,7 +88,7 @@
           </div>
           <!-- Third Field (3rd Row)-->
           <div class="input-group input-group-icon">
-            <input type="text" placeholder="Location"/>
+            <input type="text" placeholder="Location" id="location"/>
             <div class="input-icon">
               <i class="fa-solid fa-location-dot"></i>
             </div>
@@ -197,7 +201,7 @@
       <!--Here We input Upload or cancel button-->
         <div class="listing-button d-grid gap-2 d-md-flex justify-content-md-end mb-3">
           <button class="list-btn" type="button">Cancel</button>
-          <button class="list-btn" type="submit" >Upload</button>
+          <button onclick="getLatLng()" class="list-btn" type="submit">Upload</button>
         </div>
       <!-- End Of Form and Buttons Section-->
       </form>
@@ -223,7 +227,7 @@
             picReader.addEventListener("load", function (event) {
               const picFile = event.target;
               const div = document.createElement("div");
-              div.innerHTML = <img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>;
+              div.innerHTML = '<img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>';
               output.appendChild(div);
             });
             picReader.readAsDataURL(files[i]);
@@ -236,26 +240,26 @@
     // GoogleAPI to auto complete location search and retrieve Lat and Lng values.
     var autocomplete = new google.maps.places.Autocomplete(document.getElementById('location'))
 
-        function getLatLng() {
-            // console.log(autocomplete)
-            // console.log(autocomplete.gm_accessors_.place.nj.formattedPrediction)
+    function getLatLng() {
+        // console.log(autocomplete)
+        // console.log(autocomplete.gm_accessors_.place.nj.formattedPrediction)
 
-            var geocoder = new google.maps.Geocoder()
-            var address = autocomplete.gm_accessors_.place.nj.formattedPrediction
-            // console.log(address)
+        var geocoder = new google.maps.Geocoder()
+        var address = autocomplete.gm_accessors_.place.nj.formattedPrediction
+        // console.log(address)
 
-            geocoder.geocode({ 'address': address }, function (results, status) {
-                if (status == 'OK') {
-                    let lat = results[0].geometry.location.lat()
-                    let lng = results[0].geometry.location.lng()
-                    console.log(lat)
-                    console.log(lng)
-                    // store [lat, lng] in DB as array
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-        }
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == 'OK') {
+                let lat = results[0].geometry.location.lat()
+                let lng = results[0].geometry.location.lng()
+                console.log(lat)
+                console.log(lng)
+                // store [lat, lng] in DB as array
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
     </script>
   </body>
 </html>
