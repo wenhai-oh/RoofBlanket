@@ -5,16 +5,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Login</title>
+
+  <!-- BootStrap Cdn -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <!-- Main StyleSheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- This Link connects to freeawesome icons -->
+  <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
+
+  <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
+
 </head>
 
-<body>
-  <div class="container">
-    <div class="row text-center my-5"> 
+<body id="loginpage">
+  <!-- <div class="container">
+    <div class="row text-center my-5">  -->
 
         <!-- Register Pop Up Box (Hidden by Default) -->
-        <form action="" id="user_inputs" class="registerbutton">
+        <!-- <form action="" id="user_inputs" class="registerbutton">
           <div class="register" id='register'>
             <h2 class="my-3">Create Account</h2>
             <input class="mb-3 form-control" type="text" name="newUsername" placeholder="Username: " id="newUsername"><br>
@@ -25,20 +39,20 @@
             <button class="btn btn-primary mb-3 registerbutton" type="submit" name="create">Create</button>
             <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeRegister()">Cancel</button>
           </div>
-        </form>
+        </form> -->
 
 
 
         <!-- Reset Password Pop Up Box (Hidden by Default) -->
-        <div class="reset" id='reset'>
+        <!-- <div class="reset" id='reset'>
           <h2 class="my-3">Reset Password</h2>
           <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: "><br>
           <button class="btn btn-primary mb-3" type="submit" name="create">Reset</button>
           <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
-        </div>
+        </div> -->
 
         <!-- Main Login (Shown First) -->
-        <div id="main">
+        <!-- <div id="main">
           <img src="icons/profile.png" style="width:100px; height:100px;" class="mb-3">
           <h2 class="mb-3">Login</h2>
           <form action="">
@@ -57,6 +71,109 @@
           <button class="btn btn-primary mb-3" type="submit">Sign in With Google</button>
         </div>
     </div>
+  </div> -->
+
+
+
+  <!-- Test Section -->
+
+  <div class="container">
+    <!-- Container that wraps both signup and login form -->
+    <div class="row full-height justify-content-center">
+      <div class="col-12 text-center align-self-center py-5">
+        <div class="login-section pb-5 pt-5 pt-sm-2 text-center">
+          <!-- Headers for switch Tab -->
+          <h6 class="login-headers mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+                <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+                <label for="reg-log"></label>
+
+          <!-- Login SubContainer -->
+          <div class="card-3d-wrap mx-auto">
+            <div class="card-3d-wrapper">
+              <!-- Front Card Portion Login -->
+              <div class="card-front">
+                <div class="center-wrap">
+                  <!-- Form Section Content-->
+                  <div class="section text-center">
+                    <!-- Login Header-->
+                    <h4 class="mb-4 pb-3">Log In</h4>
+                    
+                    <div class="form-group">
+                      <!-- Username Portion -->
+                      <input type="email" name="Username" class="form-style" placeholder="Username" id="Username" autocomplete="off">
+                      <i class="login-icon fa-solid fa-user"></i>
+                    </div>	
+                    
+                    
+                    <!-- Password Portion -->
+                    <div class="form-group mt-2">
+                      <input type="password" name="logpass" class="form-style" placeholder="Password" id="Password" autocomplete="off">
+                      <i class="login-icon fa-solid fa-lock"></i>
+                    </div>
+                      <a href="#" class="btn-loginpage mt-4">Login</a>
+                      <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Card Back Portion Sign Up-->
+              <div class="card-back">
+                <div class="center-wrap">
+                  <div class="section text-center">
+                    <!-- Sign Up Header -->
+                    <h4 class="mb-4 pb-3">Sign Up</h4>
+
+                    <!-- Field Input 1 Username -->
+                    <div class="form-group">
+                      <input type="text" name="newUsername" class="form-style" placeholder="Your Full Name" id="newUsername" autocomplete="off">
+                      <i class="login-icon fa-solid fa-user"></i>
+                    </div>	
+
+                    <!-- Field Input 2 Email -->
+                    <div class="form-group mt-2">
+                      <input type="email" name="newEmail" class="form-style" placeholder="Your Email" id="newEmail" autocomplete="off">
+                      <i class="login-icon fa-solid fa-envelope"></i>
+                    </div>	
+
+                    <!-- Field Input 3 Address -->
+                    <div class="form-group mt-2">
+                      <input type="password" name="newAddress" class="form-style" placeholder="Your Address" id="newAddress" autocomplete="off">
+                      <i class="login-icon fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <!--Field Input 4 Password -->
+                    <div class="form-group mt-2">
+                      <input type="password" name="newPassword" class="form-style" placeholder="Your Password" id="newPassword" autocomplete="off">
+                      <i class="login-icon fa-solid fa-lock"></i>
+                    </div>
+
+                    <!--Field Input 5 Confirm Password -->
+                    <div class="form-group mt-2">
+                      <input type="password" name="newConfirmPassword" class="form-style" placeholder="Confirm Password" id="newConfirmPassword" autocomplete="off">
+                      <i class="login-icon fa-solid fa-lock"></i>
+                    </div>
+
+                    <!-- Submit Btn -->
+                    <a href="#" class="btn-loginpage mt-4">submit</a>
+                    <!-- End Of Submit Button -->
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+            
+          </div>
+              <!-- End Of Subcontainer -->
+        </div>
+            <!-- End Of Col -->
+      </div>
+          <!--End OF Row -->
+    </div>
+        <!--End Of Container -->
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
