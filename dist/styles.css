@@ -83,8 +83,7 @@ This section is for Add_person.html
   margin: auto;
 } */
 #result{
-  padding: 10px 0;
-  display:inline-block;
+  display: inline-flex;
 }
 .thumbnail {
   width: 100px;
@@ -284,6 +283,7 @@ clear: both;
 padding-right: 10px;
 float: left;
 width: 50%;
+position: relative;
 }
 .col-half:last-of-type {
 padding-right: 0;

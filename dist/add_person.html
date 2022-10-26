@@ -177,7 +177,7 @@
                     <i class="fa-solid fa-image"></i>
 
                     <!-- For Uploading Image -->
-                    <input id="upload" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
+                    <input id="upload" class='mb-2' type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
 
                     <!-- Display Image Uploaded -->
                     <output id="result">
@@ -227,7 +227,7 @@
             picReader.addEventListener("load", function (event) {
               const picFile = event.target;
               const div = document.createElement("div");
-              div.innerHTML = '<img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>';
+              div.innerHTML = `<img class="thumbnail mb-1" src="${picFile.result}" title="${picFile.name}"/>`;
               output.appendChild(div);
             });
             picReader.readAsDataURL(files[i]);
