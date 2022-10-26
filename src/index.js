@@ -27,34 +27,31 @@ const chatRef = collection(db, 'chatInfo')
 // ===================== CREATE BUTTONS ==========================
 
 // image to Base64 in add_person.html
-const fileInput = document.querySelector('#upload');
+const fileInput = document.querySelector('#upload')
+const addHomeless = document.querySelector('.form_content')
 let base64Img = ""
 
-// fileInput.onchange = function() {
-//   if(this.files[0].size > 1048576){
-//      alert("File is too big!");
-//      this.value = "";
-//   }else{
-    // Listen for the change event so we can capture the file
-    fileInput.addEventListener('change', (e) => {
-    // Get a reference to the file
-    const file = e.target.files[0];
-
+// Listen for the change event so we can capture the file
+fileInput.addEventListener('change', (e) => {
+  // Get a reference to the file
+  const file = e.target.files[0];
+  if (file.size > 1048576) {
+    alert("Image uploaded is too big. Please upload files lesser than 1MB")
+    addHomeless.reset()
+  }else{
     // Encode the file using the FileReader API
     const reader = new FileReader();
     reader.onloadend = () => {
-        console.log(reader.result)
-        base64Img = reader.result
-        // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
-    };
-    reader.readAsDataURL(file);
-    });
-//   }
-// }
+    console.log(reader.result)
+    base64Img = reader.result
+    // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
+    }
+  reader.readAsDataURL(file);
+  }
+});
 
 
 // Upload Button - add_person.html
-const addHomeless = document.querySelector('.form_content')
 if (addHomeless != null){
   addHomeless.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -71,7 +68,6 @@ if (addHomeless != null){
     // console.log(displayRadioValue("employment"))
     // console.log(document.getElementById("description").value)
     
-
     // Uploading to firestore
     addDoc(homelessRef, {
       img: base64Img,
