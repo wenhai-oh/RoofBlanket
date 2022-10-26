@@ -14,6 +14,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
+    <!-- This section is scripts for Google Map API -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDzYcc7UvCEeHuUgpcvplM0COLpkSrdl4&libraries=places"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
   </head>
 
 
@@ -176,7 +179,7 @@
             <!-- Buttons -->
             <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
               <button class="btn btn-light me-md-2" type="button">Cancel</button>
-              <button class="btn btn-danger" type="submit" >Upload</button>
+              <button class="btn btn-danger" type="submit" onclick="getLatLng()">Upload</button>
             </div>
           </form>
         </div>
@@ -207,6 +210,30 @@
         alert("Your browser does not support File API");
       }
     });
+
+    // GoogleAPI to auto complete location search and retrieve Lat and Lng values.
+    var autocomplete = new google.maps.places.Autocomplete(document.getElementById('location'))
+
+        function getLatLng() {
+            // console.log(autocomplete)
+            // console.log(autocomplete.gm_accessors_.place.nj.formattedPrediction)
+
+            var geocoder = new google.maps.Geocoder()
+            var address = autocomplete.gm_accessors_.place.nj.formattedPrediction
+            // console.log(address)
+
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == 'OK') {
+                    let lat = results[0].geometry.location.lat()
+                    let lng = results[0].geometry.location.lng()
+                    console.log(lat)
+                    console.log(lng)
+                    // store [lat, lng] in DB as array
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
     </script>
   </body>
 </html>
