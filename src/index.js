@@ -26,13 +26,40 @@ const chatRef = collection(db, 'chatInfo')
 
 // ===================== CREATE BUTTONS ==========================
 
+// image to Base64 in add_person.html
+const fileInput = document.querySelector('#upload');
+let base64Img = ""
+
+// fileInput.onchange = function() {
+//   if(this.files[0].size > 1048576){
+//      alert("File is too big!");
+//      this.value = "";
+//   }else{
+    // Listen for the change event so we can capture the file
+    fileInput.addEventListener('change', (e) => {
+    // Get a reference to the file
+    const file = e.target.files[0];
+
+    // Encode the file using the FileReader API
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        console.log(reader.result)
+        base64Img = reader.result
+        // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
+    };
+    reader.readAsDataURL(file);
+    });
+//   }
+// }
+
+
 // Upload Button - add_person.html
 const addHomeless = document.querySelector('.form_content')
 if (addHomeless != null){
   addHomeless.addEventListener('submit', (e) => {
     e.preventDefault()
     console.log("====== START: SAVING HOMELESS POST TO FIRESTORE ======")
-
+    console.log(base64Img)
     // ====== TROUBLESHOOT ======
     // retrieve_db(homelessRef)
     // console.log(document.getElementById("person_name").value)
@@ -43,20 +70,19 @@ if (addHomeless != null){
     // console.log(displayRadioValue("specialneeds"))
     // console.log(displayRadioValue("employment"))
     // console.log(document.getElementById("description").value)
-    let file = document.getElementById("upload")
-    console.log(file)
-    console.log(e.target)
+    
 
     // Uploading to firestore
     addDoc(homelessRef, {
-      // name: document.getElementById("person_name").value,
-      // age: document.getElementById("age").value,
-      // location: document.getElementById("location").value,
-      // duration: document.getElementById("duration").value,
-      // gender: displayRadioValue("gender"),
-      // specialneeds: displayRadioValue("specialneeds"),
-      // employment: displayRadioValue("employment"),
-      // description: document.getElementById("description").value
+      img: base64Img,
+      name: document.getElementById("person_name").value,
+      age: document.getElementById("age").value,
+      location: document.getElementById("location").value,
+      duration: document.getElementById("duration").value,
+      gender: displayRadioValue("gender"),
+      specialneeds: displayRadioValue("specialneeds"),
+      employment: displayRadioValue("employment"),
+      description: document.getElementById("description").value
     })
     .then(() => {
       console.log("====== END: SAVING HOMELESS POST TO FIRESTORE ======")
@@ -206,15 +232,6 @@ function displayRadioValue(radio_name) {
 // const fileInput = document.querySelector('#upload');
 
 // Listen for the change event so we can capture the file
-// fileInput.addEventListener('change', (e) => {
-//     // Get a reference to the file
-//     const file = e.target.files[0];
 
-//     // Encode the file using the FileReader API
-//     const reader = new FileReader();
-//     reader.onloadend = () => {
-//         console.log(reader.result);
-//         // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
-//     };
-//     reader.readAsDataURL(file);
-// });
+    // Get a reference to the file
+
