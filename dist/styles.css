@@ -82,9 +82,18 @@ This section is for Add_person.html
 /* .image-drawer {
   margin: auto;
 } */
-#result{
+
+.image-wrapper{
   display: inline-flex;
+  max-width: 615px;
 }
+
+#result {
+  /* position: absolute; */
+  display: inline-flex;
+  overflow: scroll;
+}
+
 .thumbnail {
   width: 100px;
   height: 100px;
@@ -302,6 +311,7 @@ padding-right: 0;
   padding-right: 0;
 }
 }
+
 
 /*List Button Person.html styling*/
 
