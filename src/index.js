@@ -181,8 +181,32 @@ if(tasklist != null) {
   retrieveHomeless()
 }else if (index != null) {
   console.log("You are in index.html")
-  retrieveHomeless()
-  retrieveWantEmployment(employmentQuery)
+  // Tabs in index.html
+  let seekingShelterObj = document.getElementsByName("index_tab")[0]
+  let seekingEmploymentObj = document.getElementsByName("index_tab")[1]
+  
+  window.onload = (e) => {
+    console.log("index.html is loading for the first time")
+    // ====================
+    retrieveHomeless()
+    console.log(shelterObjList)
+    console.log(typeof(shelterObjList))
+// ====================
+
+  }
+  seekingShelterObj.addEventListener("click", (e) => {
+    console.log("SeekingShelter is clicked")
+  })
+  seekingEmploymentObj.addEventListener("click", (e) => {
+    console.log("SeekingEmployment is clicked")
+  })
+
+  console.log(document.getElementsByName("index_tab")[0])
+  // console.log(document.getElementsByName("index_tab")[1].value)
+  // retrieveHomeless()
+  // retrieveWantEmployment(employmentQuery)
+  
+  
 }
 
 // ============= FUNCTIONS =============
@@ -196,6 +220,8 @@ function retrieve_db(reference) {
       console.log(homelessInfo)
   })
 }
+
+
 
 function closeRegister() {
   register.classList.remove('open-visible')
@@ -212,13 +238,12 @@ function displayRadioValue(radio_name) {
 }
 
 // index.html - Seeking Shelters
+let shelterObjList = []
 function retrieveHomeless() {
-  let shelterObjList = []
   onSnapshot(homelessRef, (snapshot) => {
-      snapshot.docs.forEach((doc) => {
+    snapshot.docs.forEach((doc) => {
       shelterObjList.push({...doc.data(), id: doc.id})
-      })
-    console.log(shelterObjList)
+    })
   })
 }
 // 
