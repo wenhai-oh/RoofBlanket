@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import {
-  getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, query, where, getDocs
-} from 'firebase/firestore'
+  getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, query, where, getDocs, get} from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwT9iZ3qSTvJMbifT2vCRtN0Oh-DBQQB4",
@@ -178,7 +177,8 @@ const employmentQuery = query(homelessRef, where("employment", "==", "yes"))
 
 if(tasklist != null) {
   console.log("You are in task_list.html")
-  retrieveHomeless()
+  // retrieveHomeless()
+
 }else if (index != null) {
   console.log("You are in index.html")
   // Tabs in index.html
@@ -189,6 +189,10 @@ if(tasklist != null) {
     e.preventDefault()
     console.log("index.html is loading for the first time")
     // retrieve db of all homeless here
+    retrieve_db(homelessRef)
+    console.log(homelessInfo)
+    console.log(typeof(homelessInfo))
+    console.log(JSON.stringify(homelessInfo))
 
   }
   seekingShelterObj.addEventListener("click", (e) => {
@@ -206,13 +210,12 @@ if(tasklist != null) {
 
 // ============= FUNCTIONS =============
 // For troubleshooting to check firestore DB
+let homelessInfo = []
 function retrieve_db(reference) {
   onSnapshot(reference, (snapshot) => {
-    let homelessInfo = []
       snapshot.docs.forEach((doc) => {
         homelessInfo.push({...doc.data(), id: doc.id})
       })
-      console.log(homelessInfo)
   })
 }
 
@@ -229,6 +232,16 @@ function displayRadioValue(radio_name) {
       }
   }
 }
+
+
+// getDocs(homelessRef)
+//   .then((snapshot) => {
+//     let homelessObjList = []
+//     snapshot.docs.forEach((doc) => {
+//       homelessObjList.push({ ... doc.data(), id: doc.id })
+//     })
+//     console.log(homelessObjList)
+//   })
 
 
 // Vue Data
