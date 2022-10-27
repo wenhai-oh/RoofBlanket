@@ -13,8 +13,12 @@
 
   <!-- Link To CSS Stylesheet -->
   <link rel="stylesheet" href="index.css">
+
   <!-- Vue CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body id="index">
@@ -63,6 +67,22 @@
 
   <!-- Start Of Body Content-->
   <div class="body-container my-5">
+
+    <!-- STATISTICS -->
+    <div class="container">
+      <div class="row" style="width: 200px ; height: 200px;">
+        <div class="col">
+          <canvas id="grantedShelter" ></canvas>
+        </div>
+        <div class="col">
+          <canvas id="receivedEmployment" ></canvas>
+        </div>
+        <div class="col">
+          <canvas id="openCases" ></canvas>  
+        </div>
+        
+      </div>
+    </div>
 
     <!-- First Section -->
     <div class="container-fluid carousel_body mb-5">
@@ -231,8 +251,141 @@
 
   </div>
 
+  <!-- chart js script -->
+  <script>
+    // centerTextDoughnut plugin block
+    const centerTextDoughnut = {
+      id: 'centerTextDoughnut',
+      afterDatasetsDraw(chart, args, pluginOptions) {
+        const {ctx} = chart
+        ctx.textAlign='center'
+        ctx.font= 'bold 12px sans-serif'
+        ctx.textBaseline = 'middle'
+        const text = 10
+        const textWidth = ctx.measureText(text).width
+        const x = chart.getDatasetMeta(0).data[0].x
+        const y = chart.getDatasetMeta(0).data[0].y
+        ctx.fillText(text,x,y)
+      }
+    }
+    // doughnut 1
+    const labels = [
+      'Granted Shelter',
+      'Empty Space'
+    ];
+  
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: ['rgb(255, 99, 132)','rgb(255, 255, 255)', ],
+        borderColor: 'rgb(255, 255, 255)',
+        data: [10, 20, ],
+      }]
+    };
+  
+    const config = {
+      type: 'doughnut',
+      data: data,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Granted Shelter",
+            position: 'bottom'
+          },
+          legend: {
+            display: false
+          }
+        }
+      },
+      plugins: [centerTextDoughnut]
+    };
 
-  <script src="bundle.js"></script>
+    const myChart = new Chart(
+      document.getElementById('grantedShelter'),
+      config
+    )
+    // doughnut 2
+    const labels2 = [
+      'Received Employment',
+      'Empty Space'
+    ]
+
+    const data2 = {
+      labels: labels2,
+      datasets: [{
+        label: 'My second dataset',
+        backgroundColor: ['rgb(255, 99, 132)','rgb(255, 255, 255)', ],
+        borderColor: 'rgb(255, 255, 255)',
+        data: [10, 20 ],
+      }]
+    }
+
+    const config2 = {
+      type: 'doughnut',
+      data: data2,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Received Employment",
+            position: 'bottom'
+          },
+          legend: {
+            display: false
+          }
+        }
+      },
+      plugins: [centerTextDoughnut]
+    };
+
+    const myChart2 = new Chart(
+      document.getElementById('receivedEmployment'),
+      config2
+    )
+
+      // doughnut 3
+    const labels3 = [
+      'Open Cases',
+      'Empty Space'
+    ]
+
+    const data3 = {
+      labels: labels3,
+      datasets: [{
+        label: 'My third dataset',
+        backgroundColor: ['rgb(255, 99, 132)','rgb(255, 255, 255)', ],
+        borderColor: 'rgb(255, 255, 255)',
+        data: [10, 20, ],
+      }]
+    };
+  
+    const config3 = {
+      type: 'doughnut',
+      data: data3,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Open Cases",
+            position: 'bottom'
+          },
+          legend: {
+            display: false
+          }
+        }
+      },
+      plugins: [centerTextDoughnut]
+    };
+
+    const myChart3 = new Chart(
+      document.getElementById('openCases'),
+      config3
+    )
+  </script>
+
+  <!-- <script src="bundle.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
   
