@@ -186,31 +186,26 @@ if(tasklist != null) {
   let seekingEmploymentObj = document.getElementsByName("index_tab")[1]
   
   window.onload = (e) => {
+    e.preventDefault()
     console.log("index.html is loading for the first time")
-    // ====================
-    retrieveHomeless()
-    console.log(shelterObjList)
-    console.log(typeof(shelterObjList))
-// ====================
+    // retrieve db of all homeless here
 
   }
   seekingShelterObj.addEventListener("click", (e) => {
     console.log("SeekingShelter is clicked")
+    // retrieve db of all homeless here
   })
   seekingEmploymentObj.addEventListener("click", (e) => {
     console.log("SeekingEmployment is clicked")
+    // retrieve db of all homeless seeking employment here
   })
 
   console.log(document.getElementsByName("index_tab")[0])
-  // console.log(document.getElementsByName("index_tab")[1].value)
-  // retrieveHomeless()
-  // retrieveWantEmployment(employmentQuery)
-  
-  
+
 }
 
 // ============= FUNCTIONS =============
-// For troubleshooting
+// For troubleshooting to check firestore DB
 function retrieve_db(reference) {
   onSnapshot(reference, (snapshot) => {
     let homelessInfo = []
@@ -220,8 +215,6 @@ function retrieve_db(reference) {
       console.log(homelessInfo)
   })
 }
-
-
 
 function closeRegister() {
   register.classList.remove('open-visible')
@@ -237,33 +230,17 @@ function displayRadioValue(radio_name) {
   }
 }
 
-// index.html - Seeking Shelters
-let shelterObjList = []
-function retrieveHomeless() {
-  onSnapshot(homelessRef, (snapshot) => {
-    snapshot.docs.forEach((doc) => {
-      shelterObjList.push({...doc.data(), id: doc.id})
-    })
-  })
-}
-// 
 
-// index.html - Seeking Employment
-function retrieveWantEmployment(query) {
-  let employmentObjList = []
-  onSnapshot(query, (snapshot) => {
-    snapshot.docs.forEach((doc) => {
-    employmentObjList.push({...doc.data(), id: doc.id})
-    })
-  console.log(employmentObjList)
-  return employmentObjList
-  })
-}
-
-// Get a reference to the file input
-// const fileInput = document.querySelector('#upload');
-
-// Listen for the change event so we can capture the file
-
-    // Get a reference to the file
-
+// Vue Data
+const app = Vue.createApp({
+  data(){
+    return{
+      // data
+    }
+  },
+  
+  methods: {
+    // methods
+  }
+  
+});
