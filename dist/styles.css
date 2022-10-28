@@ -517,7 +517,8 @@ box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
 .login-icon {
 position: absolute;
 top: 0;
-left: 18px;
+left: 18px; 
+padding-top: 15px;
 height: 48px;
 font-size: 20px;
 line-height: 48px;
