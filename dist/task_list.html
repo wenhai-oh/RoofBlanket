@@ -3,50 +3,66 @@
   <head>
     <meta charset="utf-8">
     <title>Task List</title>
+
+    <!--BootStrap CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     
+    <!-- This link connect html file to overall stylesheet named styles.css-->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- This Link connects to freeawesome icons -->
+    <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
+
+    <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
+
+
     <!-- Vue CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
   </head>
   
   <body id="tasklist">
     
-    <!--Sticky Top Nav Bar Section-->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light px-5">
-      <!-- Navbar Logo -->
-      <a class="navbar-brand" href="#">RoofBlanket</a>
-      <!-- End Of Navbar Logo -->
+   <!--Sticky Top Nav Bar Section-->
+   <nav class="navbar sticky-top navbar-expand-lg px-5">
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- Navbar Logo -->
+    <a class="navbar-brand" href="#">RoofBlanket</a>
+    <!-- End Of Navbar Logo -->
 
-      <!-- Nav Bar Content -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <!--Nav Links-->
-        <ul class="navbar-nav">
-          <!--Call User's Profile Name-->
-          <li class="navbar-text mx-5">
-            Hello, Wai Soon
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item" style="margin-right: 30px;">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-primary" href="login.html">Login</button>
-          </li>
-        </ul>
-        <!-- End Of Nav Links-->
-      </div>
-      <!-- End Of Nav Bar Content -->
-    </nav>
-    <!-- End Of Sticky Top Nav Bar Section -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Bar Content -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <!--Nav Links-->
+      <ul class="navbar-nav">
+        <!--Call User's Profile Name-->
+        <li class="navbar-text mx-5">
+          Hello, Wai Soon
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="chat.html">Chat</a>
+        </li>
+        <li class="nav-item" style="margin-right: 30px;">
+          <a class="nav-link" href="task_list.html">Task List</a>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn" href="login.html">Login</button>
+        </li>
+      </ul>
+      <!-- End Of Nav Links-->
+    </div>
+    <!-- End Of Nav Bar Content -->
+  </nav>
+  <!-- End Of Sticky Top Nav Bar Section -->
 
     <!-- Start Of Body Content -->
     <div class="container-fluid" style="width: 80%;">
@@ -54,49 +70,52 @@
       <!-- Add Employment Details Pop Up Box (Hidden By Default) -->
       <form action="">
         <div class='employment text-center' id='employment'>
-          <h2 class="my-3">Add Employment Information</h2>
-  
-          <div class="container skillsets">
-            <label for="skillsets"> Skills</label>
-            <select class="form-select" name="skillsets" placeholder="skills" aria-label="Default select example">
-              <option selected value="none"> None</option>
-              <option value="art">Arts and Craft</option>
-              <option value="computer">Computer skills</option>
-              <option value="cleaning">Cleaning</option>
-              <option value="sales">sales</option>
-            </select>
+          <h4 class="my-3">Add Employment Information</h4>
+          
+          <div class="row">
+            <div class="col-half">
+              <label for="skillsets">Skills</label>
+              <select class="form-select" style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;" id='skillsets'>
+                <option selected value="none"> None</option>
+                <option value="art">Arts and Craft</option>
+                <option value="computer">Computer skills</option>
+                <option value="cleaning">Cleaning</option>
+                <option value="sales">Sales</option>
+              </select>
+            </div>
+            
+            <div class="col-half">
+              <label for="Education">Education</label>
+              <select class="form-select" name="skillsets" aria-label="Default select example">
+                <option selected value="nlevels">N Levels</option>
+                <option value="olevels">O Levels</option>
+                <option value="degree">Undergraduate Degree</option>
+                <option value="masters">Masters</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+            
+            <div class="container notes p-3">
+              <textarea name="notes" id="notes" cols="80" rows="8" placeholder="Add additional information here..." style="width: 100%"></textarea>
+            </div>
           </div>
           
-          <div class="container education p-3">
-            <label for="Education"> Education</label>
-            <select class="form-select" name="skillsets" aria-label="Default select example">
-              <option selected value="nlevels">N Levels</option>
-              <option value="olevels">O Levels</option>
-              <option value="degree">Undergraduate Degree</option>
-              <option value="masters">Masters</option>
-              <option value="others">Others</option>
-            </select>
-          </div>
-
-          <div class="container notes p-3">
-            <textarea name="notes" id="notes" cols="30" rows="5" placeholder="Add additional information here..." width="100"></textarea>
-          </div>
-          
-          <button class="btn btn-primary mb-3" type="submit" name="submit">Submit</button>
-          <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeEmployment()">Cancel</button>
+          <button class="btn btn-releasepop mb-3" type="submit" name="submit">Submit</button>
+          <button class="btn btn-releasepop mb-3" type="submit" name="cancel" onclick="closeEmployment()">Cancel</button>
         </div>
       </form>
       
 
       <!-- Release Pop Up Box (Hidden By Default) Data Fetch Here -->
       <div class='release text-center' id='release'>
-        <h5 style="margin:40px 0px">Before Proceeding, do ensure that both parties have come to mutual agreement. Procced?</h5>
-        <button class="btn btn-primary mb-3" type="submit" name="yes">Yes</button>
-        <button class="btn btn-primary mb-3" type="submit" name="no" onclick="closeRelease()">No</button>
+        <h6>Before Proceeding, do ensure that both parties have come to mutual agreement.</h6>
+        <h5>Proceed?</h5>
+        <button class="btn btn-releasepop" type="submit" name="yes">Yes</button>
+        <button class="btn btn-releasepop" type="submit" name="no" onclick="closeRelease()">No</button>
       </div>
 
       <!-- Main Body starts here -->
-      <div id="main">
+      <div id="main-task">
         <h2 class="mt-5">Task List</h2>
         <!-- Task Content -->
         <!--Ol for numbering of tasks-->
@@ -104,43 +123,44 @@
 
           <li class="list-group-item d-flex justify-content-between align-items-start align-items-center">
             <!-- Image Profile -->
-            <img src="./icons/colored_profile.png" style="width: 50px; height: 50px;">
+            <img src="./icons/colored_profile.png">
             <div class="ms-2 me-auto">
               <!-- Name -->
-              <div class="fw-bold">Jeff So</div>
+              <div class="task-owner fw-bold">Jeff So</div>
               <!-- Body Content -->
               <!-- Content for list item -->
+              <p>Content for list item</p>
             </div>
             <!-- Task List Group 1 Buttons-->
-            <span class="btn btn-primary rounded-pill mx-2" onclick="openEmployment()">Create</span>
-            <span class="btn btn-primary rounded-pill mx-2" onclick="openRelease()">Release</span>
+            <span class="btn btn-tasklist rounded-pill mx-2" onclick="openEmployment()">Create</span>
+            <span class="btn btn-tasklist rounded-pill mx-2" onclick="openRelease()">Release</span>
           </li>
           
           <li class="list-group-item d-flex justify-content-between align-items-start align-items-center">
             <!-- Image Profile -->
-            <img src="./icons/colored_profile.png" style="width: 50px; height: 50px;">
+            <img src="./icons/colored_profile.png">
             <div class="ms-2 me-auto">
               <!-- Task List 2 Name -->
-              <div class="fw-bold">Ren Kee</div>
+              <div class="task-owner fw-bold">Ren Kee</div>
               <!-- Body Content 2-->
-              Content for list item
+              <p>Content for list item</p>
             </div>
             <!-- Task List Group 2 Buttons-->
-            <span class="btn btn-primary rounded-pill mx-2" onclick="openEmployment()">Create</span>
-            <span class="btn btn-primary rounded-pill mx-2" onclick="openRelease()">Release</span>
+            <span class="btn btn-tasklist rounded-pill mx-2" onclick="openEmployment()">Create</span>
+            <span class="btn btn-tasklist rounded-pill mx-2" onclick="openRelease()">Release</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-start align-items-center">
             <!-- Image Profile -->
-            <img src="./icons/colored_profile.png" style="width: 50px; height: 50px;">
+            <img src="./icons/colored_profile.png">
             <div class="ms-2 me-auto">
               <!-- Task List 3 Name -->
-              <div class="fw-bold">Wai Soon</div>
+              <div class="task-owner fw-bold">Wai Soon</div>
               <!-- Body Content 3-->
-              Content for list item
+              <p>Content for list item</p>
             </div>
             <!-- Task List Group 3 Buttons-->
-            <span class="btn btn-primary rounded-pill mx-2" onclick="openEmployment()">Create</span>
-            <span class="btn btn-primary rounded-pill mx-2" onclick="openRelease()">Release</span>
+            <span class="btn btn-tasklist rounded-pill mx-2" onclick="openEmployment()">Create</span>
+            <span class="btn btn-tasklist rounded-pill mx-2" onclick="openRelease()">Release</span>
           </li>
         </ol>
       </div>
@@ -174,23 +194,4 @@
     
   </body>
 
-  <style>
-    .release, .employment{
-      background-color: beige;
-      border-radius: 5%;
-      padding: 20px;
-      position: absolute;
-      visibility: hidden;
-      width: 50%;
-      top: 10%;
-      left: 25%;
-      z-index: 1;
-    }
-    .show-release {
-      visibility: visible;
-    }
-    .blur {
-      filter: blur(5px);
-    }
-  </style>
 </html>
