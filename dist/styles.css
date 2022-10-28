@@ -114,6 +114,7 @@ h4 {
 color: #F4976C;
 font-family: 'Fredoka', sans-serif;
 }
+
 input,
 input[type="radio"] + label,
 input[type="checkbox"] + label:before,
@@ -131,19 +132,24 @@ border-radius: 3px;
 transition: 0.35s ease-in-out;
 transition: all 0.35s ease-in-out;
 }
+
 input:focus {
 outline: 0;
 border-color: #F4976C;
 }
+
 input:focus + .input-icon i {
 color: #F4976C;
 }
+
 input:focus + .input-icon:after {
 border-right-color: #F4976C;
 }
+
 input[type="radio"] {
 display: none;
 }
+
 input[type="radio"] + label,
 select {
 display: inline-block;
@@ -152,33 +158,41 @@ text-align: center;
 float: left;
 border-radius: 0;
 }
+
 input[type="radio"] + label:first-of-type {
 border-top-left-radius: 3px;
 border-bottom-left-radius: 3px;
 }
+
 input[type="radio"] + label:last-of-type {
 border-top-right-radius: 3px;
 border-bottom-right-radius: 3px;
 }
+
 input[type="radio"] + label i {
 padding-right: 0.4em;
 }
+
 input[type="radio"]:checked + label,
 input:checked + label:before,
 select:focus,
 select:active {
+  z-index: 0;
 background-color: #F4976C;
 color: #fff;
 border-color: 2px solid #FBE8A6;
 }
+
 input[type="checkbox"] {
 display: none;
 }
+
 input[type="checkbox"] + label {
 position: relative;
 display: block;
 padding-left: 1.6em;
 }
+
 input[type="checkbox"] + label:before {
 position: absolute;
 top: 0.2em;
@@ -189,6 +203,7 @@ height: 1em;
 padding: 0;
 content: "";
 }
+
 input[type="checkbox"] + label:after {
 position: absolute;
 top: 0.45em;
@@ -334,6 +349,7 @@ CSS Styling for Login.html
 */
 
 #loginpage{
+/* max-width: 80%; */
 font-family: 'Raleway', sans-serif;
 font-weight: 300;
 font-size: 15px;
@@ -426,7 +442,6 @@ transition: all 0.5s ease;
 transform: translateX(44px) rotate(-270deg);
 }
 
-
 .card-3d-wrap {
 position: relative;
 width: 440px;
@@ -491,6 +506,7 @@ margin: 0;
 padding: 0;
 }
 .form-style {
+font-family: 'Raleway', sans-serif;
 padding: 13px 20px;
 padding-left: 55px;
 height: 48px;
@@ -612,4 +628,86 @@ box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 background-color: #303C6C;
 color: #ffeba7;
 box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+
+/*
+Reset Password Pop Up BOX login.html Portion
+*/
+
+#loginpage .container {
+  width: 80%;
+}
+
+#reset {
+  background-color: #2a2b38;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  border-radius: 5%;
+  padding: 20px;
+  position: absolute;
+  /* visibility: hidden;
+  top: 10%;
+  left: 25%; */
+  z-index: 1;
+}
+
+.btn-reset{  
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition : all 200ms linear;
+  transition: all 200ms linear;
+  padding: 0 30px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  background-color: #ffeba7;
+  color: #303C6C;
+  box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+  }
+  .btn-reset:active,
+  .btn-reset:focus{  
+  background-color: #303C6C;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+  }
+  .btn-reset:hover{  
+  background-color: #303C6C;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+  }
+
+#reset h2{
+  font-family: 'Fredoka', sans-serif;
+  color: #FBE8A6;
+}
+
+#reset p{
+  font-family: 'Raleway', sans-serif;
+  color: #c4c3ca;
+}
+
+.open-visible {
+  visibility: visible;
+}
+
+.blur {
+  filter: blur(5px);
 }

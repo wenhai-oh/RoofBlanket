@@ -45,13 +45,7 @@
 
 
 
-        <!-- Reset Password Pop Up Box (Hidden by Default) -->
-        <!-- <div class="reset" id='reset'>
-          <h2 class="my-3">Reset Password</h2>
-          <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: "><br>
-          <button class="btn btn-primary mb-3" type="submit" name="create">Reset</button>
-          <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
-        </div> -->
+        
 
         <!-- Main Login (Shown First) -->
         <!-- <div id="main">
@@ -77,31 +71,39 @@
 
 
 
-  <!-- Test Section -->
+  <!-- Login and Sign Up Portion -->
 
   <div class="container">
+
     <!-- Container that wraps both signup and login form -->
     <div class="row full-height justify-content-center">
       <div class="col-12 text-center align-self-center py-5">
         <div class="login-section pb-5 pt-5 pt-sm-2 text-center">
+                          
+          <!-- Reset Password Pop Up Box (Hidden by Default) -->
+          <div class="reset" id='reset'>
+            <h2 class="my-2">Reset Password</h2>
+            <p class="my-3">If you forgot your password, you can reset it here</p>
+            <div class="form-group">
+              <!-- Username Portion -->
+              <input type="email" name="Email" class="form-style" placeholder="Your Registered Email" id="Email" autocomplete="off">
+              <i class="login-icon fa-solid fa-envelope"></i>
+            </div>	
+            <button class="btn-reset" type="submit" name="create">Reset</button>
+            <button class="btn-reset" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
+          </div>
+
           <!-- Headers for switch Tab -->
           <h6 class="login-headers mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
                 <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
                 <label for="reg-log"></label>
-
-          <!-- Reset Password Pop Up Box (Hidden by Default) -->
-          <div class="reset" id='reset'>
-            <h2 class="my-3">Reset Password</h2>
-            <input class="mb-3 form-control" type="text" name="newEmail" placeholder="Email: "><br>
-            <button class="btn btn-primary mb-3" type="submit" name="create">Reset</button>
-            <button class="btn btn-primary mb-3" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
-          </div>
 
           <!-- Login SubContainer -->
           <div class="card-3d-wrap mx-auto" id="main">
             <div class="card-3d-wrapper">
               <!-- Front Card Portion Login -->
               <div class="card-front">
+
                 <div class="center-wrap">
                   <!-- Form Section Content-->
                   <div class="section text-center">
@@ -183,7 +185,7 @@
       </div>
           <!--End OF Row -->
     </div>
-        <!--End Of Container -->
+    <!--End Of Container -->
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -208,27 +210,6 @@
 
 </body>
 
-<style>
-  .container {
-    width: 80%;
-  }
-  .reset {
-    background-color: beige;
-    border-radius: 5%;
-    padding: 20px;
-    position: absolute;
-    visibility: hidden;
-    top: 10%;
-    left: 25%;
-    z-index: 1;
-  }
-  .open-visible {
-    visibility: visible;
-  }
-  .blur {
-    filter: blur(5px);
-  }
-</style>
 
 </html>
 
