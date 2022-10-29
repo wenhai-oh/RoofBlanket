@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Title For Current Page -->
+  <title>Home Page</title>
+
+  <!-- BOOTSTRAP CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <!-- Link To CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Internal CSS -->
+  <style>
+
+    .outer_container{
+      background-color: white;
+      max-width: 80%;
+    }
+
+    .statistics_row{
+      max-width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      margin: auto
+    }
+
+    .statistics{
+      padding: 50px;
+      position: relative;
+      justify-content: space-evenly;
+      max-width: 400px;
+      max-height: 400px;
+      object-fit: contain;
+    }
+
+    canvas{
+      max-width: 268px;
+      max-height: 268px;
+    }
+
+    #carousel_container {
+      max-height: 500px;
+      width: 100%;
+    }
+
+    .carousel-inner{
+      padding: 10px;
+    }
+
+    .carousel-item > img{
+      max-width: 800px;
+      max-height: 400px;
+      margin:auto;
+    }
+
+    #nav-pills {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    #pills-home-tab{
+      color: rgb(48,60,108);
+      font-family: "fredoka";
+    }
+
+    .nav-item:hover{
+      background-color: rgb(251,232,166);
+      border-radius: 15px;
+    }
+
+    .nav-pills .nav-link.active { 
+      background-color: transparent;
+      text-decoration: underline rgb(48,60,108);
+    }
+
+
+    @media only screen and (max-width: 400px) {
+      .statistics_row {
+          display: none;
+      }
+    }
+
+    .card > img {
+      max-width: 100%;
+    }
+
+  </style>
+
+</head>
+
+<body id="index">
+
+  <!--Sticky Top Nav Bar Section-->
+
+  <nav class="navbar sticky-top navbar-expand-lg px-5">
+
+    <!-- Navbar Logo -->
+    <a class="navbar-brand" href="index.html">RoofBlanket</a>
+    <!-- End Of Navbar Logo -->
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Bar Content -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <!--Nav Links-->
+      <ul class="navbar-nav">
+        <!--Call User's Profile Name-->
+        <li class="navbar-text mx-5">
+          Hello Samaritan!
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="chat.html">Chat</a>
+        </li>
+        <li class="nav-item" style="margin-right: 30px;">
+          <a class="nav-link" href="task_list.html">Task List</a>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn" href="login.html">Login</button>
+        </li>
+      </ul>
+      <!-- End Of Nav Links-->
+    </div>
+    <!-- End Of Nav Bar Content -->
+  </nav>
+  <!-- End Of Sticky Top Nav Bar Section -->
+
+  <!-- Start Of Body Content-->
+  <div class="body-container my-3">
+
+  <!-- CAROUSEL -->
+  <div class="container outer_container mb-3" id="carousel_container">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
+      </div>
+
+      <div class="carousel-inner" >
+        <div class="carousel-item active">    
+          <img src="./Images/1.png" class="d-flex w-100">
+        </div>
+        <div class="carousel-item" >
+          <img src="./Images/2.png" class="d-flex w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="./Images/3.png" class="d-flex w-100" >
+        </div>
+        <div class="carousel-item">
+          
+          <!-- statistics -->
+          <div class="row statistics_row">
+
+            <div class="col statistics">
+              <canvas id="grantedShelter"></canvas>
+            </div>
+      
+            <div class="col statistics" >
+              <canvas id="receivedEmployment"></canvas>
+            </div>
+      
+            <div class="col statistics" >
+              <canvas id="openCases"></canvas>
+            </div>
+      
+          </div>
+          <!-- end of statistics -->
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  
+  <!-- TABS CONTAINER -->
+  <div class="container mb-3 outer_container">
+    <div class="row">
+      <div class="col">
+        <!--Pills Nav-->
+        <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" name="index_tab" value="shelter">Seeking Shelter</button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" name="index_tab" value="employment" >Seeking Employment</button>
+          </li>
+
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Control Of Content Change of Pills -->
+  <div class="container outer_container">
+    <div class="tab-content" id="pills-tabContent">
+
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <!--Start of a New Row-->
+        <div class="row mt-3 mb-3">
+          <!--Start of a New Col-->
+          <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
+  
+            <!-- Start Of Card 1-->
+            <div class="card">
+              <img src="Images/Homeless_1.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Name: </h5>
+                <h5 class="card-title">Location: </h5>
+                <a href="#" class="btn btn-primary">More Info</a>
+              </div>
+            </div>
+            <!--End Of Card 1-->
+          </div>
+  
+          <!-- Start of New Col 2 -->
+          <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
+            <!-- Start of Card 2-->
+            <div class="card">
+              <img src="Images/Homeless_2.jpg" class="card-img-top" alt="..." >
+              <div class="card-body">
+                <h5 class="card-title">Name: </h5>
+                <h5 class="card-title">Location: </h5>
+                <a href="#" class="btn btn-primary">More Info</a>
+              </div>
+            </div>
+            <!-- End of Card 2-->
+          </div>
+          <!-- End of New Col 2-->
+  
+          <!-- Start of New Col 3 -->
+          <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
+            <!-- Start of Card 3-->
+            <div class="card">
+              <img src="Images/Homeless_3.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Name: </h5>
+                <h5 class="card-title">Location: </h5>
+                <a href="#" class="btn btn-primary">More Info</a>
+              </div>
+            </div>
+            <!-- End of Card 3-->
+          </div>
+          <!-- End of New Col 3-->
+        </div>
+        <!-- End of Row-->
+        
+      </div>
+  
+      <!-- CARD CONTENTS -->
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <!--Start of a New Row-->
+        <div class="row mt-3">
+          <!--Start of a New Col-->
+          <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
+  
+            <!-- Start Of Card 1-->
+            <div class="card">
+              <img src="Images/Homeless_2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Name: </h5>
+                <h5 class="card-title">Location: </h5>
+                <a href="#" class="btn btn-primary">More Info</a>
+              </div>
+            </div>
+            <!--End Of Card 1-->
+          </div>
+  
+          <!-- Start of New Col 2 -->
+          <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
+            <!-- Start of Card 2-->
+            <div class="card">
+              <img src="Images/Homeless_2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Name: </h5>
+                <h5 class="card-title">Location: </h5>
+                <a href="#" class="btn btn-primary">More Info</a>
+              </div>
+            </div>
+            <!-- End of Card 2-->
+          </div>
+          <!-- End of New Col 2-->
+  
+          <!-- Start of New Col 3 -->
+          <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
+            <!-- Start of Card 3-->
+            <div class="card">
+              <img src="Images/Homeless_3.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Name: </h5>
+                <h5 class="card-title">Location: </h5>
+                <a href="#" class="btn btn-primary">More Info</a>
+              </div>
+            </div>
+            <!-- End of Card 3-->
+          </div>
+          <!-- End of New Col 3-->
+        </div>
+        <!-- End of Row-->
+      </div>
+  
+  
+  
+    
+  
+    </div>
+  </div>
+  
+
+  <!-- chart js script -->
+  <script>
+    // centerTextDoughnut plugin block
+    const centerTextDoughnut = {
+      id: 'centerTextDoughnut',
+      afterDatasetsDraw(chart, args, pluginOptions) {
+        const {ctx} = chart
+        ctx.textAlign='center'
+        ctx.font= 'bold 100% Fredoka'
+        ctx.textBaseline = 'middle'
+        const text = 10
+        const textWidth = ctx.measureText(text).width
+        const x = chart.getDatasetMeta(0).data[0].x
+        const y = chart.getDatasetMeta(0).data[0].y
+        ctx.fillText(text,x,y)
+      }
+    }
+
+
+    // doughnut 1
+    const labels = [
+      'Granted Shelter',
+      'Left unemployed'
+    ];
+  
+    const data = {
+      labels:labels,
+
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
+        borderColor: 'rgb(255, 255, 255)',
+        data: [10, 20],
+      }]
+    };
+  
+    const config = {
+      type: 'doughnut',
+      data: data,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Granted Shelter",
+            position: 'bottom',
+            color: 'rgb(48,60,108)',
+          },
+          legend: {
+            display: false
+          }
+        }
+      },
+      plugins: [centerTextDoughnut]
+    };
+
+    const myChart = new Chart(
+      document.getElementById('grantedShelter'),
+      config
+    )
+    // doughnut 2
+    const labels2 = [
+      'Received Employment',
+      'Left unemployed'
+    ]
+
+    const data2 = {
+      labels: labels2,
+      datasets: [{
+        label: 'My second dataset',
+        backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
+        borderColor: 'rgb(255, 255, 255)',
+        data: [30, 20],
+      }]
+    }
+
+    const config2 = {
+      type: 'doughnut',
+      data: data2,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Received Employment",
+            position: 'bottom',
+            color: 'rgb(48,60,108)',
+          },
+          legend: {
+            display: false
+          }
+        }
+      },
+      plugins: [centerTextDoughnut]
+    };
+
+    const myChart2 = new Chart(
+      document.getElementById('receivedEmployment'),
+      config2
+    )
+
+      // doughnut 3
+    const labels3 = [
+      'Open Cases',
+      'Left unemployed'
+    ]
+
+    const data3 = {
+      labels: labels3,
+      datasets: [{
+        label: 'My third dataset',
+        backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
+        borderColor: 'rgb(255, 255, 255)',
+        data: [40, 30 ],
+      }]
+    };
+  
+    const config3 = {
+      type: 'doughnut',
+      data: data3,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Open Cases",
+            position: 'bottom',
+            color: 'rgb(48,60,108)',
+          },
+          legend: {
+            display: false
+          }
+        }
+      },
+      plugins: [centerTextDoughnut]
+    };
+
+    const myChart3 = new Chart(
+      document.getElementById('openCases'),
+      config3
+    )
+  </script>
+
+  <!-- <script src="bundle.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+  
+</body>
+</html>
