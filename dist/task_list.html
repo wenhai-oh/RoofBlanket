@@ -69,7 +69,7 @@
 
       <!-- Add Employment Details Pop Up Box (Hidden By Default) -->
       <form action="">
-        <div class='employment text-center' id='employment'>
+        <div class='mx-auto text-center' id='employment'>
           <h4 class="my-3">Add Employment Information</h4>
           
           <div class="row">
@@ -107,7 +107,7 @@
       
 
       <!-- Release Pop Up Box (Hidden By Default) Data Fetch Here -->
-      <div class='release text-center' id='release'>
+      <div class='release mx-auto text-center' id='release'>
         <h6>Before Proceeding, do ensure that both parties have come to mutual agreement.</h6>
         <h5>Proceed?</h5>
         <button class="btn btn-releasepop" type="submit" name="yes">Yes</button>
@@ -171,22 +171,22 @@
     <script>
       let release = document.getElementById('release')
       let employmentDetails = document.getElementById('employment')
-      let main = document.getElementById('main')
+      let main = document.getElementById('main-task')
   
       function openRelease() {
-        release.classList.add('show-release')
+        release.style.visibility = 'visible'
         main.classList.add('blur')
       }
       function closeRelease() {
-        release.classList.remove('show-release')
+        release.style.visibility = ''
         main.classList.remove('blur')
       }
       function openEmployment() {
-        employmentDetails.classList.add('show-release')
+        employmentDetails.style.visibility = 'visible'
         main.classList.add('blur')
       }
       function closeEmployment() {
-        employmentDetails.classList.remove('show-release')
+        employmentDetails.style.visibility = ''
         main.classList.remove('blur')
       }
 

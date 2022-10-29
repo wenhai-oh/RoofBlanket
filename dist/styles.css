@@ -705,10 +705,6 @@ Reset Password Pop Up BOX login.html Portion
   color: #c4c3ca;
 }
 
-.open-visible {
-  visibility: visible;
-}
-
 .blur {
   filter: blur(5px);
 }
@@ -750,38 +746,31 @@ task_list.html Styles Section
   color: #FBE8A6;
   visibility: hidden;
   width: 20%;
-  /* top: 10%;
-  left: 25%; */
+  left: 0;
+  right: 0;
   z-index: 1;
 }
 
-.employment{
+#employment{
   background-color: #303C6C;
   border-radius: 10px;
   padding: 20px;
   position: absolute;
-  /* visibility: hidden; */
+  left: 0;
+  right: 0;
+  visibility: hidden;
   width: 50%;
-  /* top: 10%;
-  left: 25%; */
-  z-index: 1;
+  z-index: 10;
 }
 
-.employment h4{
+#employment h4{
   font-family: 'Fredoka', sans-serif;
   color: #FBE8A6;
 }
 
-.employment label{
+#employment label{
   font-family: 'Raleway', sans-serif;
   color: #FBE8A6;
-}
-
-.show-release {
-  visibility: visible;
-}
-.blur {
-  filter: blur(5px);
 }
 
 .btn-tasklist{
