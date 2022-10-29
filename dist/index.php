@@ -1,3 +1,37 @@
+<?php
+$servername = "localhost";
+$username = "id19698329_admin";
+$password = ">4pP)KjQ\?i6jYET";
+$database = "id19698329_roofblanketdb";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM homelessCollection";
+$result = $conn->query($sql);
+// print_r($result);
+
+$homelessCollectionArray = array();
+if ($result->num_rows > 0) {
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+        // echo "id: " . $row["ID"] . " - Name: " . $row["Name"] . " - Email" . $row["Email"] . "<br>";
+        $id = $row["id"];
+        $name = $row["name"];
+        $location = $row["location"];
+        $description = $row["description"];
+        $homelessIndividualArray = array($id, $name, $location, $description);
+        array_push($homelessCollectionArray, $homelessIndividualArray);
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,49 +174,29 @@
           <!--Start of a New Row-->
           <div class="row mt-5">
             <!--Start of a New Col-->
-            <div class="col-12 col-xl-4">
-
+            <!--<div class="col-12 col-xl-4">-->
               <!-- Start Of Card 1-->
-              <div class="card">
-                <img src="Images/Homeless_1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Name: </h5>
-                  <h5 class="card-title">Location: </h5>
-                  <a href="#" class="btn btn-primary">More Info</a>
-                </div>
-              </div>
+            <!--  <div class="card">-->
+            <!--    <img src="Images/Homeless_1.jpg" class="card-img-top" alt="...">-->
+            <!--    <div class="card-body">-->
+            <!--      <h5 class="card-title">Name: </h5>-->
+            <!--      <h5 class="card-title">Location: </h5>-->
+            <!--      <a href="#" class="btn btn-primary">More Info</a>-->
+            <!--    </div>-->
+            <!--  </div>-->
               <!--End Of Card 1-->
-            </div>
-
-            <!-- Start of New Col 2 -->
-            <div class="col-12 col-xl-4">
-              <!-- Start of Card 2-->
-              <div class="card">
-                <img src="Images/Homeless_2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Name: </h5>
-                  <h5 class="card-title">Location: </h5>
-                  <a href="#" class="btn btn-primary">More Info</a>
+            <!--</div>-->
+            
+            <div class="col-12 col-xl-4" v-for="homeless of homeless_collection">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Name: {{ homeless[1] }} </h5>
+                        <h5 class="card-title">Location: {{ homeless[2] }} </h5>
+                        <a href="#" class="btn btn-primary" :value="homeless[0]">More Info</a>
+                    </div>
                 </div>
-              </div>
-              <!-- End of Card 2-->
             </div>
-            <!-- End of New Col 2-->
-
-            <!-- Start of New Col 3 -->
-            <div class="col-12 col-xl-4">
-              <!-- Start of Card 3-->
-              <div class="card">
-                <img src="Images/Homeless_3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Name: </h5>
-                  <h5 class="card-title">Location: </h5>
-                  <a href="#" class="btn btn-primary">More Info</a>
-                </div>
-              </div>
-              <!-- End of Card 3-->
-            </div>
-            <!-- End of New Col 3-->
+            
           </div>
           <!-- End of Row-->
           
@@ -192,49 +206,27 @@
           <!--Start of a New Row-->
           <div class="row mt-5">
             <!--Start of a New Col-->
-            <div class="col-12 col-xl-4">
-
+            <!--<div class="col-12 col-xl-4">-->
               <!-- Start Of Card 1-->
-              <div class="card">
-                <img src="Images/Homeless_1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Name: </h5>
-                  <h5 class="card-title">Location: </h5>
-                  <a href="#" class="btn btn-primary">More Info</a>
-                </div>
-              </div>
+              <!--<div class="card">-->
+              <!--  <img src="Images/Homeless_1.jpg" class="card-img-top" alt="...">-->
+              <!--  <div class="card-body">-->
+              <!--    <h5 class="card-title">Name: </h5>-->
+              <!--    <h5 class="card-title">Location: </h5>-->
+              <!--    <a href="#" class="btn btn-primary">More Info</a>-->
+              <!--  </div>-->
+              <!--</div>-->
               <!--End Of Card 1-->
-            </div>
-
-            <!-- Start of New Col 2 -->
-            <div class="col-12 col-xl-4">
-              <!-- Start of Card 2-->
-              <div class="card">
-                <img src="Images/Homeless_2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Name: </h5>
-                  <h5 class="card-title">Location: </h5>
-                  <a href="#" class="btn btn-primary">More Info</a>
+            <!--</div>-->
+            <div class="col-12 col-xl-4" v-for="homeless of homeless_collection">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Name: {{ homeless[1] }} </h5>
+                        <h5 class="card-title">Location: {{ homeless[2] }} </h5>
+                        <a href="#" class="btn btn-primary" :value="homeless[0]">More Info</a>
+                    </div>
                 </div>
-              </div>
-              <!-- End of Card 2-->
             </div>
-            <!-- End of New Col 2-->
-
-            <!-- Start of New Col 3 -->
-            <div class="col-12 col-xl-4">
-              <!-- Start of Card 3-->
-              <div class="card">
-                <img src="Images/Homeless_3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Name: </h5>
-                  <h5 class="card-title">Location: </h5>
-                  <a href="#" class="btn btn-primary">More Info</a>
-                </div>
-              </div>
-              <!-- End of Card 3-->
-            </div>
-            <!-- End of New Col 3-->
           </div>
           <!-- End of Row-->
         </div>
@@ -383,6 +375,20 @@
       document.getElementById('openCases'),
       config3
     )
+    
+    // Vue.js Script
+    const index = Vue.createApp({
+        // Data Properties
+        data() {
+            return {
+                // array of homeless people information [[name, location, description], [...]]
+                homeless_collection: <?php echo json_encode($homelessCollectionArray); ?>
+            }
+        }
+    })
+
+    // Link this Vue instance with <div id="index">
+    index.mount("#index")
   </script>
 
   <!-- <script src="bundle.js"></script> -->
