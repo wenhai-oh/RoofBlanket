@@ -1,37 +1,38 @@
 <?php
-$servername = "localhost";
-$username = "id19698329_admin";
-$password = ">4pP)KjQ\?i6jYET";
-$database = "id19698329_roofblanketdb";
+  $servername = "localhost";
+  $username = "id19698329_admin";
+  $password = ">4pP)KjQ\?i6jYET";
+  $database = "id19698329_roofblanketdb";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $database);
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
 
-$sql = "SELECT * FROM homelessCollection";
-$result = $conn->query($sql);
-// print_r($result);
+  $sql = "SELECT * FROM homelessCollection";
+  $result = $conn->query($sql);
+  // print_r($result);
 
-$homelessCollectionArray = array();
-if ($result->num_rows > 0) {
-    // output data of each row
-    while ($row = $result->fetch_assoc()) {
-        // echo "id: " . $row["ID"] . " - Name: " . $row["Name"] . " - Email" . $row["Email"] . "<br>";
-        $id = $row["id"];
-        $name = $row["name"];
-        $location = $row["location"];
-        $description = $row["description"];
-        $homelessIndividualArray = array($id, $name, $location, $description);
-        array_push($homelessCollectionArray, $homelessIndividualArray);
-    }
-} else {
-    echo "0 results";
-}
-$conn->close();
+  $homelessCollectionArray = array();
+  if ($result->num_rows > 0) {
+      // output data of each row
+      while ($row = $result->fetch_assoc()) {
+          // echo "id: " . $row["ID"] . " - Name: " . $row["Name"] . " - Email" . $row["Email"] . "<br>";
+          $id = $row["id"];
+          $name = $row["name"];
+          $location = $row["location"];
+          $description = $row["description"];
+          $homelessIndividualArray = array($id, $name, $location, $description);
+          array_push($homelessCollectionArray, $homelessIndividualArray);
+      }
+  } else {
+      echo "0 results";
+  }
+  $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
