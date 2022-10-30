@@ -8,6 +8,14 @@
     <!-- Script for instant display of uploaded profile image -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="./script.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
+
 
     <!-- Vue CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -27,6 +35,8 @@
         height: 36px;
         display: flex;
         align-items: center;
+        color: #F4976C;
+        font-family: 'Fredoka', sans-serif;
       }
 
       #profile-RightBar {
@@ -61,7 +71,7 @@
       }
 
       #select-image-label {
-        border: 1px solid black;
+        border: 1px solid rgb(48,60,108);
         padding: 0 10px;
         margin-bottom: 10px;
         border-radius: 20px;
@@ -72,49 +82,84 @@
         margin-top: 20px;
         margin-bottom: 30px;
       }
+
+      #profile .main_content{
+        padding: 1em 3em 2em 3em;
+        margin: 0em auto;
+        background-color: #fff;
+        border-radius: 4.2px;
+        box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+      }
+
+      #change-password-container  input, .container_input input {
+        width: 100%;
+        padding: 1em;
+        line-height: 1.4;
+        background-color: #f9f9f9;
+        border: 1px solid #e5e5e5;
+        border-radius: 3px;
+        -webkit-transition: 0.35s ease-in-out;
+        -moz-transition: 0.35s ease-in-out;
+        -o-transition: 0.35s ease-in-out;
+        transition: 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+      }
+
+      #change-password-container input:focus, .container_input input:focus{
+        outline: 0;
+        border-color: #F4976C;
+      }
+
+      #select-image-label:hover{
+        background-color: #303C6C;
+        color: #ffeba7;
+        box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+      }
+
     </style>
   </head>
-  <body onload="displayEditProfileForm()">
+  <body onload="displayEditProfileForm()" id="profile">
     <!--Sticky Top Nav Bar Section-->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light px-5">
-      <!-- Navbar Logo -->
-      <a class="navbar-brand" href="#">RoofBlanket</a>
-      <!-- End Of Navbar Logo -->
+  <nav class="navbar sticky-top navbar-expand-lg px-5">
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- Navbar Logo -->
+    <a class="navbar-brand" href="index.html">RoofBlanket</a>
+    <!-- End Of Navbar Logo -->
 
-      <!-- Nav Bar Content -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <!--Nav Links-->
-        <ul class="navbar-nav">
-          <!--Call User's Profile Name-->
-          <li class="navbar-text mx-5">
-            Hello, Wai Soon
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="./profile.html">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item" style="margin-right: 30px;">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-primary" href="login.html">Login</button>
-          </li>
-        </ul>
-        <!-- End Of Nav Links-->
-      </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Bar Content -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <!--Nav Links-->
+      <ul class="navbar-nav">
+        <!--Call User's Profile Name-->
+        <li class="navbar-text mx-5">
+          Hello Samaritan!
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="chat.html">Chat</a>
+        </li>
+        <li class="nav-item" style="margin-right: 30px;">
+          <a class="nav-link" href="task_list.html">Task List</a>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn" href="login.html">Login</button>
+        </li>
+      </ul>
+      <!-- End Of Nav Links-->
+    </div>
     <!-- End Of Nav Bar Content -->
-    </nav>
-    <!-- End Of Sticky Top Nav Bar Section -->
+  </nav>
+  <!-- End Of Sticky Top Nav Bar Section -->
 
     
     <!-- Container -->
-    <div class="container mt-5">
+    <div class="container main_content mt-5">
       <div class="row">
         <!-- Left side bar for menu selection (Edit profile/Change Password) -->
         <div id="profile-LeftBar" class="col-lg-2 col-12 mb-5">
@@ -128,41 +173,44 @@
         <div class="col-lg-1 col-0"></div>
 
         <!-- Right side bar for form display of information -->
-        <div id="profile-RightBar" class="col-lg-9 col-11 border border-dark rounded p-4">
+        <div id="profile-RightBar" class="col-lg-9 col-11 p-4">
           <!-- Edit Profile Form -->
-          <form id = edit-profile-container>
+          <form id="edit-profile-container">
             <!-- Circle profile photo -->
             <div id="profile-row">
               <div id="profile-container">
                 <img id="profileImage" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" />
               </div>
-              <label for="imageUpload" id="select-image-label">Select Image</label>
-              <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo">
+              <label for="imageUpload" id="select-image-label" style="text-align:center;">Select Image</label>
+              <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" >
             </div>
             <!-- end of Circle profile photo -->
 
-            <h3 class="form-heading">Your Profile</h3>
+            <h4 class="form-heading">Your Profile</h4>
 
             <!-- Username Textbox -->
-            <div class="mb-3 mt-3">
-              <input type="text" class="form-control" placeholder="Username: ">
+            <div class="container container_input">
+              <div class="mb-3 mt-3 ">
+                <input type="text" class="form-control" placeholder="Username: ">
+              </div>
+              <!-- First Name Textbox -->
+              <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="First Name: ">
+              </div>
+              <!-- Last Name Textbox -->
+              <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="last Name: ">
+              </div>
+              <!-- Email Textbox -->
+              <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="Email: ">
+              </div>
+  
+              <div class="d-flex justify-content-end px-1 mt-4">
+                <button type="submit" class="btn btn-primary list-btn">Save Changes</button>
+              </div>
             </div>
-            <!-- First Name Textbox -->
-            <div class="mb-3 mt-3">
-              <input type="text" class="form-control" placeholder="First Name: ">
-            </div>
-            <!-- Last Name Textbox -->
-            <div class="mb-3 mt-3">
-              <input type="text" class="form-control" placeholder="last Name: ">
-            </div>
-            <!-- Email Textbox -->
-            <div class="mb-3 mt-3">
-              <input type="text" class="form-control" placeholder="Email: ">
-            </div>
-
-            <div class="d-flex justify-content-end px-1 mt-4">
-              <button type="submit" class="btn btn-primary">Save Changes</button>
-            </div>
+            
           </form>
           <!-- End of Edit Profile Form -->
 
@@ -182,7 +230,7 @@
               <input type="text" class="form-control" placeholder="Confirm: ">
             </div>
 
-            <div class="d-flex justify-content-end px-1 mt-4">
+            <div class="d-flex justify-content-end px-1 mt-4" id="saveChanges">
               <button type="submit" class="btn btn-primary">Save Changes</button>
             </div>
           </form>
