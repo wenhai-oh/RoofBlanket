@@ -37,7 +37,7 @@ $username = $_GET["username"];
 $password = $_GET["password"];
 
 if(  isset($username) && isset($password)  ) {
-    var_dump($username);
+    // var_dump($username);
     $user = $userDAO->authenticate($username,$password);
 
     $success = false;
@@ -64,7 +64,7 @@ else {
 if( $success ) {
 
     // Add info node (1 per response)
-    $date = new DateTime(null, new DateTimeZone('Asia/Singapore'));
+    $date = new DateTime('now', new DateTimeZone('Asia/Singapore'));
     $user["info"] = array(
         "author" => "Roof Blanket",
         "response_datetime_singapore" => $date->format('Y-m-d H:i:sP')
