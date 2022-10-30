@@ -35,7 +35,6 @@
                     $people = array(
                         "id" => $id,
                         "username" => $username,
-                        "password" => $password,
                         "email" => $email,
                         "name" => $name,
                         "contact" => $contact,
