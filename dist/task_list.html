@@ -22,10 +22,26 @@
     <!-- Vue CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
+    <style>
+      #add_icon{
+        position: fixed;
+        bottom: 2%;
+        right: 2%;   
+        height: 8%;
+        width: auto;
+      } 
+    </style>
+
   </head>
   
   <body id="tasklist">
     
+    <div class="container">
+      <a href="add_person.html"> 
+        <img src="./Images/add_icon.png" id="add_icon">
+      </a>
+    </div>
+
    <!--Sticky Top Nav Bar Section-->
    <nav class="navbar sticky-top navbar-expand-lg px-5">
 
