@@ -7,6 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="listing.css">
 
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- End Of Css Stylesheet -->
+
+    <!-- This Link connects to freeawesome icons -->
+    <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts stylesheet -->\
+    <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
+    <!-- End Of Google Fonts Stylesheet -->
+
     <!-- script needed for map -->
     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
@@ -19,7 +33,7 @@
   <body onload="getLocation()">
 
     <!--Sticky Top Nav Bar Section-->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light px-5">
+    <nav class="navbar sticky-top navbar-expand-lg px-5">
 
       <!-- Navbar Logo -->
       <a class="navbar-brand" href="#">RoofBlanket</a>
@@ -38,62 +52,45 @@
             Hello, Wai Soon
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Profile</a>
-          </li>
+            <a class="nav-link" href="profile.html">Profile</a>
+          </li> 
           <li class="nav-item">
-            <a class="nav-link" href="#">Message</a>
+            <a class="nav-link" href="chat.html">Chat</a>
           </li>
           <li class="nav-item" style="margin-right: 30px;">
-            <a class="nav-link" href="#">Task List</a>
+            <a class="nav-link" href="task_list.html">Task List</a>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-outline-primary" href="login.html">Login</button>
+            <button type="button" class="btn" href="login.html">Login</button>
           </li>
         </ul>
         <!-- End Of Nav Links-->
-
       </div>
       <!-- End Of Nav Bar Content -->
     </nav>
     <!-- End Of Sticky Top Nav Bar Section -->
-
 
     <!-- Start Of Body Content-->
     <div class="body-container my-5">
 
       <!-- First Section -->
       <div class="container-fluid carousel_body mb-5">
-
-        <!-- Start of Carousel -->
-        <div id="slider" class="carousel slide" data-bs-ride="carousel">
-
-          <div class="carousel-inner">
-            
-            <div class="carousel-item active">
-              <img class="d-block w-100 h-100" src="Images/Homeless_1.jpg" alt="First slide">
-            </div>
-            
-            <div class="carousel-item">
-              <img class="d-block w-100 h-100" src="Images/Homeless_2.jpg" alt="Second slide">
-            </div>
-            
-            <div class="carousel-item">
-              <img class="d-block w-100 h-100" src="Images/Homeless_3.jpg" alt="Third slide">
-            </div>
-          </div>
-
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-target="#slider" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only"></span>
-          </a>
-
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-target="#slider" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only"></span>
-          </a>
+        <div class="carousel">
+          <!-- Start Of Carousel Section -->
+          <input type="radio" name="position" checked />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <main id="carousel">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+          <main>
         </div>
-        <!-- End of Carousel -->
-      </div>
+        <!--End Of Carousel -->
     <!-- End Of First Section -->
     </div>
 
@@ -135,9 +132,12 @@
       <div class="listing">
       
         <div class="row">
-          <div class="col-12 col-lg-6">
+          <div class="col-md-6">
             <h3>Jeff So</h3>
-            <span>Last Seen Location</span>
+            <span>
+              <i class="fa-solid fa-location-dot"></i>
+              SMU Connexion, 40 Stamford Rd, Singapore 178908
+            </span>
           </div>
 
           <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
@@ -148,22 +148,22 @@
               <div class="row g-0">
 
                 <div class="col-md-4">
-                  <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start" alt="...">
+                  <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start" style="height: 200px">
                 </div>
 
                 <div class="col-md-8">
                   <div class="card-body">
                     <div class="row">
                       <h5 class="card-title">Lim Ren Kee</h5>
-                      <p class="card-text"><small class="text-muted">Helped 3 Persons</small></p>
+                      <p class="card-text my-1"><small class="text-muted">Helped 3 Persons</small></p>
                     </div>
 
                     <div class="row">
-                      <button type="button" class="btn btn-primary">Send Message</button>
+                      <button type="button" class="btn btn-tasklist my-2">Send Message</button>
                     </div>
 
                     <div class="row">
-                      <button type="button" class="btn btn-primary" onclick="openUpdate()">Update Last Seen</button>
+                      <button type="button" class="btn btn-tasklist" onclick="openUpdate()">Update Last Seen</button>
                     </div>
                     
                   </div>
@@ -177,9 +177,11 @@
         <!-- End Of Row for left right portions-->
 
         <!-- Start of Description and Paragraph-->
-        <div class="listing-content">
-          <h2 class="col-12 col-lg-12">Description</h2>
-          <p class="col-12 col-lg-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div class="listing-content col-lg-12 col-md-6">
+          <h2>Description</h2>
+          <p>
+            I have noticed that Mr Jeff So seems to loiter around SMU Connexion in the early hours. I have seen him on several occasions when I reached school early to revise for my test. He use to sleep on the bench nearby the traffic junction. He is always seen with a white rippled t-shirt and pushing a trolley that full of junks. 
+          </p>
         </div>
 
       </div>
@@ -200,37 +202,43 @@
         
         <!-- First Two Notes -->
         <!-- First Note-->
-        <div class="row mt-5">
+        <div class="row mt-2">
           <!-- First Note-->
-          <div class="card col-12 col-lg-6">
+          <div class="card col-lg-5 mt-2">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Waisoon's comment</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
 
+          <!-- Separator -->
+          <div class="col-2"></div>
+
           <!-- Second Note-->
-          <div class="card col-12 col-lg-6">
+          <div class="card col-lg-5 mt-2">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Wenhai's comment</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row mt-2">
           <!-- First Note-->
-          <div class="card col-12 col-lg-6">
+          <div class="card col-lg-5 mt-2">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Jia Ler's comment</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
 
+         <!-- Separator -->
+         <div class="col-2"></div>
+
           <!-- Second Note-->
-          <div class="card col-12 col-lg-6">
+          <div class="card col-lg-5 mt-2">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Ren Kee's comment</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
@@ -238,30 +246,28 @@
 
       </div>
       <!-- End of Notes-content -->
-
-      <!-- FOOTER -->
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">© 2022 RoofBlanket, Inc</p>
-        <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item">
-            <a href="index.html" class="nav-link px-2 text-muted"> Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="profile.html" class="nav-link px-2 text-muted"> Profile</a>
-          </li>
-          <li class="nav-item">
-            <a href="chat.html" class="nav-link px-2 text-muted"> Chat</a>
-          </li>
-          <li class="nav-item">
-            <a href="task_list.html" class="nav-link px-2 text-muted"> Task List</a>
-          </li>
-        </ul>
-      </footer>
-      <!-- FOOTER END -->
-
-
     </div>
     <!-- End Of Container Section-->
+
+    <!-- FOOTER -->
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="col-md-4 mb-0 text-muted">© 2022 RoofBlanket, Inc</p>
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link px-2 text-muted"> Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="profile.html" class="nav-link px-2 text-muted"> Profile</a>
+        </li>
+        <li class="nav-item">
+          <a href="chat.html" class="nav-link px-2 text-muted"> Chat</a>
+        </li>
+        <li class="nav-item">
+          <a href="task_list.html" class="nav-link px-2 text-muted"> Task List</a>
+        </li>
+      </ul>
+    </footer>
+    <!-- FOOTER END -->
 
 
     <!-- Java BootStrap CDN -->
