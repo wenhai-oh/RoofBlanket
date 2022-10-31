@@ -146,7 +146,7 @@ input:focus + .input-icon:after {
 border-right-color: #F4976C;
 }
 
-input[type="radio"] {
+.col-half input[type="radio"] {
 display: none;
 }
 
@@ -643,13 +643,15 @@ Reset Password Pop Up BOX login.html Portion
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
   background-position: bottom center;
   background-repeat: no-repeat;
-  border-radius: 5%;
+  border-radius: 5px;
   padding: 20px;
+  margin-top: 120px;
+  min-height: 50vh;
   position: absolute;
   left: 0;
   right: 0;
   visibility: hidden;
-  width:80%;
+  width:35%;
   z-index: 10;
 }
 
@@ -878,4 +880,490 @@ Tasklist.html - Pop Up Styling
   width: 100%;
   border-radius: 5px;
   padding: 10px;
+}
+
+/* Listing.html Styling */
+/* Carousel Section */
+
+.carouselListing {
+  /* background-color: #1f2029; */
+  width: 80%;
+  height: 600px;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 500px 100px;
+  grid-template-columns: 1fr 30px 30px 30px 30px 30px 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+#carouselListing {
+  grid-row: 1 / 2;
+  grid-column: 1 / 8;
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 600px;
+  --items: 5;
+  --middle: 3;
+  --position: 1;
+  pointer-events: none;
+}
+
+div.item {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  /* background-color: coral; */
+  --r: calc(var(--position) - var(--offset));
+  --abs: max(calc(var(--r) * -1), var(--r));
+  transition: all 0.25s linear;
+  transform: rotateY(calc(-10deg * var(--r)))
+    translateX(calc(-300px * var(--r)));
+  z-index: calc((var(--position) - var(--abs)));
+}
+
+div.item:nth-of-type(1) {
+  --offset: 1;
+  background-image: url(/dist/Images/Homeless_Acceptable.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+div.item:nth-of-type(2) {
+  --offset: 2;
+  background-image: url(/dist/Images/Homeless_Acceptable.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+div.item:nth-of-type(3) {
+  --offset: 3;
+  background-image: url(/dist/Images/Homeless_Acceptable.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+div.item:nth-of-type(4) {
+  --offset: 4;
+  background-image: url(/dist/Images/Homeless_Acceptable.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+div.item:nth-of-type(5) {
+  --offset: 5;
+  background-image: url(/dist/Images/Homeless_Acceptable.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.carouselListing input:nth-of-type(1) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+.carouselListing input:nth-of-type(1):checked ~ main#carouselListing {
+  --position: 1;
+}
+
+.carouselListing input:nth-of-type(2) {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+.carouselListing input:nth-of-type(2):checked ~ main#carouselListing {
+  --position: 2;
+}
+
+.carouselListing input:nth-of-type(3) {
+  grid-column: 4 /5;
+  grid-row: 2 / 3;
+}
+.carouselListing input:nth-of-type(3):checked ~ main#carouselListing {
+  --position: 3;
+}
+
+.carouselListing input:nth-of-type(4) {
+  grid-column: 5 / 6;
+  grid-row: 2 / 3;
+}
+.carouselListing input:nth-of-type(4):checked ~ main#carouselListing {
+  --position: 4;
+}
+
+.carouselListing input:nth-of-type(5) {
+  grid-column: 6 / 7;
+  grid-row: 2 / 3;
+}
+.carouselListing input:nth-of-type(5):checked ~ main#carouselListing {
+  --position: 5;
+}
+
+/* End Of Carousel Section */
+
+.listing h2, h3{
+  font-family: 'Fredoka', sans-serif;
+  color: #303C6C;
+}
+
+.listing i{
+  color: #303C6C;
+}
+
+.listing p, span{
+  font-family: 'Raleway', sans-serif;
+}
+
+.listing-map{
+  margin-bottom: 20px;
+}
+
+.notes-content h2{
+  font-family: 'Fredoka', sans-serif;
+  color: #303C6C;
+}
+
+.notes-content .card-title{
+  color: #FBE8A6;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.notes-content .card-text{
+  /* color: #303C6C; */
+  font-family: 'Raleway', sans-serif;
+  color: #c4c3ca;
+}
+
+.notes-content .card{
+  background-color: #2a2b38;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
+/* Reverted from listing.css */
+#mapUpdate,
+#mapListing {
+    height: 400px;
+}
+
+#mapListing {
+    z-index: 0;
+}
+
+/* To change color of the marker indicating user current location */
+img.huechange { 
+    filter: hue-rotate(120deg); 
+}
+
+.listing-container{
+  width: 80%;
+}
+
+
+
+/* Styling for index.html */
+
+#add_icon{
+  position: fixed;
+  bottom: 2%;
+  right: 2%;   
+  height: 8%;
+  width: auto;
+}
+
+#hero_msg{
+  margin-top: 2.5%;
+  font-size: 150% ;
+  font-family: "fredoka";
+}
+
+.outer_container{
+  background-color: white;
+  margin-top: 2.5%; 
+  margin-bottom: 5%
+}
+
+.statistics_row{
+  max-width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  position: relative;
+}
+
+.statistics{
+  padding: 50px;
+  position: relative;
+  justify-content: space-evenly;
+  width: auto;
+}
+
+#carousel_container {
+  height: 90%;
+  max-height: 90%;
+  width: 100%;
+}
+
+.carousel-inner{
+  padding: 10px;
+}
+
+.carousel-item > img{
+  max-width: 70%;
+  max-height: 90%;
+  margin:auto;
+}
+
+.nav-item{
+  font-family: "Fredoka", sans-serif;
+  color: white;
+}
+
+
+#pills-home-tab{
+  /*This will erase the pill default set background by bootstrap*/
+  background-color: transparent;
+  color: #303C6C;
+}
+
+#indextab:hover{
+  background-color: #303C6C;
+  /* border-radius: 5px */
+}
+
+#pills-home-tab:active{
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#nav-pills {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#pills-home-tab{
+  color: rgb(48,60,108);
+  font-family: "fredoka";
+}
+
+.nav-item:hover{
+  background-color: #303C6C;
+  color: white;
+  border-radius: 15px;
+}
+
+.nav-pills .nav-link.active { 
+  text-decoration: underline rgb(48,60,108);
+  color: white;
+}
+
+
+@media only screen and (max-width: 400px) {
+  .statistics_row {
+      display: none;
+  }
+}
+
+.card > img {
+  max-width: 100%;
+}
+
+
+/*
+Footer Section
+*/
+
+
+#profile-LeftBar ul {
+  padding: 0;
+  margin: 0;
+}
+
+#profile-LeftBar li {
+  list-style: none;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  color: #F4976C;
+  font-family: 'Fredoka', sans-serif;
+}
+
+#profile-RightBar {
+  margin: 0 auto;
+}
+
+#profile-container img {
+  width: 100px;
+  height: 100px;
+}
+
+#profile-container {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+#profileImage,
+#edit-profile-btn,
+#change-password-btn {
+  cursor: pointer;
+}
+
+#profile-row {
+  display: flex;
+  align-items: flex-end;
+}
+
+#imageUpload{
+  display: none;
+}
+
+#select-image-label {
+  border: 1px solid rgb(48,60,108);
+  padding: 0 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.form-heading {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#profile .main_content{
+  padding: 1em 3em 2em 3em;
+  margin: 0em auto;
+  background-color: #fff;
+  border-radius: 4.2px;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+}
+
+#change-password-container  input, .container_input input {
+  width: 100%;
+  padding: 1em;
+  line-height: 1.4;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+
+#change-password-container input:focus, .container_input input:focus{
+  outline: 0;
+  border-color: #F4976C;
+}
+
+#select-image-label:hover{
+  background-color: #303C6C;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
+  background-color: #303C6C;
+  padding: 20px 50px;
+  /* display: flex; */
+  justify-content: center;
+  /* min-height: 100px; */
+  /* height: 150px; */
+  margin-top: 300px;
+  align-items: center;
+  flex-direction: column;
+}
+footer .social_icon, footer .menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+footer .social_icon li, footer .menu li {
+  list-style: none;
+}
+footer .social_icon li a {
+  font-size: 2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+footer .menu li a {
+  font-size: 1em;
+  color: #fff;
+  font-family: "Fredoka", sans-serif;
+  margin: 0 10px;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0.75;
+}
+footer .social_icon li a:hover {
+  transform: translateY(-10px)
+}
+footer .menu li a:hover {
+  opacity: 1;
+}
+footer p {
+  font-family: "Raleway", sans-serif;
+  color: #c4c3ca;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1em;
+}
+footer .wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('Images/wave.png');
+  background-size: 1000px 100px;
+}
+footer .wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWave 4s linear infinite;
+}
+footer .wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 0px;
+  animation: animateWave_2 4s linear infinite;
+}
+footer .wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 5px;
+  animation: animateWave 3s linear infinite;
+}
+footer .wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 10px;
+  animation: animateWave_2 3s linear infinite;
+}
+@keyframes animateWave {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-position-x: 0px;
+  }
+}
+@keyframes animateWave_2 {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
 }

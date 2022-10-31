@@ -25,94 +25,6 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Internal CSS -->
-  <style>
-
-    #add_icon{
-      position: fixed;
-      bottom: 2%;
-      right: 2%;   
-      height: 8%;
-      width: auto;
-    }
-
-    #hero_msg{
-      margin-top: 2.5%;
-      font-size: 150% ;
-      font-family: "fredoka";
-    }
-
-    .outer_container{
-      background-color: white;
-      max-width: 80%;
-      margin-top: 2.5%; 
-      margin-bottom: 5%
-    }
-
-    .statistics_row{
-      max-width: 100%;
-      display: flex;
-      justify-content: space-evenly;
-      margin: auto;
-      position: relative;
-    }
-
-    .statistics{
-      padding: 50px;
-      position: relative;
-      justify-content: space-evenly;
-      width: auto;
-    }
-
-    #carousel_container {
-      height: 90%;
-      max-height: 90%;
-      width: 100%;
-    }
-
-    .carousel-inner{
-      padding: 10px;
-    }
-
-    .carousel-item > img{
-      max-width: 70%;
-      max-height: 90%;
-      margin:auto;
-    }
-
-    #nav-pills {
-      display: flex;
-      justify-content: space-evenly;
-    }
-
-    #pills-home-tab{
-      color: rgb(48,60,108);
-      font-family: "fredoka";
-    }
-
-    .nav-item:hover{
-      background-color: rgb(251,232,166);
-      border-radius: 15px;
-    }
-
-    .nav-pills .nav-link.active { 
-      background-color: transparent;
-      text-decoration: underline rgb(48,60,108);
-    }
-
-
-    @media only screen and (max-width: 400px) {
-      .statistics_row {
-          display: none;
-      }
-    }
-
-    .card > img {
-      max-width: 100%;
-    }
-
-  </style>
-
 </head>
 
 <body id="index">
@@ -201,11 +113,11 @@
               <canvas id="grantedShelter"></canvas>
             </div>
       
-            <div class="col statistics" >
+            <div class="col statistics">
               <canvas id="receivedEmployment"></canvas>
             </div>
       
-            <div class="col statistics" >
+            <div class="col statistics">
               <canvas id="openCases"></canvas>
             </div>
       
@@ -213,11 +125,11 @@
           <!-- end of statistics -->
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev" style="filter: invert(100%)">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next" style="filter: invert(100%)">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -227,16 +139,16 @@
   <!-- TABS CONTAINER -->
   <div class="container mb-5 outer_container">
     <div class="row">
-      <div class="col">
+      <div class="col indexcoltab">
         <!--Pills Nav-->
         <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
 
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" name="index_tab" value="shelter">Seeking Shelter</button>
+            <button class="nav-link active indextab" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" name="index_tab" value="shelter">Seeking Shelter</button>
           </li>
 
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" name="index_tab" value="employment" >Seeking Employment</button>
+            <button class="nav-link indextab" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" name="index_tab" value="employment" >Seeking Employment</button>
           </li>
 
         </ul>
@@ -355,26 +267,32 @@
       
     </div>
 
-    <!-- FOOTER -->
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0 text-muted">© 2022 RoofBlanket, Inc</p>
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item">
-          <a href="index.html" class="nav-link px-2 text-muted"> Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="profile.html" class="nav-link px-2 text-muted"> Profile</a>
-        </li>
-        <li class="nav-item">
-          <a href="chat.html" class="nav-link px-2 text-muted"> Chat</a>
-        </li>
-        <li class="nav-item">
-          <a href="task_list.html" class="nav-link px-2 text-muted"> Task List</a>
-        </li>
-      </ul>
-    </footer>
-    <!-- FOOTER END -->
   </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social_icon">
+      <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+      <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+      <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+    </ul>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Task List</a></li>
+      <li><a href="#">Listing</a></li>
+      <li><a href="#">Chat</a></li>
+    </ul>
+    <p>© 2022 RoofBlanket, Inc</p>
+  </footer>
+  <!-- FOOTER END -->
   
 
   <!-- chart js script -->
