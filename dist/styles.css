@@ -1000,7 +1000,7 @@ div.item:nth-of-type(5) {
 
 /* End Of Carousel Section */
 
-.listing h3{
+.listing h2, h3{
   font-family: 'Fredoka', sans-serif;
   color: #303C6C;
 }
@@ -1038,4 +1038,23 @@ div.item:nth-of-type(5) {
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
   background-position: bottom center;
   background-repeat: no-repeat;
+}
+
+/* Reverted from listing.css */
+#mapUpdate,
+#mapListing {
+    height: 400px;
+}
+
+#mapListing {
+    z-index: 0;
+}
+
+/* To change color of the marker indicating user current location */
+img.huechange { 
+    filter: hue-rotate(120deg); 
+}
+
+.listing-container{
+  width: 80%;
 }
