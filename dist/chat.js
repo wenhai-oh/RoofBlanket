@@ -155,6 +155,7 @@ const vuemain = Vue.createApp({
             .then(response => {
                 
                 console.log(response)
+                this.new_message = ''
                 this.retrieve_message()
                 
             })
