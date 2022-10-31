@@ -12,7 +12,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
   <!-- Link To CSS Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
 
   <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +27,10 @@
 
   <!-- Internal CSS -->
   <style>
+
+    #index{
+      font-family: "Fredoka", sans-serif;
+    }
 
     #add_icon{
       position: fixed;
@@ -85,19 +89,11 @@
       justify-content: space-evenly;
     }
 
-    #pills-home-tab{
-      color: rgb(48,60,108);
-      font-family: "fredoka";
-    }
-
-    .nav-item:hover{
-      background-color: rgb(251,232,166);
-      border-radius: 15px;
-    }
 
     .nav-pills .nav-link.active { 
-      background-color: transparent;
-      text-decoration: underline rgb(48,60,108);
+      background-color: rgb(48,60,108);
+      border-radius: 15px;
+      color: white;
     }
 
 
@@ -184,7 +180,7 @@
 
       <div class="carousel-inner" >
         <div class="carousel-item active">    
-          <img src="./Images/1.png" class="d-flex w-100">
+          <img src="./Images/1.png" class="d-flex ">
         </div>
         <div class="carousel-item" >
           <img src="./Images/2.png" class="d-flex w-100">
@@ -232,7 +228,7 @@
         <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
 
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" name="index_tab" value="shelter">Seeking Shelter</button>
+            <button class="nav-link active text-dark" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" name="index_tab" value="shelter">Seeking Shelter</button>
           </li>
 
           <li class="nav-item" role="presentation">
@@ -399,7 +395,7 @@
     // doughnut 1
     const labels = [
       'Granted Shelter',
-      'Left unemployed'
+      'Without Shelter'
     ];
   
     const data = {
@@ -479,7 +475,7 @@
       // doughnut 3
     const labels3 = [
       'Open Cases',
-      'Left unemployed'
+      'Completed Cases'
     ]
 
     const data3 = {
@@ -488,7 +484,7 @@
         label: 'My third dataset',
         backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
         borderColor: 'rgb(255, 255, 255)',
-        data: [40, 30 ],
+        data: [50, 10 ],
       }]
     };
   
