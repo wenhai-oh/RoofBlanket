@@ -85,13 +85,13 @@
 
       <!-- Add Employment Details Pop Up Box (Hidden By Default) -->
       <form action="">
-        <div class='mx-auto text-center' id='employment'>
-          <h4 class="my-3">Add Employment Information</h4>
+        <div class='mx-auto' id='employment'>
+          <h4 class="my-3 text-center">Add Employment Information</h4>
           
           <div class="row">
             <div class="col-half">
               <label for="skillsets">Skills</label>
-              <select class="form-select" style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;" id='skillsets'>
+              <select class="form-select" style="border-radius: 3px; box-sizing: border-box; border: 1px solid #e5e5e5; background-color: #fff; color:#000" id='skillsets'>
                 <option selected value="none"> None</option>
                 <option value="art">Arts and Craft</option>
                 <option value="computer">Computer skills</option>
@@ -102,7 +102,7 @@
             
             <div class="col-half">
               <label for="Education">Education</label>
-              <select class="form-select" name="skillsets" aria-label="Default select example">
+              <select class="form-select" style="background-color: #fff; color:#000" name="skillsets" aria-label="Default select example">
                 <option selected value="nlevels">N Levels</option>
                 <option value="olevels">O Levels</option>
                 <option value="degree">Undergraduate Degree</option>
@@ -112,12 +112,16 @@
             </div>
             
             <div class="container notes p-3">
+              <label for="notes">Description</label>
               <textarea name="notes" id="notes" cols="80" rows="8" placeholder="Add additional information here..." style="width: 100%"></textarea>
             </div>
           </div>
           
-          <button class="btn btn-releasepop mb-3" type="submit" name="submit">Submit</button>
-          <button class="btn btn-releasepop mb-3" type="submit" name="cancel" onclick="closeEmployment()">Cancel</button>
+          <div class="text-center">
+            <button class="btn btn-releasepop mb-3" type="submit" name="submit">Submit</button>
+            <button class="btn btn-releasepop mb-3" type="submit" name="cancel" onclick="closeEmployment()">Cancel</button>
+          </div>
+
         </div>
       </form>
       
