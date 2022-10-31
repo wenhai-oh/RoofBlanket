@@ -1084,20 +1084,20 @@ img.huechange {
   margin-bottom: 5%
 }
 
-.statistics_row{
+/* .statistics_row{
   max-width: 100%;
   display: flex;
   justify-content: space-evenly;
   margin: auto;
   position: relative;
-}
+} */
 
-.statistics{
+/* .statistics{
   padding: 50px;
   position: relative;
   justify-content: space-evenly;
   width: auto;
-}
+} */
 
 #carousel_container {
   height: 90%;
@@ -1147,6 +1147,10 @@ img.huechange {
   font-family: "fredoka";
 }
 
+#pills-home-tab:hover {
+  color: white;
+}
+
 .nav-item:hover{
   background-color: #303C6C;
   color: white;
@@ -1155,12 +1159,12 @@ img.huechange {
 
 .nav-pills .nav-link.active { 
   text-decoration: underline rgb(48,60,108);
-  color: white;
+  text-decoration: none;
 }
 
 
 @media only screen and (max-width: 400px) {
-  .statistics_row {
+  .statistics {
       display: none;
   }
 }
