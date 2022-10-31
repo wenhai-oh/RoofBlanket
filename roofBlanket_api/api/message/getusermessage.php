@@ -43,7 +43,7 @@ $other_user_id = $_GET["other_user_id"];
 if(  isset($current_user_id) && isset($other_user_id)  ) {
     $messages = $messageDAO->retrieve_user_message($current_user_id, $other_user_id);
 
-    $date = new DateTime(null, new DateTimeZone('Asia/Singapore'));
+    $date = new DateTime('now', new DateTimeZone('Asia/Singapore'));
     $messages["info"] = array(
         "author" => "Roof Blanket",
         "response_datetime_singapore" => $date->format('Y-m-d H:i:sP')

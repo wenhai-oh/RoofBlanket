@@ -36,7 +36,7 @@ if ( isset($_GET["id"]) ){
         // var_dump($user_array);
 
         // Add info node (1 per response)
-        $date = new DateTime(null, new DateTimeZone('Asia/Singapore'));
+        $date = new DateTime('now', new DateTimeZone('Asia/Singapore'));
         $user_array["info"] = array(
             "author" => "Roof Blanket",
             "response_datetime_singapore" => $date->format('Y-m-d H:i:sP')
