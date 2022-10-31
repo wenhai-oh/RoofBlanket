@@ -20,6 +20,9 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+    <!-- This Link connects to freeawesome icons -->
+    <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
+
     <!-- Vue CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
@@ -127,7 +130,8 @@
         display: flex;
         justify-content: center;
         /* min-height: 100px; */
-        margin-top: 200px;
+        /* height: 150px; */
+        margin-top: 300px;
         align-items: center;
         flex-direction: column;
       }
@@ -151,6 +155,7 @@
       footer .menu li a {
         font-size: 1em;
         color: #fff;
+        font-family: "Fredoka", sans-serif;
         margin: 0 10px;
         display: inline-block;
         text-decoration: none;
@@ -163,6 +168,7 @@
         opacity: 1;
       }
       footer p {
+        font-family: "Raleway", sans-serif;
         color: #fff;
         text-align: center;
         margin-top: 10px;
@@ -186,19 +192,19 @@
       footer .wave#wave2 {
         z-index: 999;
         opacity: 0.5;
-        bottom: 10px;
+        bottom: 0px;
         animation: animateWave_2 4s linear infinite;
       }
       footer .wave#wave3 {
         z-index: 1000;
         opacity: 0.2;
-        bottom: 15px;
+        bottom: 5px;
         animation: animateWave 3s linear infinite;
       }
       footer .wave#wave4 {
         z-index: 999;
         opacity: 0.7;
-        bottom: 20px;
+        bottom: 10px;
         animation: animateWave_2 3s linear infinite;
       }
       @keyframes animateWave {
@@ -351,17 +357,17 @@
         <div class="wave" id="wave4"></div>
       </div>
       <ul class="social_icon">
-        <li><a href="#"><ion-icon name='logo-facebook'></ion-icon></a></li>
-        <li><a href="#"><ion-icon name='logo-twitter'></ion-icon></a></li>
-        <li><a href="#"><ion-icon name='logo-linkedin'></ion-icon></a></li>
-        <li><a href="#"><ion-icon name='logo-instagram'></ion-icon></a></li>
+        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
       </ul>
       <ul class="menu">
         <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Team</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Task List</a></li>
+        <li><a href="#">Listing</a></li>
+        <li><a href="#">Chat</a></li>
       </ul>
       <p>© 2022 RoofBlanket, Inc</p>
     </footer>
