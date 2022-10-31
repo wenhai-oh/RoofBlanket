@@ -59,15 +59,15 @@
         }
 
         // function to retrieve all USERNAMES of all users
-        public function retrieve_all_username(){
+        public function retrieve_user_by_id($id){
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
             
-            $sql = "select username from usersCollection";
+            $sql = "select * from usersCollection where id=:id";
 
             // level 2 is to make select username from users where username != current user's username
             $stmt = $pdo->prepare($sql);
-            // $stmt->bindParam(":username",$username,PDO::PARAM_STR);
+            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
             $stmt->execute();
             
             $result_arr = null;
@@ -88,7 +88,17 @@
                     extract($row);
 
                     $people = array(
-                        "username" => $username
+                        "id" => $id,
+                        "username" => $username,
+                        "email" => $email,
+                        "name" => $name,
+                        "contact" => $contact,
+                        "address" => $address,
+                        "housing_type" => $housing_type,
+                        "num_homeless_attached" => $num_homeless_attached,
+                        "num_homeless_helped" => $num_homeless_helped,
+                        "employer_status" => $employer_status,
+                        "time_created" => $time_created,
                     );
 
                     array_push($result_arr["records"], $people);
@@ -97,8 +107,6 @@
 
             $stmt = null;
             $pdo = null;
-
-            // var_dump($result_arr["records"]);
 
             return $result_arr;
         }

@@ -27,10 +27,6 @@ spl_autoload_register(function ($class) {
 // initialize object
 $userDAO = new UserDAO();
 
-$stmt = '';
-$num = '';
-
-
 // get search query
 
 $username = $_GET["username"];
