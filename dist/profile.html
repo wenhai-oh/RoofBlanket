@@ -1,41 +1,48 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- Script for instant display of uploaded profile image -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    
-    <link rel="stylesheet" href="styles.css">
 
-    <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- Script for instant display of uploaded profile image -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <!-- Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="styles.css">
 
-    <!-- This Link connects to freeawesome icons -->
-    <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
+  <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap"
+    rel="stylesheet">
 
-    <!-- Vue CDN -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  </head>
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  
-  <body onload="displayEditProfileForm()" id="profile">
-    <!--Sticky Top Nav Bar Section-->
+  <!-- This Link connects to freeawesome icons -->
+  <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
+
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+
+
+<body id="profile">
+  <!--Sticky Top Nav Bar Section-->
   <nav class="navbar sticky-top navbar-expand-lg px-5">
 
     <!-- Navbar Logo -->
     <a class="navbar-brand" href="index.html">RoofBlanket</a>
     <!-- End Of Navbar Logo -->
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -49,7 +56,7 @@
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="profile.html">Profile</a>
-        </li> 
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="chat.html">Chat</a>
         </li>
@@ -66,232 +73,278 @@
   </nav>
   <!-- End Of Sticky Top Nav Bar Section -->
 
-    
-    <!-- Container -->
-    <div class="container main_content mt-5">
-      <div class="row">
-        <!-- Left side bar for menu selection (Edit profile/Change Password) -->
-        <div id="profile-LeftBar" class="col-lg-2 col-12 mb-5">
-          <ul>
-            <li id="edit-profile-btn" onclick="displayEditProfileForm()">Edit Profile</li>
-            <li id="change-password-btn" onclick="displayChangePasswordForm()">Change Password</li>
-          </ul>
-        </div>
-        
-        <!-- empty for spacing -->
-        <div class="col-lg-1 col-0"></div>
 
-        <!-- Right side bar for form display of information -->
-        <div id="profile-RightBar" class="col-lg-9 col-11 p-4">
-          <!-- Edit Profile Form -->
-          <form id="edit-profile-container">
-            <!-- Circle profile photo -->
-            <div id="profile-row">
-              <div id="profile-container">
-                <img id="profileImage" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" />
-              </div>
-              <label for="imageUpload" id="select-image-label" style="text-align:center; width: 150px; height: 30px;">Select Image</label>
-              <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" >
+  <!-- Container -->
+  <div class="container main_content mt-5">
+    <div class="row">
+      <!-- Left side bar for menu selection (Edit profile/Change Password) -->
+      <div id="profile-LeftBar" class="col-lg-2 col-12 mb-5">
+        <ul>
+          <li id="edit-profile-btn" @click="displayEditProfileForm()" :style="profileBtnStyle">Edit Profile</li>
+          <li id="change-password-btn" @click="displayChangePasswordForm()" :style="changePasswordBtnStyle">Change Password</li>
+        </ul>
+      </div>
+
+      <!-- empty for spacing -->
+      <div class="col-lg-1 col-0"></div>
+
+      <!-- Right side bar for form display of information -->
+      <div id="profile-RightBar" class="col-lg-9 col-11 p-4">
+        <!-- Edit Profile Form -->
+        <form id="edit-profile-container" v-if="showProfile">
+          <!-- Circle profile photo -->
+          <div id="profile-row">
+            <div id="profile-container">
+              <img id="profileImage"
+                src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" />
             </div>
-            <!-- end of Circle profile photo -->
+            <label for="imageUpload" id="select-image-label"
+              style="text-align:center; width: 150px; height: 30px;">Select Image</label>
+            <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo">
+          </div>
+          <!-- end of Circle profile photo -->
 
-            <h4 class="form-heading">Your Profile</h4>
+          <h4 class="form-heading">Your Profile</h4>
 
-            <!-- Username Textbox -->
-            <div class="input-group input-group-icon">
-              <input type="text" placeholder="Username:" id="user_username"/>
-              <div class="input-icon">
-                <i class="fa fa-user"></i>
-              </div>
+          <!-- Username Textbox -->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="Username:" id="user_username" v-model="username"/>
+            <div class="input-icon">
+              <i class="fa fa-user"></i>
             </div>
+          </div>
 
-            <!-- First Name Textbox -->
-            <div class="input-group input-group-icon">
-              <input type="text" placeholder="First Name:" id="user_FirstName"/>
-              <div class="input-icon">
-                <i class="fa fa-user"></i>
-              </div>
+          <!-- First Name Textbox -->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="First Name:" id="user_FirstName" v-model="firstname"/>
+            <div class="input-icon">
+              <i class="fa fa-user"></i>
             </div>
+          </div>
 
-            <!-- Last Name Textbox -->
-            <div class="input-group input-group-icon">
-              <input type="text" placeholder="Last Name:" id="user_LastName"/>
-              <div class="input-icon">
-                <i class="fa fa-user"></i>
-              </div>
+          <!-- Last Name Textbox -->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="Last Name:" id="user_LastName" v-model="lastname"/>
+            <div class="input-icon">
+              <i class="fa fa-user"></i>
             </div>
+          </div>
 
-            <!-- Email Textbox -->
-            <div class="input-group input-group-icon">
-              <input type="email" placeholder="Email:" id="user_email"/>
-              <div class="input-icon">
-                <i class="fa-solid fa-envelope"></i>
-              </div>
+          <!-- Email Textbox -->
+          <div class="input-group input-group-icon">
+            <input type="email" placeholder="Email:" id="user_email" v-model="email"/>
+            <div class="input-icon">
+              <i class="fa-solid fa-envelope"></i>
             </div>
+          </div>
 
-            <!-- Contact Number -->
-            <div class="input-group input-group-icon">
-              <input type="text" placeholder="Contact No:" id="user_Contact"/>
-              <div class="input-icon">
-                <i class="fa-solid fa-phone"></i>
-              </div>
+          <!-- Contact Number -->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="Contact No:" id="user_Contact" v-model="contact"/>
+            <div class="input-icon">
+              <i class="fa-solid fa-phone"></i>
             </div>
+          </div>
 
-            <!-- Address -->
-            <div class="input-group input-group-icon">
-              <input type="text" placeholder="Address:" id="user_Address"/>
-              <div class="input-icon">
-                <i class="fa-solid fa-address-book"></i>
-              </div>
+          <!-- Address -->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="Address:" id="user_Address" v-model="address"/>
+            <div class="input-icon">
+              <i class="fa-solid fa-address-book"></i>
             </div>
+          </div>
 
-            <!-- Employee Status -->
-            <div class="input-group input-group-icon">
-              <select class="form-select" style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;" id='duration'>
-                <option value="0" default>Samaritan</option>
-                <option value="1">GoodWill Hosts</option>
-                <option value="2">Employer</option>
-              </select>
-              <div class="input-icon">
-                <i class="fa-solid fa-bars-progress"></i>
-              </div>
+          <!-- Employee Status -->
+          <div class="input-group input-group-icon">
+            <select class="form-select"
+              style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;"
+              id='duration'>
+              <option value="0" default>Samaritan</option>
+              <option value="1">GoodWill Hosts</option>
+              <option value="2">Employer</option>
+            </select>
+            <div class="input-icon">
+              <i class="fa-solid fa-bars-progress"></i>
             </div>
+          </div>
 
-            <div class="d-flex justify-content-end px-1 mt-4">
-              <button type="submit" class="btn btn-primary list-btn">Save Changes</button>
-            </div>
-            
-            
-          </form>
-          <!-- End of Edit Profile Form -->
+          <div class="d-flex justify-content-end px-1 mt-4">
+            <button type="submit" class="btn btn-primary list-btn">Save Changes</button>
+          </div>
+        </form>
+        <!-- End of Edit Profile Form -->
 
-          <!-- Change Password Form -->
-          <form id="change-password-container">    
-            <h4 class="form-heading">Change Password</h4>
+        <!-- Change Password Form -->
+        <form id="change-password-container" v-if="!showProfile">
+          <h4 class="form-heading">Change Password</h4>
 
-            <!-- Current Password Textbox -->
-            <div class="input-group input-group-icon">
-              <input type="text" placeholder="Old Password:" id="user_oldPassword"/>
-              <div class="input-icon">
-                <i class="fa-solid fa-shield-halved"></i>
-              </div>
+          <!-- Current Password Textbox -->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="Old Password:" id="user_oldPassword" />
+            <div class="input-icon">
+              <i class="fa-solid fa-shield-halved"></i>
             </div>
-            <!-- New Password Textbox -->
-            <div class="input-group input-group-icon">
-              <input type="text" placeholder="New Password:" id="user_newPassword"/>
-              <div class="input-icon">
-                <i class="fa-solid fa-shield"></i>
-              </div>
+          </div>
+          <!-- New Password Textbox -->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="New Password:" id="user_newPassword" />
+            <div class="input-icon">
+              <i class="fa-solid fa-shield"></i>
             </div>
-            <!-- Confirm Password Textbox -->
-            <div class="input-group input-group-icon">
-              <input type="text" placeholder="Confirm New Password:" id="user_confirmNewPassword"/>
-              <div class="input-icon">
-                <i class="fa-solid fa-shield"></i>              
-              </div>
+          </div>
+          <!-- Confirm Password Textbox -->
+          <div class="input-group input-group-icon">
+            <input type="text" placeholder="Confirm New Password:" id="user_confirmNewPassword" />
+            <div class="input-icon">
+              <i class="fa-solid fa-shield"></i>
             </div>
+          </div>
 
-            <div class="d-flex justify-content-end px-1 mt-4">
-              <button type="submit" class="btn btn-primary list-btn">Save Changes</button>
-            </div>
-
-          </form>
-          <!-- End of Change Password Form -->
-        </div>
+          <div class="d-flex justify-content-end px-1 mt-4">
+            <button type="submit" class="btn btn-primary list-btn">Save Changes</button>
+          </div>
+        </form>
+        <!-- End of Change Password Form -->
       </div>
     </div>
+  </div>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="waves">
-        <div class="wave" id="wave1"></div>
-        <div class="wave" id="wave2"></div>
-        <div class="wave" id="wave3"></div>
-        <div class="wave" id="wave4"></div>
-      </div>
-      <ul class="social_icon">
-        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-      </ul>
-      <ul class="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Task List</a></li>
-        <li><a href="#">Listing</a></li>
-        <li><a href="#">Chat</a></li>
-      </ul>
-      <p>© 2022 RoofBlanket, Inc</p>
-    </footer>
-    <!-- FOOTER END -->
+  <!-- FOOTER -->
+  <footer>
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social_icon">
+      <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+      <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+      <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+    </ul>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Task List</a></li>
+      <li><a href="#">Listing</a></li>
+      <li><a href="#">Chat</a></li>
+    </ul>
+    <p>© 2022 RoofBlanket, Inc</p>
+  </footer>
+  <!-- FOOTER END -->
 
-    
 
-    <!-- End of Container -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
-    <!-- script for profile image upload -->
-    <script>
-      // Upload image for profile picture script
-      $("#profileImage").click(function(e) {
-        $("#imageUpload").click();
-      });
+  <!-- End of Container -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
 
-      // preview image on browser
-      function fasterPreview( uploader ) {
-        if ( uploader.files && uploader.files[0] )
-        {
-          $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]) );
+  <!-- script for profile image upload -->
+  <script>
+    // Upload image for profile picture script
+    $("#profileImage").click(function (e) {
+      $("#imageUpload").click();
+    });
+
+    // preview image on browser
+    function fasterPreview(uploader) {
+      if (uploader.files && uploader.files[0]) {
+        $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
+      }
+    }
+
+    $("#imageUpload").change(function () {
+      fasterPreview(this);
+    });
+
+    // retrieve name of uploaded image
+    $("#imageUpload").change(function () {
+      filename = this.files[0].name;
+      console.log(filename);
+    });
+
+    // Vue instance
+    const main = Vue.createApp({
+
+      // Data Properties
+      data() {
+        return {
+          showProfile: true,
+          // set style for when sidebar is selected or not
+          selectedSidebarStyle: "border-left: 3px solid black; padding-left: 4px;",
+          unselectedSidebarStyle: "border-left: none; padding-left: 7px;",
+          // initialise default
+          profileBtnStyle: "",
+          changePasswordBtnStyle: "",
+
+          id: null,
+          username: "",
+          firstname: "",
+          lastname: "",
+          email: "",
+          contact: null,
+          address: "",
         }
+      },
+
+      methods: {
+        populateProfileInformation() {
+          console.log("populateProfileInformation function called")
+          // get user id from session
+          // let current_user_id = sessionStorage.getItem("userid")
+          // console.log(current_user_id)
+
+          // dummy user id
+          let current_user_id = 10001
+
+          // get user info from api DB call based on user id
+          let api_endpoint_url = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/getuserinfobyid.php?id=" + current_user_id
+
+          axios.get(api_endpoint_url)
+            .then(response => {
+
+              // Inspect the response.data
+              let records = response.data.records[0]
+              console.log(records)
+              this.id = records.id
+              this.username = records.username
+              this.firstname = records.name
+              this.lastname = records.name
+              this.email = records.email
+              this.contact = records.contact
+              this.address = records.address
+            })
+            .catch(error => {
+              // In case of any error, see what it's about
+              console.log(error.message)
+            })
+        },
+
+        displayEditProfileForm() {
+          // display the Edit Profile Form and hide Change Password Form
+          this.profileBtnStyle = this.selectedSidebarStyle
+          this.changePasswordBtnStyle = this.unselectedSidebarStyle
+          this.showProfile = true
+        },
+
+        displayChangePasswordForm() {
+          // display the Change Password Form and hide Edit Profile Form
+          this.profileBtnStyle = this.unselectedSidebarStyle
+          this.changePasswordBtnStyle = this.selectedSidebarStyle
+          this.showProfile = false
+        }
+      },
+
+      beforeMount() {
+        this.populateProfileInformation()
+        this.displayEditProfileForm()
       }
+    })
+    // Link this Vue instance with <div id="main">
+    main.mount("#profile")
+  </script>
+</body>
 
-      $("#imageUpload").change(function(){
-        fasterPreview( this );
-      });
-
-      // retrieve name of uploaded image
-      $("#imageUpload").change(function() {
-        filename = this.files[0].name;
-        console.log(filename);
-      });
-
-      var editProfileForm = document.getElementById("edit-profile-container")
-      var changePasswordForm = document.getElementById("change-password-container")
-      
-      function displayEditProfileForm() {
-          // show edit-profile-container, hide change-password-container
-          // console.log("edit profile")
-
-          editProfileForm.style.display = "block"
-          changePasswordForm.style.display = "none"
-
-          // change colour of selected option
-          let editProfileBtn = document.getElementById("edit-profile-btn")
-          let changePasswordBtn = document.getElementById("change-password-btn")
-
-          editProfileBtn.style.borderLeft = "3px solid black"
-          editProfileBtn.style.paddingLeft = "4px"
-          changePasswordBtn.style.paddingLeft = "7px"
-          changePasswordBtn.style.borderLeft = "none"
-      }
-
-      function displayChangePasswordForm() {
-          // show change-password-container, hide edit-profile-container
-          // console.log("change password")
-
-          editProfileForm.style.display = "none"
-          changePasswordForm.style.display = "block"
-
-          // change colour of selected option
-          let editProfileBtn = document.getElementById("edit-profile-btn")
-          let changePasswordBtn = document.getElementById("change-password-btn")
-
-          editProfileBtn.style.paddingLeft = "7px"
-          editProfileBtn.style.borderLeft = "none"
-          changePasswordBtn.style.borderLeft = "3px solid black"
-          changePasswordBtn.style.paddingLeft = "4px"
-      }
-    </script>
-  </body>
 </html>
