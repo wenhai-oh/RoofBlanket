@@ -81,7 +81,8 @@
       <div id="profile-LeftBar" class="col-lg-2 col-12 mb-5">
         <ul>
           <li id="edit-profile-btn" @click="displayEditProfileForm()" :style="profileBtnStyle">Edit Profile</li>
-          <li id="change-password-btn" @click="displayChangePasswordForm()" :style="changePasswordBtnStyle">Change Password</li>
+          <li id="change-password-btn" @click="displayChangePasswordForm()" :style="changePasswordBtnStyle">Change
+            Password</li>
         </ul>
       </div>
 
@@ -108,7 +109,7 @@
 
           <!-- Username Textbox -->
           <div class="input-group input-group-icon">
-            <input type="text" placeholder="Username:" id="user_username" v-model="username"/>
+            <input type="text" placeholder="Username:" id="user_username" v-model="username" />
             <div class="input-icon">
               <i class="fa fa-user"></i>
             </div>
@@ -116,7 +117,7 @@
 
           <!-- First Name Textbox -->
           <div class="input-group input-group-icon">
-            <input type="text" placeholder="First Name:" id="user_FirstName" v-model="firstname"/>
+            <input type="text" placeholder="First Name:" id="user_FirstName" v-model="firstname" />
             <div class="input-icon">
               <i class="fa fa-user"></i>
             </div>
@@ -124,7 +125,7 @@
 
           <!-- Last Name Textbox -->
           <div class="input-group input-group-icon">
-            <input type="text" placeholder="Last Name:" id="user_LastName" v-model="lastname"/>
+            <input type="text" placeholder="Last Name:" id="user_LastName" v-model="lastname" />
             <div class="input-icon">
               <i class="fa fa-user"></i>
             </div>
@@ -132,7 +133,7 @@
 
           <!-- Email Textbox -->
           <div class="input-group input-group-icon">
-            <input type="email" placeholder="Email:" id="user_email" v-model="email"/>
+            <input type="email" placeholder="Email:" id="user_email" v-model="email" />
             <div class="input-icon">
               <i class="fa-solid fa-envelope"></i>
             </div>
@@ -140,7 +141,7 @@
 
           <!-- Contact Number -->
           <div class="input-group input-group-icon">
-            <input type="text" placeholder="Contact No:" id="user_Contact" v-model="contact"/>
+            <input type="text" placeholder="Contact No:" id="user_Contact" v-model="contact" />
             <div class="input-icon">
               <i class="fa-solid fa-phone"></i>
             </div>
@@ -148,7 +149,7 @@
 
           <!-- Address -->
           <div class="input-group input-group-icon">
-            <input type="text" placeholder="Address:" id="user_Address" v-model="address"/>
+            <input type="text" placeholder="Address:" id="user_Address" v-model="address" />
             <div class="input-icon">
               <i class="fa-solid fa-address-book"></i>
             </div>
@@ -243,28 +244,6 @@
 
   <!-- script for profile image upload -->
   <script>
-    // Upload image for profile picture script
-    $("#profileImage").click(function (e) {
-      $("#imageUpload").click();
-    });
-
-    // preview image on browser
-    function fasterPreview(uploader) {
-      if (uploader.files && uploader.files[0]) {
-        $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
-      }
-    }
-
-    $("#imageUpload").change(function () {
-      fasterPreview(this);
-    });
-
-    // retrieve name of uploaded image
-    $("#imageUpload").change(function () {
-      filename = this.files[0].name;
-      console.log(filename);
-    });
-
     // Vue instance
     const main = Vue.createApp({
 
@@ -340,6 +319,30 @@
       beforeMount() {
         this.populateProfileInformation()
         this.displayEditProfileForm()
+      },
+
+      mounted() {
+        // Upload image for profile picture script
+        $("#profileImage").click(function (e) {
+          $("#imageUpload").click();
+        });
+
+        // preview image on browser
+        function fasterPreview(uploader) {
+          if (uploader.files && uploader.files[0]) {
+            $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
+          }
+        }
+
+        $("#imageUpload").change(function () {
+          fasterPreview(this);
+        });
+
+        // retrieve name of uploaded image
+        $("#imageUpload").change(function () {
+          filename = this.files[0].name;
+          console.log(filename);
+        });
       }
     })
     // Link this Vue instance with <div id="main">
