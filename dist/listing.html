@@ -1,136 +1,142 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>View Listing</title>
-    <!-- BootStrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- End Of Css Stylesheet -->
+<head>
+  <meta charset="utf-8">
+  <title>View Listing</title>
+  <!-- BootStrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <!-- This Link connects to freeawesome icons -->
-    <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- End Of Css Stylesheet -->
 
-    <!-- Google Fonts stylesheet -->
-    <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
-    <!-- End Of Google Fonts Stylesheet -->
+  <!-- This Link connects to freeawesome icons -->
+  <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
 
-    <!-- script needed for map -->
-    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- end script needed for map -->  
-    
-    <!-- Vue CDN -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  </head>
-  <body onload="getLocation()">
+  <!-- Google Fonts stylesheet -->
+  <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap"
+    rel="stylesheet">
+  <!-- End Of Google Fonts Stylesheet -->
 
-    <!--Sticky Top Nav Bar Section-->
-    <nav class="navbar sticky-top navbar-expand-lg px-5">
+  <!-- script needed for map -->
+  <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- end script needed for map -->
 
-      <!-- Navbar Logo -->
-      <a class="navbar-brand" href="#">RoofBlanket</a>
-      <!-- End Of Navbar Logo -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<body>
+  <!--Sticky Top Nav Bar Section-->
+  <nav class="navbar sticky-top navbar-expand-lg px-5">
 
-      <!-- Nav Bar Content -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <!--Nav Links-->
-        <ul class="navbar-nav">
-          <!--Call User's Profile Name-->
-          <li class="navbar-text mx-5">
-            Hello, Wai Soon
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="profile.html">Profile</a>
-          </li> 
-          <li class="nav-item">
-            <a class="nav-link" href="chat.html">Chat</a>
-          </li>
-          <li class="nav-item" style="margin-right: 30px;">
-            <a class="nav-link" href="task_list.html">Task List</a>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn" href="login.html">Login</button>
-          </li>
-        </ul>
-        <!-- End Of Nav Links-->
-      </div>
-      <!-- End Of Nav Bar Content -->
-    </nav>
-    <!-- End Of Sticky Top Nav Bar Section -->
+    <!-- Navbar Logo -->
+    <a class="navbar-brand" href="#">RoofBlanket</a>
+    <!-- End Of Navbar Logo -->
 
-    <!-- Start Of Body Content-->
-    <div class="body-container" style="overflow-x:hidden;">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <!-- First Section -->
-      <div class="carousel_body mb-5">
-        <div class="carouselListing">
-          <!-- Start Of Carousel Section -->
-          <input type="radio" name="position" />
-          <input type="radio" name="position" />
-          <input type="radio" name="position" checked/>
-          <input type="radio" name="position" />
-          <input type="radio" name="position" />
-          <main id="carouselListing">
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
+    <!-- Nav Bar Content -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <!--Nav Links-->
+      <ul class="navbar-nav">
+        <!--Call User's Profile Name-->
+        <li class="navbar-text mx-5">
+          Hello, Wai Soon
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="chat.html">Chat</a>
+        </li>
+        <li class="nav-item" style="margin-right: 30px;">
+          <a class="nav-link" href="task_list.html">Task List</a>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn" href="login.html">Login</button>
+        </li>
+      </ul>
+      <!-- End Of Nav Links-->
+    </div>
+    <!-- End Of Nav Bar Content -->
+  </nav>
+  <!-- End Of Sticky Top Nav Bar Section -->
+
+  <!-- Start Of Body Content-->
+  <div id="root" class="body-container" style="overflow-x:hidden;">
+
+    <!-- First Section -->
+    <div class="carousel_body mb-5">
+      <div class="carouselListing">
+        <!-- Start Of Carousel Section -->
+        <input type="radio" name="position" />
+        <input type="radio" name="position" />
+        <input type="radio" name="position" checked />
+        <input type="radio" name="position" />
+        <input type="radio" name="position" />
+        <main id="carouselListing">
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
           <main>
-        </div>
-        <!--End Of Carousel -->
-    <!-- End Of First Section -->
+      </div>
+      <!--End Of Carousel -->
+      <!-- End Of First Section -->
     </div>
 
-      <!-- Update Last Seen Location Pop Up Box (Hidden By Default) -->
-      <div class='update' id='update'>
-        <h2 class="my-3 text-center">Update Last Seen Location</h2>
+    <!-- Update Last Seen Location Pop Up Box (Hidden By Default) -->
+    <div class='update' id='update'>
+      <h2 class="my-3 text-center">Update Last Seen Location</h2>
 
-        <!-- Integrate Map API here -->
-        <div class='my-5' id="mapUpdate">
-          <label for="map" class="form-label">Update Location</label>
-          
-        </div>
+      <!-- Integrate Map API here -->
+      <div class='my-5' id="mapUpdate">
+        <label for="map" class="form-label">Update Location</label>
 
-        <!-- Custom Notes -->
-        <div class="mb-4">
-          <label for="notes" class="form-label">Custom Notes</label>
-          <textarea class="form-control" id="notes" rows="5"></textarea>
-        </div>
-
-        <!-- Add Image  -->
-        <div class="mb-2">
-          <label for="upload" class="form-label">Upload Image</label><br>
-          <!-- For Uploading Image -->
-          <input id="upload" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
-          <br>
-          <!-- Display Image Uploaded -->
-          <output id="result">
-        </div>
-
-        <div class="text-center">
-          <button class="btn btn-primary" type="submit" name="submit">Update</button>
-          <button class="btn btn-primary" type="submit" name="cancel" onclick="closeUpdate()">Cancel</button>
-        </div>
       </div>
+
+      <!-- Custom Notes -->
+      <div class="mb-4">
+        <label for="notes" class="form-label">Custom Notes</label>
+        <textarea class="form-control" id="notes" rows="5"></textarea>
+      </div>
+
+      <!-- Add Image  -->
+      <div class="mb-2">
+        <label for="upload" class="form-label">Upload Image</label><br>
+        <!-- For Uploading Image -->
+        <input id="upload" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
+        <br>
+        <!-- Display Image Uploaded -->
+        <output id="result">
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit" name="submit">Update</button>
+        <button class="btn btn-primary" type="submit" name="cancel" @click="closeUpdate()">Cancel</button>
+      </div>
+    </div>
 
     <!-- Start of Second Section-->
     <div class="container-fluid listing-container" id="main">
 
       <!-- Section for Listing Content -->
       <div class="listing">
-      
+
         <div class="row">
           <div class="col-lg-6 mb-5">
             <h3>Jeff So</h3>
@@ -142,7 +148,7 @@
 
           <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
           <div class="col-lg-6">
-            
+
             <!-- Start Of Card -->
             <div class="card mb-3" style="max-width: 540px;">
               <div class="row">
@@ -163,9 +169,9 @@
                     </div>
 
                     <div class="row">
-                      <button type="button" class="btn btn-tasklist" onclick="openUpdate()">Update Last Seen</button>
+                      <button type="button" class="btn btn-tasklist" @click="openUpdate()">Update Last Seen</button>
                     </div>
-                    
+
                   </div>
                   <!-- End of Card Body -->
                 </div>
@@ -180,7 +186,9 @@
         <div class="listing-content col-lg-12 col-md-12 col-sm-12">
           <h2>Description</h2>
           <p>
-            I have noticed that Mr Jeff So seems to loiter around SMU Connexion in the early hours. I have seen him on several occasions when I reached school early to revise for my test. He use to sleep on the bench nearby the traffic junction. He is always seen with a white rippled t-shirt and pushing a trolley that full of junks. 
+            I have noticed that Mr Jeff So seems to loiter around SMU Connexion in the early hours. I have seen him on
+            several occasions when I reached school early to revise for my test. He use to sleep on the bench nearby the
+            traffic junction. He is always seen with a white rippled t-shirt and pushing a trolley that full of junks.
           </p>
         </div>
 
@@ -188,7 +196,7 @@
       <!-- End Section for Listing Content -->
 
       <!-- Section for Map Listing-->
-      
+
       <div class="listing-map">
         <!-- API Integration here-->
         <div id="mapListing"></div>
@@ -199,7 +207,7 @@
         <div class="row">
           <h2>Notes</h2>
         </div>
-        
+
         <!-- First Two Notes -->
         <!-- First Note-->
         <div class="row mt-2">
@@ -207,7 +215,8 @@
           <div class="card col-lg-5 mt-2">
             <div class="card-body">
               <h5 class="card-title">Waisoon's comment</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
             </div>
           </div>
 
@@ -218,7 +227,8 @@
           <div class="card col-lg-5 mt-2">
             <div class="card-body">
               <h5 class="card-title">Wenhai's comment</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
             </div>
           </div>
         </div>
@@ -228,18 +238,20 @@
           <div class="card col-lg-5 mt-2">
             <div class="card-body">
               <h5 class="card-title">Jia Ler's comment</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
             </div>
           </div>
 
-         <!-- Separator -->
-         <div class="col-2"></div>
+          <!-- Separator -->
+          <div class="col-2"></div>
 
           <!-- Second Note-->
           <div class="card col-lg-5 mt-2">
             <div class="card-body">
               <h5 class="card-title">Ren Kee's comment</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
             </div>
           </div>
         </div>
@@ -249,234 +261,263 @@
     </div>
     <!-- End Of Container Section-->
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="waves">
-      <div class="wave" id="wave1"></div>
-      <div class="wave" id="wave2"></div>
-      <div class="wave" id="wave3"></div>
-      <div class="wave" id="wave4"></div>
-    </div>
-    <ul class="social_icon">
-      <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-      <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-      <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-    </ul>
-    <ul class="menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Task List</a></li>
-      <li><a href="#">Listing</a></li>
-      <li><a href="#">Chat</a></li>
-    </ul>
-    <p>© 2022 RoofBlanket, Inc</p>
-  </footer>
-  <!-- FOOTER END -->
-
-
-    <!-- Java BootStrap CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+    <!-- FOOTER -->
+    <footer>
+      <div class="waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
+      </div>
+      <ul class="social_icon">
+        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+      </ul>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Task List</a></li>
+        <li><a href="#">Listing</a></li>
+        <li><a href="#">Chat</a></li>
+      </ul>
+      <p>© 2022 RoofBlanket, Inc</p>
+    </footer>
+    <!-- FOOTER END -->
     <script>
-      let update = document.getElementById('update')
-      let main = document.getElementById('main')
-  
-      function openUpdate() {
-        update.classList.add('show-release')
-        main.classList.add('blur')
-      }
-      function closeUpdate() {
-        update.classList.remove('show-release')
-        main.classList.remove('blur')
-      }
-
-      document.querySelector("#upload").addEventListener("change", (e) => { 
-        if (window.File && window.FileReader && window.FileList && window.Blob) {
-          const files = e.target.files;
-          const output = document.querySelector("#result");
-          output.innerHTML = "";
-          for (let i = 0; i < files.length; i++) {
-            if (!files[i].type.match("image")) continue;
-              const picReader = new FileReader();
-              picReader.addEventListener("load", function (event) {
-                const picFile = event.target;
-                const div = document.createElement("div");
-                div.innerHTML = `<img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>`;
-                output.appendChild(div);
-              });
-              picReader.readAsDataURL(files[i]);
-            }
-        } else {
-          alert("Your browser does not support File API");
-        }
-      });
-
-    // ****************************************************
-    // Start of Map Script
-    // KEEP MAP SCRIPT AS INTERNAL JS
-    // DO NOT MOVE TO EXTERNAL JS
-    // ****************************************************
-    // mapListing portion
-    // dummy location (1 line) - to be retrieved from DB of known locations for the homeless person
-    let dbLocationList = [[35.66962384382411, 139.6430907463442],[35.66976330016642, 139.64738591458215],[35.66962384382411, 139.6600996125663]]
-
-    let currentLocation = dbLocationList[0]
-    var mapListing = L.map('mapListing').setView(currentLocation, 13);
-    L.marker(currentLocation).addTo(mapListing)
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(mapListing);
-
-    // add markers of all known homeless person location from location list
-    for (index = 1; index < dbLocationList.length; index++)
-    {
-      console.log(index, dbLocationList[index])
-      L.marker(dbLocationList[index]).addTo(mapListing)
-    }
-
-    // mapUpdate portion
-    var mapUpdate = {}
-    var locationsList = []
-
-    // gets the location of the user and calls a method to add marker of user current location
-    function getLocation() {
-      if (navigator.geolocation) 
-      {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } 
-      else { 
-        alert("Geolocation is not supported by this browser.")
-      }
-    }
-
-    /* 
-      add marker to show current location of the user
-      add all markers of known locations of the homeless person
-    */
-    function showPosition(position) {
-      let latitude = position.coords.latitude
-      let longitude = position.coords.longitude
-
-      mapUpdate = L.map('mapUpdate').setView([latitude, longitude], 13);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(mapUpdate);
-      var marker = L.marker([latitude, longitude]).addTo(mapUpdate);
-      // change marker of user current location to red
-      marker._icon.classList.add("huechange");
-      marker.bindPopup("<p style=color:red;>You are here</p>").openPopup();
-
-      var popup = L.popup();
-
-      // Script for adding marker on map click
-      mapUpdate.on('click', onMapClick);
-
-      // add markers of all known homeless person location from location list
-      for (index = 0; index < dbLocationList.length; index++)
-    {
-      console.log(index, dbLocationList[index])
-      L.marker(dbLocationList[index]).addTo(mapUpdate)
-    }
-    }
-
-    function onMapClick(e) {
-      var geojsonFeature = {
-        "type": "Feature",
-        "properties": {},
-        "geometry":
-        {
-          "type": "Point",
-          "coordinates": [e.latlng.lat, e.latlng.lng]
-        }
-      }
-
-      var marker;
-
-      L.geoJson(geojsonFeature, {
-        pointToLayer: function(feature, latlng) {
-          marker = L.marker(e.latlng, {
-            title: "Location",
-            alt: "Location",
-            riseOnHover: true,
-            // draggable: true,
-          }).bindPopup("<input type='button' value='Remove' class='marker-delete-button'/>");
-
-          marker.on("popupopen", onPopupOpen);
-          return marker;
-        }
-      }).addTo(mapUpdate);
-
-      // add location to list
-      let location = [e.latlng.lat, e.latlng.lng]
-      // console.log(location)
-      locationsList.push(location)
-      // console.log(locationsList)
-    }
-
-    // Function to handle delete as well as other events on marker popup open
-    function onPopupOpen() {
-      var tempMarker = this;
-      // console.log(tempMarker)
-      // To remove marker on click of delete button in the popup of marker
-      $(".marker-delete-button:visible").click(function() {
-        mapUpdate.removeLayer(tempMarker);
-        // remove from location list
-        let lat = tempMarker["_latlng"].lat
-        let long = tempMarker["_latlng"].lng
-        let location = [lat, long]
-        removeLatLng(location)
-      });
-    }
-
-    // gets an array of latitude and longitude [x, y] and removes them from the location list array.
-    function removeLatLng(location) {
-      for (index in locationsList)
-      {
-        if (locationsList[index][0] == location[0] && locationsList[index][1] == location[1])
-        {
-          // remove from array using index
-          if (index > -1)
-          {
-              locationsList.splice(index, 1)
-              console.log(locationsList)
+      // Vue instance
+      const root = Vue.createApp({
+        // Data Properties
+        data() {
+          return {
+            dbLocationListMain: [],
+            mapUpdateMain: {}
           }
-        }
-      }
-    }
-    // ****************************************************
-    // End of Map Script
-    // ****************************************************
-    </script>
-  </body>
+        },
 
-  <style>
-    .update{
-      background-color: beige;
-      border-radius: 5%;
-      padding: 20px;
-      position: absolute;
-      visibility: hidden;
-      width: 50%;
-      left: 25%;
-      z-index: 1;
-    }
-    .show-release {
-      visibility: visible;
-    }
-    .blur {
-      filter: blur(5px);
-    }
-    #result{
-      padding: 10px 0;
-      display:inline-flex;
-    }
-    .thumbnail {
-      width: 100px;
-      height: 100px;
-      margin-right: 10px;
-    }
-  </style>
+        methods: {
+          change_background_color(selected_color) {
+            document.body.style.backgroundColor = selected_color
+          },
+          openUpdate() {
+            let update = document.getElementById('update')
+            let main = document.getElementById('main')
+            update.classList.add('show-release')
+            main.classList.add('blur')
+          },
+          closeUpdate() {
+            let update = document.getElementById('update')
+            let main = document.getElementById('main')
+            update.classList.remove('show-release')
+            main.classList.remove('blur')
+          },
+          retrieveHomelessLocation(id) {
+            // api to retrieve location list by id
+            // output list to this.dbLocationListMain
+
+          },
+          updateHomelessLocationToDb(mapUpdate) {
+            // projectTest folder > mysqlSend.php for reference (wenhai)
+            // try loop the object but if not able to, assume only 1 new location spotted input by user
+            // redirect to php file with parameters added
+            // "xxx.php" + ?id=${homeless_id}&latitude=${lat}&longitude=${lng}
+          }
+        },
+
+        mounted() {
+          document.querySelector("#upload").addEventListener("change", (e) => {
+            // console.log("upload ran")
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+              const files = e.target.files;
+              const output = document.querySelector("#result");
+              output.innerHTML = "";
+              for (let i = 0; i < files.length; i++) {
+                if (!files[i].type.match("image")) continue;
+                const picReader = new FileReader();
+                picReader.addEventListener("load", function (event) {
+                  const picFile = event.target;
+                  const div = document.createElement("div");
+                  div.innerHTML = `<img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>`;
+                  output.appendChild(div);
+                });
+                picReader.readAsDataURL(files[i]);
+              }
+            } else {
+              alert("Your browser does not support File API");
+            }
+          });
+
+          // ****************************************************
+          // Start of Map Script
+          // KEEP MAP SCRIPT AS INTERNAL JS
+          // DO NOT MOVE TO EXTERNAL JS
+          // ****************************************************
+          getLocation();
+          // mapListing portion
+          // dummy location (1 line) - to be retrieved from this.dbLocationListMain after api is up
+          let dbLocationList = [[35.66962384382411, 139.6430907463442], [35.66976330016642, 139.64738591458215], [35.66962384382411, 139.6600996125663]]
+
+          let currentLocation = dbLocationList[0]
+          var mapListing = L.map('mapListing').setView(currentLocation, 13);
+          L.marker(currentLocation).addTo(mapListing)
+
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          }).addTo(mapListing);
+
+          // add markers of all known homeless person location from location list
+          for (index = 1; index < dbLocationList.length; index++) {
+            // console.log(index, dbLocationList[index])
+            L.marker(dbLocationList[index]).addTo(mapListing)
+          }
+
+          // mapUpdate portion
+          var mapUpdate = {}
+          var locationsList = []
+
+          // gets the location of the user and calls a method to add marker of user current location
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else {
+              alert("Geolocation is not supported by this browser.")
+            }
+          }
+
+          /* 
+            add marker to show current location of the user
+            add all markers of known locations of the homeless person
+          */
+          function showPosition(position) {
+            let latitude = position.coords.latitude
+            let longitude = position.coords.longitude
+
+            mapUpdate = L.map('mapUpdate').setView([latitude, longitude], 13);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(mapUpdate);
+            var marker = L.marker([latitude, longitude]).addTo(mapUpdate);
+            // change marker of user current location to red
+            marker._icon.classList.add("huechange");
+            marker.bindPopup("<p style=color:red;>You are here</p>").openPopup();
+
+            var popup = L.popup();
+
+            // Script for adding marker on map click
+            mapUpdate.on('click', onMapClick);
+
+            // add markers of all known homeless person location from location list
+            for (index = 0; index < dbLocationList.length; index++) {
+              // console.log(index, dbLocationList[index])
+              L.marker(dbLocationList[index]).addTo(mapUpdate)
+            }
+          }
+
+          function onMapClick(e) {
+            var geojsonFeature = {
+              "type": "Feature",
+              "properties": {},
+              "geometry":
+              {
+                "type": "Point",
+                "coordinates": [e.latlng.lat, e.latlng.lng]
+              }
+            }
+
+            var marker;
+
+            L.geoJson(geojsonFeature, {
+              pointToLayer: function (feature, latlng) {
+                marker = L.marker(e.latlng, {
+                  title: "Location",
+                  alt: "Location",
+                  riseOnHover: true,
+                  // draggable: true,
+                }).bindPopup("<input type='button' value='Remove' class='marker-delete-button'/>");
+
+                marker.on("popupopen", onPopupOpen);
+                return marker;
+              }
+            }).addTo(mapUpdate);
+
+            // add location to list
+            let location = [e.latlng.lat, e.latlng.lng]
+            // console.log(location)
+            locationsList.push(location)
+            // console.log(locationsList)
+          }
+
+          // Function to handle delete as well as other events on marker popup open
+          function onPopupOpen() {
+            var tempMarker = this;
+            // console.log(tempMarker)
+            // To remove marker on click of delete button in the popup of marker
+            $(".marker-delete-button:visible").click(function () {
+              mapUpdate.removeLayer(tempMarker);
+              // remove from location list
+              let lat = tempMarker["_latlng"].lat
+              let long = tempMarker["_latlng"].lng
+              let location = [lat, long]
+              removeLatLng(location)
+            });
+          }
+
+          // gets an array of latitude and longitude [x, y] and removes them from the location list array.
+          function removeLatLng(location) {
+            for (index in locationsList) {
+              if (locationsList[index][0] == location[0] && locationsList[index][1] == location[1]) {
+                // remove from array using index
+                if (index > -1) {
+                  locationsList.splice(index, 1)
+                  console.log(locationsList)
+                }
+              }
+            }
+          }
+          // ****************************************************
+          // End of Map Script
+          // ****************************************************
+        }
+      });
+      root.mount("#root")
+
+
+    </script>
+</body>
+
+<style>
+  .update {
+    background-color: beige;
+    border-radius: 5%;
+    padding: 20px;
+    position: absolute;
+    visibility: hidden;
+    width: 50%;
+    left: 25%;
+    z-index: 1;
+  }
+
+  .show-release {
+    visibility: visible;
+  }
+
+  .blur {
+    filter: blur(5px);
+  }
+
+  #result {
+    padding: 10px 0;
+    display: inline-flex;
+  }
+
+  .thumbnail {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+</style>
+
 </html>
