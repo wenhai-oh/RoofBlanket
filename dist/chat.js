@@ -19,14 +19,14 @@ const vuemain = Vue.createApp({
 
         retrieve_message(){
 
-            console.log("userid now is " + this.current_user_id)
+            // console.log("userid now is " + this.current_user_id)
 
             const params = new Proxy(new URLSearchParams(window.location.search), {
                 get: (searchParams, prop) => searchParams.get(prop),
               });
             let other_user_id = params.id; // "some_value"
 
-            console.log("other userid now is " + other_user_id)
+            // console.log("other userid now is " + other_user_id)
 
 
             let api_endpoint = "http://localhost/roofBlanket_api/api/message/getusermessage.php"
@@ -58,7 +58,7 @@ const vuemain = Vue.createApp({
               });
             let other_user_id = params.id; // "some_value"
 
-            console.log("other userid now is " + other_user_id)
+            // console.log("other userid now is " + other_user_id)
 
             let api_endpoint = "http://localhost/roofBlanket_api/api/user/getuserinfobyid.php"
 
@@ -73,7 +73,7 @@ const vuemain = Vue.createApp({
                 
                 // this.message_records = response.data.records
                 this.other_user = response.data.records[0]
-                console.log( "I FOUND HIM" + this.other_user.name)
+                // console.log( "I FOUND HIM" + this.other_user.name)
                 
             })
             .catch(error => {
@@ -103,13 +103,11 @@ const vuemain = Vue.createApp({
             .then(response => {
 
                 this.people_records = {}
-                console.log('hello i am back')
                 // console.log(response.data)
                 records = response.data.records
                 console.log(response)
 
                 console.log(records)
-                console.log('going in')
                 this.people_records = records
 
                 // console.log(records)
@@ -160,7 +158,6 @@ const vuemain = Vue.createApp({
             })
             .then(response => {
                 
-                console.log(response)
                 this.new_message = ''
                 this.retrieve_message()
                 
@@ -180,4 +177,4 @@ const vuemain = Vue.createApp({
 })
 
 // Link this Vue instance with <div id="main">
-vuemain.mount("#main")
+vuemain.mount("#chat")
