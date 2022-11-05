@@ -89,12 +89,12 @@ const vuemain = Vue.createApp({
 
             // YOU MAY NEED TO MODIFY THIS
             // based on your local computer setting
-            let api_endpoint = "http://localhost/roofblanket_api/api/user/getusersinfo.php"
+            let api_endpoint = "http://localhost/roofblanket_api/api/message/getchatuser.php"
 
 
             // people_records = []
             let current_user = {
-                current_user_id: this.current_user_id
+                id: this.current_user_id
             }
 
             axios.get(api_endpoint, { 
@@ -103,11 +103,13 @@ const vuemain = Vue.createApp({
             .then(response => {
 
                 this.people_records = {}
+
                 // console.log(response.data)
                 records = response.data.records
                 console.log(response)
 
                 console.log(records)
+                console.log('going in')
                 this.people_records = records
 
                 // console.log(records)
