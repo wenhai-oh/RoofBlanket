@@ -166,7 +166,7 @@ Testing of New Index.html
 }
 
 .banner .cta::after {
-    background: url(./Images/arrow-right-solid\ 1.svg) no-repeat center left;
+    background: url(./Images/arrow-right-solid-1.svg) no-repeat center left;
     background-size: contain;
 }
 
@@ -177,8 +177,20 @@ Testing of New Index.html
     width: 40px;
     height: 36px;
     z-index: 10;
-    /* background-color: #FBE8A6;
-    color: #303C6C; */
+}
+
+.cta:hover {
+  padding: 12px 35px 12px 35px;
+  text-align: center;
+  color: #fff;
+}
+.cta:hover::before {
+  width: 100%;
+  border-radius: 30px;
+}
+
+.cta:hover::after {
+  background: none !important;
 }
 
 .banner_wr .p-banner {
