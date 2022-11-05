@@ -62,17 +62,17 @@
             return $result_arr;
         }
 
-        public function retrieve_all_userinfo(){
+        public function retrieve_homeless_by_id($id){
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
+            
+            $sql = "select * from homelessCollection where id=:id";
 
-            $sql = "select * from usersCollection";
-
-            // level 2 is to make select username from users where username != current user's username
+            
             $stmt = $pdo->prepare($sql);
-            // $stmt->bindParam(":username",$username,PDO::PARAM_STR);
+            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
             $stmt->execute();
-
+            
             $result_arr = null;
 
             $num = $stmt->rowCount();
@@ -90,31 +90,34 @@
                     // converts a dictionary key to variable name and value to variable value
                     extract($row);
 
-                    $people = array(
+                    $homeless = array(
                         "id" => $id,
-                        "username" => $username,
-                        "password" => $password,
-                        "email" => $email,
-                        "name" => $name,
+                        "name"  => $name,
+                        "age" => $age,
+                        "gender" => $gender,
                         "contact" => $contact,
-                        "address" => $address,
-                        "housing_type" => $housing_type,
-                        "num_homeless_attached" => $num_homeless_attached,
-                        "num_homeless_helped" => $num_homeless_helped,
-                        "employer_status" => $employer_status,
+                        "location" => $location,
+                        "special_needs" => $special_needs,
+                        "duration" => $duration,
+                        "description" => $description,
+                        "photo_url" => $photo_url,
+                        "employment" => $employment,
+                        "education" => $education,
+                        "skills" => $skills,
+                        "employment_desc" => $employment_desc,
+                        "completed" => $completed,
                         "time_created" => $time_created,
                     );
-
-                    array_push($result_arr["records"], $people);
+                    array_push($result_arr["records"], $homeless);
                 }
             }
 
             $stmt = null;
             $pdo = null;
 
-            // var_dump($result_arr["records"]);
-
             return $result_arr;
         }
+
+        
 
     }
