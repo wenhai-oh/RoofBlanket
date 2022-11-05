@@ -153,5 +153,44 @@
             return $user;
         }
 
+        public function register_user($name,$username,$email,$password){
+
+            $conn_manager = new Database();
+            $pdo = $conn_manager->getConnection();
+
+
+            $sql_get_id="SELECT id FROM usersCollection ORDER BY id DESC LIMIT 1";
+            $stmt = $pdo->prepare($sql_get_id);
+            $result = $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            if($row = $stmt->fetch()){
+
+                extract($row);
+                $new_id = $id + 1;
+                var_dump($new_id);              
+            }
+            
+            $datetime = date('Y-m-d H:i:s');
+
+            $sql = "INSERT INTO usersCollection VALUES(?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, ?)";
+
+        
+            $stmt = $pdo->prepare($sql);
+            
+            $result = $stmt->execute([$new_id, $username, $password, $email, $name, $datetime]);
+
+            // $result = $stmt->execute([$new_id, $username, $password, $email, $name, contact, address,
+            // housing_type, num_homeless_attached, num_homeless_helped, employer_status, $datetime]);
+
+
+            $stmt = null;
+            $pdo = null;
+
+            // return query result (Boolean)
+            return $result;
+
+        }
+
     }
 ?>

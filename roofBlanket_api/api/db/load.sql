@@ -1,8 +1,8 @@
--- drop database if exists roofBlanket;
+drop database if exists roofBlanket;
 
--- create database if not exists roofBlanket;
+create database if not exists roofBlanket;
 
--- use roofBlanket;
+use roofBlanket;
 
 drop table if exists homelessCollection;
 CREATE TABLE if not exists `homelessCollection` (
@@ -69,3 +69,14 @@ insert into chatCollection values(10001, 10005, "Hello, I would like to intervie
 insert into chatCollection values(10005, 10001, "Hi, sure thing, send me your company location and I'll let him know.", '2022-10-29 17:05:00');
 insert into chatCollection values(10001, 10005, "Great! The interview will be on 1 November 2022 at SMU.", '2022-10-29 17:07:00');
 insert into chatCollection values(10005, 10001, "He'll be there!", '2022-10-29 17:15:00');
+
+drop table if exists homelessLocation;
+CREATE TABLE if not exists `homelessLocation` (
+    `id` int(11) NOT NULL,
+    `latitude` float NOT NULL,
+    `longitude` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into homelessLocation values(1001, 35.66962384382411, 139.6430907463442);
+insert into homelessLocation values(1001, 35.66976330016642, 139.64738591458215);
+insert into homelessLocation values(1001, 35.66962384382411, 139.6600996125663);

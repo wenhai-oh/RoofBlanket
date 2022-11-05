@@ -127,7 +127,15 @@
                       <i class="login-icon fa-solid fa-lock"></i>
                     </div>
                       <p class="btn-loginpage mt-4" v-on:click="login()">Login</p>
+
                       <p class="mb-0 mt-4 text-center"><a href="#" class="link" onclick="openReset()">Forgot your password?</a></p>
+                      <br>
+                      <h4 class="text-danger" v-if="error_msg != ''"> 
+                        {{error_msg}}
+                      </h4>
+                      <h4 class="text-success" v-if="success_msg != ''">
+                        {{success_msg}}
+                      </h4>
                   </div>
 
                 </div>
@@ -142,37 +150,42 @@
 
                     <!-- Field Input 1 Username -->
                     <div class="form-group">
-                      <input type="text" name="newName" class="form-style" placeholder="Your Full Name" id="newName" autocomplete="off">
+                      <input type="text" name="newName" class="form-style" placeholder="Your Full Name" id="newName" autocomplete="off" v-model="new_name">
                       <i class="login-icon fa-solid fa-user"></i>
                     </div>
                     
                     <!-- Field Input 2 Username -->
                     <div class="form-group mt-2">
-                      <input type="text" name="newUsername" class="form-style" placeholder="Your Username" id="newUsername" autocomplete="off">
+                      <input type="text" name="newUsername" class="form-style" placeholder="Your Username" id="newUsername" autocomplete="off" v-model="new_username">
                       <i class="login-icon fa-solid fa-user"></i>
                     </div>
 
                     <!-- Field Input 3 Email -->
                     <div class="form-group mt-2">
-                      <input type="email" name="newEmail" class="form-style" placeholder="Your Email" id="newEmail" autocomplete="off">
+                      <input type="email" name="newEmail" class="form-style" placeholder="Your Email" id="newEmail" autocomplete="off" v-model="new_email">
                       <i class="login-icon fa-solid fa-envelope"></i>
                     </div>	
 
                     <!--Field Input 4 Password -->
                     <div class="form-group mt-2">
-                      <input type="password" name="newPassword" class="form-style" placeholder="Your Password" id="newPassword" autocomplete="off">
+                      <input type="password" name="newPassword" class="form-style" placeholder="Your Password" id="newPassword" autocomplete="off" v-model="new_password" >
                       <i class="login-icon fa-solid fa-lock"></i>
                     </div>
 
                     <!--Field Input 5 Confirm Password -->
                     <div class="form-group mt-2">
-                      <input type="password" name="newConfirmPassword" class="form-style" placeholder="Confirm Password" id="newConfirmPassword" autocomplete="off">
+                      <input type="password" name="newConfirmPassword" class="form-style" placeholder="Confirm Password" id="newConfirmPassword" autocomplete="off" v-model="new_confirm_password">
                       <i class="login-icon fa-solid fa-lock"></i>
                     </div>
 
                     <!-- Submit Btn -->
-                    <a href="#" class="btn-loginpage mt-4">submit</a>
+                    <a href="#" class="btn-loginpage mt-4"  v-on:click="register_user()">submit</a>
                     <!-- End Of Submit Button -->
+                    <br><br>
+
+                    <h4 class="text-danger"> 
+                      {{error_msg}}
+                    </h4>
 
                   </div>
 
