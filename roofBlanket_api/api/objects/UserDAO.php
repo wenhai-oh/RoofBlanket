@@ -168,8 +168,7 @@
             if($row = $stmt->fetch()){
 
                 extract($row);
-                $new_id = $id + 1;
-                var_dump($new_id);              
+                $new_id = $id + 1;            
             }
             
             $datetime = date('Y-m-d H:i:s');
