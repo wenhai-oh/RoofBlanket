@@ -11,7 +11,7 @@
   integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
   <!-- Main StyleSheet -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="new_styles.css">
 
   <!-- This Link connects to freeawesome icons -->
   <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
@@ -28,6 +28,72 @@
   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 </head>
 <body>
-    
+    <!--Sticky Top Nav Bar Section-->
+  <nav class="navbar sticky-top navbar-expand-lg px-5">
+
+    <!-- Navbar Logo -->
+    <a class="navbar-brand active" href="new_index.html">RoofBlanket</a>
+    <!-- End Of Navbar Logo -->
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Bar Content -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <!--Nav Links-->
+      <ul class="navbar-nav">
+        <!--Call User's Profile Name-->
+        <li class="navbar-text mx-5">
+          Welcome!
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="chat.html">Chat</a>
+        </li>
+        <li class="nav-item" style="margin-right: 30px;">
+          <a class="nav-link" href="task_list.html">Task List</a>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn" href="login.html">Login</button>
+        </li>
+      </ul>
+      <!-- End Of Nav Links-->
+    </div>
+    <!-- End Of Nav Bar Content -->
+  </nav>
+  <!-- End Of Sticky Top Nav Bar Section -->
+
+  <!-- Start of body Content -->
+  <div class="banner">
+    <div class="content content-banner">
+        <div class="banner_wr">
+            <!-- Banner Left Portion -->
+            <div class="banner_left">
+                <!-- Short Description -->
+                <p class="over_title">An organization that here to help</p>
+                <h1>Say No to Homelessness , <br> Join Us and Make A Difference</h1>
+                <!--CTA Portion-->
+                <div class="cta_wr">
+                    <a href="#" class="cta w-button">
+                        <span>View List</span>
+                    </a>
+
+                    <a href="#" class="cta w-button">
+                        <span>Read Their Stories</span>
+                    </a>
+                </div>
+            </div>
+            <p class="p-banner">
+                Put something informative here
+            </p>
+        </div>
+    </div>
+  </div>
+
+
 </body>
 </html>
