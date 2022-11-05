@@ -209,12 +209,144 @@ Testing of New Index.html
 }
 
 /* Who we Help Section */
+.box_wr {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  -ms-grid-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+}
 
-/* Footer Section */
+.box_inner {
+  position: relative;
+}
 
-/*
-Footer Section
-*/
+.box_inner:hover .box_underlay {
+  height: 100%;
+}
+
+.box_underlay {
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+}
+
+.box_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 15px;
+  padding: 2vw;
+  opacity: 0;
+  transform: matrix(1, 0, 0, 1, -15, 0);
+  transition: all 0.5s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+}
+
+.box_inner:hover .box_overlay {
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.box_overlay h4 {
+  color: #070808;
+  margin-bottom: 35px;
+}
+
+.box_overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.box_overlay ul li {
+  font-weight: 500;
+  color: #070808;
+  margin: 0 0 10px 0;
+  background: url(./Images/red_dot@2x.png) no-repeat top 14px left;
+  background-size: 7px;
+  padding: 0 0 0 25px;
+}
+
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2vw;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  background-color: #070808;
+  color: white;
+}
+
+.box_inner h4 span {
+  color: #eb4647;
+}
+
+.box_icon {
+  margin-bottom: 20px;
+}
+
+.box_top {
+  margin-bottom: 90px;
+}
+
+.content {
+  width: 80%;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.content.content_what {
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+
+/* End of Who we help section */
+
+
+
+
 
 
 #profile-LeftBar ul {
@@ -309,6 +441,7 @@ Footer Section
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
   }
   
+  /* Footer Section */
   footer {
     position: relative;
     width: 100%;
@@ -411,3 +544,4 @@ Footer Section
       background-position-x: 1000px;
     }
   }
+  /* End of Footer Section */
