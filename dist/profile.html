@@ -276,7 +276,8 @@
           // console.log(current_user_id)
 
           // dummy user id
-          let current_user_id = 10001
+          // let current_user_id = 10001
+          let current_user_id = sessionStorage.getItem("userid")
 
           // get user info from api DB call based on user id
           let api_endpoint_url = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/getuserinfobyid.php?id=" + current_user_id
