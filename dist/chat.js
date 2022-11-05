@@ -93,7 +93,13 @@ const vuemain = Vue.createApp({
 
 
             // people_records = []
-            axios.get(api_endpoint)
+            let current_user = {
+                current_user_id: this.current_user_id
+            }
+
+            axios.get(api_endpoint, { 
+                params: current_user
+            })
             .then(response => {
 
                 this.people_records = {}

@@ -2,17 +2,18 @@
     class UserDAO {
 
 
-        // function to retrieve ALL INFO of ALL USERS
+        // function to retrieve ALL INFO of ALL USERS EXCEPT SELF
 
-        public function retrieve_all_userinfo(){
+        public function retrieve_all_userinfo($user_id){
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
             
-            $sql = "select * from usersCollection";
+            $sql = "select * from usersCollection where id !=:id";
 
             // level 2 is to make select username from users where username != current user's username
             $stmt = $pdo->prepare($sql);
-            // $stmt->bindParam(":username",$username,PDO::PARAM_STR);
+            $stmt->bindParam(":id",$user_id,PDO::PARAM_INT);
+
             $stmt->execute();
             
             $result_arr = null;
@@ -58,7 +59,7 @@
             return $result_arr;
         }
 
-        // function to retrieve all USERNAMES of all users
+        // function to retrieve all USERNAMES of specified
         public function retrieve_user_by_id($id){
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();

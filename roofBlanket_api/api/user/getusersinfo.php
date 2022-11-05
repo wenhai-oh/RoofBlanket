@@ -27,25 +27,37 @@ spl_autoload_register(function ($class) {
 $userDAO = new UserDAO();
 
 
-$user_array = $userDAO->retrieve_all_userinfo();
+if ( isset($_GET["current_user_id"]) ){
 
-if($user_array != null){
+    $user_array = $userDAO->retrieve_all_userinfo($_GET["current_user_id"]);
 
-    // var_dump($user_array);
+    if($user_array != null){
 
-    // Add info node (1 per response)
-    $date = new DateTime('now', new DateTimeZone('Asia/Singapore'));
-    $user_array["info"] = array(
-        "author" => "Roof Blanket",
-        "response_datetime_singapore" => $date->format('Y-m-d H:i:sP')
-    );
+        // var_dump($user_array);
+
+        // Add info node (1 per response)
+        $date = new DateTime('now', new DateTimeZone('Asia/Singapore'));
+        $user_array["info"] = array(
+            "author" => "Roof Blanket",
+            "response_datetime_singapore" => $date->format('Y-m-d H:i:sP')
+        );
+        
+
+            // set response code - 200 OK
+            http_response_code(200);
+        
+            // show products data
+            echo json_encode($user_array);
+    }
+    else {
+        // set response code - 404 Not found
+        http_response_code(404);
     
-
-        // set response code - 200 OK
-        http_response_code(200);
-    
-        // show products data
-        echo json_encode($user_array);
+        // tell the user no items found
+        echo json_encode(
+            array("message" => "Message could not be sent.")
+        );
+    }
 }
 else {
     // set response code - 404 Not found
@@ -53,8 +65,9 @@ else {
   
     // tell the user no items found
     echo json_encode(
-        array("message" => "Message could not be sent.")
+        array("User" => "Query parameters are not set. No results.")
     );
+    exit;
 }
 
 ?>
