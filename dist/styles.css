@@ -346,7 +346,7 @@ padding-right: 0;
 
 .list-btn:hover{
   background-color: #303C6C;
-  color: #fff;
+  color: #FBE8A6;
 }
 /*-------------------------------------------------------------------------*/
 /*
@@ -1250,9 +1250,10 @@ Footer Section
 #select-image-label {
   border: 1px solid rgb(48,60,108);
   padding: 0 10px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   border-radius: 20px;
   cursor: pointer;
+  color: #c4c3ca;
 }
 
 .form-heading {
