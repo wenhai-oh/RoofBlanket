@@ -80,6 +80,12 @@ Testing of New Index.html
     margin-left: auto;
 }
 
+.content_what h5{
+  font-family: "Fredoka", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
 .banner_wr{
     display: flex;
     flex-direction: row;
@@ -230,7 +236,7 @@ Testing of New Index.html
 }
 
 .box_underlay {
-  background: #fff;
+  background: #F4976C;
   position: absolute;
   width: 100%;
   height: 0;
@@ -274,7 +280,8 @@ Testing of New Index.html
 }
 
 .box_overlay h4 {
-  color: #070808;
+  font-family: "Fredoka", sans-serif;
+  color: #fff;
   margin-bottom: 35px;
 }
 
@@ -285,8 +292,9 @@ Testing of New Index.html
 }
 
 .box_overlay ul li {
+  font-family: "Raleway", sans-serif;
   font-weight: 500;
-  color: #070808;
+  color: #fff;
   margin: 0 0 10px 0;
   background: url(./Images/red_dot@2x.png) no-repeat top 14px left;
   background-size: 7px;
@@ -313,8 +321,17 @@ Testing of New Index.html
   -webkit-align-items: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  background-color: #070808;
-  color: white;
+  background-color: #303C6C;
+}
+
+.box h4{
+  color: #fff;
+  font-family: "Fredoka", sans-serif;
+}
+
+.box p{
+  color: #fff;
+  font-family: "Raleway", sans-serif;
 }
 
 .box_inner h4 span {
@@ -344,8 +361,16 @@ Testing of New Index.html
 
 /* End of Who we help section */
 
+/*Statistics section*/
+.our_statistics{
+  background-color: #303C6C;
+}
+.stats_container{
+  width: 80%;
+}
 
 
+/* End Of Statistics Section */
 
 
 
@@ -440,6 +465,209 @@ Testing of New Index.html
     color: #ffeba7;
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
   }
+
+  /*Card Section*/
+  /*index card Section*/
+
+.outer_container{
+  position: relative;
+  width: 80%;
+}
+
+.outer_container .card{
+  position: relative;
+  width: 320px;
+  height: 450px;
+  background: #303C6C;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.outer_container .card:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #F4976C;
+  clip-path: circle(150px at 80% 20%);
+  transition: 0.5s ease-in-out;
+}
+
+.outer_container .card:hover:before{
+  clip-path: circle(300px at 80% -20%);
+}
+
+#pills-home-tab{
+  /*This will erase the pill default set background by bootstrap*/
+  background-color: transparent;
+  color: #303C6C;
+}
+
+#indextab:hover{
+  background-color: #303C6C;
+  /* border-radius: 5px */
+}
+
+#pills-home-tab:active{
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#nav-pills {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#pills-home-tab{
+  color: rgb(48,60,108);
+  font-family: "fredoka";
+}
+
+#pills-home-tab:hover {
+  color: white;
+}
+
+.nav-item:hover{
+  background-color: #303C6C;
+  color: white;
+  border-radius: 15px;
+}
+
+.nav-pills .nav-link.active { 
+  text-decoration: underline rgb(48,60,108);
+  text-decoration: none;
+}
+
+/* Need to find better pictures without background*/
+.outer_container .card:after{
+  content: 'RoofBlanket';
+  position: absolute;
+  top: 10%;
+  left: 16%;
+  font-size: 2em;
+  font-weight: 800;
+  font-style: italic;
+  color: #fff;
+}
+
+.outer_container .card .imgBx{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10000;
+  width: 100%;
+  height: 220px;
+  transition: 0.5s;
+}
+
+.outer_container .card:hover .imgBx{
+  top: 0%;
+  transform: translateY(0%);
+    
+}
+
+.outer_container .card .imgBx img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 270px;
+}
+
+.outer_container .card .contentBx{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  transition: 1s;
+  z-index: 10;
+}
+
+.outer_container .card:hover .contentBx{
+  height: 210px;
+}
+
+.outer_container .card .contentBx h2{
+  font-family: "Fredoka", sans-serif;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #FBE8A6;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.outer_container .card .contentBx .size, .container .card .contentBx .color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  transition: 0.5s;opacity: 0;
+  visibility: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.outer_container .card:hover .contentBx .size{
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s;
+}
+
+.outer_container .card .contentBx .size h3{
+  color: #fff;
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.outer_container .card .contentBx .size span{
+  font-family: "Raleway", sans-serif;
+  padding: 10px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 14px;
+  display: inline-block;
+  color: white;
+  background: #303C6C;
+  transition: 0.5s;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.outer_container .card .contentBx .size span:hover{
+  background: white;
+  color: #303C6C;
+}
+
+
+.outer_container .card .contentBx a{
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #ffeba7;
+  border-radius: 4px;
+  margin-top: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #303C6C;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.5s;
+}
+
+.outer_container .card:hover .contentBx a{
+  opacity: 1;
+  transform: translateY(0px);
+  transition-delay: 0.75s;
+}
   
   /* Footer Section */
   footer {
