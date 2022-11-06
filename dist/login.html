@@ -29,136 +29,136 @@
 
 </head>
 
-<body id="loginpage">
-  
+<body>
   <!-- Login and Sign Up Portion -->
+  <div id="loginpage">
+    <div class="container">
 
-  <div class="container">
-
-    <!-- Container that wraps both signup and login form -->
-    <div class="row full-height justify-content-center">
-      <div class="col-12 text-center align-self-center py-5">
-        <div class="login-section pb-5 pt-5 pt-sm-2 text-center">
-
-          <!-- Headers for switch Tab -->
-          <h6 class="login-headers mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
-          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-          <label for="reg-log"></label>
-
-          <!-- Reset Password Pop Up Box (Hidden by Default) -->
-          <div class='mx-auto' id='reset'>
-            <h4 class="my-2">Reset Password</h4>
-            <p class="my-3">If you forgot your password, you can reset it here</p>
-            <div class="form-group">
-              <!-- Username Portion -->
-              <input type="email" name="Email" class="form-style" placeholder="Your Registered Email" id="Email" autocomplete="off">
-              <i class="login-icon fa-solid fa-envelope"></i>
-            </div>	
-            <button class="btn-reset" type="submit" name="create">Reset</button>
-            <button class="btn-reset" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
-          </div>
-
-          <!-- Login SubContainer -->
-          <div class="card-3d-wrap mx-auto" id="main2">
-            <div class="card-3d-wrapper">
-              <!-- Front Card Portion Login -->
-              <div class="card-front">
-
-                <div class="center-wrap">
-                  <!-- Form Section Content-->
-                  <div class="section text-center">
-                    <!-- Login Header-->
-                    <h4 class="mb-4 pb-3">Log In</h4>
-                    
-                    <div class="form-group">
-                      <!-- Username Portion -->
-                      <input type="email" name="Username" class="form-style" placeholder="Username" id="Username" autocomplete="off" v-model="username">
-                      <i class="login-icon fa-solid fa-user"></i>
-                    </div>	
-                    
-                    
-                    <!-- Password Portion -->
-                    <div class="form-group mt-2">
-                      <input type="password" name="logpass" class="form-style" placeholder="Password" id="Password" autocomplete="off" v-model="password">
-                      <i class="login-icon fa-solid fa-lock"></i>
+      <!-- Container that wraps both signup and login form -->
+      <div class="row full-height justify-content-center">
+        <div class="col-12 text-center align-self-center py-5">
+          <div class="login-section pb-5 pt-5 pt-sm-2 text-center">
+  
+            <!-- Headers for switch Tab -->
+            <h6 class="login-headers mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+            <label for="reg-log"></label>
+  
+            <!-- Reset Password Pop Up Box (Hidden by Default) -->
+            <div class='mx-auto' id='reset'>
+              <h4 class="my-2">Reset Password</h4>
+              <p class="my-3">If you forgot your password, you can reset it here</p>
+              <div class="form-group">
+                <!-- Username Portion -->
+                <input type="email" name="Email" class="form-style" placeholder="Your Registered Email" id="Email" autocomplete="off">
+                <i class="login-icon fa-solid fa-envelope"></i>
+              </div>	
+              <button class="btn-reset" type="submit" name="create">Reset</button>
+              <button class="btn-reset" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
+            </div>
+  
+            <!-- Login SubContainer -->
+            <div class="card-3d-wrap mx-auto" id="main2">
+              <div class="card-3d-wrapper">
+                <!-- Front Card Portion Login -->
+                <div class="card-front">
+  
+                  <div class="center-wrap">
+                    <!-- Form Section Content-->
+                    <div class="section text-center">
+                      <!-- Login Header-->
+                      <h4 class="mb-4 pb-3">Log In</h4>
+                      
+                      <div class="form-group">
+                        <!-- Username Portion -->
+                        <input type="email" name="Username" class="form-style" placeholder="Username" id="Username" autocomplete="off" v-model="username">
+                        <i class="login-icon fa-solid fa-user"></i>
+                      </div>	
+                      
+                      
+                      <!-- Password Portion -->
+                      <div class="form-group mt-2">
+                        <input type="password" name="logpass" class="form-style" placeholder="Password" id="Password" autocomplete="off" v-model="password">
+                        <i class="login-icon fa-solid fa-lock"></i>
+                      </div>
+                        <p class="btn-loginpage mt-4" v-on:click="login()">Login</p>
+  
+                        <p class="mb-0 mt-4 text-center"><a href="#" class="link" onclick="openReset()">Forgot your password?</a></p>
+                        <br>
+                        <h4 class="text-danger" v-if="error_msg != ''"> 
+                          {{error_msg}}
+                        </h4>
+                        <h4 class="text-success" v-if="success_msg != ''">
+                          {{success_msg}}
+                        </h4>
                     </div>
-                      <p class="btn-loginpage mt-4" v-on:click="login()">Login</p>
-
-                      <p class="mb-0 mt-4 text-center"><a href="#" class="link" onclick="openReset()">Forgot your password?</a></p>
-                      <br>
-                      <h4 class="text-danger" v-if="error_msg != ''"> 
+  
+                  </div>
+                </div>
+  
+                <!-- Card Back Portion Sign Up-->
+                <div class="card-back">
+                  <div class="center-wrap">
+                    <div class="section text-center">
+                      <!-- Sign Up Header -->
+                      <h4 class="mb-4 pb-3">Sign Up</h4>
+  
+                      <!-- Field Input 1 Username -->
+                      <div class="form-group">
+                        <input type="text" name="newName" class="form-style" placeholder="Your Full Name" id="newName" autocomplete="off" v-model="new_name">
+                        <i class="login-icon fa-solid fa-user"></i>
+                      </div>
+                      
+                      <!-- Field Input 2 Username -->
+                      <div class="form-group mt-2">
+                        <input type="text" name="newUsername" class="form-style" placeholder="Your Username" id="newUsername" autocomplete="off" v-model="new_username">
+                        <i class="login-icon fa-solid fa-user"></i>
+                      </div>
+  
+                      <!-- Field Input 3 Email -->
+                      <div class="form-group mt-2">
+                        <input type="email" name="newEmail" class="form-style" placeholder="Your Email" id="newEmail" autocomplete="off" v-model="new_email">
+                        <i class="login-icon fa-solid fa-envelope"></i>
+                      </div>	
+  
+                      <!--Field Input 4 Password -->
+                      <div class="form-group mt-2">
+                        <input type="password" name="newPassword" class="form-style" placeholder="Your Password" id="newPassword" autocomplete="off" v-model="new_password" >
+                        <i class="login-icon fa-solid fa-lock"></i>
+                      </div>
+  
+                      <!--Field Input 5 Confirm Password -->
+                      <div class="form-group mt-2">
+                        <input type="password" name="newConfirmPassword" class="form-style" placeholder="Confirm Password" id="newConfirmPassword" autocomplete="off" v-model="new_confirm_password">
+                        <i class="login-icon fa-solid fa-lock"></i>
+                      </div>
+  
+                      <!-- Submit Btn -->
+                      <a href="#" class="btn-loginpage mt-4"  v-on:click="register_user()">submit</a>
+                      <!-- End Of Submit Button -->
+                      <br><br>
+  
+                      <h4 class="text-danger"> 
                         {{error_msg}}
                       </h4>
-                      <h4 class="text-success" v-if="success_msg != ''">
-                        {{success_msg}}
-                      </h4>
+  
+                    </div>
+  
                   </div>
-
+  
                 </div>
+  
               </div>
-
-              <!-- Card Back Portion Sign Up-->
-              <div class="card-back">
-                <div class="center-wrap">
-                  <div class="section text-center">
-                    <!-- Sign Up Header -->
-                    <h4 class="mb-4 pb-3">Sign Up</h4>
-
-                    <!-- Field Input 1 Username -->
-                    <div class="form-group">
-                      <input type="text" name="newName" class="form-style" placeholder="Your Full Name" id="newName" autocomplete="off" v-model="new_name">
-                      <i class="login-icon fa-solid fa-user"></i>
-                    </div>
-                    
-                    <!-- Field Input 2 Username -->
-                    <div class="form-group mt-2">
-                      <input type="text" name="newUsername" class="form-style" placeholder="Your Username" id="newUsername" autocomplete="off" v-model="new_username">
-                      <i class="login-icon fa-solid fa-user"></i>
-                    </div>
-
-                    <!-- Field Input 3 Email -->
-                    <div class="form-group mt-2">
-                      <input type="email" name="newEmail" class="form-style" placeholder="Your Email" id="newEmail" autocomplete="off" v-model="new_email">
-                      <i class="login-icon fa-solid fa-envelope"></i>
-                    </div>	
-
-                    <!--Field Input 4 Password -->
-                    <div class="form-group mt-2">
-                      <input type="password" name="newPassword" class="form-style" placeholder="Your Password" id="newPassword" autocomplete="off" v-model="new_password" >
-                      <i class="login-icon fa-solid fa-lock"></i>
-                    </div>
-
-                    <!--Field Input 5 Confirm Password -->
-                    <div class="form-group mt-2">
-                      <input type="password" name="newConfirmPassword" class="form-style" placeholder="Confirm Password" id="newConfirmPassword" autocomplete="off" v-model="new_confirm_password">
-                      <i class="login-icon fa-solid fa-lock"></i>
-                    </div>
-
-                    <!-- Submit Btn -->
-                    <a href="#" class="btn-loginpage mt-4"  v-on:click="register_user()">submit</a>
-                    <!-- End Of Submit Button -->
-                    <br><br>
-
-                    <h4 class="text-danger"> 
-                      {{error_msg}}
-                    </h4>
-
-                  </div>
-
-                </div>
-
-              </div>
-
+              
             </div>
-            
+                <!-- End Of Subcontainer -->
           </div>
-              <!-- End Of Subcontainer -->
+              <!-- End Of Col -->
         </div>
-            <!-- End Of Col -->
+            <!--End OF Row -->
       </div>
-          <!--End OF Row -->
+      <!--End Of Container -->
     </div>
-    <!--End Of Container -->
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
