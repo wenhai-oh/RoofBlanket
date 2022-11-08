@@ -4,9 +4,9 @@ class Database {
 
     // specify your own database credentials
     private $host = "localhost";
-    private $db_name = "roofBlanket";
-    private $username = "root";
-    private $password = "root"; // MAMP "root", WAMP empty string
+    private $db_name = "id19698329_roofblanketdb";
+    private $username = "id19698329_admin";
+    private $password = ">4pP)KjQ\?i6jYET"; // MAMP "root", WAMP empty string
     private $port = 3306; // Check in PHPMyAdmin for port number
     public $conn;
 
