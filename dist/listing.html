@@ -65,16 +65,16 @@
         </div>
   
         <!-- Add Image  -->
-        <div class="mb-2">
-          <label for="upload" class="form-label">Upload Image</label><br>
+        <!-- <div class="mb-2">
+          <label for="upload" class="form-label">Upload Image</label><br> -->
           <!-- For Uploading Image -->
-          <input id="upload" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg" style="color: #000;">
-          <br>
+          <!-- <input id="upload" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg" style="color: #000;">
+          <br> -->
           <!-- Display Image Uploaded -->
-          <div class="image-wrapper col-md-12 col-sm-2">
+          <!-- <div class="image-wrapper col-md-12 col-sm-2">
             <output id="result">
           </div>
-        </div>
+        </div> -->
   
         <div class="gap-2 d-flex justify-content-md-center mb-3 text-center">
           <button class="btn btn-releasepop mb-3" type="submit" name="submit">Update</button>
@@ -295,27 +295,27 @@
       },
 
       mounted() {
-        document.querySelector("#upload").addEventListener("change", (e) => {
-          // console.log("upload ran")
-          if (window.File && window.FileReader && window.FileList && window.Blob) {
-            const files = e.target.files;
-            const output = document.querySelector("#result");
-            output.innerHTML = "";
-            for (let i = 0; i < files.length; i++) {
-              if (!files[i].type.match("image")) continue;
-              const picReader = new FileReader();
-              picReader.addEventListener("load", function (event) {
-                const picFile = event.target;
-                const div = document.createElement("div");
-                div.innerHTML = `<img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>`;
-                output.appendChild(div);
-              });
-              picReader.readAsDataURL(files[i]);
-            }
-          } else {
-            alert("Your browser does not support File API");
-          }
-        });
+        // document.querySelector("#upload").addEventListener("change", (e) => {
+        //   // console.log("upload ran")
+        //   if (window.File && window.FileReader && window.FileList && window.Blob) {
+        //     const files = e.target.files;
+        //     const output = document.querySelector("#result");
+        //     output.innerHTML = "";
+        //     for (let i = 0; i < files.length; i++) {
+        //       if (!files[i].type.match("image")) continue;
+        //       const picReader = new FileReader();
+        //       picReader.addEventListener("load", function (event) {
+        //         const picFile = event.target;
+        //         const div = document.createElement("div");
+        //         div.innerHTML = `<img class="thumbnail mb-3" src="${picFile.result}" title="${picFile.name}"/>`;
+        //         output.appendChild(div);
+        //       });
+        //       picReader.readAsDataURL(files[i]);
+        //     }
+        //   } else {
+        //     alert("Your browser does not support File API");
+        //   }
+        // });
 
         // ****************************************************
         // Start of Map Script
