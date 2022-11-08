@@ -1,449 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoofBlanket</title>
 
-    <!-- Title For Current Page -->
-    <title>Home Page</title>
+      <!-- BootStrap Cdn -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <!-- BOOTSTRAP CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- Main StyleSheet -->
+  <link rel="stylesheet" href="new_styles.css">
 
-    <!-- Link To CSS Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+  <!-- This Link connects to freeawesome icons -->
+  <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
 
-    <!-- This Link connects to freeawesome icons -->
-    <script src="https://kit.fontawesome.com/01f542bdd3.js" crossorigin="anonymous"></script>
+  <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
 
+  <!-- Vue.js Version 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <!--This section allows to get font from GOOGLE Fonts - Namely Fredoka for headers and Raleway for paragraph-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Raleway&display=swap" rel="stylesheet">
-
-    <!-- Vue CDN -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  </head>
-
-  <body id="index" onload="equalize()">
-
-    <!-- Plus button -->
-    <div class="floating-parent">
-      <div class="right-button">
-        
-      </div>
-    </div>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <div id="navbardiv" class="sticky-top">
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
 
-      <navbar-all :userid="user_id" :username="username" v-on:log_out="logout"></navbar-all>
+  <div id="navbardiv" class="sticky-top">
 
-    </div>
-    
-    <div class="container" id="hero_msg">
-      <p>
-        Helping others starts with you..
-      </p>
-    </div>
+    <navbar-all :userid="user_id" :username="username" v-on:log_out="logout"></navbar-all>
 
-    <!-- Start Of Body Content-->
-    <div class="body-container">
+  </div>
 
-    <!-- CAROUSEL -->
-    <div class="container outer_container" id="carousel_container">
-      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <!-- Start of body Content -->
+  <div class="banner">
+    <div class="content content-banner">
+        <div class="banner_wr">
+            <!-- Banner Left Portion -->
+            <div class="banner_left">
+                <!-- Short Description -->
+                <p class="over_title">An organization that here to help</p>
+                <h1>Say No to Homelessness , <br> Join Us and Make A Difference</h1>
+                <!--CTA Portion-->
+                <div class="cta_wr">
+                    <a href="#card_list_content" class="cta w-button">
+                        <span>View List</span>
+                    </a>
 
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
+                    <a href="#our_statistics" class="cta w-button">
+                        <span>See Our Statistics</span>
+                    </a>
+                </div>
+            </div>
+            <p class="p-banner">
+                According to Ng, K.H., & Sekhon Atac, J.S. (2022) <em>Seeking shelter: Homeless during the COVID-19 Pandemic</em> - As of 2021, there have been a recorded of 1036 homeless people. More homeless people were found in larger, older and poorer neighborhoods. Exits from homelessness depend on accessible and adequate housing opinions. The first step in intervention is identifying problems early and offering help. You can be the one today, to offer a helping hand.
+            </p>
         </div>
+    </div>
+  </div>
 
-        <div class="carousel-inner">
-          <!-- <div class="carousel-item carousel-item-index active">
-            <div class="d-flex">
-              <img src="./Images/1.png" class="w-100">
-            </div>    
-          </div>
-          <div class="carousel-item carousel-item-index">
-            <div class="d-flex">
-              <img src="./Images/2.png" class="w-100">
-            </div> 
-          </div> -->
-          <div class="carousel-item carousel-item-index">
-            <div class="d-flex">
-              <img src="./Images/3.png" class="w-100">
-            </div> 
-          </div>
-          <div class="carousel-item carousel-item-index active" style="border: 1px solid black;">
-            
-            <!-- Statistics -->
-            <div class="row statistics" style="border: 1px solid red;">
-                <div class="col">
-                  <canvas id="grantedShelter" class="w-100"></canvas>
+  <div class="video-section">
+    <!-- Insert Video Here -->
+    <img src="../dist/Images/end-homelessness-homeless.gif" alt="">
+  </div>
+
+  <div class="what_we_do">
+    <div class="content content_what">
+        <h5>Who We Help</h5>
+        <div class="box_wr">
+            <div class="box_inner">
+                <div class="box">
+                    <div class="box_top">
+                        <img src="./Images/icon_2_design.svg" width="94" alt="" class="box_icon">
+                        <h4>LongTerm<br> Homeless People<span>.</span></h4>
+                    </div>
+                    <p>Found while rough sleeping during pandemic, some self-referrals.</p>
                 </div>
-          
-                <div class="col">
-                  <canvas id="receivedEmployment" class="w-100"></canvas>
+                <div class="box_underlay"></div>
+                <div class="box_overlay">
+                    <h4>LongTerm<br> Homeless People<span>.</span></h4>
+                    <ul>
+                        <li>More men than women.</li>
+                        <li>From 30s to 70s.</li>
+                        <li>Almost all divorced, separated or never married, many had lost contact entirely.</li>
+                        <li>Low-wage and insecure jobs, extreme poverty</li>
+                        <li>From a few months to many years, pre-dates pandemic</li>
+                    </ul>
                 </div>
+            </div>
+            <div class="box_inner">
+                <div class="box">
+                    <div class="box_top">
+                        <img src="./Images/icon_2_design.svg" width="94" alt="" class="box_icon">
+                        <h4>ShortTerm<br> Homeless People<span>.</span></h4>
+                    </div>
+                    <p>Self-referrals when pandemic disrupted housing arragements.</p>
+                </div>
+                <div class="box_underlay"></div>
+                <div class="box_overlay">
+                    <h4>ShortTerm<br> Homeless People<span>.</span></h4>
+                    <ul>
+                        <li>Mix of men and women.</li>
+                        <li>From 30s to 70s.</li>
+                        <li>Almost all divorced, separated or never married, many still connected.</li>
+                        <li>Low wage and insecure jobs, some with better wages.</li>
+                        <li>No more than a few days when displaced during the pandemic time.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box_inner">
+                <div class="box">
+                    <div class="box_top">
+                        <img src="./Images/icon_2_design.svg" width="93" alt="" class="box_icon">
+                        <h4>Transnational<br> Homeless People<span>.</span></h4>
+                    </div>
+                    <p>Most were stopped at immigration checkpoint and directed to shelter after border closures.</p>
+                </div>
+                <div class="box_underlay"></div>
+                <div class="box_overlay">
+                    <h4>Transnational<br> Homeless People<span>.</span></h4>
+                    <ul>
+                        <li>Almost all men.</li>
+                        <li>Mostly in their 50s.</li>
+                        <li>Long-term drift and overseas travel, still connected to family.</li>
+                        <li>Regular border crossings for low-wage and insecure jobs.</li>
+                        <li>Wide range of experiences, during trips to SG.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="our_statistics">
+    <div class="container stats_container">
+      <!-- Statistics -->
+      <div class="row statistics">
+        <div class="col">
+          <canvas id="grantedShelter" class="w-100"></canvas>
+        </div>
   
-                <div class="col">
-                  <canvas id="openCases" class="w-100"></canvas>
-                </div>
-            </div>
-            <!-- End of Statistics -->
-          </div>
+        <div class="col">
+          <canvas id="receivedEmployment" class="w-100"></canvas>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev" style="filter: invert(100%)">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next" style="filter: invert(100%)">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+
+        <div class="col">
+          <canvas id="openCases" class="w-100"></canvas>
+        </div>
     </div>
-    
-    <!-- TABS CONTAINER -->
-    <div class="container mb-5 outer_container">
-      <div class="row">
-        <div class="col indexcoltab">
-          <!--Pills Nav-->
-          <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+    <!-- End of Statistics -->
+    </div>
+  </div>
 
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active indextab" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" name="index_tab" value="shelter">Seeking Shelter</button>
-            </li>
+  <!-- TABS CONTAINER -->
+  <div class="container my-5 outer_container">
+    <div class="row">
+      <div class="col indexcoltab">
+        <!--Pills Nav-->
+        <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
 
-            <li class="nav-item" role="presentation">
-              <button class="nav-link indextab" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" name="index_tab" value="employment" >Seeking Employment</button>
-            </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active indextab" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" name="index_tab" value="shelter">Seeking Shelter</button>
+          </li>
 
-          </ul>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link indextab" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" name="index_tab" value="employment" >Seeking Employment</button>
+          </li>
+
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- Listing Section -->
+  <!-- Control Of Content Change of Pills -->
+  <div class="container outer_container" id="card_list_content">
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+        <!--Start of a New Row for cards-->
+        <div class="row">
+          <!-- Start of a card -->
+          <!--Start of a Col 1-->
+          <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
+              </div>
+              <div class="contentBx">
+                <h2>Oh Wen Hai</h2>
+                <div class="size">
+                  <h3>Location:</h3>
+                  <span>SMU</span>
+                </div>
+                <a href="#">More Info</a>
+              </div>
+            </div>
+          </div>
+          <!-- End of Col 1-->
+  
+          <!--Start of a Col 2-->
+          <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
+              </div>
+              <div class="contentBx">
+                <h2>Oh Wen Hai</h2>
+                <div class="size">
+                  <h3>Location:</h3>
+                  <span>SMU</span>
+                </div>
+                <a href="#">More Info</a>
+              </div>
+            </div>
+          </div>
+          <!-- End of Col 2-->
+  
+          <!--Start of a Col 3-->
+          <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
+              </div>
+              <div class="contentBx">
+                <h2>Oh Wen Hai</h2>
+                <div class="size">
+                  <h3>Location:</h3>
+                  <span>SMU</span>
+                </div>
+                <a href="#">More Info</a>
+              </div>
+            </div>
+          </div>
+          <!-- End of Col 3-->
         </div>
+        <!-- End of Row-->
         
       </div>
-    </div>
-
-    <!-- Control Of Content Change of Pills -->
-    <div class="container outer_container">
-      <div class="tab-content" id="pills-tabContent">
-
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-          <!--Start of a New Row for cards-->
-          <div class="row mt-3 mb-3">
-            <!-- Start of a card -->
-            <!--Start of a Col 1-->
-            <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
-              <div class="card">
-                <div class="imgBx">
-                  <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
+  
+      <!-- CARD CONTENTS -->
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <!--Start of a New Row-->
+        <div class="row mt-3">
+          <!--Start of a New Col-->
+          <!--Start of a Col 1-->
+          <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
+              </div>
+              <div class="contentBx">
+                <h2>Jack Chang</h2>
+                <div class="size">
+                  <h3>Location:</h3>
+                  <span>SMU</span>
                 </div>
-                <div class="contentBx">
-                  <h2>Oh Wen Hai</h2>
-                  <div class="size">
-                    <h3>Location:</h3>
-                    <span>SMU</span>
-                  </div>
-                  <a href="#">More Info</a>
-                </div>
+                <a href="#">More Info</a>
               </div>
             </div>
-            <!-- End of Col 1-->
-    
-            <!--Start of a Col 2-->
-            <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
-              <div class="card">
-                <div class="imgBx">
-                  <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
-                </div>
-                <div class="contentBx">
-                  <h2>Oh Wen Hai</h2>
-                  <div class="size">
-                    <h3>Location:</h3>
-                    <span>SMU</span>
-                  </div>
-                  <a href="#">More Info</a>
-                </div>
-              </div>
-            </div>
-            <!-- End of Col 2-->
-    
-            <!--Start of a Col 3-->
-            <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
-              <div class="card">
-                <div class="imgBx">
-                  <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
-                </div>
-                <div class="contentBx">
-                  <h2>Oh Wen Hai</h2>
-                  <div class="size">
-                    <h3>Location:</h3>
-                    <span>SMU</span>
-                  </div>
-                  <a href="#">More Info</a>
-                </div>
-              </div>
-            </div>
-            <!-- End of Col 3-->
           </div>
-          <!-- End of Row-->
-          
-        </div>
-    
-        <!-- CARD CONTENTS -->
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-          <!--Start of a New Row-->
-          <div class="row mt-3">
-            <!--Start of a New Col-->
-            <!--Start of a Col 1-->
-            <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
-              <div class="card">
-                <div class="imgBx">
-                  <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
+          <!-- End of Col 1-->
+  
+          <!--Start of a Col 2-->
+          <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
+              </div>
+              <div class="contentBx">
+                <h2>Oh Wen Hai</h2>
+                <div class="size">
+                  <h3>Location:</h3>
+                  <span>SMU</span>
                 </div>
-                <div class="contentBx">
-                  <h2>Oh Wen Hai</h2>
-                  <div class="size">
-                    <h3>Location:</h3>
-                    <span>SMU</span>
-                  </div>
-                  <a href="#">More Info</a>
-                </div>
+                <a href="#">More Info</a>
               </div>
             </div>
-            <!-- End of Col 1-->
-    
-            <!--Start of a Col 2-->
-            <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
-              <div class="card">
-                <div class="imgBx">
-                  <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
-                </div>
-                <div class="contentBx">
-                  <h2>Oh Wen Hai</h2>
-                  <div class="size">
-                    <h3>Location:</h3>
-                    <span>SMU</span>
-                  </div>
-                  <a href="#">More Info</a>
-                </div>
-              </div>
-            </div>
-            <!-- End of Col 2-->
-    
-            <!--Start of a Col 3-->
-            <div class="col-12 col-md-6 col-xl-4 d-flex align-items-stretch mb-3">
-              <div class="card">
-                <div class="imgBx">
-                  <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
-                </div>
-                <div class="contentBx">
-                  <h2>Oh Wen Hai</h2>
-                  <div class="size">
-                    <h3>Location:</h3>
-                    <span>SMU</span>
-                  </div>
-                  <a href="#">More Info</a>
-                </div>
-              </div>
-            </div>
-            <!-- End of Col 3-->
-
           </div>
-          <!-- End of Row-->
+          <!-- End of Col 2-->
+  
+          <!--Start of a Col 3-->
+          <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
+              </div>
+              <div class="contentBx">
+                <h2>Oh Wen Hai</h2>
+                <div class="size">
+                  <h3>Location:</h3>
+                  <span>SMU</span>
+                </div>
+                <a href="#">More Info</a>
+              </div>
+            </div>
+          </div>
+          <!-- End of Col 3-->
+
         </div>
-        
+        <!-- End of Row-->
       </div>
-
+      
     </div>
 
-    <div id="footerdiv">
+  </div>
+  <!-- End of Listing Section -->
 
-      <footer-all></footer-all>
+  <div id="footerdiv">
 
-    </div>
+    <footer-all></footer-all>
 
-    <!-- Refer to my own external JS -->
-    <script src="common.js"></script>
-    
+  </div>
 
-    <!-- chart js script -->
-    <script>
-      // centerTextDoughnut plugin block
-      const centerTextDoughnut = {
-        id: 'centerTextDoughnut',
-        afterDatasetsDraw(chart, args, pluginOptions) {
-          const {ctx} = chart
-          ctx.textAlign='center'
-          ctx.font= 'bold 100% Fredoka'
-          ctx.textBaseline = 'middle'
-          const text = 10
-          const textWidth = ctx.measureText(text).width
-          const x = chart.getDatasetMeta(0).data[0].x
-          const y = chart.getDatasetMeta(0).data[0].y
-          ctx.fillText(text,x,y)
-        }
+  <!-- Refer to my own external JS -->
+  <script src="common.js"></script>
+
+
+  <!-- chart js script -->
+  <script>
+    // centerTextDoughnut plugin block
+    const centerTextDoughnut = {
+      id: 'centerTextDoughnut',
+      afterDatasetsDraw(chart, args, pluginOptions) {
+        const {ctx} = chart
+        ctx.textAlign='center'
+        ctx.font= 'bold 100% Fredoka'
+        ctx.textBaseline = 'middle'
+        const text = 10
+        const textWidth = ctx.measureText(text).width
+        const x = chart.getDatasetMeta(0).data[0].x
+        const y = chart.getDatasetMeta(0).data[0].y
+        ctx.fillText(text,x,y)
       }
-
-
-      // doughnut 1
-      const labels = [
-        'Granted Shelter',
-        'Left unemployed'
-      ];
-    
-      const data = {
-        labels:labels,
-
-        datasets: [{
-          label: 'My First dataset',
-          backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
-          borderColor: 'rgb(255, 255, 255)',
-          data: [10, 20],
-        }]
-      };
-    
-      const config = {
-        type: 'doughnut',
-        data: data,
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: "Granted Shelter",
-              position: 'bottom',
-              color: 'rgb(48,60,108)',
-            },
-            legend: {
-              display: false
-            }
-          },
-          responsive: true
-        },
-        plugins: [centerTextDoughnut]
-      };
-
-      const myChart = new Chart(
-        document.getElementById('grantedShelter'),
-        config
-      )
-      // doughnut 2
-      const labels2 = [
-        'Received Employment',
-        'Left unemployed'
-      ]
-
-      const data2 = {
-        labels: labels2,
-        datasets: [{
-          label: 'My second dataset',
-          backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
-          borderColor: 'rgb(255, 255, 255)',
-          data: [30, 20],
-        }]
-      }
-
-      const config2 = {
-        type: 'doughnut',
-        data: data2,
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: "Received Employment",
-              position: 'bottom',
-              color: 'rgb(48,60,108)',
-            },
-            legend: {
-              display: false
-            }
-          },
-          responsive: true
-        },
-        plugins: [centerTextDoughnut]
-      };
-
-      const myChart2 = new Chart(
-        document.getElementById('receivedEmployment'),
-        config2
-      )
-
-        // doughnut 3
-      const labels3 = [
-        'Open Cases',
-        'Left unemployed'
-      ]
-
-      const data3 = {
-        labels: labels3,
-        datasets: [{
-          label: 'My third dataset',
-          backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
-          borderColor: 'rgb(255, 255, 255)',
-          data: [40, 30 ],
-        }]
-      };
-    
-      const config3 = {
-        type: 'doughnut',
-        data: data3,
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: "Open Cases",
-              position: 'bottom',
-              color: 'rgb(48,60,108)',
-            },
-            legend: {
-              display: false
-            }
-          },
-          responsive: true
-        },
-        plugins: [centerTextDoughnut]
-      };
-
-      const myChart3 = new Chart(
-        document.getElementById('openCases'),
-        config3
-      )
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-    <!-- Script to equalise the height of carousel-->
-    <script>
-      $maxDesc = 0;
-      function equalize(){
-          $('.carousel-item-index').each(function(i){
-              if ($(this).height() > $maxDesc) { $maxDesc = $(this).height();}
-          });
-
-          $('.carousel-item-index').each(function(i){$(this).height($maxDesc);});
-      }
-    </script>
-    <!-- End of equaliser function -->
-  </body>
-
-  <style>
-    .carousel-item-index {
-      width: 100%;
-      height: auto;
     }
-  </style>
 
+
+    // doughnut 1
+    const labels = [
+      'Granted Shelter',
+      'Left unemployed'
+    ];
+  
+    const data = {
+      labels:labels,
+
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
+        borderColor: 'rgb(255, 255, 255)',
+        data: [10, 20],
+      }]
+    };
+  
+    const config = {
+      type: 'doughnut',
+      data: data,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Granted Shelter",
+            position: 'bottom',
+            color: 'rgb(48,60,108)',
+          },
+          legend: {
+            display: false
+          }
+        },
+        responsive: true
+      },
+      plugins: [centerTextDoughnut]
+    };
+
+    const myChart = new Chart(
+      document.getElementById('grantedShelter'),
+      config
+    )
+    // doughnut 2
+    const labels2 = [
+      'Received Employment',
+      'Left unemployed'
+    ]
+
+    const data2 = {
+      labels: labels2,
+      datasets: [{
+        label: 'My second dataset',
+        backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
+        borderColor: 'rgb(255, 255, 255)',
+        data: [30, 20],
+      }]
+    }
+
+    const config2 = {
+      type: 'doughnut',
+      data: data2,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Received Employment",
+            position: 'bottom',
+            color: 'rgb(48,60,108)',
+          },
+          legend: {
+            display: false
+          }
+        },
+        responsive: true
+      },
+      plugins: [centerTextDoughnut]
+    };
+
+    const myChart2 = new Chart(
+      document.getElementById('receivedEmployment'),
+      config2
+    )
+
+      // doughnut 3
+    const labels3 = [
+      'Open Cases',
+      'Left unemployed'
+    ]
+
+    const data3 = {
+      labels: labels3,
+      datasets: [{
+        label: 'My third dataset',
+        backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
+        borderColor: 'rgb(255, 255, 255)',
+        data: [40, 30 ],
+      }]
+    };
+  
+    const config3 = {
+      type: 'doughnut',
+      data: data3,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Open Cases",
+            position: 'bottom',
+            color: 'rgb(48,60,108)',
+          },
+          legend: {
+            display: false
+          }
+        },
+        responsive: true
+      },
+      plugins: [centerTextDoughnut]
+    };
+
+    const myChart3 = new Chart(
+      document.getElementById('openCases'),
+      config3
+    )
+  </script>
+
+  <!-- BootStrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+</body>
 </html>
