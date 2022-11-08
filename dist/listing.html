@@ -45,7 +45,7 @@
   </div>
 
   <!-- Start Of Body Content-->
-  <div id="root" class="body-container" style="overflow-x:hidden;">
+  <div id="root" class="body-container mt-5" style="overflow-x:hidden;">
 
     <!-- Update Last Seen Location Pop Up Box (Hidden By Default) -->
     <form action="">
@@ -55,7 +55,6 @@
         <!-- Integrate Map API here -->
         <div class='my-5' id="mapUpdate">
           <label for="map" class="form-label">Update Location</label>
-  
         </div>
   
         <!-- Custom Notes -->
@@ -63,18 +62,6 @@
           <label for="notes" class="form-label">Custom Notes</label>
           <textarea class="form-control" id="notes" rows="5" placeholder="Enter Notes here... "></textarea>
         </div>
-  
-        <!-- Add Image  -->
-        <!-- <div class="mb-2">
-          <label for="upload" class="form-label">Upload Image</label><br> -->
-          <!-- For Uploading Image -->
-          <!-- <input id="upload" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg" style="color: #000;">
-          <br> -->
-          <!-- Display Image Uploaded -->
-          <!-- <div class="image-wrapper col-md-12 col-sm-2">
-            <output id="result">
-          </div>
-        </div> -->
   
         <div class="gap-2 d-flex justify-content-md-center mb-3 text-center">
           <button class="btn btn-releasepop mb-3" type="submit" name="submit">Update</button>
@@ -85,28 +72,8 @@
 
 
     <div id="main">
-      <!-- First Section -->
-      <div class="carousel_body mb-5">
-        <div class="carouselListing">
-          <!-- Start Of Carousel Section -->
-          <input type="radio" name="position" />
-          <input type="radio" name="position" />
-          <input type="radio" name="position" checked />
-          <input type="radio" name="position" />
-          <input type="radio" name="position" />
-          <main id="carouselListing">
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <main>
-        </div>
-        <!--End Of Carousel -->
-        <!-- End Of First Section -->
-      </div>
 
-      <!-- Start of Second Section-->
+      <!-- Start of First Section-->
       <div class="container-fluid listing-container" id="main">
 
         <!-- Section for Listing Content -->
@@ -119,6 +86,9 @@
                 <i class="fa-solid fa-location-dot"></i>
                 SMU Connexion, 40 Stamford Rd, Singapore 178908
               </span>
+              <br>
+              <button type="button" class="btn btn-tasklist mt-3" @click="openUpdate()">Update Last Seen</button>
+
             </div>
 
             <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
@@ -143,10 +113,6 @@
                         <button type="button" class="btn btn-tasklist my-2">Send Message</button>
                       </div>
 
-                      <div class="row">
-                        <button type="button" class="btn btn-tasklist" @click="openUpdate()">Update Last Seen</button>
-                      </div>
-
                     </div>
                     <!-- End of Card Body -->
                   </div>
@@ -165,6 +131,7 @@
               several occasions when I reached school early to revise for my test. He use to sleep on the bench nearby the
               traffic junction. He is always seen with a white rippled t-shirt and pushing a trolley that full of junks.
             </p>
+            <p class="text-muted">Age: 20 &nbsp&nbsp&nbsp Gender: 20 &nbsp&nbsp&nbsp Special Needs: No &nbsp&nbsp&nbsp Duration Required: 10 Months</p>
           </div>
 
         </div>
@@ -237,7 +204,7 @@
 
         </div>
         <!-- End of Notes-content -->
-      </div>
+      </div> <!-- End of Section -->
       <!-- End Of Container Section-->
 
     </div>
