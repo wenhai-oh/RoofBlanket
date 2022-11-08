@@ -27,6 +27,13 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
+
+    <script>
+
+        if(sessionStorage.getItem('userid') == null ){
+            window.location.href = "login.html";
+        }
+    </script>
    
     
     <style>
@@ -171,30 +178,11 @@
         </div>
         <hr>
 
-        <!-- FOOTER -->
-        <footer>
-            <div class="waves">
-            <div class="wave" id="wave1"></div>
-            <div class="wave" id="wave2"></div>
-            <div class="wave" id="wave3"></div>
-            <div class="wave" id="wave4"></div>
-            </div>
-            <ul class="social_icon">
-            <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-            </ul>
-            <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Task List</a></li>
-            <li><a href="#">Listing</a></li>
-            <li><a href="#">Chat</a></li>
-            </ul>
-            <p>© 2022 RoofBlanket, Inc</p>
-        </footer>
-        <!-- FOOTER END -->
+    </div>
+
+    <div id="footerdiv">
+
+        <footer-all></footer-all>
 
     </div>
 
@@ -216,7 +204,8 @@
     
     <!-- Refer to my own external JS -->
     <script src="chat.js"></script>
-    <script src="navbar.js"></script>
+    <script src="common.js"></script>
+    <!-- <script src="footer.js"></script> -->
     
 
 </body>

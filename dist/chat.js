@@ -18,7 +18,8 @@ const vuemain = Vue.createApp({
     methods: {
 
         retrieve_message(){
-
+       
+            
             // console.log("userid now is " + this.current_user_id)
 
             const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -47,9 +48,49 @@ const vuemain = Vue.createApp({
             .catch(error => {
                 console.log( error.message )
             })
-
-
         },
+
+        update_messages(){
+
+            setInterval(() => {
+                
+            
+            // console.log("userid now is " + this.current_user_id)
+
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+              });
+            let other_user_id = params.id; // "some_value"
+
+            if (other_user_id != null){
+            // console.log("other userid now is " + other_user_id)
+
+
+            let api_endpoint = "http://localhost/roofBlanket_api/api/message/getusermessage.php"
+
+            let user_ids = {
+                current_user_id: this.current_user_id,
+                other_user_id: other_user_id
+            }
+
+            axios.get(api_endpoint, { 
+                params: user_ids
+            })
+            .then(response => {
+                console.log( response.data.records )
+                this.message_records = response.data.records
+                
+            })
+            .catch(error => {
+                console.log( error.message )
+            })}else{
+                console.log('update not done as no user is selected')
+            }
+
+
+        }, 5000)},
+
+    
 
         get_chat_user(){
 
@@ -60,26 +101,32 @@ const vuemain = Vue.createApp({
 
             // console.log("other userid now is " + other_user_id)
 
-            let api_endpoint = "http://localhost/roofBlanket_api/api/user/getuserinfobyid.php"
+            if (other_user_id != null){
 
-            let user_id = {
-                id: other_user_id,
+                let api_endpoint = "http://localhost/roofBlanket_api/api/user/getuserinfobyid.php"
+
+                let user_id = {
+                    id: other_user_id,
+                }
+
+                axios.get(api_endpoint, { 
+                    params: user_id
+                })
+                .then(response => {
+                    
+                    // this.message_records = response.data.records
+                    this.other_user = response.data.records[0]
+                    // console.log( "I FOUND HIM" + this.other_user.name)
+                    
+                })
+                .catch(error => {
+                    console.log( error.message )
+                })
+
+            }else{
+                console.log("No chat selected yet")
             }
-
-            axios.get(api_endpoint, { 
-                params: user_id
-            })
-            .then(response => {
-                
-                // this.message_records = response.data.records
-                this.other_user = response.data.records[0]
-                // console.log( "I FOUND HIM" + this.other_user.name)
-                
-            })
-            .catch(error => {
-                console.log( error.message )
-            })
-
+    
         },
 
         retrieve_users() {
@@ -174,7 +221,10 @@ const vuemain = Vue.createApp({
         this.retrieve_users()
         this.get_chat_user()
         this.retrieve_message()
-     }
+    },
+    mounted(){
+        this.update_messages()
+    }
 
 })
 
