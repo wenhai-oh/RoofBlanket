@@ -424,7 +424,7 @@ select option {
   color: #ffeba7;
   background-color: #303C6C;
   font-family: 'unicons';
-  content: '\eb4f';
+  /* content: '\f0c8'; */
   z-index: 20;
   top: -10px;
   left: -10px;
