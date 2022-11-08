@@ -128,7 +128,7 @@
                     <div v-on:click="view_chat(people.id)" v-for="people in people_records" class="inbox-drawer m-3">
                         <img src="./icons/colored_profile.png" height="50px" width="50px" style="float:left;" class="me-1">
                         <!-- <p class="m-0">{{people.username}}</p> -->
-                        <p class="fw-bold m-0">{{people.name}}</p>
+                        <p class="fw-bold m-0">{{people.username}}</p>
                         <p class="text-muted m-0">Click to view chat</p>
                     </div>
                 </div>
@@ -138,8 +138,8 @@
                     <div id="topHalf">
                         <!-- Samaritan Info -->
                         <div class="container-fluid">
-                            <img src="./icons/colored_profile_b.png" height="50px" width="50px" style="float:left;" class="me-1">
-                            <p class="m-0"> <b>{{other_user.name}} </b></p>
+                            <img src="icons/colored_profile_b.png" height="50px" width="50px" style="float:left;" class="me-1">
+                            <p class="m-0"> <b>{{other_user.username}} </b></p>
                             <p class="m-0">Last Seen: 8 hrs ago</p>
                         </div>
                         <hr>
