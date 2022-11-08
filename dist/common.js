@@ -6,7 +6,8 @@ const vuenavbar = Vue.createApp({
     data() {
         return {
 
-            user_id: sessionStorage.getItem('userid')
+            user_id: sessionStorage.getItem('userid'),
+            username: sessionStorage.getItem('username')
 
         }
     },
@@ -16,6 +17,7 @@ const vuenavbar = Vue.createApp({
         logout(){
 
             sessionStorage.removeItem('userid')
+            sessionStorage.removeItem('username')
             console.log("I have logged out from "+this.user_id)
             window.location.href = "login.html"
 
@@ -27,7 +29,7 @@ const vuenavbar = Vue.createApp({
 vuenavbar.component('navbar-all',
 {
 
-    props: ['userid'],
+    props: ['userid','username'],
 
     emits: ['log_out'],
 
@@ -51,7 +53,7 @@ vuenavbar.component('navbar-all',
             <ul class="navbar-nav">
                 <!--Call User's Profile Name-->
                 <li class="navbar-text mx-5">
-                Welcome!
+                Welcome {{username}}!
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="profile.html">Profile</a>
