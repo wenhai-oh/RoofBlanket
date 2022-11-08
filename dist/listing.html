@@ -7,7 +7,9 @@
   <!-- BootStrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="styles.css">
   <!-- End Of Css Stylesheet -->
@@ -31,17 +33,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- end script needed for map -->
 
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
   <!-- Vue CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
-  
-
   <div id="navbardiv" class="sticky-top">
-
     <navbar-all :userid="user_id" :username="username" v-on:log_out="logout"></navbar-all>
-
   </div>
 
   <!-- Start Of Body Content-->
@@ -51,18 +52,18 @@
     <form action="">
       <div class='update mt-5 mx-auto' id='update'>
         <h4 class="text-center mt-3" style="color: #FBE8A6;">Update Last Seen Location</h4>
-  
+
         <!-- Integrate Map API here -->
         <div class='my-5' id="mapUpdate">
           <label for="map" class="form-label">Update Location</label>
         </div>
-  
+
         <!-- Custom Notes -->
         <div class="mb-4">
           <label for="notes" class="form-label">Custom Notes</label>
           <textarea class="form-control" id="notes" rows="5" placeholder="Enter Notes here... "></textarea>
         </div>
-  
+
         <div class="gap-2 d-flex justify-content-md-center mb-3 text-center">
           <button class="btn btn-releasepop mb-3" type="submit" name="submit">Update</button>
           <button class="btn btn-releasepop mb-3" type="submit" name="cancel" @click="closeUpdate()">Cancel</button>
@@ -72,7 +73,6 @@
 
 
     <div id="main">
-
       <!-- Start of First Section-->
       <div class="container-fluid listing-container" id="main">
 
@@ -88,7 +88,6 @@
               </span>
               <br>
               <button type="button" class="btn btn-tasklist mt-3" @click="openUpdate()">Update Last Seen</button>
-
             </div>
 
             <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
@@ -99,7 +98,8 @@
                 <div class="row">
 
                   <div class="col-md-4">
-                    <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start" style="height: 100%; width: 100%;">
+                    <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start"
+                      style="height: 100%; width: 100%;">
                   </div>
 
                   <div class="col-md-8">
@@ -128,12 +128,13 @@
             <h2>Description</h2>
             <p>
               I have noticed that Mr Jeff So seems to loiter around SMU Connexion in the early hours. I have seen him on
-              several occasions when I reached school early to revise for my test. He use to sleep on the bench nearby the
+              several occasions when I reached school early to revise for my test. He use to sleep on the bench nearby
+              the
               traffic junction. He is always seen with a white rippled t-shirt and pushing a trolley that full of junks.
             </p>
-            <p class="text-muted">Age: 20 &nbsp&nbsp&nbsp Gender: 20 &nbsp&nbsp&nbsp Special Needs: No &nbsp&nbsp&nbsp Duration Required: 10 Months</p>
+            <p class="text-muted">Age: 20 &nbsp&nbsp&nbsp Gender: 20 &nbsp&nbsp&nbsp Special Needs: No &nbsp&nbsp&nbsp
+              Duration Required: 10 Months</p>
           </div>
-
         </div>
         <!-- End Section for Listing Content -->
 
@@ -161,7 +162,8 @@
             <div class="card col-lg-5 mt-2">
               <div class="card-body">
                 <h5 class="card-title">Waisoon's comment</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
                   content.</p>
               </div>
             </div>
@@ -173,7 +175,8 @@
             <div class="card col-lg-5 mt-2">
               <div class="card-body">
                 <h5 class="card-title">Wenhai's comment</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
                   content.</p>
               </div>
             </div>
@@ -184,7 +187,8 @@
             <div class="card col-lg-5 mt-2">
               <div class="card-body">
                 <h5 class="card-title">Jia Ler's comment</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
                   content.</p>
               </div>
             </div>
@@ -196,7 +200,8 @@
             <div class="card col-lg-5 mt-2">
               <div class="card-body">
                 <h5 class="card-title">Ren Kee's comment</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
                   content.</p>
               </div>
             </div>
@@ -227,8 +232,8 @@
       // Data Properties
       data() {
         return {
-          dbLocationListMain: [],
-          mapUpdateMain: {}
+          mapUpdateMain: {},
+          homeless_id: null
         }
       },
 
@@ -248,10 +253,33 @@
           update.classList.remove('show-release')
           main.classList.remove('blur')
         },
-        retrieveHomelessLocation(id) {
+        retrieveHomelessLocation() {
           // api to retrieve location list by id
-          // output list to this.dbLocationListMain
+          // output list to dbLocationList
+          let queryString = window.location.search
+          let urlParams = new URLSearchParams(queryString)
+          let id = urlParams.get('id')
+          // console.log(id)
+          let dbLocationList = Array()
 
+          let api_endpoint_url = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelesslocationbyid.php?id=" + id
+
+          axios.get(api_endpoint_url)
+            .then(response => {
+              let records = response.data.records // list of lists
+              // console.log(records)
+              for (row of records) {
+                // console.log(row)
+                let temp_location = [row.latitude, row.longitude]
+                // console.log(temp_location)
+                dbLocationList.push(temp_location)
+              }
+              console.log(dbLocationList)
+            })
+            .catch(error => {
+              // In case of any error, see what it's about
+              console.log(error.message)
+            })
         },
         updateHomelessLocationToDb(mapUpdate) {
           // projectTest folder > mysqlSend.php for reference (wenhai)
@@ -289,140 +317,164 @@
         // KEEP MAP SCRIPT AS INTERNAL JS
         // DO NOT MOVE TO EXTERNAL JS
         // ****************************************************
-        getLocation();
         // mapListing portion
-        // dummy location (1 line) - to be retrieved from this.dbLocationListMain after api is up
-        let dbLocationList = [[35.66962384382411, 139.6430907463442], [35.66976330016642, 139.64738591458215], [35.66962384382411, 139.6600996125663]]
+        let queryString = window.location.search
+        let urlParams = new URLSearchParams(queryString)
+        let id = urlParams.get('id')
+        // console.log(id)
+        this.homeless_id = id
+        let dbLocationList = Array()
 
-        let currentLocation = dbLocationList[0]
-        var mapListing = L.map('mapListing').setView(currentLocation, 13);
-        L.marker(currentLocation).addTo(mapListing)
+        let api_endpoint_url = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelesslocationbyid.php?id=" + id
 
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(mapListing);
-
-        // add markers of all known homeless person location from location list
-        for (index = 1; index < dbLocationList.length; index++) {
-          // console.log(index, dbLocationList[index])
-          L.marker(dbLocationList[index]).addTo(mapListing)
-        }
-
-        // mapUpdate portion
-        var mapUpdate = {}
-        var locationsList = []
-
-        // gets the location of the user and calls a method to add marker of user current location
-        function getLocation() {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-          }
-          else {
-            alert("Geolocation is not supported by this browser.")
-          }
-        }
-
-        /* 
-          add marker to show current location of the user
-          add all markers of known locations of the homeless person
-        */
-        function showPosition(position) {
-          let latitude = position.coords.latitude
-          let longitude = position.coords.longitude
-
-          mapUpdate = L.map('mapUpdate').setView([latitude, longitude], 13);
-          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          }).addTo(mapUpdate);
-          var marker = L.marker([latitude, longitude]).addTo(mapUpdate);
-          // change marker of user current location to red
-          marker._icon.classList.add("huechange");
-          marker.bindPopup("<p style=color:red;>You are here</p>").openPopup();
-
-          var popup = L.popup();
-
-          // Script for adding marker on map click
-          mapUpdate.on('click', onMapClick);
-
-          // add markers of all known homeless person location from location list
-          for (index = 0; index < dbLocationList.length; index++) {
-            // console.log(index, dbLocationList[index])
-            L.marker(dbLocationList[index]).addTo(mapUpdate)
-          }
-        }
-
-        function onMapClick(e) {
-          var geojsonFeature = {
-            "type": "Feature",
-            "properties": {},
-            "geometry":
-            {
-              "type": "Point",
-              "coordinates": [e.latlng.lat, e.latlng.lng]
+        axios.get(api_endpoint_url)
+          .then(response => {
+            let records = response.data.records // list of lists
+            // console.log(records)
+            for (row of records) {
+              // console.log(row)
+              let temp_location = [parseFloat(row.latitude), parseFloat(row.longitude)]
+              // console.log(temp_location)
+              dbLocationList.push(temp_location)
             }
-          }
+            // console.log(dbLocationList)
 
-          var marker;
+            // dummy location for testing
+            // let dbLocationList = [[35.66962384382411, 139.6430907463442], [35.66976330016642, 139.64738591458215], [35.66962384382411, 139.6600996125663]]
+            getLocation();
 
-          L.geoJson(geojsonFeature, {
-            pointToLayer: function (feature, latlng) {
-              marker = L.marker(e.latlng, {
-                title: "Location",
-                alt: "Location",
-                riseOnHover: true,
-                // draggable: true,
-              }).bindPopup("<input type='button' value='Remove' class='marker-delete-button'/>");
+            let currentLocation = dbLocationList[0]
+            var mapListing = L.map('mapListing').setView(currentLocation, 13);
+            L.marker(currentLocation).addTo(mapListing)
 
-              marker.on("popupopen", onPopupOpen);
-              return marker;
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 19,
+              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(mapListing);
+
+            // add markers of all known homeless person location from location list
+            for (index = 1; index < dbLocationList.length; index++) {
+              // console.log(index, dbLocationList[index])
+              L.marker(dbLocationList[index]).addTo(mapListing)
             }
-          }).addTo(mapUpdate);
 
-          // add location to list
-          let location = [e.latlng.lat, e.latlng.lng]
-          // console.log(location)
-          locationsList.push(location)
-          // console.log(locationsList)
-        }
+            // mapUpdate portion
+            var mapUpdate = {}
+            var locationsList = []
 
-        // Function to handle delete as well as other events on marker popup open
-        function onPopupOpen() {
-          var tempMarker = this;
-          // console.log(tempMarker)
-          // To remove marker on click of delete button in the popup of marker
-          $(".marker-delete-button:visible").click(function () {
-            mapUpdate.removeLayer(tempMarker);
-            // remove from location list
-            let lat = tempMarker["_latlng"].lat
-            let long = tempMarker["_latlng"].lng
-            let location = [lat, long]
-            removeLatLng(location)
-          });
-        }
-
-        // gets an array of latitude and longitude [x, y] and removes them from the location list array.
-        function removeLatLng(location) {
-          for (index in locationsList) {
-            if (locationsList[index][0] == location[0] && locationsList[index][1] == location[1]) {
-              // remove from array using index
-              if (index > -1) {
-                locationsList.splice(index, 1)
-                console.log(locationsList)
+            // gets the location of the user and calls a method to add marker of user current location
+            function getLocation() {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+              }
+              else {
+                alert("Geolocation is not supported by this browser.")
               }
             }
-          }
-        }
-        // ****************************************************
-        // End of Map Script
-        // ****************************************************
+
+            /* 
+              add marker to show current location of the user
+              add all markers of known locations of the homeless person
+            */
+            function showPosition(position) {
+              let latitude = position.coords.latitude
+              let longitude = position.coords.longitude
+
+              mapUpdate = L.map('mapUpdate').setView([latitude, longitude], 13);
+              L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+              }).addTo(mapUpdate);
+              var marker = L.marker([latitude, longitude]).addTo(mapUpdate);
+              // change marker of user current location to red
+              marker._icon.classList.add("huechange");
+              marker.bindPopup("<p style=color:red;>You are here</p>").openPopup();
+
+              var popup = L.popup();
+
+              // Script for adding marker on map click
+              mapUpdate.on('click', onMapClick);
+
+              // add markers of all known homeless person location from location list
+              for (index = 0; index < dbLocationList.length; index++) {
+                // console.log(index, dbLocationList[index])
+                L.marker(dbLocationList[index]).addTo(mapUpdate)
+              }
+            }
+
+            function onMapClick(e) {
+              var geojsonFeature = {
+                "type": "Feature",
+                "properties": {},
+                "geometry":
+                {
+                  "type": "Point",
+                  "coordinates": [e.latlng.lat, e.latlng.lng]
+                }
+              }
+
+              var marker;
+
+              L.geoJson(geojsonFeature, {
+                pointToLayer: function (feature, latlng) {
+                  marker = L.marker(e.latlng, {
+                    title: "Location",
+                    alt: "Location",
+                    riseOnHover: true,
+                    // draggable: true,
+                  }).bindPopup("<input type='button' value='Remove' class='marker-delete-button'/>");
+
+                  marker.on("popupopen", onPopupOpen);
+                  return marker;
+                }
+              }).addTo(mapUpdate);
+
+              // add location to list
+              let location = [e.latlng.lat, e.latlng.lng]
+              // console.log(location)
+              locationsList.push(location)
+              // console.log(locationsList)
+            }
+
+            // Function to handle delete as well as other events on marker popup open
+            function onPopupOpen() {
+              var tempMarker = this;
+              // console.log(tempMarker)
+              // To remove marker on click of delete button in the popup of marker
+              $(".marker-delete-button:visible").click(function () {
+                mapUpdate.removeLayer(tempMarker);
+                // remove from location list
+                let lat = tempMarker["_latlng"].lat
+                let long = tempMarker["_latlng"].lng
+                let location = [lat, long]
+                removeLatLng(location)
+              });
+            }
+
+            // gets an array of latitude and longitude [x, y] and removes them from the location list array.
+            function removeLatLng(location) {
+              for (index in locationsList) {
+                if (locationsList[index][0] == location[0] && locationsList[index][1] == location[1]) {
+                  // remove from array using index
+                  if (index > -1) {
+                    locationsList.splice(index, 1)
+                    console.log(locationsList)
+                  }
+                }
+              }
+            }
+          })
+          .catch(error => {
+            // In case of any error, see what it's about
+            console.log(error.message)
+          })
+
       }
     });
     root.mount("#root")
-
+    // ****************************************************
+    // End of Map Script
+    // ****************************************************
   </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 
 <style>
