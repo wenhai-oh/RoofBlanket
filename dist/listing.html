@@ -234,12 +234,14 @@
         return {
           mapUpdateMain: {},
           homeless_id: null,
-          note_list: Array(),
+          note_list: Array(), // list of lists [ [..], [..], [..] ]
           name: '',
           age: 0,
-          gender: '',
-          location: '',
-          description: ''
+          gender: '', // F - female, M - male
+          location: '', // string of location
+          description: '',
+          special_need_status: 0, // 0 - normal, 1 - special needs
+          duration: 1 // num of months
         }
       },
 
@@ -363,6 +365,8 @@
                   this.gender = row.gender
                   this.location = row.location
                   this.description = row.description
+                  this.special_need_status = row.special_needs
+                  this.duration = row.duration
                 }
               })
               .catch(error => {
