@@ -233,7 +233,13 @@
       data() {
         return {
           mapUpdateMain: {},
-          homeless_id: null
+          homeless_id: null,
+          note_list: Array(),
+          name: '',
+          age: 0,
+          gender: '',
+          location: '',
+          description: ''
         }
       },
 
@@ -336,7 +342,36 @@
               let temp_location = [parseFloat(row.latitude), parseFloat(row.longitude)]
               // console.log(temp_location)
               dbLocationList.push(temp_location)
+
+              // retrieve note string from db here (not functional yet, require DB script to be updated first)
+              // this.note_list.push(row.note) // TO-ADD v-for for note div html
+
+
             }
+
+            /* another axios call to retrieve homeless information */
+            let api_endpoint_url2 = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelessinfobyid.php?id=" + id
+
+            axios.get(api_endpoint_url2)
+              .then(response => {
+                let records2 = response.data.records
+                for (row of records2)
+                {
+                  // retrieve homeless info to display on html
+                  this.name = row.name
+                  this.age = row.age
+                  this.gender = row.gender
+                  this.location = row.location
+                  this.description = row.description
+                }
+              })
+              .catch(error => {
+                // In case of any error, see what it's about
+                console.log(error.message)
+              })
+            /* END of second axios call */
+
+
             // console.log(dbLocationList)
 
             // dummy location for testing
@@ -360,7 +395,7 @@
 
             // mapUpdate portion
             var mapUpdate = {}
-            var locationsList = []
+            var locationsList = [] // location list to update database; if > 1 markers, it will be List of Lists [ [..], [..], [..] ]
 
             // gets the location of the user and calls a method to add marker of user current location
             function getLocation() {
