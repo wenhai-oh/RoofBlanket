@@ -14,7 +14,7 @@ const vuemain = Vue.createApp({
 
 
             login_error_msg: "",
-            registratiin_error_msg: "",
+            registration_error_msg: "",
 
             new_firstname: "",
             new_lastname: "",
@@ -65,14 +65,13 @@ const vuemain = Vue.createApp({
                 console.log(user_id)
                 sessionStorage.setItem("userid", user_id);
                 sessionStorage.setItem("username", username)
-                this.error_msg = ""
+                this.login_error_msg = ""
                 window.location.href = "index.html"
-
                 
             })
             .catch(error => {
                 console.log( error.message )
-                this.error_msg = "Invalid Username/Password"
+                this.login_error_msg = "Invalid Username/Password"
             })
 
 
@@ -107,7 +106,7 @@ const vuemain = Vue.createApp({
                     console.log( response.data )
                     this.success_msg = "Account created successfully"
 
-                    this.error_msg = ""
+                    this.registration_error_msg = ""
                     this.success_msg = ""
                     window.location.href = "login.html"
 
@@ -115,13 +114,13 @@ const vuemain = Vue.createApp({
                 })
                 .catch(error => {
                     console.log( error.message )
-                    this.error_msg = "Unable to create account"
+                    this.registration_error_msg = "Unable to create account"
                 })
 
                 }
 
             else{
-                this.error_msg = "Invalid registration details "
+                this.registration_error_msg = "Invalid registration details "
             }
 
         }

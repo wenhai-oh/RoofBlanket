@@ -85,7 +85,7 @@
   
                         <p class="mb-0 mt-4 text-center"><a href="#" class="link" onclick="openReset()">Forgot your password?</a></p>
                         <br>
-                        <h4 class="text-danger" v-if="error_msg != ''"> 
+                        <h4 class="text-danger" v-if="login_error_msg != ''"> 
                           {{login_error_msg}}
                         </h4>
                         <h4 class="text-success" v-if="success_msg != ''">
@@ -144,7 +144,7 @@
                       <!-- End Of Submit Button -->
                       <br><br>
   
-                      <h4 class="text-danger"> 
+                      <h4 class="text-danger" v-if="registration_error_msg != ''"> 
                         {{registration_error_msg}}
                       </h4>
                       <h4 class="text-success" v-if="success_msg != ''">
