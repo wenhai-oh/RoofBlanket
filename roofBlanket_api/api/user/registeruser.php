@@ -28,8 +28,8 @@ $userDAO = new userDAO();
 
 
 // get search query
-if(  isset($_GET["name"]) && isset($_GET["username"])  && isset($_GET["email"]) && isset($_GET["password"])  ) {
-    $result = $userDAO->register_user( $_GET["name"],$_GET["username"], $_GET["email"], $_GET["password"] );
+if(  isset($_GET["firstname"]) && isset($_GET["lastname"]) && isset($_GET["username"])  && isset($_GET["email"]) && isset($_GET["password"])  ) {
+    $result = $userDAO->register_user( $_GET["firstname"], $_GET["lastname"],$_GET["username"], $_GET["email"], $_GET["password"] );
 
 
 }

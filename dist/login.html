@@ -86,7 +86,7 @@
                         <p class="mb-0 mt-4 text-center"><a href="#" class="link" onclick="openReset()">Forgot your password?</a></p>
                         <br>
                         <h4 class="text-danger" v-if="error_msg != ''"> 
-                          {{error_msg}}
+                          {{login_error_msg}}
                         </h4>
                         <h4 class="text-success" v-if="success_msg != ''">
                           {{success_msg}}
@@ -103,9 +103,15 @@
                       <!-- Sign Up Header -->
                       <h4 class="mb-4 pb-3">Sign Up</h4>
   
-                      <!-- Field Input 1 Username -->
+                      <!-- Field Input 1a First Name -->
                       <div class="form-group">
-                        <input type="text" name="newName" class="form-style" placeholder="Your Full Name" id="newName" autocomplete="off" v-model="new_name">
+                        <input type="text" name="newFirstname" class="form-style" placeholder="First Name" id="newFirstname" autocomplete="off" v-model="new_firstname">
+                        <i class="login-icon fa-solid fa-user"></i>
+                      </div>
+
+                      <!-- Field Input 1b Last Name -->
+                      <div class="form-group">
+                        <input type="text" name="newLastname" class="form-style" placeholder="Last Name" id="newLastname" autocomplete="off" v-model="new_lastname">
                         <i class="login-icon fa-solid fa-user"></i>
                       </div>
                       
@@ -139,7 +145,10 @@
                       <br><br>
   
                       <h4 class="text-danger"> 
-                        {{error_msg}}
+                        {{registration_error_msg}}
+                      </h4>
+                      <h4 class="text-success" v-if="success_msg != ''">
+                        {{success_msg}}
                       </h4>
   
                     </div>

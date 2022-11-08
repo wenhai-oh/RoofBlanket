@@ -37,7 +37,9 @@
                         "id" => $id,
                         "username" => $username,
                         "email" => $email,
-                        "name" => $name,
+                        "firstname" => $firstname,
+                        "lastname" => $lastname,
+                        "photo_url" => $photo_url,
                         "contact" => $contact,
                         "address" => $address,
                         "housing_type" => $housing_type,
@@ -93,7 +95,9 @@
                         "id" => $id,
                         "username" => $username,
                         "email" => $email,
-                        "name" => $name,
+                        "firstname" => $firstname,
+                        "lastname" => $lastname,
+                        "photo_url" => $photo_url,
                         "contact" => $contact,
                         "address" => $address,
                         "housing_type" => $housing_type,
@@ -148,7 +152,9 @@
                         "id" => $id,
                         "username" => $username,
                         "email" => $email,
-                        "name" => $name,
+                        "firstname" => $firstname,
+                        "lastname" => $lastname,
+                        "photo_url" => $photo_url,
                         "contact" => $contact,
                         "address" => $address,
                         "housing_type" => $housing_type,
@@ -212,7 +218,7 @@
             return $user;
         }
 
-        public function register_user($name,$username,$email,$password){
+        public function register_user($firstname,$lastname,$username,$email,$password){
 
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
@@ -231,12 +237,12 @@
             
             $datetime = date('Y-m-d H:i:s');
 
-            $sql = "INSERT INTO usersCollection VALUES(?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, ?)";
+            $sql = "INSERT INTO usersCollection VALUES(?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ?)";
 
         
             $stmt = $pdo->prepare($sql);
             
-            $result = $stmt->execute([$new_id, $username, $password, $email, $name, $datetime]);
+            $result = $stmt->execute([$new_id, $username, $password, $email, $firstname, $lastname, $datetime]);
 
             // $result = $stmt->execute([$new_id, $username, $password, $email, $name, contact, address,
             // housing_type, num_homeless_attached, num_homeless_helped, employer_status, $datetime]);

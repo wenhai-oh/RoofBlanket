@@ -12,9 +12,12 @@ const vuemain = Vue.createApp({
 
             logged_in_user: "",
 
-            error_msg: "",
 
-            new_name: "",
+            login_error_msg: "",
+            registratiin_error_msg: "",
+
+            new_firstname: "",
+            new_lastname: "",
             new_username: "",
             new_email: "",
             new_password: "",
@@ -57,10 +60,13 @@ const vuemain = Vue.createApp({
             .then(response => {
                 console.log( response.data )
                 user_id = response.data.records[0].id
+                username = response.data.records[0].username
+                console.log(username)
                 console.log(user_id)
                 sessionStorage.setItem("userid", user_id);
+                sessionStorage.setItem("username", username)
                 this.error_msg = ""
-                window.location.href = "index_jialer.html"
+                window.location.href = "index.html"
 
                 
             })
@@ -78,7 +84,7 @@ const vuemain = Vue.createApp({
 
             // check if all fields are filled 
 
-            if (this.new_name != '' & this.new_username != '' & this.new_email != '' & 
+            if (this.new_firstname != '' & this.new_lastname != '' & this.new_username != '' & this.new_email != '' & 
             this.new_password != '' & this.new_password == this.new_confirm_password){
 
 
@@ -86,7 +92,8 @@ const vuemain = Vue.createApp({
 
                 let new_user = {
 
-                    name: this.new_name,
+                    firstname: this.new_firstname,
+                    lastname: this.new_lastname,
                     username: this.new_username,
                     email: this.new_email,
                     password: this.new_password,
