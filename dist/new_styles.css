@@ -112,8 +112,12 @@ Testing of New Index.html
   }
 
   .p_banner {
-      font-size: 1.2em;
+      font-size: 1em;
       line-height: 1.3em;
+  }
+
+  .box_wr {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
 }
