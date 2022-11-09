@@ -68,10 +68,6 @@ Testing of New Index.html
     background-color: #303C6C;
 }
 
-.html{
-  -webkit-text-size-adjust: 100%;
-}
-
 .content.content-banner{
     padding-top: 10vh;
     padding-bottom: 10vh;
@@ -82,12 +78,6 @@ Testing of New Index.html
     max-width: 1440px;
     margin-right: auto;
     margin-left: auto;
-}
-
-.content_what h5{
-  font-family: "Fredoka", sans-serif;
-  text-transform: uppercase;
-  margin-bottom: 20px;
 }
 
 .banner_wr{
@@ -104,30 +94,204 @@ Testing of New Index.html
     width: 60%;
 }
 
-@media screen and (max-width: 1336px){
-  .over_title{
-    font-size: 0.6em;
-    letter-spacing: 1px;
+@media screen and (min-width: 1440px) {
+  h1 {
+      font-size: 4.8em;
+  }
+
+  h2 {
+      font-size: 4em;
+  }
+
+  h3 {
+      font-size: 2.6em;
+  }
+
+  h4 {
+      font-size: 2em;
+  }
+
+  .p_banner {
+      font-size: 1.2em;
+      line-height: 1.3em;
+  }
+
+}
+
+@media screen and (max-width: 1440px) {
+
+  br {
+      display: none;
+  }
+
+  .over_title {
+      margin-bottom: 25px;
+      letter-spacing: 1.5px;
+  }
+
+  .box_overlay h4 br {
+      display: none;
+  }
+
+  .box_overlay h4 {
+      margin-bottom: 20px;
+  }
+
+  .box_overlay ul li {
+      font-size: 18px;
+      line-height: 24px;
+      padding: 0 0 0 15px;
+      background-position: top 10px left;
+  }
+
+}
+
+@media screen and (max-width: 1180px) {
+
+  br {
+      display: none;
+  }
+
+  h1 {
+      font-size: 3.2em;
+  }
+
+  h2 {
+      font-size: 2.5em;
+  }
+
+  h3 {
+      font-size: 2em;
+  }
+
+  h5 {
+      margin-bottom: 40px;
+  }
+
+  .banner_wr {
+      flex-direction: column;
+      align-items: stretch;
+  }
+
+  .banner_left {
+      width: 100%;
+  }
+
+  .banner_wr .p_banner {
+      max-width: 100%;
+      padding: 0;
+  }
+
+  .container .banner_wr .p_banner {
+      padding: 0;
+  }
+
+  .box_overlay h4 {
+      font-size: 1.4em;
+  }
+
+  .box_overlay {
+      padding: 3vw;
+  }
+
+  .p_banner {
+      width: 100%;
+  }
+
+  .content.content_banner {
+      padding-bottom: 10vh;
+  }
+
+  .content.content_what {
+      padding-top: 10vh;
+      padding-bottom: 10vh;
+  }
+
+  .box_wr {
+      -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+
+  h1 {
+      font-size: 2.6em;
+  }
+
+  h2 {
+      font-size: 2em;
+  }
+
+  h3 {
+      font-size: 1.8em;
+  }
+
+  h4 {
+      font-size: 1.2em;
+  }
+
+  .box {
+      padding: 20px;
   }
 }
 
-@media screen and (max-width: 1440px){
-  .over_title{
-    font-family: "Fredoka", sans-serif;
-    color: #fff;
-    font-size: 0.7em;
-    line-height: 1.5;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-bottom: 25px;
-    letter-spacing: 1.5px;
-  }
-}
+@media screen and (max-width: 479px) {
 
-@media screen and (max-width: 1366px){
-  .banner_wr h1{
-    font-size: 2.2em;
+  h1 {
+      margin-bottom: 40px;
+      font-size: 2.2em;
   }
+
+  h2 {
+      font-size: 1.8em;
+  }
+
+  h3 {
+      font-size: 1.5em;
+  }
+
+  .nav_link {
+      font-size: 8vw;
+  }
+
+  .banner_wr .p_banner {
+      font-size: 18px;
+  }
+
+  .content.content_banner {
+      padding-top: 5vh;
+  }
+
+  .box_overlay {
+      padding: 5vw;
+  }
+
+  .box_wr {
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  }
+
+  .cta {
+      font-size: 18px;
+      padding: 8px 20px 8px 80px;
+      height: 50px;
+  }
+
+  .cta::before {
+      height: 50px;
+      width: 50px;
+  }
+
+  .cta::after {
+      width: 35px;
+      height: 27px;
+      left: 32px;
+      width: 35px;
+      height: 33px;
+  }
+
 }
 
 .banner_wr h1{
@@ -141,6 +305,13 @@ Testing of New Index.html
   letter-spacing: -1px;
   line-height: 1em;
   color: #FBE8A6;
+}
+
+.over_title{
+  font-size: 1.5vw;
+  font-family: "Fredoka", sans-serif;
+  text-transform: uppercase;
+  color: white;
 }
 
 .cta_wr{
@@ -168,6 +339,7 @@ Testing of New Index.html
 }
 
 .w-button {
+    display: inline-block;
     border: 0;
     line-height: inherit;
     text-decoration: none;
@@ -230,7 +402,7 @@ Testing of New Index.html
     font-family: "Raleway", sans-serif;
     font-size: 1.5vw;
     color: #fff;
-    max-width: 420px;
+    max-width: 480px;
     margin: 0;
     padding: 0 0 20px 0;
     width: 100%;
@@ -244,7 +416,16 @@ p {
   margin-inline-end: 0px;
 }
 
+/* End of First Section of Index.html*/
+
 /* Who we Help Section */
+
+.content_what h5{
+  font-family: "Fredoka", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
 .box_wr {
   display: -ms-grid;
   display: grid;
@@ -396,6 +577,12 @@ p {
 /* .our_statistics{
   background-color: #303C6C;
 } */
+
+@media only screen and (max-width: 400px) {
+  #our_statistics {
+      display: none;
+  }
+}
 
 
 .stats_container{
