@@ -4,12 +4,12 @@
 
         // function to retrieve ALL INFO of ALL USERS
 
-        public function retrieve_user_message($user_id, $user2_id){
+        public function retrieve_user_message($user_id, $user2_id, $homeless_id){
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
             
-            $sql = "SELECT * FROM chatCollection WHERE (sender_id =:senderid AND receiver_id =:receiverid ) OR 
-            (sender_id =:receiverid AND receiver_id=:senderid) ORDER BY sent_datetime ASC";
+            $sql = "SELECT * FROM chatCollection WHERE ((sender_id =:senderid AND receiver_id =:receiverid ) OR 
+            (sender_id =:receiverid AND receiver_id=:senderid)) AND homeless_id=:homelessid ORDER BY sent_datetime ASC";
 
             // level 2 is to make select username from users where username != current user's username
             $stmt = $pdo->prepare($sql);
@@ -17,6 +17,7 @@
             // bind
             $stmt->bindParam(":senderid",$user_id,PDO::PARAM_INT);
             $stmt->bindParam(":receiverid",$user2_id,PDO::PARAM_INT);
+            $stmt->bindParam(":homelessid",$homeless_id,PDO::PARAM_INT);
             
             $stmt->execute();
             
@@ -42,6 +43,7 @@
                         "receiver_id" => $receiver_id,
                         "message" => $message,
                         "sent_datetime" => $sent_datetime,
+                        "homeless_id" => $homeless_id,
                     );
 
                     array_push($result_arr["records"], $message);
@@ -56,18 +58,21 @@
             return $result_arr;
         }
 
-        public function send_message($sender_id, $receiver_id, $msg){
+        public function send_message($sender_id, $receiver_id, $msg, $homeless_id){
 
             $datetime = date('Y-m-d H:i:s');
 
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
             
-            $sql = "INSERT INTO chatCollection VALUES(?, ?, ?, ?)";
+            $sql = "INSERT INTO chatCollection VALUES(?, ?, ?, ?, ?)";
 
             $stmt = $pdo->prepare($sql);
+
+
+            // ADD CODE TO GET HOMELESSID
             
-            $result = $stmt->execute([$sender_id, $receiver_id, $msg, $datetime]);
+            $result = $stmt->execute([$sender_id, $receiver_id, $msg, $datetime, $homeless_id]);
 
             $stmt = null;
             $pdo = null;

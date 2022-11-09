@@ -38,10 +38,11 @@ $num = '';
 
 $current_user_id = $_GET["current_user_id"];
 $other_user_id = $_GET["other_user_id"];
+$homeless_id = $_GET["homeless_id"];
 // $other_user_id = 10001;
 
-if(  isset($current_user_id) && isset($other_user_id)  ) {
-    $messages = $messageDAO->retrieve_user_message($current_user_id, $other_user_id);
+if(  isset($current_user_id) && isset($other_user_id) && isset($homeless_id)  ) {
+    $messages = $messageDAO->retrieve_user_message($current_user_id, $other_user_id, $homeless_id);
 
     $date = new DateTime('now', new DateTimeZone('Asia/Singapore'));
     $messages["info"] = array(
@@ -66,3 +67,5 @@ else {
     );
     exit;
 }
+
+?>
