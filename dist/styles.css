@@ -636,13 +636,15 @@ Reset Password Pop Up BOX login.html Portion
 }
 
 #reset {
+  width: 100%;
+  height: 100%;
   background-color: #2a2b38;
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
   background-position: bottom center;
   background-repeat: no-repeat;
   border-radius: 5px;
-  padding: 20px;
-  margin-top: 120px;
+  padding: 30px;
+  margin-top: 20px;
   min-height: 50vh;
   position: absolute;
   left: 0;
@@ -657,7 +659,7 @@ Reset Password Pop Up BOX login.html Portion
   text-decoration: none;
   border-radius: 4px;
   height: 44px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
   -webkit-transition : all 200ms linear;
@@ -702,6 +704,7 @@ Reset Password Pop Up BOX login.html Portion
 #reset p{
   font-family: 'Raleway', sans-serif;
   color: #c4c3ca;
+  width: 100%;
 }
 
 .blur {
@@ -1097,21 +1100,6 @@ img.huechange {
   margin-bottom: 5%
 }
 
-/* .statistics_row{
-  max-width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  margin: auto;
-  position: relative;
-} */
-
-/* .statistics{
-  padding: 50px;
-  position: relative;
-  justify-content: space-evenly;
-  width: auto;
-} */
-
 #carousel_container {
   height: 90%;
   max-height: 90%;
@@ -1134,57 +1122,12 @@ img.huechange {
 }
 
 
-#pills-home-tab{
-  /*This will erase the pill default set background by bootstrap*/
-  background-color: transparent;
-  color: #303C6C;
-}
-
-#indextab:hover{
-  background-color: #303C6C;
-  /* border-radius: 5px */
-}
-
-#pills-home-tab:active{
-  background-color: transparent;
-  text-decoration: underline;
-}
-
-#nav-pills {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-#pills-home-tab{
-  color: rgb(48,60,108);
-  font-family: "fredoka";
-}
-
-#pills-home-tab:hover {
-  color: white;
-}
-
-.nav-item:hover{
-  background-color: #303C6C;
-  color: white;
-  border-radius: 15px;
-}
-
-.nav-pills .nav-link.active { 
-  text-decoration: underline rgb(48,60,108);
-  text-decoration: none;
-}
-
-
 @media only screen and (max-width: 400px) {
   .statistics {
       display: none;
   }
 }
 
-.card > img {
-  max-width: 100%;
-}
 
 
 /*
