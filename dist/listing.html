@@ -38,6 +38,30 @@
 
   <!-- Vue CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <style>
+    .card {
+      border:transparent;
+    }
+
+    .card-body{
+      font-size: 80%
+    }
+
+    #referrer{
+      box-shadow: 5px 5px 10px 2px rgba(0,0,0,.1);
+    }
+
+    #listingSendMsg{
+      text-decoration:none;
+    }
+
+    #listingSendMsg:hover{
+      background-color: #303C6C;
+      color: #FBE8A6;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -66,7 +90,7 @@
 
         <div class="gap-2 d-flex justify-content-md-center mb-3 text-center">
           <button class="btn btn-releasepop mb-3" type="submit" name="submit">Update</button>
-          <button class="btn btn-releasepop mb-3" type="submit" name="cancel" @click="closeUpdate()">Cancel</button>
+          <button class="btn btn-releasepop mb-3" type="button" name="cancel" @click="closeUpdate()">Cancel</button>
         </div>
       </div>
     </form>
@@ -78,63 +102,133 @@
 
         <!-- Section for Listing Content -->
         <div class="listing">
-
           <div class="row">
-            <div class="col-lg-6 mb-5">
-              <h3>Jeff So</h3>
-              <span>
-                <i class="fa-solid fa-location-dot"></i>
-                SMU Connexion, 40 Stamford Rd, Singapore 178908
-              </span>
-              <br>
-              <button type="button" class="btn btn-tasklist mt-3" @click="openUpdate()">Update Last Seen</button>
-            </div>
-
-            <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
-            <div class="col-lg-6">
+            <div class="col my-4">
 
               <!-- Start Of Card -->
-              <div class="card mb-3">
-                <div class="row">
-
+              <div class="card mb-3" style="border:transparent">
+                <div class="row d-flex" style="align-items:center">
                   <div class="col-md-4">
-                    <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start"
-                      style="height: 100%; width: 100%;">
+                    <img src="./icons/colored_profile.png" class="img-fluid rounded-start;"
+                      style="height: auto; width: auto;">
                   </div>
 
                   <div class="col-md-8">
                     <div class="card-body px-5">
-                      <div class="row">
-                        <h5 class="card-title">Lim Ren Kee</h5>
-                        <p class="card-text my-1"><small class="text-muted">Helped 3 Persons</small></p>
-                      </div>
+                      <div class="row d-flex" style="align-items:center">
+                        <h5 class="card-title">Referral: Jeff So</h5>
+                        <p class="card-text my-1"><small class="text-muted">Status: Seeked Shelter</small></p>
 
-                      <div class="row">
-                        <button type="button" class="btn btn-tasklist my-2">Send Message</button>
-                      </div>
+                        <span>
+                          <i class="fa-solid fa-location-dot"></i>
+                          SMU Connexion, 40 Stamford Rd, Singapore 178908
+                        </span>
+                        
+                        <div class="row text-muted my-4">
+                          <div class="col-3">
+                            <b>Age:</b> <br> 20
+                          </div>
+                          <div class="col-3">
+                            <b>Gender:</b> <br> Male
+                          </div>
+                          <div class="col-3">
+                            <b>Special Needs:</b> <br> No
+                          </div>
+                          <div class="col-3">
+                            <b>Duration Required:</b> <br> 10 Months
+                          </div>
+                        </div>
 
+                        <div class="row">
+                          <button type="button" class="btn btn-tasklist mt-1" @click="openUpdate()">Update Last Seen</button>
+                        </div>
+                      </div>
                     </div>
                     <!-- End of Card Body -->
                   </div>
                 </div>
               </div>
               <!-- End Of Card-->
+             
             </div>
-          </div>
+            </div>
+
+            <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
+            <div class="row">
+              <div class="col-lg-9 col-sm-6">
+                <!-- Start of Description and Paragraph-->
+                <div class="listing-content col-lg-12 col-md-12 col-sm-12" style="font-family:'Raleway', Sans serif">
+                  <h2>Description</h2>
+                  <p style="padding-right:20%">
+                    I have noticed that Mr Jeff So seems to loiter around SMU Connexion in the early hours. I have seen him on
+                    several occasions when I reached school early to revise for my test. He use to sleep on the bench nearby
+                    the
+                    traffic junction. He is always seen with a white ripped t-shirt and pushing a trolley that full of junks.
+                  </p>
+                  
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-sm-6">
+
+                <div class="card mb-3" id="referrer" >
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start">
+                    </div>
+
+                    <div class="col-12">
+                      <div class="card-body" style= "font-size: 80%">
+                        <h5 class="card-title" >Referrer: Lim Ren Kee</h5>
+                        <p class="card-text">"Don't say why me, say try me."</p>
+                        <p class="card-text"><small class="text-muted">Helped 3 people</small></p>
+                        <div class="row">
+                          <button type="button" class="btn btn-tasklist mt-1" id="listingSendMsg">Send Message</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+
+
+                <!-- Start Of Card -->
+                <!-- <div class="card mb-3" id="referrer_card" style="border:transparent">
+                  <div class="row" style="border:2px dotted;">
+
+                   
+                    <div class="col-4">
+                      <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start;"
+                        style="height: auto; width: auto;">
+                    </div>
+                    
+                    <div class="col-8">
+                      <div class="card-body px-5" style="font-size: 80%;">
+                        <div class="row d-flex" style="align-items:center">
+                          <h5 class="card-title">Referrer: Lim Ren Kee</h5>
+                          <p class="card-text my-1"><small class="text-muted">Helped 3 people</small></p>
+
+                          <span>
+                            "Don't say why me, say try me."
+
+                          </span>
+                        </div>
+
+                        <div class="row">
+                          <button type="button" class="btn btn-tasklist mt-1">Send Message</button>
+                        </div>
+
+                      </div>
+                      
+                    </div>           
+                  </div>
+                </div>
+                
+              </div> -->
+            </div>
           <!-- End Of Row for left right portions-->
 
-          <!-- Start of Description and Paragraph-->
-          <div class="listing-content col-lg-12 col-md-12 col-sm-12">
-            <h2>Description</h2>
-            <p>
-              I have noticed that Mr Jeff So seems to loiter around SMU Connexion in the early hours. I have seen him on
-              several occasions when I reached school early to revise for my test. He use to sleep on the bench nearby
-              the
-              traffic junction. He is always seen with a white rippled t-shirt and pushing a trolley that full of junks.
-            </p>
-            <p class="text-muted">Age: 20 &nbsp&nbsp&nbsp Gender: 20 &nbsp&nbsp&nbsp Special Needs: No &nbsp&nbsp&nbsp
-              Duration Required: 10 Months</p>
-          </div>
+         
         </div>
         <!-- End Section for Listing Content -->
 
