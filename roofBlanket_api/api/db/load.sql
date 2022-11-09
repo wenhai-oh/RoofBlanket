@@ -73,6 +73,7 @@ insert into chatCollection values(10001, 10005, "Hello, I would like to intervie
 insert into chatCollection values(10005, 10001, "Hi, sure thing, send me your company location and I'll let him know.", '2022-10-29 17:05:00', 1001);
 insert into chatCollection values(10001, 10005, "Great! The interview will be on 1 November 2022 at SMU.", '2022-10-29 17:07:00', 1001);
 insert into chatCollection values(10005, 10001, "He'll be there!", '2022-10-29 17:15:00', 1001);
+insert into chatCollection values(10001, 10005, "Great! The interview will be on 1 November 2022 at SMU.", '2022-10-29 17:07:00', 1002);
 
 drop table if exists homelessLocation;
 CREATE TABLE if not exists `homelessLocation` (
