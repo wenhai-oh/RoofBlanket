@@ -46,9 +46,6 @@
 
             return $result_arr;
         }
-        
-
-        # function used to retrieve all homelesslocation by a specific homeless id
 
         public function retrieve_homelesslocation_by_id($id){
             $conn_manager = new Database();
@@ -92,6 +89,30 @@
             $pdo = null;
 
             return $result_arr;
+        }
+
+
+        # function to add new homeless location
+
+        public function add_location($id,$long,$lat,$note){
+
+            $conn_manager = new Database();
+            $pdo = $conn_manager->getConnection();
+            
+            $sql = "INSERT INTO homelessLocation VALUES(?, ?, ?, ?)";
+
+            $stmt = $pdo->prepare($sql);
+
+            // ADD CODE TO GET HOMELESSID
+            
+            $result = $stmt->execute([$id, $long, $lat, $note]);
+
+            $stmt = null;
+            $pdo = null;
+
+            // return query result (Boolean)
+            return $result;
+
         }
     }
 ?>

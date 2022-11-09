@@ -1,8 +1,8 @@
-drop database if exists roofBlanket;
+-- drop database if exists roofBlanket;
 
-create database if not exists roofBlanket;
+-- create database if not exists roofBlanket;
 
-use roofBlanket;
+-- use roofBlanket;
 
 drop table if exists homelessCollection;
 CREATE TABLE if not exists `homelessCollection` (
@@ -12,7 +12,7 @@ CREATE TABLE if not exists `homelessCollection` (
     `gender` varchar(1) NOT NULL,
     `contact` int(8),
     `location` varchar(256) NOT NULL, 
-    `special_needs` BOOLEAN NOT NULL,  
+    `special_needs` BOOLEAN NOT NULL,  # 0 normal, 1 special needs
     `duration` int(12) NOT NULL,
     `description` varchar(1000) NOT NULL,
     `photo_url` varchar(1000) NOT NULL,
@@ -47,15 +47,15 @@ CREATE TABLE if not exists `usersCollection` (
     `housing_type` varchar(256),
     `num_homeless_attached` int(8),
     `num_homeless_helped` int(8),
-    `employer_status` BOOLEAN, # 0 for normal users, 1 for goodwill hosts, 3 for employer,
+    `employer_status` varchar(256), # Samaritan, GoodWill Hosts, Employer
     `time_created` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into usersCollection values(10001, 'charliemike9021', 'armyboyz21', 'cahr@gmail.com', 'Charlie', 'Kim', null, '98765432', 'yishun', '1 room HDB', '0', '2', 3,'2022-10-29 17:00:00');
-insert into usersCollection values(10005,  'weiweiwei1001z' ,'purplec0W', 'wei@gmail.com', 'Wei Wei', 'Sin', null, '92837465', 'Orchard', '5 room HDB', '1', '0', 0,'2022-10-29 17:20:00');
-insert into usersCollection values(20001, 'sl3episg00dd' ,'bambii00!', 'sleep@gmail.com', 'Good Sleep', 'Dei', null, '87456376', 'Bugis', '4 room HDB', '1', '1', 0,'2022-10-29 17:40:00');
-insert into usersCollection values(20005,  'slayslayslay29','OslayMG', 'slay@gmail.com', 'Slay Slay', 'Slay', null, '96775883', 'Jurong', '4 room HDB', '0', '1', 1,'2022-10-29 18:00:00');
-insert into usersCollection values(20006, 'lim', 'lim', 'lim@lim.com', 'lim', 'lin', null, null, '', '', null, null, 0,'2022-10-29 19:00:00');
+insert into usersCollection values(10001, 'charliemike9021', 'armyboyz21', 'cahr@gmail.com', 'Charlie', 'Kim', null, '98765432', 'yishun', '1 room HDB', '0', '2', 'Employer','2022-10-29 17:00:00');
+insert into usersCollection values(10005,  'weiweiwei1001z' ,'purplec0W', 'wei@gmail.com', 'Wei Wei', 'Sin', null, '92837465', 'Orchard', '5 room HDB', '1', '0', 'Samaritan','2022-10-29 17:20:00');
+insert into usersCollection values(20001, 'sl3episg00dd' ,'bambii00!', 'sleep@gmail.com', 'Good Sleep', 'Dei', null, '87456376', 'Bugis', '4 room HDB', '1', '1', 'Samaritan','2022-10-29 17:40:00');
+insert into usersCollection values(20005,  'slayslayslay29','OslayMG', 'slay@gmail.com', 'Slay Slay', 'Slay', null, '96775883', 'Jurong', '4 room HDB', '0', '1', 'GoodWill Hosts','2022-10-29 18:00:00');
+insert into usersCollection values(20006, 'lim', 'lim', 'lim@lim.com', 'lim', 'lin', null, null, '', '', null, null, 'Samaritan','2022-10-29 19:00:00');
 
 # homelessCollection (id, name, age, gender, contact, location, special_needs, duration, description, photo_url, employment, education, skills, employment_desc, completed)
 # usersCollection (id, username, password, email, name, contact, address, housing_type, num_homeless_attached, num_homeless_helped, employer_status)
@@ -73,7 +73,6 @@ insert into chatCollection values(10001, 10005, "Hello, I would like to intervie
 insert into chatCollection values(10005, 10001, "Hi, sure thing, send me your company location and I'll let him know.", '2022-10-29 17:05:00', 1001);
 insert into chatCollection values(10001, 10005, "Great! The interview will be on 1 November 2022 at SMU.", '2022-10-29 17:07:00', 1001);
 insert into chatCollection values(10005, 10001, "He'll be there!", '2022-10-29 17:15:00', 1001);
-insert into chatCollection values(10001, 10005, "Great! The interview will be on 1 November 2022 at SMU.", '2022-10-29 17:07:00', 1002);
 
 drop table if exists homelessLocation;
 CREATE TABLE if not exists `homelessLocation` (
@@ -87,3 +86,5 @@ insert into homelessLocation values(1001, 35.66962384382411, 139.6430907463442, 
 insert into homelessLocation values(1001, 35.66976330016642, 139.64738591458215, "he is sometimes seen with a blue shade on him.");
 insert into homelessLocation values(1001, 35.66962384382411, 139.6600996125663, "he now has a stray dog with him. I do not know the breed of the dog but it is white small.");
 insert into homelessLocation values(1001, 35.66976330016642, 139.6600996125663, "he now has 2 stray dogs, a white one and a brown one.");
+insert into homelessLocation values(1002, 1.2962727, 103.8501578, "Seen him around Singapore.");
+insert into homelessLocation values(1002, 1.3005317, 103.8452356, "Was running away from 2 dogs.");
