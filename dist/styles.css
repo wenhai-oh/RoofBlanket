@@ -306,9 +306,6 @@ select option {
   width: 50%;
   position: relative;
 }
-.col-half:last-of-type {
-  padding-right: 0;
-}
 .col-third {
   padding-right: 10px;
   float: left;
@@ -317,6 +314,13 @@ select option {
 .col-third:last-of-type {
   padding-right: 0;
 }
+
+button[disabled], button[disabled]:hover{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 @media only screen and (max-width: 540px) {
   .col-half {
     width: 100%;
@@ -424,7 +428,7 @@ select option {
   color: #ffeba7;
   background-color: #303C6C;
   font-family: 'unicons';
-  /* content: '\f0c8'; */
+  /* content: '\e4b7'; */
   z-index: 20;
   top: -10px;
   left: -10px;
