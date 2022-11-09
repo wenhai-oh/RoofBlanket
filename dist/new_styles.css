@@ -503,52 +503,31 @@ Testing of New Index.html
   clip-path: circle(300px at 80% -20%);
 }
 
-#pills-home-tab{
-  /*This will erase the pill default set background by bootstrap*/
-  /* background-color: transparent; */
-  border-radius: 5px;
-  color: #303C6C;
-  /* background-color: #303C6C; */
-}
-
-/* #pills-home-tab .active{
-  background-color: #eb4647;
-} */
-
-#indextab:hover{
-  background-color: #303C6C;
-  /* border-radius: 5px */
-}
-
-#pills-home-tab:active{
-  background-color: transparent;
-  text-decoration: underline;
-}
-
-#nav-pills {
+/*Ul class*/
+#pills-tab {
   display: flex;
   justify-content: space-evenly;
 }
 
-#pills-home-tab{
-  /* color: rgb(48,60,108); */
-  font-family: "fredoka";
-}
-
-#pills-home-tab:hover {
-  color: white;
-}
-
-.nav-item:hover{
+.nav-link.active.indextab{
+  border-radius: 5px;
+  color: #fff;
   background-color: #303C6C;
-  color: white;
-  border-radius: 15px;
 }
 
-/* .nav-pills .nav-link.active { 
-  text-decoration: underline rgb(48,60,108);
-  text-decoration: none;
-} */
+.nav-link.indextab{
+  color: #303C6C;
+  font-family: "Fredoka", sans-serif;
+  border-radius: 5px;
+}
+
+.nav-link.indextab:hover{
+  background-color: #F4976C;
+  color: white;
+  border-radius: 5px;
+}
+
+
 
 /* Need to find better pictures without background*/
 .outer_container .card:after{
