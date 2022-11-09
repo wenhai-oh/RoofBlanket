@@ -110,7 +110,7 @@ Testing of New Index.html
 }
 
 .banner_wr h1{
-    font-size: 4.5vw;
+    font-size: 5vw;
     margin-bottom: 40px;
     font-family: "Fredoka", sans-serif;
     font-weight: 600;
@@ -204,16 +204,16 @@ Testing of New Index.html
     font-family: "Raleway", sans-serif;
     font-size: 1.5vw;
     color: #fff;
-    max-width: 480px;
+    max-width: 420px;
     margin: 0;
     padding: 0 0 20px 0;
 }
 
-.video-section img{
+/* .video-section img{
     display: block;
     width: 100%;
     height: 70vh;
-}
+} */
 
 /* Who we Help Section */
 .box_wr {
