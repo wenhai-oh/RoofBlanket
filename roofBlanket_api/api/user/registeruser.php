@@ -39,7 +39,7 @@ else {
   
     // tell the user no items found
     echo json_encode(
-        array("User" => "Query parameters are not set. No results.")
+        array("User Creation" => "Query parameters are not set. No results.")
     );
     exit;
 }
@@ -72,7 +72,7 @@ else {
   
     // tell the user no items found
     echo json_encode(
-        array("message" => "Message could not be sent.")
+        array("User Creation" => "Account creation is not successful.")
     );
 
     

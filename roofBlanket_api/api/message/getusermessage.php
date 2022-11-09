@@ -27,15 +27,6 @@ spl_autoload_register(function ($class) {
 // initialize object
 $messageDAO = new MessageDAO();
 
-$stmt = '';
-$num = '';
-
-
-// get search query
-
-// $username = $_GET["username"];
-// $password = $_GET["password"];
-
 $current_user_id = $_GET["current_user_id"];
 $other_user_id = $_GET["other_user_id"];
 $homeless_id = $_GET["homeless_id"];
@@ -63,7 +54,7 @@ else {
   
     // tell the user no items found
     echo json_encode(
-        array("message" => "Query parameters are not set. No results.")
+        array("Message" => "Query parameters are not set. No results.")
     );
     exit;
 }

@@ -2,7 +2,7 @@
     class HomelessDAO {
 
 
-        // function to retrieve ALL INFO of ALL USERS
+        // function to retrieve all homeless people information
 
         public function retrieve_all_homelessinfo(){
             $conn_manager = new Database();
@@ -62,6 +62,8 @@
             return $result_arr;
         }
 
+        # function to retrieve all information on a homeless person by their specific id
+
         public function retrieve_homeless_by_id($id){
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
@@ -118,6 +120,8 @@
 
             return $result_arr;
         }
+
+        # function to update the status of a homeless person to completed (1)
 
         public function update_complete($id){
 

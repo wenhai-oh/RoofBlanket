@@ -59,7 +59,7 @@ if( $result ) {
         "author" => "Roof Blanket",
         "response_datetime_singapore" => $date->format('Y-m-d H:i:sP')
     );
-  
+
     // set response code - 200 OK
     http_response_code(200);
   

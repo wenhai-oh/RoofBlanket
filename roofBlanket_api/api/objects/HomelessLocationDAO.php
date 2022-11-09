@@ -46,6 +46,9 @@
 
             return $result_arr;
         }
+        
+
+        # function used to retrieve all homelesslocation by a specific homeless id
 
         public function retrieve_homelesslocation_by_id($id){
             $conn_manager = new Database();

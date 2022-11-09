@@ -51,7 +51,7 @@ else {
   
     // tell the user no items found
     echo json_encode(
-        array("message" => "Query parameters are not set. No results.")
+        array("Login" => "Query parameters are not set. No results.")
     );
     exit;
 }

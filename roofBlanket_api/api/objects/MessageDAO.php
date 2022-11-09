@@ -2,7 +2,7 @@
     class messageDAO {
 
 
-        // function to retrieve ALL INFO of ALL USERS
+        // function to retrieve all messages within a specific chat instance (between same two user on one homeless id)
 
         public function retrieve_user_message($user_id, $user2_id, $homeless_id){
             $conn_manager = new Database();
@@ -58,6 +58,9 @@
             return $result_arr;
         }
 
+
+        # function used to send messgae 
+        
         public function send_message($sender_id, $receiver_id, $msg, $homeless_id){
 
             $datetime = date('Y-m-d H:i:s');

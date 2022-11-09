@@ -53,7 +53,7 @@ else {
   
     // tell the user no items found
     echo json_encode(
-        array("message" => "Message could not be sent.")
+        array("Homeless Location" => "No Homeless person has been found")
     );
 }
 

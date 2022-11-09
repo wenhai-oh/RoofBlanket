@@ -54,7 +54,7 @@ if ( isset($_GET["id"]) ){
     
         // tell the user no items found
         echo json_encode(
-            array("message" => "Message could not be sent.")
+            array("Homeless Location" => "No location data is found on specified person")
         );
     }
 }
@@ -65,7 +65,7 @@ else {
   
     // tell the user no items found
     echo json_encode(
-        array("User" => "Query parameters are not set. No results.")
+        array("Homeless Location" => "Query parameters are not set. No results.")
     );
     exit;
 }

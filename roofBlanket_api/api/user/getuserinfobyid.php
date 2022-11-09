@@ -54,7 +54,7 @@ if ( isset($_GET["id"]) ){
     
         // tell the user no items found
         echo json_encode(
-            array("message" => "Message could not be sent.")
+            array("User" => "No such user is found")
         );
     }
 }
