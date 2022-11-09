@@ -39,7 +39,7 @@ vuenavbar.component('navbar-all',
     <nav class="navbar navbar-expand-lg px-5">
 
         <!-- Navbar Logo -->
-        <a class="navbar-brand active" href="new_index.html">RoofBlanket</a>
+        <a class="navbar-brand active" href="index.html">RoofBlanket</a>
         <!-- End Of Navbar Logo -->
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
