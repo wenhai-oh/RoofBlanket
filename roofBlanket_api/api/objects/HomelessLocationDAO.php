@@ -51,7 +51,7 @@
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
             
-            $sql = "select * from homelesslocation where id=:id";
+            $sql = "select * from homelessLocation where id=:id";
 
             
             $stmt = $pdo->prepare($sql);
@@ -105,7 +105,7 @@
 
             // ADD CODE TO GET HOMELESSID
             
-            $result = $stmt->execute([$id, $long, $lat, $note]);
+            $result = $stmt->execute([$id, $lat, $long, $note]);
 
             $stmt = null;
             $pdo = null;
