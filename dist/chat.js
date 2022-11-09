@@ -34,7 +34,7 @@ const vuemain = Vue.createApp({
             // console.log("other userid now is " + other_user_id)
 
 
-            let api_endpoint = "http://localhost/roofBlanket_api/api/message/getusermessage.php"
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/message/getusermessage.php"
 
             let user_ids = {
                 current_user_id: this.current_user_id,
@@ -72,7 +72,7 @@ const vuemain = Vue.createApp({
             // console.log("other userid now is " + other_user_id)
 
 
-            let api_endpoint = "http://localhost/roofBlanket_api/api/message/getusermessage.php"
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/message/getusermessage.php"
 
             let user_ids = {
                 current_user_id: this.current_user_id,
@@ -100,11 +100,11 @@ const vuemain = Vue.createApp({
         retrieve_users() {
             console.log("=== i am calling some function here() ===")
 
-            // Check API documentation at: http://localhost/krazypeople/
+            // Check API documentation at: https://roof-blanket.000webhostapp.com/krazypeople/
 
             // YOU MAY NEED TO MODIFY THIS
             // based on your local computer setting
-            let api_endpoint = "http://localhost/roofblanket_api/api/message/getchatuser.php"
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofblanket_api/api/message/getchatuser.php"
 
 
             // people_records = []
@@ -148,9 +148,9 @@ const vuemain = Vue.createApp({
 
             if (other_user_id != null){
 
-                let api_endpoint = "http://localhost/roofBlanket_api/api/user/getuserinfobyid.php"
+                let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/getuserinfobyid.php"
 
-                let api_endpoint2 = "http://localhost/roofblanket_api/api/homeless/gethomelessinfobyid.php"
+                let api_endpoint2 = "https://roof-blanket.000webhostapp.com/roofblanket_api/api/homeless/gethomelessinfobyid.php"
 
                 let user_id = {
                     id: other_user_id,
@@ -201,7 +201,7 @@ const vuemain = Vue.createApp({
             let other_user_id = params.id; // "some_value"
             let homeless_id = params.homelessid;
 
-            let api_endpoint = "http://localhost/roofblanket_api/api/message/sendmessage.php"
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofblanket_api/api/message/sendmessage.php"
 
             let message_info = {
                 sender_id: this.current_user_id,
@@ -233,7 +233,7 @@ const vuemain = Vue.createApp({
             let other_user_id = params.id; // "some_value"
             let homeless_id = params.homelessid;
 
-            let api_endpoint = "http://localhost/roofblanket_api/api/homeless/updatehomelessstatus.php"
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofblanket_api/api/homeless/updatehomelessstatus.php"
 
             let homeless = {
                 id: homeless_id,
