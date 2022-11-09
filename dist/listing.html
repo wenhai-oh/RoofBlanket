@@ -41,23 +41,23 @@
 
   <style>
     .card {
-      border:transparent;
+      border: transparent;
     }
 
-    .card-body{
+    .card-body {
       font-size: 80%
     }
 
-    #referrer{
-      box-shadow: 5px 5px 10px 2px rgba(0,0,0,.1);
+    #referrer {
+      box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, .1);
     }
 
-    #listingSendMsg{
+    #listingSendMsg {
       color: #303C6C;
-      text-decoration:none;
+      text-decoration: none;
     }
 
-    #listingSendMsg:hover{
+    #listingSendMsg:hover {
       background-color: #303C6C;
       color: #FBE8A6;
     }
@@ -86,11 +86,13 @@
         <!-- Custom Notes -->
         <div class="mb-4">
           <label for="notes" class="form-label">Custom Notes</label>
-          <textarea class="form-control" id="notes" rows="5" placeholder="Enter Notes here... "></textarea>
+          <textarea class="form-control" id="notes" rows="5" placeholder="Enter Notes here... "
+            v-model="note"></textarea>
         </div>
 
         <div class="gap-2 d-flex justify-content-md-center mb-3 text-center">
-          <button class="btn btn-releasepop mb-3" type="submit" name="submit">Update</button>
+          <span id="update_btn"></span>
+          <button class="btn btn-releasepop mb-3" type="button" @click="map_function()">Update</button>
           <button class="btn btn-releasepop mb-3" type="button" name="cancel" @click="closeUpdate()">Cancel</button>
         </div>
       </div>
@@ -123,7 +125,7 @@
                           <i class="fa-solid fa-location-dot"></i>
                           {{location}}
                         </span>
-                        
+
                         <div class="row text-muted my-4">
                           <div class="col-3">
                             <b>Age:</b> <br> {{age}}
@@ -140,7 +142,8 @@
                         </div>
 
                         <div class="row">
-                          <button type="button" class="btn btn-tasklist mt-1" @click="openUpdate()">Update Last Seen</button>
+                          <button type="button" class="btn btn-tasklist mt-1" @click="openUpdate()">Update Last
+                            Seen</button>
                         </div>
                       </div>
                     </div>
@@ -149,127 +152,127 @@
                 </div>
               </div>
               <!-- End Of Card-->
-             
+
             </div>
           </div>
 
-            <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
+          <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
+          <div class="row">
+            <!-- Start of Description and Paragraph-->
+            <div class="listing-content col-lg-12 col-md-12 col-sm-12" style="font-family:'Raleway', Sans serif">
+              <h2>Description</h2>
+              <p>
+                {{description}}
+              </p>
+
+            </div>
+
+            <h2>Location</h2>
+
             <div class="row">
-              <!-- Start of Description and Paragraph-->
-              <div class="listing-content col-lg-12 col-md-12 col-sm-12" style="font-family:'Raleway', Sans serif">
-                <h2>Description</h2>
-                <p>
-                  {{description}}
-                </p>
-                
+              <!-- Section for Map Listing-->
+              <div class="listing-map col-md-9">
+                <!-- API Integration here-->
+                <div id="mapListing"></div>
               </div>
 
-              <h2>Location</h2>
+              <div class="col-md-3">
 
-              <div class="row">
-                <!-- Section for Map Listing-->
-                <div class="listing-map col-md-9" >
-                  <!-- API Integration here-->
-                  <div id="mapListing"></div>
-                </div>
+                <div class="card mb-3" id="referrer">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start">
+                    </div>
 
-                <div class="col-md-3">
-
-                  <div class="card mb-3" id="referrer" >
-                    <div class="row">
-                      <div class="col-12">
-                        <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start">
-                      </div>
-  
-                      <div class="col-12">
-                        <div class="card-body" style= "font-size: 80%">
-                          <h5 class="card-title" >Referrer: Lim Ren Kee</h5>
-                          <p class="card-text">"Don't say why me, say try me."</p>
-                          <p class="card-text"><small class="text-muted">Helped 3 people</small></p>
-                          <div class="row">
-                            <button type="button" class="btn btn-tasklist mt-1" id="listingSendMsg"> 
-                              Send Message
-                            </button>
-                          </div>
+                    <div class="col-12">
+                      <div class="card-body" style="font-size: 80%">
+                        <h5 class="card-title">Referrer: {{ samaritan_name }}</h5>
+                        <p class="card-text">"Don't say why me, say try me."</p>
+                        <p class="card-text"><small class="text-muted">Helped 3 people</small></p>
+                        <div class="row">
+                          <button type="button" class="btn btn-tasklist mt-1" id="listingSendMsg">
+                            Send Message
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
               </div>
             </div>
 
 
-          <!-- End Of Row for left right portions-->
-        </div>
-        <!-- End Section for Listing Content -->      
-
-        <div class="notes-content">
-          <!-- Header -->
-          <div class="row">
-            <h2>Notes</h2>
+            <!-- End Of Row for left right portions-->
           </div>
+          <!-- End Section for Listing Content -->
 
-          <!-- First Two Notes -->
-          <!-- First Note-->
-          <div class="row mt-2">
+          <div class="notes-content">
+            <!-- Header -->
+            <div class="row">
+              <h2>Notes</h2>
+            </div>
+
+            <!-- First Two Notes -->
             <!-- First Note-->
-            <div class="card col-lg-5 mt-2">
-              <div class="card-body">
-                <h5 class="card-title">Waisoon's comment</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
+            <div class="row mt-2">
+              <!-- First Note-->
+              <div class="card col-lg-5 mt-2">
+                <div class="card-body">
+                  <h5 class="card-title">Waisoon's comment</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                </div>
+              </div>
+
+              <!-- Separator -->
+              <div class="col-2"></div>
+
+              <!-- Second Note-->
+              <div class="card col-lg-5 mt-2">
+                <div class="card-body">
+                  <h5 class="card-title">Wenhai's comment</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                </div>
               </div>
             </div>
 
-            <!-- Separator -->
-            <div class="col-2"></div>
+            <div class="row mt-2">
+              <!-- First Note-->
+              <div class="card col-lg-5 mt-2">
+                <div class="card-body">
+                  <h5 class="card-title">Jia Ler's comment</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                </div>
+              </div>
 
-            <!-- Second Note-->
-            <div class="card col-lg-5 mt-2">
-              <div class="card-body">
-                <h5 class="card-title">Wenhai's comment</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
+              <!-- Separator -->
+              <div class="col-2"></div>
+
+              <!-- Second Note-->
+              <div class="card col-lg-5 mt-2">
+                <div class="card-body">
+                  <h5 class="card-title">Ren Kee's comment</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                </div>
               </div>
             </div>
+
           </div>
+          <!-- End of Notes-content -->
+        </div> <!-- End of Section -->
+        <!-- End Of Container Section-->
 
-          <div class="row mt-2">
-            <!-- First Note-->
-            <div class="card col-lg-5 mt-2">
-              <div class="card-body">
-                <h5 class="card-title">Jia Ler's comment</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-            </div>
+      </div>
 
-            <!-- Separator -->
-            <div class="col-2"></div>
-
-            <!-- Second Note-->
-            <div class="card col-lg-5 mt-2">
-              <div class="card-body">
-                <h5 class="card-title">Ren Kee's comment</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- End of Notes-content -->
-      </div> <!-- End of Section -->
-      <!-- End Of Container Section-->
 
     </div>
-
-
-  </div>
   </div>
 
   <div id="footerdiv">
@@ -289,14 +292,16 @@
         return {
           mapUpdateMain: {},
           homeless_id: null,
-          note_list: Array(), // list of lists [ [..], [..], [..] ]
+          db_note_list: Array(), // list of lists [ [..], [..], [..] ]
           name: '',
           age: 0,
           gender: '', // F - female, M - male
           location: '', // string of location
           description: '',
           special_need_status: 0, // 0 - normal, 1 - special needs
-          duration: 1 // num of months
+          duration: 1, // num of months
+          referral_id: 0, // id of referrer
+          samaritan_name: '',
         }
       },
 
@@ -315,6 +320,281 @@
           let main = document.getElementById('main')
           update.classList.remove('show-release')
           main.classList.remove('blur')
+        },
+        map_function() {
+          // ****************************************************
+          // Start of Map Script
+          // ****************************************************
+          // mapListing portion
+          let queryString = window.location.search
+          let urlParams = new URLSearchParams(queryString)
+          let id = urlParams.get('id')
+          // console.log(id)
+          this.homeless_id = id
+          let dbLocationList = Array()
+
+          let api_endpoint_url = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelesslocationbyid.php?id=" + id
+
+          axios.get(api_endpoint_url)
+            .then(response => {
+              let records = response.data.records // list of lists
+              // console.log(records)
+              for (row of records) {
+                // console.log(row)
+                let temp_location = [parseFloat(row.latitude), parseFloat(row.longitude)]
+                // console.log(temp_location)
+                dbLocationList.push(temp_location)
+
+                // retrieve note string from db here (not functional yet, require DB script to be updated first)
+                // this.db_note_list.push(row.note) // TO-ADD v-for for note div html
+
+
+              }
+
+              /* another axios call to retrieve homeless information */
+              let api_endpoint_url2 = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelessinfobyid.php?id=" + id
+
+              axios.get(api_endpoint_url2)
+                .then(response => {
+                  let records2 = response.data.records
+                  for (row of records2) {
+                    // retrieve homeless info to display on html
+                    this.name = row.name
+                    this.age = row.age
+
+                    // Gender If-else
+                    if (row.gender == 'F') {
+                      this.gender = 'Female'
+                    } else {
+                      this.gender = 'Male'
+                    }
+                    this.location = row.location
+                    this.description = row.description
+
+                    // Special Needs If-else
+                    if (row.special_needs == '1') {
+                      this.special_need_status = 'Yes'
+                    } else {
+                      this.special_need_status = 'No'
+                    }
+
+                    this.duration = row.duration
+                    this.referral_id = row.referral_id
+                    // console.log(row.referral_id)
+
+                    /* another axios call to retrieve samaritan name */
+                    let api_endpoint_url3 = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/getuserinfobyid.php?id=" + row.referral_id
+
+                    axios.get(api_endpoint_url3)
+                      .then(response => {
+                        let records3 = response.data.records
+                        // console.log(records3[0])
+                        let firstname = records3[0].firstname
+                        let lastname = records3[0].lastname
+                        let fullname = firstname + " " + lastname
+                        this.samaritan_name = fullname
+
+                        // console.log(row.referral_id)
+                        // console.log(id)
+                        /* Send Message Button function */
+                        document.getElementById("listingSendMsg").onclick = function () {
+                          // chat.html?id=referrerid&homelessid=homelessid
+                          location.href = "chat.html?id=" + row.referral_id + "&homelessid=" + id;
+                        }
+                      })
+                      .catch(error => {
+                        // In case of any error, see what it's about
+                        console.log(error.message)
+                      })
+                  }
+
+
+                })
+                .catch(error => {
+                  // In case of any error, see what it's about
+                  console.log(error.message)
+                })
+              /* END of second axios call */
+
+
+              // console.log(dbLocationList)
+
+              // dummy location for testing
+              // let dbLocationList = [[35.66962384382411, 139.6430907463442], [35.66976330016642, 139.64738591458215], [35.66962384382411, 139.6600996125663]]
+              getLocation();
+
+              let currentLocation = dbLocationList[0]
+              var mapListing = L.map('mapListing').setView(currentLocation, 13);
+              L.marker(currentLocation).addTo(mapListing)
+
+              L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+              }).addTo(mapListing);
+
+              // add markers of all known homeless person location from location list
+              for (index = 1; index < dbLocationList.length; index++) {
+                // console.log(index, dbLocationList[index])
+                L.marker(dbLocationList[index]).addTo(mapListing)
+              }
+
+              // mapUpdate portion
+              var mapUpdate = {}
+              var locationsList = [] // location list to update database; if > 1 markers, it will be List of Lists [ [..], [..], [..] ]
+
+              // gets the location of the user and calls a method to add marker of user current location
+              function getLocation() {
+                if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(showPosition);
+                }
+                else {
+                  alert("Geolocation is not supported by this browser.")
+                }
+              }
+
+              /* 
+                add marker to show current location of the user
+                add all markers of known locations of the homeless person
+              */
+              function showPosition(position) {
+                let latitude = position.coords.latitude
+                let longitude = position.coords.longitude
+
+                mapUpdate = L.map('mapUpdate').setView([latitude, longitude], 13);
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                  maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(mapUpdate);
+                var marker = L.marker([latitude, longitude]).addTo(mapUpdate);
+                // change marker of user current location to red
+                marker._icon.classList.add("huechange");
+                marker.bindPopup("<p style=color:red;>You are here</p>").openPopup();
+
+                var popup = L.popup();
+
+                // Script for adding marker on map click
+                mapUpdate.on('click', onMapClick);
+
+                // add markers of all known homeless person location from location list
+                for (index = 0; index < dbLocationList.length; index++) {
+                  // console.log(index, dbLocationList[index])
+                  L.marker(dbLocationList[index]).addTo(mapUpdate)
+                }
+              }
+
+              function onMapClick(e) {
+                var geojsonFeature = {
+                  "type": "Feature",
+                  "properties": {},
+                  "geometry":
+                  {
+                    "type": "Point",
+                    "coordinates": [e.latlng.lat, e.latlng.lng]
+                  }
+                }
+
+                var marker;
+
+                L.geoJson(geojsonFeature, {
+                  pointToLayer: function (feature, latlng) {
+                    marker = L.marker(e.latlng, {
+                      title: "Location",
+                      alt: "Location",
+                      riseOnHover: true,
+                      // draggable: true,
+                    }).bindPopup("<input type='button' value='Remove' class='marker-delete-button'/>");
+
+                    marker.on("popupopen", onPopupOpen);
+                    return marker;
+                  }
+                }).addTo(mapUpdate);
+
+                // add location to list
+                let location = [e.latlng.lat, e.latlng.lng]
+                // console.log(location)
+                locationsList.push(location)
+                // console.log(locationsList)
+              }
+
+              // Function to handle delete as well as other events on marker popup open
+              function onPopupOpen() {
+                var tempMarker = this;
+                // console.log(tempMarker)
+                // To remove marker on click of delete button in the popup of marker
+                $(".marker-delete-button:visible").click(function () {
+                  mapUpdate.removeLayer(tempMarker);
+                  // remove from location list
+                  let lat = tempMarker["_latlng"].lat
+                  let long = tempMarker["_latlng"].lng
+                  let location = [lat, long]
+                  removeLatLng(location)
+                });
+              }
+
+              // gets an array of latitude and longitude [x, y] and removes them from the location list array.
+              function removeLatLng(location) {
+                for (index in locationsList) {
+                  if (locationsList[index][0] == location[0] && locationsList[index][1] == location[1]) {
+                    // remove from array using index
+                    if (index > -1) {
+                      locationsList.splice(index, 1)
+                      // console.log(locationsList)
+                    }
+                  }
+                }
+              }
+
+              // create button element and send it to update_btn
+              let button_div = document.getElementById("update_btn")
+              let btn = document.createElement("button");
+              btn.type = "button";
+              btn.innerText = "update";
+              btn.onclick = function () {
+                // console.log(locationsList)
+                let queryString = window.location.search
+                let urlParams = new URLSearchParams(queryString)
+                let id = urlParams.get('id')
+
+                let api_endpoint_update = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/addhomelesslocation.php"
+
+                if (locationsList != []) {
+                  for (index in locationsList) // [[..], [..], [..]]
+                  {
+                    // console.log(locationsList[index])
+                    // console.log(id)
+                    let lat = locationsList[index][0]
+                    let long = locationsList[index][1]
+
+                    let update_homeless_location = {
+                      "id": id,
+                      "long": long,
+                      "lat": lat,
+                      "notes": document.getElementById("notes").value
+                    }
+
+                    axios.get(api_endpoint_update, {
+                      params: update_homeless_location
+                    })
+                      .then(response => {
+                        console.log("here")
+                        // redirect to listing.html
+
+                      })
+                      .catch(error => {
+                        console.log(error.message)
+                      })
+                  }
+                  window.location.href = "listing.html?id=" + id
+                }
+              }
+              button_div.appendChild(btn)
+            })
+            .catch(error => {
+              // In case of any error, see what it's about
+              console.log(error.message)
+            })
+          // ****************************************************
+          // End of Map Script
+          // ****************************************************
         },
         retrieveHomelessLocation() {
           // api to retrieve location list by id
@@ -343,12 +623,6 @@
               // In case of any error, see what it's about
               console.log(error.message)
             })
-        },
-        updateHomelessLocationToDb(mapUpdate) {
-          // projectTest folder > mysqlSend.php for reference (wenhai)
-          // try loop the object but if not able to, assume only 1 new location spotted input by user
-          // redirect to php file with parameters added
-          // "xxx.php" + ?id=${homeless_id}&latitude=${lat}&longitude=${lng}
         }
       },
 
@@ -375,220 +649,19 @@
         //   }
         // });
 
-        // ****************************************************
-        // Start of Map Script
-        // KEEP MAP SCRIPT AS INTERNAL JS
-        // DO NOT MOVE TO EXTERNAL JS
-        // ****************************************************
-        // mapListing portion
-        let queryString = window.location.search
-        let urlParams = new URLSearchParams(queryString)
-        let id = urlParams.get('id')
-        // console.log(id)
-        this.homeless_id = id
-        let dbLocationList = Array()
-
-        let api_endpoint_url = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelesslocationbyid.php?id=" + id
-
-        axios.get(api_endpoint_url)
-          .then(response => {
-            let records = response.data.records // list of lists
-            // console.log(records)
-            for (row of records) {
-              // console.log(row)
-              let temp_location = [parseFloat(row.latitude), parseFloat(row.longitude)]
-              // console.log(temp_location)
-              dbLocationList.push(temp_location)
-
-              // retrieve note string from db here (not functional yet, require DB script to be updated first)
-              // this.note_list.push(row.note) // TO-ADD v-for for note div html
-
-
-            }
-
-            /* another axios call to retrieve homeless information */
-            let api_endpoint_url2 = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelessinfobyid.php?id=" + id
-
-            axios.get(api_endpoint_url2)
-              .then(response => {
-                let records2 = response.data.records
-                for (row of records2)
-                {
-                  // retrieve homeless info to display on html
-                  this.name = row.name
-                  this.age = row.age
-
-                  // Gender If-else
-                  if (row.gender == 'F') {
-                    this.gender = 'Female'
-                  } else {
-                    this.gender = 'Male'
-                  }
-                  this.location = row.location
-                  this.description = row.description
-                  
-                  // Special Needs If-else
-                  if (row.special_needs == '1') {
-                    this.special_need_status = 'Yes'
-                  } else {
-                    this.special_need_status = 'No'
-                  }
-
-                  this.duration = row.duration
-                }
-              })
-              .catch(error => {
-                // In case of any error, see what it's about
-                console.log(error.message)
-              })
-            /* END of second axios call */
-
-
-            // console.log(dbLocationList)
-
-            // dummy location for testing
-            // let dbLocationList = [[35.66962384382411, 139.6430907463442], [35.66976330016642, 139.64738591458215], [35.66962384382411, 139.6600996125663]]
-            getLocation();
-
-            let currentLocation = dbLocationList[0]
-            var mapListing = L.map('mapListing').setView(currentLocation, 13);
-            L.marker(currentLocation).addTo(mapListing)
-
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              maxZoom: 19,
-              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }).addTo(mapListing);
-
-            // add markers of all known homeless person location from location list
-            for (index = 1; index < dbLocationList.length; index++) {
-              // console.log(index, dbLocationList[index])
-              L.marker(dbLocationList[index]).addTo(mapListing)
-            }
-
-            // mapUpdate portion
-            var mapUpdate = {}
-            var locationsList = [] // location list to update database; if > 1 markers, it will be List of Lists [ [..], [..], [..] ]
-
-            // gets the location of the user and calls a method to add marker of user current location
-            function getLocation() {
-              if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-              }
-              else {
-                alert("Geolocation is not supported by this browser.")
-              }
-            }
-
-            /* 
-              add marker to show current location of the user
-              add all markers of known locations of the homeless person
-            */
-            function showPosition(position) {
-              let latitude = position.coords.latitude
-              let longitude = position.coords.longitude
-
-              mapUpdate = L.map('mapUpdate').setView([latitude, longitude], 13);
-              L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-              }).addTo(mapUpdate);
-              var marker = L.marker([latitude, longitude]).addTo(mapUpdate);
-              // change marker of user current location to red
-              marker._icon.classList.add("huechange");
-              marker.bindPopup("<p style=color:red;>You are here</p>").openPopup();
-
-              var popup = L.popup();
-
-              // Script for adding marker on map click
-              mapUpdate.on('click', onMapClick);
-
-              // add markers of all known homeless person location from location list
-              for (index = 0; index < dbLocationList.length; index++) {
-                // console.log(index, dbLocationList[index])
-                L.marker(dbLocationList[index]).addTo(mapUpdate)
-              }
-            }
-
-            function onMapClick(e) {
-              var geojsonFeature = {
-                "type": "Feature",
-                "properties": {},
-                "geometry":
-                {
-                  "type": "Point",
-                  "coordinates": [e.latlng.lat, e.latlng.lng]
-                }
-              }
-
-              var marker;
-
-              L.geoJson(geojsonFeature, {
-                pointToLayer: function (feature, latlng) {
-                  marker = L.marker(e.latlng, {
-                    title: "Location",
-                    alt: "Location",
-                    riseOnHover: true,
-                    // draggable: true,
-                  }).bindPopup("<input type='button' value='Remove' class='marker-delete-button'/>");
-
-                  marker.on("popupopen", onPopupOpen);
-                  return marker;
-                }
-              }).addTo(mapUpdate);
-
-              // add location to list
-              let location = [e.latlng.lat, e.latlng.lng]
-              // console.log(location)
-              locationsList.push(location)
-              // console.log(locationsList)
-            }
-
-            // Function to handle delete as well as other events on marker popup open
-            function onPopupOpen() {
-              var tempMarker = this;
-              // console.log(tempMarker)
-              // To remove marker on click of delete button in the popup of marker
-              $(".marker-delete-button:visible").click(function () {
-                mapUpdate.removeLayer(tempMarker);
-                // remove from location list
-                let lat = tempMarker["_latlng"].lat
-                let long = tempMarker["_latlng"].lng
-                let location = [lat, long]
-                removeLatLng(location)
-              });
-            }
-
-            // gets an array of latitude and longitude [x, y] and removes them from the location list array.
-            function removeLatLng(location) {
-              for (index in locationsList) {
-                if (locationsList[index][0] == location[0] && locationsList[index][1] == location[1]) {
-                  // remove from array using index
-                  if (index > -1) {
-                    locationsList.splice(index, 1)
-                    console.log(locationsList)
-                  }
-                }
-              }
-            }
-          })
-          .catch(error => {
-            // In case of any error, see what it's about
-            console.log(error.message)
-          })
-
+        this.map_function()
       }
     });
     root.mount("#root")
-    // ****************************************************
-    // End of Map Script
-    // ****************************************************
   </script>
 
-  <!-- Redirect to Chat-->
-  <script>
-    document.getElementById("listingSendMsg").onclick = function() {
+  <!-- Redirect to Chat  [MOVED TO VUE JS SCRIPT ABOVE THIS]-->
+  <!-- <script>
+    document.getElementById("listingSendMsg").onclick = function () {
+      // chat.html?id=referrerid&homelessid=homelessid
       location.href = "chat.html";
     };
-  </script>
+  </script> -->
 
 </body>
 
