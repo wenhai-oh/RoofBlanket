@@ -1,14 +1,7 @@
-/*
-  This page consists of overall CSS Styles that will bind to all html pages.
-*/
+/*Main Css for all pages except index.html*/
+/*General Components across all webpages*/
 
-/* This is for NAV BAR Section */
-
-/*
-  Our Main Color #303C6C
-  Our Secondary Color #FBE8A6
-*/
-
+/*Navbar Web Styling*/
 .navbar{
   background-color: #303C6C;
 }
@@ -35,8 +28,9 @@
   color: #fff;
 }
 
+/* End of Navbar styling */
 
-/*Button Nav-bar Animation*/
+/* General Nav Bar button styling */
 .btn{
   color: #FBE8A6;
   border: 1px solid #FBE8A6;
@@ -68,12 +62,117 @@
   transform: scale(1.05);
   will-change: transform;
 }
-
 /* End Of Navbar Btn animation*/
 
+/* Start of Footer */
+footer {
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
+  background-color: #303C6C;
+  padding: 20px 50px;
+  /* display: flex; */
+  justify-content: center;
+  /* min-height: 100px; */
+  /* height: 150px; */
+  margin-top: 300px;
+  align-items: center;
+  flex-direction: column;
+}
+footer .social_icon, footer .menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0;
+}
+footer .social_icon li, footer .menu li {
+  list-style: none;
+}
+footer .social_icon li a {
+  font-size: 2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+footer .menu li a {
+  font-size: 1em;
+  color: #fff;
+  font-family: "Fredoka", sans-serif;
+  margin: 0 10px;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0.75;
+}
+footer .social_icon li a:hover {
+  transform: translateY(-10px)
+}
+footer .menu li a:hover {
+  opacity: 1;
+}
+footer p {
+  font-family: "Raleway", sans-serif;
+  color: #c4c3ca;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1em;
+}
+footer .wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('Images/wave.png');
+  background-size: 1000px 100px;
+}
+footer .wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWave 4s linear infinite;
+}
+footer .wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 0px;
+  animation: animateWave_2 4s linear infinite;
+}
+footer .wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 5px;
+  animation: animateWave 3s linear infinite;
+}
+footer .wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 10px;
+  animation: animateWave_2 3s linear infinite;
+}
+@keyframes animateWave {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-position-x: 0px;
+  }
+}
+@keyframes animateWave_2 {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+/* End of Footer Section */
+
+/* --------------------------------------------------------------------------------------- */
 
 /* This section is for Add_person.html */
-
 .image {
   border: 2px dotted black;
 }
@@ -346,376 +445,392 @@ button[disabled], button[disabled]:hover{
 }
 /*-------------------------------------------------------------------------*/
 
+/* Login.html Styling starts here */
 /* CSS Styling for Login.html */
 
 #loginpage{
-/* max-width: 80%; */
-  font-family: 'Raleway', sans-serif;
-  font-weight: 300;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #303C6C;
-  background-color: #303C6C;
-  overflow-x: hidden;
-}
+  /* max-width: 80%; */
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #303C6C;
+    background-color: #303C6C;
+    overflow-x: hidden;
+  }
+  
+  #loginpage a {
+    /* text-decoration: none; */
+    cursor: pointer;
+    transition: all 200ms linear;
+  }
+  
+  #loginpage a:hover {
+    text-decoration: none;
+    color: #FBE8A6;
+  }
+  #loginpage .link {
+    color: #c4c3ca;
+  }
+  .link:hover {
+    color: #ffeba7;
+  }
+  #loginpage p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  #loginpage h4 {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    color: #FBE8A6;
+  }
+  #loginpage h6 span{
+    font-family: 'Fredoka', sans-serif;
+    color: #FBE8A6;
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .login-section{
+    position: relative;
+    width: 100%;
+    display: block;
+  }
+  .full-height{
+    min-height: 100vh;
+  }
+  [type="checkbox"]:checked,
+  [type="checkbox"]:not(:checked){
+    position: absolute;
+    left: -9999px;
+  }
+  .checkbox:checked + label,
+  .checkbox:not(:checked) + label{
+    position: relative;
+    display: block;
+    text-align: center;
+    width: 60px;
+    height: 16px;
+    border-radius: 8px;
+    padding: 0;
+    margin: 10px auto;
+    cursor: pointer;
+    background-color: #ffeba7;
+  }
+  .checkbox:checked + label:before,
+  .checkbox:not(:checked) + label:before{
+    position: absolute;
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #ffeba7;
+    background-color: #303C6C;
+    font-family: 'unicons';
+    /* content: '\e4b7'; */
+    z-index: 20;
+    top: -10px;
+    left: -10px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 24px;
+    transition: all 0.5s ease;
+  }
+  .checkbox:checked + label:before {
+    transform: translateX(44px) rotate(-270deg);
+  }
+  
+  /*Card 3d wrap (front, end) login.html styling */
 
-#loginpage a {
-  /* text-decoration: none; */
-  cursor: pointer;
-  transition: all 200ms linear;
-}
+  .card-3d-wrap {
+    position: relative;
+    width: 440px;
+    max-width: 100%;
+    height: 600px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    margin-top: 60px;
+  }
+  .card-3d-wrapper {
+    width: 100%;
+    height: 100%;
+    position:absolute;    
+    top: 0;
+    left: 0;  
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: all 600ms ease-out; 
+  }
+  .card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    background-color: #2a2b38;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 300%;
+    position: absolute;
+    border-radius: 6px;
+    left: 0;
+    top: 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .card-back {
+    transform: rotateY(180deg);
+  }
 
-#loginpage a:hover {
-  text-decoration: none;
-  color: #FBE8A6;
-}
-#loginpage .link {
-  color: #c4c3ca;
-}
-.link:hover {
-  color: #ffeba7;
-}
-#loginpage p {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.7;
-}
-#loginpage h4 {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  color: #FBE8A6;
-}
-#loginpage h6 span{
-  font-family: 'Fredoka', sans-serif;
-  color: #FBE8A6;
-  padding: 0 20px;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-.login-section{
-  position: relative;
-  width: 100%;
-  display: block;
-}
-.full-height{
-  min-height: 100vh;
-}
-[type="checkbox"]:checked,
-[type="checkbox"]:not(:checked){
-  position: absolute;
-  left: -9999px;
-}
-.checkbox:checked + label,
-.checkbox:not(:checked) + label{
-  position: relative;
-  display: block;
-  text-align: center;
-  width: 60px;
-  height: 16px;
-  border-radius: 8px;
-  padding: 0;
-  margin: 10px auto;
-  cursor: pointer;
-  background-color: #ffeba7;
-}
-.checkbox:checked + label:before,
-.checkbox:not(:checked) + label:before{
-  position: absolute;
-  display: block;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  color: #ffeba7;
-  background-color: #303C6C;
-  font-family: 'unicons';
-  /* content: '\e4b7'; */
-  z-index: 20;
-  top: -10px;
-  left: -10px;
-  line-height: 36px;
-  text-align: center;
-  font-size: 24px;
-  transition: all 0.5s ease;
-}
-.checkbox:checked + label:before {
-  transform: translateX(44px) rotate(-270deg);
-}
+  /* Wrap 3d card styling ends here (login.html) */
 
-.card-3d-wrap {
-  position: relative;
-  width: 440px;
-  max-width: 100%;
-  height: 600px;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  perspective: 800px;
-  margin-top: 60px;
-}
-.card-3d-wrapper {
-  width: 100%;
-  height: 100%;
-  position:absolute;    
-  top: 0;
-  left: 0;  
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  transition: all 600ms ease-out; 
-}
-.card-front, .card-back {
-  width: 100%;
-  height: 100%;
-  background-color: #2a2b38;
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  background-size: 300%;
-  position: absolute;
-  border-radius: 6px;
-  left: 0;
-  top: 0;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-.card-back {
-  transform: rotateY(180deg);
-}
-.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
-  transform: rotateY(180deg);
-}
-.center-wrap{
-  position: absolute;
-  width: 100%;
-  padding: 0 35px;
-  top: 50%;
-  left: 0;
-  transform: translate3d(0, -50%, 35px) perspective(100px);
-  z-index: 20;
-  display: block;
-}
-.form-group{ 
-  position: relative;
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-.form-style {
-  font-family: 'Raleway', sans-serif;
-  padding: 13px 20px;
-  padding-left: 55px;
-  height: 48px;
-  width: 100%;
-  font-weight: 500;
-  border-radius: 4px;
-  font-size: 14px;
-  line-height: 22px;
-  letter-spacing: 0.5px;
-  outline: none;
-  color: #c4c3ca;
-  background-color: #1f2029;
-  border: none;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
-}
-.form-style:focus,
-.form-style:active {
-  border: none;
-  outline: none;
-  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
-}
-.login-icon {
-  position: absolute;
-  top: 0;
-  left: 18px; 
-  padding-top: 15px;
-  height: 48px;
-  font-size: 20px;
-  line-height: 48px;
-  text-align: left;
-  color: #ffeba7;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
+  .checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+    transform: rotateY(180deg);
+  }
+  .center-wrap{
+    position: absolute;
+    width: 100%;
+    padding: 0 35px;
+    top: 50%;
+    left: 0;
+    transform: translate3d(0, -50%, 35px) perspective(100px);
+    z-index: 20;
+    display: block;
+  }
+  .form-group{ 
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  .form-style {
+    font-family: 'Raleway', sans-serif;
+    padding: 13px 20px;
+    padding-left: 55px;
+    height: 48px;
+    width: 100%;
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+    outline: none;
+    color: #c4c3ca;
+    background-color: #1f2029;
+    border: none;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+  }
+  .form-style:focus,
+  .form-style:active {
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+  }
+  .login-icon {
+    position: absolute;
+    top: 0;
+    left: 18px; 
+    padding-top: 15px;
+    height: 48px;
+    font-size: 20px;
+    line-height: 48px;
+    text-align: left;
+    color: #ffeba7;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
 
-.form-group input:-ms-input-placeholder  {
-  color: #c4c3ca;
-  opacity: 0.7;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-.form-group input::-moz-placeholder  {
-  color: #c4c3ca;
-  opacity: 0.7;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-.form-group input:-moz-placeholder  {
-  color: #c4c3ca;
-  opacity: 0.7;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-.form-group input::-webkit-input-placeholder  {
-  color: #c4c3ca;
-  opacity: 0.7;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-.form-group input:focus:-ms-input-placeholder  {
-  opacity: 0;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-.form-group input:focus::-moz-placeholder  {
-  opacity: 0;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-.form-group input:focus:-moz-placeholder  {
-  opacity: 0;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-.form-group input:focus::-webkit-input-placeholder  {
-  opacity: 0;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
+  /* Start of form-group (general) styling */
+  
+  .form-group input:-ms-input-placeholder  {
+    color: #c4c3ca;
+    opacity: 0.7;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  .form-group input::-moz-placeholder  {
+    color: #c4c3ca;
+    opacity: 0.7;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  .form-group input:-moz-placeholder  {
+    color: #c4c3ca;
+    opacity: 0.7;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  .form-group input::-webkit-input-placeholder  {
+    color: #c4c3ca;
+    opacity: 0.7;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  .form-group input:focus:-ms-input-placeholder  {
+    opacity: 0;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  .form-group input:focus::-moz-placeholder  {
+    opacity: 0;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  .form-group input:focus:-moz-placeholder  {
+    opacity: 0;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  .form-group input:focus::-webkit-input-placeholder  {
+    opacity: 0;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
 
-.btn-loginpage{  
-  text-decoration: none;
-  border-radius: 4px;
-  height: 44px;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  -webkit-transition : all 200ms linear;
-  transition: all 200ms linear;
-  padding: 0 30px;
-  letter-spacing: 1px;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -ms-flex-pack: center;
-  text-align: center;
-  border: none;
-  background-color: #ffeba7;
-  color: #303C6C;
-  box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
-}
-.btn-loginpage:active,
-.btn-loginpage:focus{  
-  background-color: #303C6C;
-  color: #ffeba7;
-  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-}
-.btn-loginpage:hover{  
-  background-color: #303C6C;
-  color: #ffeba7;
-  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-}
+/* End of form-group styling (general) */
 
-/*
-Reset Password Pop Up BOX login.html Portion
-*/
+/* Btn Animation of loginpage */
+  .btn-loginpage{  
+    text-decoration: none;
+    border-radius: 4px;
+    height: 44px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    -webkit-transition : all 200ms linear;
+    transition: all 200ms linear;
+    padding: 0 30px;
+    letter-spacing: 1px;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    text-align: center;
+    border: none;
+    background-color: #ffeba7;
+    color: #303C6C;
+    box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+  }
+  .btn-loginpage:active,
+  .btn-loginpage:focus{  
+    background-color: #303C6C;
+    color: #ffeba7;
+    box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+  }
+  .btn-loginpage:hover{  
+    background-color: #303C6C;
+    color: #ffeba7;
+    box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+  }
 
-#loginpage .container {
-  width: 80%;
-}
+/* End of login btn animations */
 
-#reset {
-  text-align: center;
-  background-color: #2a2b38;
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  border-radius: 5px;
-  padding: 35px;
-  margin-top: 120px;
-  min-height: 40vh;
-  position: absolute;
-  left: 0;
-  right: 0;
-  visibility: hidden;
-  width:40%;
-  z-index: 10;
-}
+/* Main container of login.html */
+  #loginpage .container {
+    width: 80%;
+  }
+/* End of Main container at login.html */
 
-.reset-buttons{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.btn-reset{  
-  margin-top: 20px;
-  text-decoration: none;
-  border-radius: 4px;
-  height: 44px;
-  /* font-size: 16px; */
-  font-weight: 600;
-  text-transform: uppercase;
-  -webkit-transition : all 200ms linear;
-  transition: all 200ms linear;
-  padding: 0 30px;
-  letter-spacing: 1px;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  display: inline-block;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -ms-flex-pack: center;
-  text-align: center;
-  border: none;
-  background-color: #ffeba7;
-  color: #303C6C;
-  box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
-}
-.btn-reset:active,
-.btn-reset:focus{  
-  background-color: #303C6C;
-  color: #ffeba7;
-  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-}
-.btn-reset:hover{  
-  background-color: #303C6C;
-  color: #ffeba7;
-  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-}
-
-#reset h2{
-  font-family: 'Fredoka', sans-serif;
-  color: #FBE8A6;
-}
-
-#reset p{
-  font-family: 'Raleway', sans-serif;
-  color: #c4c3ca;
-  width: 100%;
-}
-
-.blur {
-  filter: blur(5px);
-}
+  /* Reset Pop Up Starts here */
+  
+  #reset {
+    text-align: center;
+    background-color: #2a2b38;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    padding: 35px;
+    margin-top: 120px;
+    min-height: 40vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    width:40%;
+    z-index: 10;
+  }
+  
+  .reset-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .btn-reset{  
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    height: 44px;
+    /* font-size: 16px; */
+    font-weight: 600;
+    text-transform: uppercase;
+    -webkit-transition : all 200ms linear;
+    transition: all 200ms linear;
+    padding: 0 30px;
+    letter-spacing: 1px;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    display: inline-block;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    text-align: center;
+    border: none;
+    background-color: #ffeba7;
+    color: #303C6C;
+    box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+  }
+  .btn-reset:active,
+  .btn-reset:focus{  
+    background-color: #303C6C;
+    color: #ffeba7;
+    box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+  }
+  .btn-reset:hover{  
+    background-color: #303C6C;
+    color: #ffeba7;
+    box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+  }
+  
+  #reset h2{
+    font-family: 'Fredoka', sans-serif;
+    color: #FBE8A6;
+  }
+  
+  #reset p{
+    font-family: 'Raleway', sans-serif;
+    color: #c4c3ca;
+    width: 100%;
+  }
+  
+  .blur {
+    filter: blur(5px);
+  }
+/*Reset Pop up ends here */
+/* Login.html styling ends here */
+/*-------------------------------------------------------------------------*/
 
 /* task_list.html Styles Section */
 
@@ -821,9 +936,7 @@ Reset Password Pop Up BOX login.html Portion
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
   }
 
-/*
-Tasklist.html - Pop Up Styling 
-*/
+/* Tasklist.html - Pop Up Styling  */
 
 .release h6{
   margin-top: 20px;
@@ -867,24 +980,33 @@ Tasklist.html - Pop Up Styling
   box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
   }
 
-  .btn-releasepop:active,
-  .btn-releasepop:focus{  
+.btn-releasepop:active,
+.btn-releasepop:focus{  
   background-color: #303C6C;
     color: #ffeba7;
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-  }
+}
 
-  .btn-releasepop:hover{  
-    background-color: #ffeba7;
-    color: #303C6C;
-    box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-  }
+.btn-releasepop:hover{  
+  background-color: #ffeba7;
+  color: #303C6C;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
 
 #notes {
   width: 100%;
   border-radius: 5px;
   padding: 10px;
 }
+
+/* Tasklist.html - Pop Up Styling Ends */
+
+/*-------------------------------------------------------------------------*/
+
+
+
+
+
 
 /* Listing.html Styling */
 /* Carousel Section */
@@ -1231,110 +1353,6 @@ Footer Section
   background-color: #303C6C;
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-}
-
-footer {
-  position: relative;
-  width: 100%;
-  /* height: 100%; */
-  background-color: #303C6C;
-  padding: 20px 50px;
-  /* display: flex; */
-  justify-content: center;
-  /* min-height: 100px; */
-  /* height: 150px; */
-  margin-top: 300px;
-  align-items: center;
-  flex-direction: column;
-}
-footer .social_icon, footer .menu {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0;
-}
-footer .social_icon li, footer .menu li {
-  list-style: none;
-}
-footer .social_icon li a {
-  font-size: 2em;
-  color: #fff;
-  margin: 0 10px;
-  display: inline-block;
-  transition: 0.5s;
-}
-footer .menu li a {
-  font-size: 1em;
-  color: #fff;
-  font-family: "Fredoka", sans-serif;
-  margin: 0 10px;
-  display: inline-block;
-  text-decoration: none;
-  opacity: 0.75;
-}
-footer .social_icon li a:hover {
-  transform: translateY(-10px)
-}
-footer .menu li a:hover {
-  opacity: 1;
-}
-footer p {
-  font-family: "Raleway", sans-serif;
-  color: #c4c3ca;
-  text-align: center;
-  margin-top: 10px;
-  font-size: 1em;
-}
-footer .wave {
-  position: absolute;
-  top: -100px;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: url('Images/wave.png');
-  background-size: 1000px 100px;
-}
-footer .wave#wave1 {
-  z-index: 1000;
-  opacity: 1;
-  bottom: 0;
-  animation: animateWave 4s linear infinite;
-}
-footer .wave#wave2 {
-  z-index: 999;
-  opacity: 0.5;
-  bottom: 0px;
-  animation: animateWave_2 4s linear infinite;
-}
-footer .wave#wave3 {
-  z-index: 1000;
-  opacity: 0.2;
-  bottom: 5px;
-  animation: animateWave 3s linear infinite;
-}
-footer .wave#wave4 {
-  z-index: 999;
-  opacity: 0.7;
-  bottom: 10px;
-  animation: animateWave_2 3s linear infinite;
-}
-@keyframes animateWave {
-  0% {
-    background-position-x: 1000px;
-  }
-  100% {
-    background-position-x: 0px;
-  }
-}
-@keyframes animateWave_2 {
-  0% {
-    background-position-x: 0px;
-  }
-  100% {
-    background-position-x: 1000px;
-  }
 }
 
 /*index card Section*/

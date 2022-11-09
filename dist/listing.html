@@ -117,26 +117,25 @@
                   <div class="col-md-8">
                     <div class="card-body px-5">
                       <div class="row d-flex" style="align-items:center">
-                        <h5 class="card-title">Referral: Jeff So</h5>
-                        <p class="card-text my-1"><small class="text-muted">Status: Seeked Shelter</small></p>
+                        <h5 class="card-title">Referral: {{name}}</h5>
 
                         <span>
                           <i class="fa-solid fa-location-dot"></i>
-                          SMU Connexion, 40 Stamford Rd, Singapore 178908
+                          {{location}}
                         </span>
                         
                         <div class="row text-muted my-4">
                           <div class="col-3">
-                            <b>Age:</b> <br> 20
+                            <b>Age:</b> <br> {{age}}
                           </div>
                           <div class="col-3">
-                            <b>Gender:</b> <br> Male
+                            <b>Gender:</b> <br> {{gender}}
                           </div>
                           <div class="col-3">
-                            <b>Special Needs:</b> <br> No
+                            <b>Special Needs:</b> <br> {{special_need_status}}
                           </div>
                           <div class="col-3">
-                            <b>Duration Required:</b> <br> 10 Months
+                            <b>Duration Required:</b> <br> {{duration}} Months
                           </div>
                         </div>
 
@@ -156,56 +155,53 @@
 
             <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
             <div class="row">
-              <div class="col-lg-9 col-sm-6">
-                <!-- Start of Description and Paragraph-->
-                <div class="listing-content col-lg-12 col-md-12 col-sm-12" style="font-family:'Raleway', Sans serif">
-                  <h2>Description</h2>
-                  <p style="padding-right:20%">
-                    I have noticed that Mr Jeff So seems to loiter around SMU Connexion in the early hours. I have seen him on
-                    several occasions when I reached school early to revise for my test. He use to sleep on the bench nearby
-                    the
-                    traffic junction. He is always seen with a white ripped t-shirt and pushing a trolley that full of junks.
-                  </p>
-                  
-                </div>
+              <!-- Start of Description and Paragraph-->
+              <div class="listing-content col-lg-12 col-md-12 col-sm-12" style="font-family:'Raleway', Sans serif">
+                <h2>Description</h2>
+                <p>
+                  {{description}}
+                </p>
+                
               </div>
 
-              <div class="col-lg-3 col-sm-6">
+              <h2>Location</h2>
 
-                <div class="card mb-3" id="referrer" >
-                  <div class="row">
-                    <div class="col-12">
-                      <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start">
-                    </div>
+              <div class="row">
+                <!-- Section for Map Listing-->
+                <div class="listing-map col-md-9" >
+                  <!-- API Integration here-->
+                  <div id="mapListing"></div>
+                </div>
 
-                    <div class="col-12">
-                      <div class="card-body" style= "font-size: 80%">
-                        <h5 class="card-title" >Referrer: Lim Ren Kee</h5>
-                        <p class="card-text">"Don't say why me, say try me."</p>
-                        <p class="card-text"><small class="text-muted">Helped 3 people</small></p>
-                        <div class="row">
-                          <button type="button" class="btn btn-tasklist mt-1" id="listingSendMsg"> 
-                            Send Message
-                          </button>
+                <div class="col-md-3">
+
+                  <div class="card mb-3" id="referrer" >
+                    <div class="row">
+                      <div class="col-12">
+                        <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start">
+                      </div>
+  
+                      <div class="col-12">
+                        <div class="card-body" style= "font-size: 80%">
+                          <h5 class="card-title" >Referrer: Lim Ren Kee</h5>
+                          <p class="card-text">"Don't say why me, say try me."</p>
+                          <p class="card-text"><small class="text-muted">Helped 3 people</small></p>
+                          <div class="row">
+                            <button type="button" class="btn btn-tasklist mt-1" id="listingSendMsg"> 
+                              Send Message
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+              </div>
             </div>
+
+
           <!-- End Of Row for left right portions-->
         </div>
-        <!-- End Section for Listing Content -->
-        
-        <hr>
-        
-        <!-- Section for Map Listing-->
-        <div class="listing-map">
-          <!-- API Integration here-->
-          <div id="mapListing"></div>
-        </div>
-
-        <hr>
+        <!-- End Section for Listing Content -->      
 
         <div class="notes-content">
           <!-- Header -->
@@ -421,10 +417,23 @@
                   // retrieve homeless info to display on html
                   this.name = row.name
                   this.age = row.age
-                  this.gender = row.gender
+
+                  // Gender If-else
+                  if (row.gender == 'F') {
+                    this.gender = 'Female'
+                  } else {
+                    this.gender = 'Male'
+                  }
                   this.location = row.location
                   this.description = row.description
-                  this.special_need_status = row.special_needs
+                  
+                  // Special Needs If-else
+                  if (row.special_needs == '1') {
+                    this.special_need_status = 'Yes'
+                  } else {
+                    this.special_need_status = 'No'
+                  }
+
                   this.duration = row.duration
                 }
               })
