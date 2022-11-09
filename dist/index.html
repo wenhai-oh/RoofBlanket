@@ -333,7 +333,7 @@
       afterDatasetsDraw(chart, args, pluginOptions) {
         const {ctx} = chart
         ctx.textAlign='center'
-        ctx.font= 'bold 100% Fredoka'
+        ctx.font = 'bold 150% Raleway'
         ctx.textBaseline = 'middle'
         const text = 10
         const textWidth = ctx.measureText(text).width
@@ -347,7 +347,7 @@
     // doughnut 1
     const labels = [
       'Granted Shelter',
-      'Left unemployed'
+      'Not Granted Shelter'
     ];
   
     const data = {
@@ -355,9 +355,9 @@
 
       datasets: [{
         label: 'My First dataset',
-        backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
+        backgroundColor: ['rgb(48,60,108)','rgb(244, 151, 108)', ],
         borderColor: 'rgb(255, 255, 255)',
-        data: [10, 20],
+        data: [10, 30],
       }]
     };
   
@@ -369,6 +369,10 @@
           title: {
             display: true,
             text: "Granted Shelter",
+            font: {
+              size: 14,
+              family: "Fredoka",
+            },
             position: 'bottom',
             color: 'rgb(48,60,108)',
           },
@@ -388,16 +392,16 @@
     // doughnut 2
     const labels2 = [
       'Received Employment',
-      'Left unemployed'
+      'Left Unemployed'
     ]
 
     const data2 = {
       labels: labels2,
       datasets: [{
         label: 'My second dataset',
-        backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
+        backgroundColor: ['rgb(48,60,108)','rgb(244, 151, 108)', ],
         borderColor: 'rgb(255, 255, 255)',
-        data: [30, 20],
+        data: [10, 20],
       }]
     }
 
@@ -409,6 +413,10 @@
           title: {
             display: true,
             text: "Received Employment",
+            font: {
+              size: 14,
+              family: "Fredoka",
+            },
             position: 'bottom',
             color: 'rgb(48,60,108)',
           },
@@ -429,16 +437,16 @@
       // doughnut 3
     const labels3 = [
       'Open Cases',
-      'Left unemployed'
+      'Close Cases'
     ]
 
     const data3 = {
       labels: labels3,
       datasets: [{
         label: 'My third dataset',
-        backgroundColor: ['rgb(48,60,108)','rgb(255, 255, 255)', ],
+        backgroundColor: ['rgb(48,60,108)','rgb(244, 151, 108)', ],
         borderColor: 'rgb(255, 255, 255)',
-        data: [40, 30 ],
+        data: [10, 5],
       }]
     };
   
@@ -450,6 +458,10 @@
           title: {
             display: true,
             text: "Open Cases",
+            font: {
+              size: 14,
+              family: "Fredoka",
+            },
             position: 'bottom',
             color: 'rgb(48,60,108)',
           },
