@@ -53,6 +53,7 @@
     }
 
     #listingSendMsg{
+      color: #303C6C;
       text-decoration:none;
     }
 
@@ -151,7 +152,7 @@
               <!-- End Of Card-->
              
             </div>
-            </div>
+          </div>
 
             <!-- Right Side Portion (Samritan PIC + Name, Helped, Send Message, Update Last Seen)-->
             <div class="row">
@@ -183,59 +184,22 @@
                         <p class="card-text">"Don't say why me, say try me."</p>
                         <p class="card-text"><small class="text-muted">Helped 3 people</small></p>
                         <div class="row">
-                          <button type="button" class="btn btn-tasklist mt-1" id="listingSendMsg">Send Message</button>
+                          <button type="button" class="btn btn-tasklist mt-1" id="listingSendMsg"> 
+                            Send Message
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                
-
-
-                <!-- Start Of Card -->
-                <!-- <div class="card mb-3" id="referrer_card" style="border:transparent">
-                  <div class="row" style="border:2px dotted;">
-
-                   
-                    <div class="col-4">
-                      <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start;"
-                        style="height: auto; width: auto;">
-                    </div>
-                    
-                    <div class="col-8">
-                      <div class="card-body px-5" style="font-size: 80%;">
-                        <div class="row d-flex" style="align-items:center">
-                          <h5 class="card-title">Referrer: Lim Ren Kee</h5>
-                          <p class="card-text my-1"><small class="text-muted">Helped 3 people</small></p>
-
-                          <span>
-                            "Don't say why me, say try me."
-
-                          </span>
-                        </div>
-
-                        <div class="row">
-                          <button type="button" class="btn btn-tasklist mt-1">Send Message</button>
-                        </div>
-
-                      </div>
-                      
-                    </div>           
-                  </div>
-                </div>
-                
-              </div> -->
             </div>
           <!-- End Of Row for left right portions-->
-
-         
         </div>
         <!-- End Section for Listing Content -->
-
+        
         <hr>
-
+        
         <!-- Section for Map Listing-->
-
         <div class="listing-map">
           <!-- API Integration here-->
           <div id="mapListing"></div>
@@ -309,6 +273,7 @@
     </div>
 
 
+  </div>
   </div>
 
   <div id="footerdiv">
@@ -608,6 +573,14 @@
     // End of Map Script
     // ****************************************************
   </script>
+
+  <!-- Redirect to Chat-->
+  <script>
+    document.getElementById("listingSendMsg").onclick = function() {
+      location.href = "chat.html";
+    };
+  </script>
+
 </body>
 
 <style>
