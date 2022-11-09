@@ -47,25 +47,18 @@
             <!-- Reset Password Pop Up Box (Hidden by Default) -->
             <div class='mx-auto' id='reset'>
               <h4 class="my-2">Reset Password</h4>
-              <p class="my-3">If you forgot your password, you can reset it here</p>
+              <p class="my-3">Reset Your Password Here.</p>
               <div class="form-group">
                 <!-- Username Portion -->
-                <input type="email" name="Email" class="form-style" placeholder="Your Registered Email" id="Email" autocomplete="off">
+                <input type="email" name="Email" class="form-style" placeholder="Email" id="Email" autocomplete="off">
                 <i class="login-icon fa-solid fa-envelope"></i>
               </div>
-              <div class="row">
-                <div class="col-6 col-md-6 col-sm-12">
-                  <button class="btn-reset" type="submit" name="create">Reset</button>
-                </div>
-                
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <button class="btn-reset" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
-                </div>
-                
-                
-              </div>	
-              
-            </div>
+              <div class="reset-buttons">
+                <button class="btn-reset" type="submit" name="create">Reset</button>
+                <button class="btn-reset" type="submit" name="cancel" onclick="closeReset()">Cancel</button>
+              </div>
+            </div>	
+          </div>
   
             <!-- Login SubContainer -->
             <div class="card-3d-wrap mx-auto" id="main2">

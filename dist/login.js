@@ -47,7 +47,7 @@ const vuemain = Vue.createApp({
 
         login(){
 
-            let api_endpoint = "http://localhost/roofBlanket_api/api/user/authenticate_login.php"
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/authenticate_login.php"
 
             let login_details = {
                 username: this.username,
@@ -87,7 +87,7 @@ const vuemain = Vue.createApp({
             this.new_password != '' & this.new_password == this.new_confirm_password){
 
 
-                let api_endpoint = "http://localhost/roofBlanket_api/api/user/registeruser.php"
+                let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/registeruser.php"
 
                 let new_user = {
 
