@@ -94,6 +94,9 @@
       </style>
 
 </head>
+
+
+
 <body>
 
     <div id="navbardiv" class="sticky-top">
@@ -102,16 +105,16 @@
 
     </div>
     
-    
-    <div id="chat">
-        <!-- End Of Sticky Top Nav Bar Section -->
 
-        <!-- Mark as Complete Pop Up Box (Hidden By Default) -->
+    <div id="chat">
+
         <div class='markComplete text-center' id='markComplete'>
             <h5 style="margin:40px 0px">Has the Person been handed over to the GoodWill Host?</h5>
-            <button class="btn btn-primary mb-3" type="submit" name="yes">Yes</button>
+            <button class="btn btn-primary mb-3" type="submit" name="yes" v-on:click="updateComplete()">Yes</button>
             <button class="btn btn-primary mb-3" type="submit" name="no" onclick="closeComplete()">No</button>
         </div>
+
+        <div id="main">
 
         <!-- START OF BODY CONTENT -->
         <div class="container my-2">
@@ -126,11 +129,13 @@
                       <input type="text" class="form-control" placeholder="Search for Chat here...">
                       </div>
                     </div>
-                    <div v-on:click="view_chat(people.id)" v-for="people in people_records" class="inbox-drawer m-3">
+                    <div v-on:click="view_chat(people.id, people.homeless_id)" v-for="people in chat_history_person" class="inbox-drawer m-3">
                         <a href="#footerdiv">
                             <img src="./icons/colored_profile.png" style="float:left;height: 50px; width: 50px;" class="me-1">
                         </a>
                             <p class="fw-bold m-0">{{people.username}}</p>
+                            <p class="fw-bold m-0">Referring: {{people.homeless_name}}</p>
+
                             <p class="text-muted m-0">Click to view chat</p>
                         
                     </div>
@@ -146,6 +151,20 @@
                             <p class="m-0 text-muted" style="font-size: 85% ;">Last Seen: 8 hrs ago</p>
                         </div>
                         <hr>
+
+
+                        <!-- Homeless Person Info -->
+                        <div class="container">
+                            <img src="./icons/colored_profile.png" height="50px" width="50px" style="float:left;" class="me-1">
+
+
+                            <button class="btn btn-primary mt-2" type="submit" style="float:right" onclick="openComplete()" v-if="homeless_status == 0">Offer a home!</button>
+                            <button class="btn btn-primary mt-2" type="submit" style="float:right" disabled v-else>Found a home!</button>
+                            <p class="fw-bold m-2">{{homeless_name}}</p>
+                            <p class="m-0"> - </p>
+                        </div>
+                        <hr>
+                        </div>
                         
                         <!-- Chat Box (Info Dump for Now)-->
                         <div class='container' id="bottomHalf">
@@ -181,10 +200,9 @@
             <!-- END OF ROW --> 
             </div> 
         <!-- END OF BODY CONTENT -->
+    </div>
         </div>
         <hr>
-
-    </div>
 
     <div id="footerdiv">
 
@@ -195,17 +213,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         
     <script>
-        let markComplete = document.getElementById('markComplete')
-        let main = document.getElementById('main')
     
         function openComplete() {
+            let markComplete = document.getElementById('markComplete')
+            let main = document.getElementById('main')
+
             markComplete.classList.add('open-complete')
             main.classList.add('blur')
+
         }
         function closeComplete() {
+            let markComplete = document.getElementById('markComplete')
+            let main = document.getElementById('main')
             markComplete.classList.remove('open-complete')
             main.classList.remove('blur')
         }
+  
     </script>
     
     <!-- Refer to my own external JS -->

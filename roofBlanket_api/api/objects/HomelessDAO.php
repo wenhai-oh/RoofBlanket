@@ -32,9 +32,9 @@
                     // converts a dictionary key to variable name and value to variable value
                     extract($row);
 
-                    $people = array(
+                    $homeless = array(
                         "id" => $id,
-                        "name"  => $name,
+                        "fullname"  => $fullname,
                         "age" => $age,
                         "gender" => $gender,
                         "contact" => $contact,
@@ -49,10 +49,10 @@
                         "employment_desc" => $employment_desc,
                         "completed" => $completed,
                         "time_created" => $time_created,
+                        "referral_id"=> $referral_id,
                     );
 
-
-                    array_push($result_arr["records"], $people);
+                    array_push($result_arr["records"], $homeless);
                 }
             }
 
@@ -92,7 +92,7 @@
 
                     $homeless = array(
                         "id" => $id,
-                        "name"  => $name,
+                        "fullname"  => $fullname,
                         "age" => $age,
                         "gender" => $gender,
                         "contact" => $contact,
@@ -107,6 +107,7 @@
                         "employment_desc" => $employment_desc,
                         "completed" => $completed,
                         "time_created" => $time_created,
+                        "referral_id"=> $referral_id,
                     );
                     array_push($result_arr["records"], $homeless);
                 }
@@ -116,6 +117,32 @@
             $pdo = null;
 
             return $result_arr;
+        }
+
+        public function update_complete($id){
+
+            $datetime = date('Y-m-d H:i:s');
+
+            $conn_manager = new Database();
+            $pdo = $conn_manager->getConnection();
+            
+            $sql = "UPDATE homelessCollection SET completed=1 WHERE id=:id";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+
+            // ADD CODE TO GET HOMELESSID
+            
+            $result = $stmt->execute();
+
+            $stmt = null;
+            $pdo = null;
+
+            // return query result (Boolean)
+            return $result;
+
+
+
         }
 
         

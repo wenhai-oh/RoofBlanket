@@ -24,14 +24,13 @@ spl_autoload_register(function ($class) {
 });
   
 // initialize object
-$messageDAO = new MessageDAO();
+$homelessDAO = new HomelessDAO();
 
 
 // get search query
-if(  isset($_GET["sender_id"]) && isset($_GET["receiver_id"])  && isset($_GET["msg"]) && isset($_GET["homeless_id"])  ) {
-    $result = $messageDAO->send_message( $_GET["sender_id"],$_GET["receiver_id"], $_GET["msg"], $_GET["homeless_id"] );
+if( isset($_GET["id"]) ) {
+    $result = $homelessDAO->update_complete($_GET["id"]);
     // $result = false;
-
 
 }
 else {
@@ -40,7 +39,7 @@ else {
   
     // tell the user no items found
     echo json_encode(
-        array("message" => "Query parameters are not set. No results.")
+        array("Updating of status" => "Query parameters are not set. No results.")
     );
     exit;
 }
@@ -73,7 +72,7 @@ else {
   
     // tell the user no items found
     echo json_encode(
-        array("message" => "Message could not be sent.")
+        array("Homeless Status Update" => "Uable to update")
     );
 }
 ?>

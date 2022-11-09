@@ -117,7 +117,7 @@
             return $result_arr;
         }
 
-        public function retrieve_chat_users($user_id){
+        public function retrieve_chat_users_old($user_id){
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
             
@@ -162,6 +162,61 @@
                         "num_homeless_helped" => $num_homeless_helped,
                         "employer_status" => $employer_status,
                         "time_created" => $time_created,
+                    );
+
+                    array_push($result_arr["records"], $people);
+                }
+            }
+
+            $stmt = null;
+            $pdo = null;
+
+            // var_dump($result_arr["records"]);
+
+            return $result_arr;
+        }
+
+        public function retrieve_chat_users($user_id){
+            $conn_manager = new Database();
+            $pdo = $conn_manager->getConnection();
+            
+            $sql = "select distinct usersCollection.id, usersCollection.username, usersCollection.photo_url, chatCollection.homeless_id, homelessCollection.fullname from 
+            usersCollection inner join chatCollection on 
+            (usersCollection.id = chatCollection.sender_id and chatCollection.receiver_id =:receiverid or 
+            usersCollection.id = chatCollection.receiver_id and chatCollection.sender_id =:senderid) 
+            inner join homelessCollection on homelessCollection.id = chatCollection.homeless_id;
+            ";
+
+            // level 2 is to make select username from users where username != current user's username
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":senderid",$user_id,PDO::PARAM_INT);
+            $stmt->bindParam(":receiverid",$user_id,PDO::PARAM_INT);
+
+            $stmt->execute();
+            
+            $result_arr = null;
+
+            $num = $stmt->rowCount();
+            if($num > 0) {
+
+                // products array
+                $result_arr = array();
+                // []
+                $result_arr["records"] = array();
+
+                while( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+                    // extract row
+                    // this will make $row['name'] to
+                    // just $name only
+                    // converts a dictionary key to variable name and value to variable value
+                    extract($row);
+
+                    $people = array(
+                        "id" => $id,
+                        "username" => $username,
+                        "photo_url" => $photo_url,
+                        "homeless_id" => $homeless_id,
+                        "homeless_name" => $fullname
                     );
 
                     array_push($result_arr["records"], $people);

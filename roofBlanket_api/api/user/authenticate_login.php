@@ -33,7 +33,6 @@ $username = $_GET["username"];
 $password = $_GET["password"];
 
 if(  isset($username) && isset($password)  ) {
-    // var_dump($username);
     $user = $userDAO->authenticate($username,$password);
 
     $success = false;
@@ -56,6 +55,7 @@ else {
     );
     exit;
 }
+
 
 if( $success ) {
 
