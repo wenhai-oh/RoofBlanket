@@ -57,7 +57,7 @@ if( $result ) {
     // Add info node (1 per response)
     $date = new DateTime('now', new DateTimeZone('Asia/Singapore'));
     $result_arr["info"] = array(
-        "author" => "Krazy Woman",
+        "author" => "Roof Blanket",
         "response_datetime_singapore" => $date->format('Y-m-d H:i:sP')
     );
   
