@@ -97,7 +97,7 @@ Testing of New Index.html
 }
 
 .banner_left{
-    width: 60%;
+    width: 80%;
 }
 
 .over_title{
@@ -131,11 +131,12 @@ Testing of New Index.html
 }
 
 .cta{
+  font-family: "Fredoka", sans-serif;
     display: inline-block;
     height: 60px;
     background: none;
     position: relative;
-    font-size: 22px;
+    font-size: 1.5vw;
     font-weight: 500;
     padding: 12px 20px 12px 90px;
     text-align: left;
@@ -201,7 +202,7 @@ Testing of New Index.html
 
 .banner_wr .p-banner {
     font-family: "Raleway", sans-serif;
-    font-size: 22px;
+    font-size: 1.5vw;
     color: #fff;
     max-width: 480px;
     margin: 0;
@@ -362,9 +363,12 @@ Testing of New Index.html
 /* End of Who we help section */
 
 /*Statistics section*/
-.our_statistics{
+/* This line of styles written doesn't affect anything */
+/* .our_statistics{
   background-color: #303C6C;
-}
+} */
+
+
 .stats_container{
   width: 80%;
 }
@@ -501,9 +505,15 @@ Testing of New Index.html
 
 #pills-home-tab{
   /*This will erase the pill default set background by bootstrap*/
-  background-color: transparent;
+  /* background-color: transparent; */
+  border-radius: 5px;
   color: #303C6C;
+  /* background-color: #303C6C; */
 }
+
+/* #pills-home-tab .active{
+  background-color: #eb4647;
+} */
 
 #indextab:hover{
   background-color: #303C6C;
@@ -521,7 +531,7 @@ Testing of New Index.html
 }
 
 #pills-home-tab{
-  color: rgb(48,60,108);
+  /* color: rgb(48,60,108); */
   font-family: "fredoka";
 }
 
@@ -535,10 +545,10 @@ Testing of New Index.html
   border-radius: 15px;
 }
 
-.nav-pills .nav-link.active { 
+/* .nav-pills .nav-link.active { 
   text-decoration: underline rgb(48,60,108);
   text-decoration: none;
-}
+} */
 
 /* Need to find better pictures without background*/
 .outer_container .card:after{
