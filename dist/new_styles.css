@@ -983,3 +983,10 @@ p {
     }
   }
   /* End of Footer Section */
+
+  /*Testing section of imgBx*/
+  .imgBx img{
+    /* width: 20%; */
+    height: 70%;
+    border-radius: 100%;
+  }
