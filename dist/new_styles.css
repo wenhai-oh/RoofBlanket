@@ -809,11 +809,11 @@ p {
   margin-top: 20px;
 }
 
-.outer_container .card .contentBx .size, .container .card .contentBx .color {
+.outer_container .card .contentBx .size{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 20px;
+  /* padding: 8px 20px; */
   transition: 0.5s;opacity: 0;
   visibility: hidden;
   padding-top: 0;
@@ -829,18 +829,19 @@ p {
 .outer_container .card .contentBx .size h3{
   color: #fff;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-right: 10px;
+  margin-right: 5px;
   margin-top: 5px;
 }
 
 .outer_container .card .contentBx .size span{
   font-family: "Raleway", sans-serif;
   padding: 10px;
+  margin-right: 5px;
   text-align: center;
-  line-height: 26px;
+  /* line-height: 26px; */
   font-size: 14px;
   display: inline-block;
   color: white;
