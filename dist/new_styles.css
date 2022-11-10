@@ -143,7 +143,7 @@ Testing of New Index.html
 
   .box_overlay ul li {
       line-height: 24px;
-      background-position: top 10px left;
+      background-position: top 10px left 10px;
   }
   .box_wr {
     grid-template-columns: 1fr 1fr 1fr;
@@ -233,7 +233,7 @@ Testing of New Index.html
   }
 
   .box {
-      padding: 20px;
+      padding: 30px;
   }
 
   .box_wr {
