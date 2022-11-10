@@ -46,7 +46,7 @@
     <!-- Form Creation -->
     <div id="main" class="container mt-5">
       <!-- Start of Form Section-->
-      <form action="index.html" class="form_content">
+      <form class="form_content">
         <div class="row">
 
           <!--Header Listing Form-->
@@ -67,7 +67,7 @@
           </div>
           <!-- Third Field (3rd Row)-->
           <div class="input-group input-group-icon">
-            <input type="text" placeholder="Location" id="location" required/>
+            <input type="text" placeholder="Location" id="location" required v-model="new_location"/>
             <div class="input-icon">
               <i class="fa-solid fa-location-dot"></i>
             </div>
@@ -105,8 +105,8 @@
           <div class="col-half">
             <h4>Duration of Stay (Months)</h4>
             <div class="input-group">
-              <select class="form-select" style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;" id='duration'>
-                <option v-for="duration_value in duration_values.slice(0,1)" :value="duration_value" default>{{duration_value}}</option>
+              <select class="form-select" style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;" id='duration' v-model="new_duration">
+                <option v-for="duration_value in duration_values.slice(0,1)" :value="duration_value"  default>{{duration_value}}</option>
                 <option v-for="duration_value in duration_values.slice(1)" :value="duration_value">{{duration_value}}</option>
               </select>
             </div>
@@ -150,7 +150,7 @@
       <!--Here We input Upload or cancel button-->
       <div class="listing-button d-grid gap-2 d-md-flex justify-content-md-end mb-3">
         <button class="list-btn" type="button" id="cancel">Cancel</button>
-        <button onclick="getLatLng()" class="list-btn" type="submit" id="upload">Upload</button>
+        <button class="list-btn" type="button" id="upload" @click="create_homeless_instance(getLatLng)">Upload</button>
       </div>
       <!-- End Of Form and Buttons Section-->
       </form>
@@ -175,6 +175,7 @@
       // GoogleAPI to auto complete location search and retrieve Lat and Lng values.
       var autocomplete = new google.maps.places.Autocomplete(document.getElementById('location'))
 
+  
       function getLatLng() {
           // console.log(autocomplete)
           // console.log(autocomplete.gm_accessors_.place.nj.formattedPrediction)
@@ -189,6 +190,9 @@
                   let lng = results[0].geometry.location.lng()
                   console.log(lat)
                   console.log(lng)
+
+                  return [lat,lng]
+
                   // store [lat, lng] in DB as array
               } else {
                   alert('Geocode was not successful for the following reason: ' + status);
