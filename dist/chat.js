@@ -14,7 +14,8 @@ const vuemain = Vue.createApp({
             other_user: {},
 
             homeless_name: '',
-            homeless_status: ''
+            homeless_status: '',
+            homeless_id: ''
         }
     },
 
@@ -30,6 +31,8 @@ const vuemain = Vue.createApp({
               });
             let other_user_id = params.id; // "some_value"
             let homeless_id = params.homelessid;
+
+            this.homeless_id = params.homelessid
 
             // console.log("other userid now is " + other_user_id)
 
@@ -131,6 +134,7 @@ const vuemain = Vue.createApp({
         view_chat(user_id, homeless_id){
 
             this.other_user_id = user_id
+            this.homeless_id = homeless_id
             window.location.href = "chat.html?id=" + user_id + "&homelessid=" + homeless_id
 
         },

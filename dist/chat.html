@@ -176,7 +176,7 @@
                         <div class="row d-flex">
                             <div class="col d-flex align-items-center">
                                 <img src="./icons/colored_profile.png" style="float:left; height:50px; width: 50px;" class="me-1">                            
-                                <p class="m-0 ">Referring: {{homeless_name}}</p>
+                                <p class="m-0 ">Referring: <a :href="`listing.html?id=${homeless_id}`">{{homeless_name}}</a></p>
                             </div>
                             <div class="col">
                                 <button class="btn btn-primary mt-2" type="submit" style="float:right"onclick="openComplete()" id="offerHomeBtn" v-if="homeless_status == 0">Offer a home!</button>
