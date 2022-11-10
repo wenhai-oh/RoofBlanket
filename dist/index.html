@@ -30,6 +30,7 @@
     
   <!-- Axios -->
   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
 </head>
 <body>
 
@@ -188,13 +189,10 @@
         <div class="row">
           <!-- Start of a card -->
           <!--Start of a Col 1-->
-
-
           <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3" v-for="incomplete_homeless in incomplete_homeless_array">
-
             <div class="card">
               <div class="imgBx">
-                <img src="" alt="">
+                <img src="./Images/Homeless_Acceptable-removebg-preview.png" alt="">
               </div>
               <div class="contentBx">
                 <h2>{{incomplete_homeless.fullname}}</h2>
@@ -205,10 +203,10 @@
                 <a :href="`listing.html?id=${incomplete_homeless.id}`">More Info</a>
               </div>
             </div>
-
-
           </div>
-
+          <!-- End of Col 1-->
+  
+  
         </div>
         <!-- End of Row-->
         
@@ -220,7 +218,6 @@
         <div class="row mt-3">
           <!--Start of a New Col-->
           <!--Start of a Col 1-->
-
           <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3" v-for="jobless_homeless in jobless_homeless_array">
             <div class="card">
               <div class="imgBx">
@@ -232,7 +229,7 @@
                   <h3>Location:</h3>
                   <span>{{jobless_homeless.location}}</span>
                 </div>
-                <a :href="`listing.html?id=${incomplete_homeless.id}`">More Info</a>
+                <a :href="`listing.html?id=${jobless_homeless.id}`">More Info</a>
               </div>
             </div>
           </div>
