@@ -100,7 +100,7 @@ Testing of New Index.html
   }
 
   h2 {
-      font-size: 2em;
+      font-size: 1.5em;
   }
 
   h3 {
@@ -772,7 +772,7 @@ p {
 }
 
 .outer_container .card:hover .imgBx{
-  top: 0%;
+  top: 2%;
   transform: translateY(0%);
     
 }
@@ -806,7 +806,7 @@ p {
   letter-spacing: 1px;
   color: #FBE8A6;
   margin-bottom: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .outer_container .card .contentBx .size{
@@ -987,7 +987,7 @@ p {
   /*Testing section of imgBx*/
   .imgBx img{
     /* width: 20%; */
-    height: 70%;
+    height: 100%;
     border-radius: 100%;
   }
 
