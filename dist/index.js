@@ -6,74 +6,26 @@ const vuemain = Vue.createApp({
     data() {
         return {
 
-            homeless_people_array: [],
+            incomplete_homeless_array: [],
+            jobless_homeless_array: [],
         }
     },
 
     methods: {
 
-        retrieve
 
-        retrieve_message(){
-       
-            
-            // console.log("userid now is " + this.current_user_id)
-
-            const params = new Proxy(new URLSearchParams(window.location.search), {
-                get: (searchParams, prop) => searchParams.get(prop),
-              });
-            let other_user_id = params.id; // "some_value"
-            let homeless_id = params.homelessid;
-
-            // console.log("other userid now is " + other_user_id)
-
-
-            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/message/getusermessage.php"
-
-            let user_ids = {
-                current_user_id: this.current_user_id,
-                other_user_id: other_user_id,
-                homeless_id: homeless_id
-            }
-
-            axios.get(api_endpoint, { 
-                params: user_ids
-            })
-            .then(response => {
-                console.log( response.data.records )
-                this.message_records = response.data.records
-                
-            })
-            .catch(error => {
-                console.log( error.message )
-            })
-        },
-
-
-
-        retrieve_users() {
+        retrieve_incomplete_homeless() {
             console.log("=== i am calling some function here() ===")
 
-            // Check API documentation at: https://roof-blanket.000webhostapp.com/krazypeople/
-
-            // YOU MAY NEED TO MODIFY THIS
-            // based on your local computer setting
-            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/message/getchatuser.php"
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/getincompletehomeless.php"
 
 
-            // people_records = []
-            let current_user = {
-                id: this.current_user_id
-            }
-
-            axios.get(api_endpoint, { 
-                params: current_user
-            })
+            axios.get(api_endpoint)
             .then(response => {
 
-                this.chat_history_person = {}
+                this.incomplete_homeless_array = []
 
-                this.chat_history_person = response.data.records
+                this.incomplete_homeless_array = response.data.records
                 console.log(response.data.records)
 
             })
@@ -82,144 +34,34 @@ const vuemain = Vue.createApp({
             })
         },
 
-        view_chat(user_id, homeless_id){
+        retrieve_jobless_homeless() {
+            console.log("=== i am calling some function here() ===")
 
-            this.other_user_id = user_id
-            window.location.href = "chat.html?id=" + user_id + "&homelessid=" + homeless_id
-
-        },
-
-        get_chat_user(){
-
-            const params = new Proxy(new URLSearchParams(window.location.search), {
-                get: (searchParams, prop) => searchParams.get(prop),
-              });
-            let other_user_id = params.id; // "some_value"
-            let homeless_id = params.homelessid;
-
-            // console.log("other userid now is " + other_user_id)
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/getjoblesshomeless.php"
 
 
-            if (other_user_id != null){
-
-                let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/getuserinfobyid.php"
-
-                let api_endpoint2 = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelessinfobyid.php"
-
-                let user_id = {
-                    id: other_user_id,
-                }
-
-                let homeless = {
-                    id: homeless_id
-                }
-
-
-                axios.get(api_endpoint, { 
-                    params: user_id
-                })
-                .then(response => {
-                    
-                    // this.message_records = response.data.records
-                    this.other_user = response.data.records[0]
-                    
-                    axios.get(api_endpoint2, {
-                        params: homeless
-                    })
-                    .then(response => {
-
-                        this.homeless_name = response.data.records[0].fullname
-                        this.homeless_status = response.data.records[0].completed
-                        console.log(this.homeless_status)
-                    })
-                    .catch(error => {
-                        console.log(error.message)
-                    })
-                    
-                })
-                .catch(error => {
-                    console.log( error.message )
-                })
-
-            }else{
-                console.log("No chat selected yet")
-            }
-    
-        },
-
-        send_message(){
-
-            const params = new Proxy(new URLSearchParams(window.location.search), {
-                get: (searchParams, prop) => searchParams.get(prop),
-              });
-            let other_user_id = params.id; // "some_value"
-            let homeless_id = params.homelessid;
-
-            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/message/sendmessage.php"
-
-            let message_info = {
-                sender_id: this.current_user_id,
-                receiver_id: other_user_id,
-                msg: this.new_message,
-                homeless_id: homeless_id
-            }
-
-            axios.get(api_endpoint, { 
-                params: message_info
-            })
+            axios.get(api_endpoint)
             .then(response => {
-                
-                this.new_message = ''
-                this.retrieve_message()
-                
+
+                this.jobless_homeless_array = []
+
+                this.jobless_homeless_array = response.data.records
+                console.log(response.data.records)
+
             })
             .catch(error => {
                 console.log( error.message )
             })
-
-        },
-        updateComplete(){
-
-            console.log('iam called')
-            const params = new Proxy(new URLSearchParams(window.location.search), {
-                get: (searchParams, prop) => searchParams.get(prop),
-              });
-            let other_user_id = params.id; // "some_value"
-            let homeless_id = params.homelessid;
-
-            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/updatehomelessstatus.php"
-
-            let homeless = {
-                id: homeless_id,
-            }
-
-            axios.get(api_endpoint, { 
-                params: homeless
-            })
-            .then(response => {
-                console.log(response)
-
-                window.location.href = "chat.html?id=" + other_user_id + "&homelessid=" + homeless_id
-                
-            })
-            .catch(error => {
-                console.log( error.message )
-            })
-
-            
         },
 
     },
     beforeMount(){
-        this.retrieve_users()
-        this.get_chat_user()
-        this.retrieve_message()
-    },
-    mounted(){
-        this.update_messages()
+        this.retrieve_incomplete_homeless()
+        this.retrieve_jobless_homeless()
+
     }
 
 })
 
 // Link this Vue instance with <div id="main">
-vuemain.mount("#chat")
+vuemain.mount("#card_list_content")

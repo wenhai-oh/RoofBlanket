@@ -48,12 +48,12 @@ if($homeless_array != null){
         echo json_encode($homeless_array);
 }
 else {
-    // set response code - 404 Not found
-    http_response_code(404);
+    // set response code - 200 OK
+    http_response_code(200);
   
     // tell the user no items found
     echo json_encode(
-        array("message" => "Message could not be sent.")
+        array("Incomplete homeless" => "No incomplete homeless people is found!")
     );
 }
 
