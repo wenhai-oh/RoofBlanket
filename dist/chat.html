@@ -39,13 +39,13 @@
     <style>
         .inbox {
           border-right: 1px solid grey;
-          height: 100vh;
+          height: 100%;
         }
+
         #bottomHalf {
           width: 100%;
           /* box-shadow: 5px 5px 10px 2px rgba(0,0,0,.1); */
         }
-
 
         .markComplete{
           background-color: beige;
@@ -65,8 +65,10 @@
           filter: blur(5px);
         }
         .inbox-drawer:hover {
-          background:#0d6efd;
+          border-radius: 10px;
+          background:#303c6c;
           cursor: pointer;
+          color: white
         }
         .chat-bubble {
           padding: 10px 14px;
@@ -104,8 +106,8 @@
         } 
 
         #sendMessage_container{
-            margin-top: 45%;
-            position: relative;
+            position: static;
+            
         }
 
       </style>
@@ -146,15 +148,14 @@
                       <input type="text" class="form-control" placeholder="Search for Chat here...">
                       </div>
                     </div>
-                    <div v-on:click="view_chat(people.id, people.homeless_id)" v-for="people in chat_history_person" class="inbox-drawer m-3">
-                        <a href="#footerdiv">
-                            <img src="./icons/colored_profile.png" style="float:left;height: 50px; width: 50px;" class="me-1">
-                        </a>
-                            <p class="fw-bold m-0">{{people.username}}</p>
-                            <p class="fw-bold m-0">Referring: {{people.homeless_name}}</p>
-
-                            <p class="text-muted m-0">Click to view chat</p>
-                        
+                    <!-- List of users messaged -->
+                    <div v-on:click="view_chat(people.id, people.homeless_id)" v-for="people in chat_history_person" class="inbox-drawer mt-2 d-flex align-items-center" style="padding: 10px; width:100%">
+                        <img src="icons/colored_profile_b.png" style="float:left;height: 25%; width: 25%;" class="me-1">
+                        <div style="font-size:100%">
+                            <p class="fw-bold m-0" style="font-family: 'Raleway', sans-serif">{{people.username}}</p> 
+                            <p class="m-0" style="font-family: 'Raleway', sans-serif">Referring: {{people.homeless_name}}</p>
+                            <p class="m-0" style="font-size:small; font-family: 'Raleway', sans-serif">Click to view chat</p>
+                        </div>   
                     </div>
                 </div>
             
@@ -162,30 +163,35 @@
                 <div class="col-md-9" id="rightSide">
                     <div id="topHalf">
                         <!-- Samaritan Info -->
-                        <div class="container">
-                            <img src="icons/colored_profile_b.png" style="float:left;height:50px; width:50px" class="me-1">
-                            <button class="btn btn-primary mt-2" type="submit" style="float:right" onclick="openComplete()" id="offerHomeBtn" v-if="homeless_status == 0">Offer a home!</button>
-                            <button class="btn btn-primary mt-2" type="submit" style="float:right" disabled v-else>Found a home!</button>
-                            <p class="fw-bold m-2">{{homeless_name}}</p>
-
-                            <p class="m-0"> <b>{{other_user.username}} </b></p>
-                            <p class="m-0 text-muted" style="font-size: 85% ;">Last Seen: 8 hrs ago</p>
-                            
+                        <div class="row">
+                            <div class="col">
+                                <img src="icons/colored_profile_b.png" style="float:left;height:50px; width:50px" class="me-1">
+                                <p class="m-0"> <b>{{other_user.username}} </b></p>
+                                <p class="m-0" style="font-size:small">Click to view profile</p>
+                            </div>
                         </div>
-                        
 
-
-                        <!-- Homeless Person Info -->
-                        <div class="container">
-                            <img src="./icons/colored_profile.png" height="50px" width="50px" style="float:left;" class="me-1">
-                        </div>
-                        
-                        </div><br>
                         <hr>
+
+                        <div class="row d-flex">
+                            <div class="col d-flex align-items-center">
+                                <img src="./icons/colored_profile.png" style="float:left; height:50px; width: 50px;" class="me-1">                            
+                                <p class="m-0 ">Referring: {{homeless_name}}</p>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-primary mt-2" type="submit" style="float:right"onclick="openComplete()" id="offerHomeBtn" v-if="homeless_status == 0">Offer a home!</button>
+                                <button class="btn btn-primary mt-2" type="submit" style="float:right" disabled v-else>Found a home!</button>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                    </div>
+                    
                         <!-- Chat Box (Info Dump for Now)-->
                         <div class='container' id="bottomHalf">
-                            <div class="chat-panel">
-                                <div class="conversation-box" style="max-height: 30em ;overflow-y: auto">
+                            <div class="chat-panel" >
+                                <div class="conversation-box" style="height: 25em; overflow-y: auto">
                                     <div v-for="message in message_records" class="row no-gutters" style="margin:0">
                                         <div v-if="message.sender_id == current_user_id" class="col-md-4 offset-md-8">
                                             <div class="chat-bubble chat-bubble--right">
@@ -202,14 +208,14 @@
                                 </div>
         
                                 <!-- Bottom Send Text Bar -->
+                                
                                 <form>
                                     <div class="input-group mb-3" id="sendMessage_container">
-                                    <input type="text" class="form-control sendMessage" placeholder="Type here.." v-model="new_message">
-                                    <button class="btn btn-danger" id="send_btn" type="button" name="sendMessage" v-on:click="send_message()">Send</button>
+                                        <input type="text" class="form-control sendMessage" placeholder="Type here.." v-model="new_message">
+                                        <button class="btn btn-danger" id="send_btn" type="button" name="sendMessage" v-on:click="send_message()">Send</button>
                                     </div>
                                 </form>
                             </div>
-                          
                         </div>
                     </div>
                 </div>

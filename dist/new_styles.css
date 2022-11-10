@@ -809,11 +809,11 @@ p {
   margin-top: 20px;
 }
 
-.outer_container .card .contentBx .size, .container .card .contentBx .color {
+.outer_container .card .contentBx .size{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 20px;
+  /* padding: 8px 20px; */
   transition: 0.5s;opacity: 0;
   visibility: hidden;
   padding-top: 0;
@@ -829,18 +829,19 @@ p {
 .outer_container .card .contentBx .size h3{
   color: #fff;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-right: 10px;
+  margin-right: 5px;
   margin-top: 5px;
 }
 
 .outer_container .card .contentBx .size span{
   font-family: "Raleway", sans-serif;
   padding: 10px;
+  margin-right: 5px;
   text-align: center;
-  line-height: 26px;
+  /* line-height: 26px; */
   font-size: 14px;
   display: inline-block;
   color: white;
@@ -982,3 +983,53 @@ p {
     }
   }
   /* End of Footer Section */
+
+  /*Testing section of imgBx*/
+  .imgBx img{
+    /* width: 20%; */
+    height: 70%;
+    border-radius: 100%;
+  }
+
+  /*Plus-icon styling for additional add buttons*/
+
+.fab-container{
+  z-index: 9999999;
+  position: fixed;
+  bottom: 50px;
+  right:50px;
+  cursor: pointer;
+}
+
+.floatingicon{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  /* box-shadow: 5px 5px 5px #FBE8A6; */
+}
+
+.floatbutton{
+  width:80px;
+  height:80px;
+  background:#F4976C;
+  }
+
+.floatingicon i{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height: 100%;
+  color:#303C6C;
+  }
+
+  /* Animated */
+  .floatbutton:hover{
+    background-color: #FBE8A6;
+  }
+
+  /*Remove add icon href decoration*/
+  .floatingicon a{
+    text-decoration: none;
+  }
+
+/* End of Plus-icon styling */ 
