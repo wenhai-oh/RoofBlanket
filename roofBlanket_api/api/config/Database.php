@@ -10,7 +10,7 @@ class Database {
     private $port = 3306; // Check in PHPMyAdmin for port number
     public $conn;
 
-    // get the database connection
+    // get the database connection 
     public function getConnection() {
 
         $this->conn = null;
