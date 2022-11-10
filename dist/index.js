@@ -53,12 +53,6 @@ const vuemain = Vue.createApp({
             })
         },
 
-        retrieve_jobless_homeless() {
-            console.log("=== i am calling some function here() ===")
-
-            
-        },
-
     },
     mounted(){
         this.retrieve_homeless()
