@@ -1078,30 +1078,6 @@ img.huechange {
 
 /* Styling for index.html */
 
-/*Plus-icon styling for additional add buttons*/
-/* .floating-parent{
-  position: fixed;
-  bottom: 35%;
-  right: 18px;
-  text-align: center;
-  color: #303C6C;
-}
-
-.floating-parent .right-button{
-  width: 60px;
-  height: 60px;
-  background: url(./Images/circle-plus-solid.svg);
-  background-repeat: no-repeat;
-  background-color: #303C6C;
-  background-position: center;
-  border-radius: 50%;
-  float: right;
-  margin: 0 auto;
-  box-shadow: 0 -2px 3px -1px #303C6C;
-} */
-
-/* End of Plus-icon styling */ 
-
 
 .outer_container{
   background-color: white;

@@ -34,6 +34,15 @@
 </head>
 <body>
 
+  <!-- Floating Action Icon -->
+  <div class="fab-container">
+    <div class="floatbutton floatingicon">
+      <a href="add_person.html">
+        <i class="fa-solid fa-plus"></i>
+      </a>
+    </div>
+  </div>
+
   <div id="navbardiv" class="sticky-top">
 
     <navbar-all :userid="user_id" :username="username" v-on:log_out="logout"></navbar-all>
