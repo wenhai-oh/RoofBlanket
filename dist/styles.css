@@ -949,6 +949,8 @@ button[disabled], button[disabled]:hover{
   font-family: 'Fredoka', sans-serif;
 }
 
+/* Review this section for listing.html later*/
+
 .btn-releasepop{
   margin-top: 20px;
   text-decoration: none;
@@ -981,13 +983,16 @@ button[disabled], button[disabled]:hover{
   }
 
 .btn-releasepop:active,
-.btn-releasepop:focus{  
+.btn-releasepop:focus,
+#update_btn:active,
+#update_btn:focus{  
   background-color: #303C6C;
     color: #ffeba7;
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
 
-.btn-releasepop:hover{  
+.btn-releasepop:hover,
+#update_btn:hover{  
   background-color: #ffeba7;
   color: #303C6C;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
