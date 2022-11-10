@@ -37,6 +37,12 @@
    
     
     <style>
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
         .inbox {
           border-right: 1px solid grey;
           height: 100vh;
@@ -64,12 +70,22 @@
         .blur {
           filter: blur(5px);
         }
+
         .inbox-drawer:hover {
           border-radius: 10px;
-          background:#303c6c;
+          background:#303C6C;
           cursor: pointer;
-          color: white
+          /* color: white; */
         }
+
+        .inbox-drawer:hover a{
+            color: white;
+        }
+
+        .inbox-drawer a{
+            text-decoration: none;
+        }
+
         .chat-bubble {
           padding: 10px 14px;
           background: #eee;
@@ -127,10 +143,12 @@
 
     <div id="chat">
 
-        <div class='markComplete text-center' id='markComplete'>
+        <div class='markComplete mx-auto text-center' id='markComplete'>
             <h5 style="margin:40px 0px">Has the Person been handed over to the GoodWill Host?</h5>
-            <button class="btn btn-primary mb-3" type="submit" name="yes" v-on:click="updateComplete()">Yes</button>
-            <button class="btn btn-primary mb-3" type="submit" name="no" onclick="closeComplete()">No</button>
+            <div class="markComplete-position">
+                <button class="btn btn-releasepop mb-3" type="submit" name="yes" v-on:click="updateComplete()">Yes</button>
+                <button class="btn btn-releasepop mb-3" type="submit" name="no" onclick="closeComplete()">No</button>
+            </div>
         </div>
 
         <div id="main">
@@ -152,9 +170,12 @@
                     <div v-on:click="view_chat(people.id, people.homeless_id)" v-for="people in chat_history_person" class="inbox-drawer mt-2 d-flex align-items-center" style="padding: 10px; width:100%">
                         <img src="icons/colored_profile_b.png" style="float:left;height: 25%; width: 25%;" class="me-1">
                         <div style="font-size:100%">
-                            <p class="fw-bold m-0" style="font-family: 'Raleway', sans-serif">{{people.username}}</p> 
-                            <p class="m-0" style="font-family: 'Raleway', sans-serif">Referring: {{people.homeless_name}}</p>
-                            <p class="m-0" style="font-size:small; font-family: 'Raleway', sans-serif">Click to view chat</p>
+                            <a href="#rightSide" id="view_chat_container">
+                                <p class="fw-bold m-0" style="font-family: 'Raleway', sans-serif">{{people.username}}</p> 
+                                <p class="m-0" style="font-family: 'Raleway', sans-serif">Referring: {{people.homeless_name}}</p>
+                                <p class="m-0" style="font-size:small; font-family: 'Raleway', sans-serif">Click to view chat</p>
+                            </a>
+                           
                         </div>   
                     </div>
                 </div>
@@ -164,19 +185,26 @@
                     <div id="topHalf">
                         <!-- Samaritan Info -->
                         <div class="row">
-                            <div class="col">
+                            <div class="col d-flex align-items-center">
                                 <img src="icons/colored_profile_b.png" style="float:left;height:50px; width:50px" class="me-1">
                                 <p class="m-0"> <b>{{other_user.username}} </b></p>
-                                <p class="m-0" style="font-size:small">Click to view profile</p>
+                                
                             </div>
                         </div>
 
                         <hr>
 
-                        <div class="row d-flex">
-                            <div class="col d-flex align-items-center">
-                                <img src="./icons/colored_profile.png" style="float:left; height:50px; width: 50px;" class="me-1">                            
-                                <p class="m-0 ">Referring: <a :href="`listing.html?id=${homeless_id}`">{{homeless_name}}</a></p>
+                        <div class="row">
+                            <div class="col-4">
+
+                                <a :href="`listing.html?id=${homeless_id}`" style="text-decoration:none; color:black;" class="d-flex align-items-center">
+                                    <img src="./icons/colored_profile.png" style="float:left; height:50px; width: 50px;" class="me-1">   
+                                    <div>
+                                        <p class="m-0 fw-bold ">Referring: {{homeless_name}}</p>
+                                        <p class="m-0" style="font-size:small">Click to view referral profile</p> 
+                                    </div>                         
+                                </a>
+                               
                             </div>
                             <div class="col">
                                 <button class="btn btn-primary mt-2" type="submit" style="float:right"onclick="openComplete()" id="offerHomeBtn" v-if="homeless_status == 0">Offer a home!</button>
@@ -240,14 +268,14 @@
             let markComplete = document.getElementById('markComplete')
             let main = document.getElementById('main')
 
-            markComplete.classList.add('open-complete')
+            markComplete.style.visibility = 'visible';
             main.classList.add('blur')
 
         }
         function closeComplete() {
             let markComplete = document.getElementById('markComplete')
             let main = document.getElementById('main')
-            markComplete.classList.remove('open-complete')
+            markComplete.style.visibility = 'hidden';
             main.classList.remove('blur')
         }
   
