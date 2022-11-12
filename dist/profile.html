@@ -81,89 +81,117 @@
             <input id="imageUpload" type="file" placeholder="Photo">
           </div>
           <!-- end of Circle profile photo -->
-
-          <h4 class="form-heading">Your Profile</h4>
-
-          <!-- Username Textbox -->
-          <div class="input-group input-group-icon">
-            <input type="text" placeholder="Username:" id="user_username" v-model="username" />
-            <div class="input-icon">
-              <i class="fa fa-user"></i>
-            </div>
+          <div>
+            <h4 class="form-heading">Your Profile</h4>
           </div>
 
-          <!-- First Name Textbox -->
-          <div class="input-group input-group-icon">
-            <input type="text" placeholder="First Name:" id="user_FirstName" v-model="firstname" />
-            <div class="input-icon">
-              <i class="fa fa-user"></i>
+          <!-- Edit profile container -->
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Username Textbox -->
+                <div class="input-group input-group-icon">
+                  <input type="text" placeholder="Username:" id="user_username" v-model="username" />
+                  <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <!-- First Name Textbox -->
+                <div class="input-group input-group-icon">
+                  <input type="text" placeholder="First Name:" id="user_FirstName" v-model="firstname" />
+                  <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                </div>
+              </div>  
             </div>
-          </div>
 
-          <!-- Last Name Textbox -->
-          <div class="input-group input-group-icon">
-            <input type="text" placeholder="Last Name:" id="user_LastName" v-model="lastname" />
-            <div class="input-icon">
-              <i class="fa fa-user"></i>
-            </div>
-          </div>
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Last Name Textbox -->
+                <div class="input-group input-group-icon">
+                  <input type="text" placeholder="Last Name:" id="user_LastName" v-model="lastname" />
+                  <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                </div>
+              </div>
 
-          <!-- Email Textbox -->
-          <div class="input-group input-group-icon">
-            <input type="email" placeholder="Email:" id="user_email" v-model="email" />
-            <div class="input-icon">
-              <i class="fa-solid fa-envelope"></i>
+              <div class="col-md-6">
+                <!-- Email Textbox -->
+                <div class="input-group input-group-icon">
+                  <input type="email" placeholder="Email:" id="user_email" v-model="email" />
+                  <div class="input-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <!-- Contact Number -->
-          <div class="input-group input-group-icon">
-            <input type="text" placeholder="Contact No:" id="user_Contact" v-model="contact" />
-            <div class="input-icon">
-              <i class="fa-solid fa-phone"></i>
+            <div class="row">
+              <div class="col-md-6">
+                 <!-- Contact Number -->
+                <div class="input-group input-group-icon">
+                  <input type="text" placeholder="Contact No:" id="user_Contact" v-model="contact" />
+                  <div class="input-icon">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <!-- Address -->
+                <div class="input-group input-group-icon">
+                  <input type="text" placeholder="Address:" id="user_Address" v-model="address" />
+                  <div class="input-icon">
+                    <i class="fa-solid fa-address-book"></i>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <!-- Address -->
-          <div class="input-group input-group-icon">
-            <input type="text" placeholder="Address:" id="user_Address" v-model="address" />
-            <div class="input-icon">
-              <i class="fa-solid fa-address-book"></i>
-            </div>
-          </div>
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Employee Status -->
+                <div class="input-group input-group-icon">
+                  <select class="form-select"
+                    style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;"
+                    id='duration' v-model="employer_status">
+                    <option value="Samaritan" default>Samaritan</option>
+                    <option value="GoodWill-Hosts">GoodWill Hosts</option>
+                    <option value="Employer">Employer</option>
+                  </select>
+                  <div class="input-icon">
+                    <i class="fa-solid fa-bars-progress"></i>
+                  </div>
+                </div>
+              </div>
 
-          <!-- Employee Status -->
-          <div class="input-group input-group-icon">
-            <select class="form-select"
-              style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;"
-              id='duration' v-model="employer_status">
-              <option value="Samaritan" default>Samaritan</option>
-              <option value="GoodWill-Hosts">GoodWill Hosts</option>
-              <option value="Employer">Employer</option>
-            </select>
-            <div class="input-icon">
-              <i class="fa-solid fa-bars-progress"></i>
+              <div class="col-md-6">
+                <!-- Property Type -->
+                <div class="input-group input-group-icon">
+                  <select class="form-select"
+                    style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;"
+                    id='duration' v-model="housing_type">
+                    <option value="" default></option>
+                    <option value="2-Room-HDB">2-Room HDB</option>
+                    <option value="3-Room-HDB">3-Room HDB</option>
+                    <option value="4-Room-HDB">4-Room HDB</option>
+                    <option value="5-Room-HDB">5-Room HDB</option>
+                    <option value="Semi-Detached">Semi-Detached</option>
+                    <option value="DBSS">DBSS</option>
+                    <option value="Exec-Condo">Exec Condo</option>
+                    <option value="Private">Private</option>
+                  </select>
+                  <div class="input-icon">
+                    <i class="fa-solid fa-house"></i>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <!-- Property Type -->
-          <div class="input-group input-group-icon">
-            <select class="form-select"
-              style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;"
-              id='duration' v-model="housing_type">
-              <option value="" default></option>
-              <option value="2-Room-HDB">2-Room HDB</option>
-              <option value="3-Room-HDB">3-Room HDB</option>
-              <option value="4-Room-HDB">4-Room HDB</option>
-              <option value="5-Room-HDB">5-Room HDB</option>
-              <option value="Semi-Detached">Semi-Detached</option>
-              <option value="DBSS">DBSS</option>
-              <option value="Exec-Condo">Exec Condo</option>
-              <option value="Private">Private</option>
-            </select>
-            <div class="input-icon">
-              <i class="fa-solid fa-house"></i>
-            </div>
+            
           </div>
 
           <div class="d-flex justify-content-end px-1 mt-4">
