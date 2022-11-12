@@ -201,7 +201,8 @@
           <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3" v-for="incomplete_homeless in incomplete_homeless_array">
             <div class="card">
               <div class="imgBx">
-                <img src="./Images/boy.png" alt="">
+                <img src="./Images/boy.png" v-if="incomplete_homeless.gender == 'M'" alt="">
+                <img src="./Images/girl.png" v-else alt="">
               </div>
               <div class="contentBx">
                 <h2>{{incomplete_homeless.fullname}}</h2>
@@ -232,7 +233,8 @@
           <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3" v-for="jobless_homeless in jobless_homeless_array">
             <div class="card">
               <div class="imgBx">
-                <img src="./Images/girl.png" alt="">
+                <img src="./Images/boy.png" v-if="jobless_homeless.gender == 'M'" alt="">
+                <img src="./Images/girl.png" v-else alt="">
               </div>
               <div class="contentBx">
                 <h2>{{jobless_homeless.fullname}}</h2>
