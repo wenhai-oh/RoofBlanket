@@ -153,6 +153,10 @@
                         <div class="row">
                           <button type="button" class="btn btn-tasklist mt-1" @click="openUpdate()">Update Last
                             Seen</button>
+                          <div class="card p-2 mt-2">
+                            <p class="card-text" v-if="completed == 0"> Looking for home </p>
+                            <p class="card-text" v-else> Home found! </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -309,6 +313,7 @@
           description: '',
           special_need_status: 0, // 0 - normal, 1 - special needs
           duration: 1, // num of months
+          completed: 0, // 0 - not completed, 1 - completed
           referral_id: 0, // id of referrer
           samaritan_name: '',
           location_autocomplete: '',
@@ -391,6 +396,7 @@
                     }
 
                     this.duration = row.duration
+                    this.completed = row.completed
                     this.referral_id = row.referral_id
                     // console.log(row.referral_id)
 
@@ -614,9 +620,9 @@
                       alert('Geocode was not successful for the following reason: ' + status);
                     }
                   });
-                  
+
                 }
-                else{
+                else {
                   console.log("outside")
                   saveLocation()
                 }
