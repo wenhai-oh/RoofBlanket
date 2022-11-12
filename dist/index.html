@@ -224,12 +224,17 @@
                 <img src="./Images/boy.png" alt="">
               </div>
               <div class="contentBx">
-                <h2>{{incomplete_homeless.fullname}}</h2>
+                <!-- <h2>{{incomplete_homeless.fullname}}</h2> -->
                 <div class="size">
                   <h3>Gender:</h3>
                   <span>{{incomplete_homeless.gender}}</span>
                   <h3>Age:</h3>
                   <span>{{incomplete_homeless.age}}</span>
+                </div>
+
+                <div class="important">
+                  <h3>Special Needs:</h3>
+                  <span>{{incomplete_homeless.special_needs}}</span>
                 </div>
                 <a :href="`listing.html?id=${incomplete_homeless.id}`">More Info</a>
               </div>
