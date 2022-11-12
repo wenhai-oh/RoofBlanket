@@ -139,51 +139,54 @@
       </div>
     </form>
 
-    <!-- Start of Listing Container-->
-    <div class="container-fluid listing-container" id="main">
-      <!-- Listing Content -->
-      <div class="listing">
-        <!-- Start of Row 1 -->
-        <div class="row">
-          <!-- Start of Referral section (Top) -->
-          <div class="col my-4">
-            <div class="card" style="border:transparent">
-              <div class="row d-flex" style="align-items:center">
-                <div class="col-md-4">
-                  <img src="./icons/colored_profile.png" class="img-fluid rounded-start;"
-                    style="height: auto; width: auto;">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body px-5">
-                    <div class="row d-flex" style="align-items:center">
-                      <h5 class="card-title">Referral: {{name}}</h5>
+    <!-- Start of main body content -->
+    <div id="main">
+      <!-- Start of Listing Container-->
+      <div class="container-fluid listing-container" id="main">
+        <!-- Listing Content -->
+        <div class="listing">
+          <!-- Start of Row 1 -->
+          <div class="row">
+            <!-- Start of Referral section (Top) -->
+            <div class="col my-4">
+              <div class="card" style="border:transparent">
+                <div class="row d-flex" style="align-items:center">
+                  <div class="col-md-4">
+                    <img src="./icons/colored_profile.png" class="img-fluid rounded-start;"
+                      style="height: auto; width: auto;">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body px-5">
+                      <div class="row d-flex" style="align-items:center">
+                        <h5 class="card-title">Referral: {{name}}</h5>
 
-                      <span>
-                        <i class="fa-solid fa-location-dot"></i>
-                        {{location}}
-                      </span>
+                        <span>
+                          <i class="fa-solid fa-location-dot"></i>
+                          {{location}}
+                        </span>
 
-                      <div class="row text-muted my-4">
-                        <div class="col-3">
-                          <b>Age:</b> <br> {{age}}
+                        <div class="row text-muted my-4">
+                          <div class="col-3">
+                            <b>Age:</b> <br> {{age}}
+                          </div>
+                          <div class="col-3">
+                            <b>Gender:</b> <br> {{gender}}
+                          </div>
+                          <div class="col-3">
+                            <b>Special Needs:</b> <br> {{special_need_status}}
+                          </div>
+                          <div class="col-3">
+                            <b>Duration Required:</b> <br> {{duration}} Months
+                          </div>
                         </div>
-                        <div class="col-3">
-                          <b>Gender:</b> <br> {{gender}}
-                        </div>
-                        <div class="col-3">
-                          <b>Special Needs:</b> <br> {{special_need_status}}
-                        </div>
-                        <div class="col-3">
-                          <b>Duration Required:</b> <br> {{duration}} Months
-                        </div>
-                      </div>
 
-                      <div class="row">
-                        <button type="button" class="btn btn-tasklist mt-1" @click="openUpdate()">Update Last
-                          Seen</button>
-                        <div class="card p-2 mt-2">
-                          <p class="card-text" v-if="completed == 0" style="color:#303C6C;"> <b>Status:</b> Looking for home </p>
-                          <p class="card-text" v-else style="color:#303C6C"><b>Status:</b> Home found! </p>
+                        <div class="row">
+                          <button type="button" class="btn btn-tasklist mt-1" @click="openUpdate()">Update Last
+                            Seen</button>
+                          <div class="card p-2 mt-2">
+                            <p class="card-text" v-if="completed == 0" style="color:#303C6C;"> <b>Status:</b> Looking for home </p>
+                            <p class="card-text" v-else style="color:#303C6C"><b>Status:</b> Home found! </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -191,80 +194,81 @@
                 </div>
               </div>
             </div>
+            <!-- End of Referral section (Top) -->
           </div>
-          <!-- End of Referral section (Top) -->
-        </div>
-        <!-- End of Row 1 -->
+          <!-- End of Row 1 -->
 
-        <!-- Right Side Portion (Samaritan PIC + Name, Helped, Send Message, Update Last Seen)-->
-        <div class="row">
-          <!-- Start of Description and Paragraph-->
-          <div class="listing-content col-lg-12 col-md-12 col-sm-12" style="font-family:'Raleway', Sans serif">
-            <h2>Description</h2>
-            <p>{{description}}</p>
-          </div>
-          <!-- End of Description and Paragraph-->
-
-          <h2>Location</h2>
-
-          <!-- Start of Row 3 -->
+          <!-- Right Side Portion (Samaritan PIC + Name, Helped, Send Message, Update Last Seen)-->
           <div class="row">
-            <!-- Section for Map Listing (Left side of Row) -->
-            <div class="listing-map col-md-9">
-              <!-- API Integration here-->
-              <div id="mapListing"></div>
+            <!-- Start of Description and Paragraph-->
+            <div class="listing-content col-lg-12 col-md-12 col-sm-12" style="font-family:'Raleway', Sans serif">
+              <h2>Description</h2>
+              <p>{{description}}</p>
             </div>
-            <!-- End of Section for Map Listing (Left side of Row) -->
+            <!-- End of Description and Paragraph-->
 
-            <!-- Section for Samaritan Card (Left side of Row)  -->
-            <div class="col-md-3">
-              
-              <div class="card mb-3" id="referrer">
-                <div class="row">
-                  <div class="col-12">
-                    <img src="Images/RkPorkhouse.jfif" class="img-fluid rounded-start">
-                  </div>
+            <h2>Location</h2>
 
-                  <div class="col-12">
-                    <div class="card-body" style="font-size: 80%">
-                      <h5 class="card-title">Referrer: {{ samaritan_name }}</h5>
-                      <p class="card-text">"Don't say why me, say try me."</p>
-                      <p class="card-text"><small class="text-muted">Helped 3 people</small></p>
-                      <div class="row">
-                        <button type="button" class="btn btn-tasklist mt-1" id="listingSendMsg">
-                          Send Message
-                        </button>
+            <!-- Start of Row 3 -->
+            <div class="row">
+              <!-- Section for Map Listing (Left side of Row) -->
+              <div class="listing-map col-lg-9">
+                <!-- API Integration here-->
+                <div id="mapListing"></div>
+              </div>
+              <!-- End of Section for Map Listing (Left side of Row) -->
+
+              <!-- Section for Samaritan Card (Left side of Row)  -->
+              <div class="col-lg-3">
+                
+                <div class="card mb-3" id="referrer">
+                  <div class="row">
+                    <div class="col-12 d-flex justify-content-center" >
+                      <img src="Images/fabian.jpg" class="img-fluid rounded-start">
+                    </div>
+
+                    <div class="col-12">
+                      <div class="card-body" style="font-size: 80%; height: auto;">
+                        <h5 class="card-title">Referrer: {{ samaritan_name }}</h5>
+                        <p class="card-text">"Don't say why me, say try me."</p>
+                        <p class="card-text"><small class="text-muted">Helped 3 people</small></p>
+                        <div class="row">
+                          <button type="button" class="btn btn-tasklist mt-1" id="listingSendMsg">
+                            Send Message
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <!-- End of Section for Samaritan Card -->
             </div>
-            <!-- End of Section for Samaritan Card -->
+            <!-- End of Row 3 -->
           </div>
-          <!-- End of Row 3 -->
-        </div>
-        <!-- End Section for Listing Content -->
+          <!-- End Section for Listing Content -->
 
-        <!-- Start of Notes section -->
-        <div class="notes-content">
-          <div class="row">
-            <h2>Notes</h2>
-          </div>
-          <!-- Section for individual Note -->
-          <div class="row mx-2" v-for="note in db_note_list" >
-            <div class="card p-2 mt-2" style="background-color:#303C6C">
-              <p class="card-text"> {{ note }} </p>
+          <!-- Start of Notes section -->
+          <div class="notes-content">
+            <div class="row">
+              <h2>Notes</h2>
             </div>
+            <!-- Section for individual Note -->
+            <div class="row mx-2" v-for="note in db_note_list" >
+              <div class="card p-2 mt-2" style="background-color:#303C6C">
+                <p class="card-text"> {{ note }} </p>
+              </div>
+            </div>
+            <!-- End of Section for individual Note -->
           </div>
-          <!-- End of Section for individual Note -->
-        </div>
-        <!-- End of Notes section -->
+          <!-- End of Notes section -->
 
-      </div>
-      <!-- End of Listing Content -->
-    </div> 
-    <!-- End of Listing container -->
+        </div>
+        <!-- End of Listing Content -->
+      </div> 
+      <!-- End of Listing container -->
+    </div>
+    <!-- End of main body content -->
   </div>
   <!-- End of Body Content -->
 
