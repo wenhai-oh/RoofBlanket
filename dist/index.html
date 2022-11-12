@@ -42,14 +42,17 @@
       </a>
     </div>
   </div>
+  <!-- Floating Action Icon html structure ends here -->
 
+  <!-- Start of nar bar -->
   <div id="navbardiv" class="sticky-top">
-
     <navbar-all :userid="user_id" :username="username" v-on:log_out="logout"></navbar-all>
-
   </div>
 
+  <!-- End of nav bar -->
+
   <!-- Start of body Content -->
+  <!-- Start of first section in index.html -->
   <div class="banner">
     <div class="content content-banner">
         <div class="banner_wr">
@@ -58,33 +61,38 @@
                 <!-- Short Description -->
                 <p class="over_title">An organization that here to help</p>
                 <h1>Say No to Homelessness <br> Join Us and Make A Difference</h1>
-                <!--CTA Portion-->
+                <!--CTA Portion Left Banner -->
+                <!-- First CTA Button -->
                 <div class="cta_wr">
                     <a href="add_person.html" class="cta w-button">
                         <span>Refer Someone</span>
                     </a>
-
+                    <!-- Second CTA Button -->
                     <a href="#tabs-container" class="cta w-button">
                         <span>Lend a Helping Hand</span>
                     </a>
                 </div>
+                <!-- End of CTAs buttons -->
             </div>
+            <!-- End of Banner Left -->
+            <!-- Right Banner -->
             <p class="p-banner">
                 According to Ng, K.H., & Sekhon Atac, J.S. (2022) <em>Seeking shelter: Homeless during the COVID-19 Pandemic</em> - As of 2021, there have been a recorded of 1036 homeless people. More homeless people were found in larger, older and poorer neighborhoods. Exits from homelessness depend on accessible and adequate housing opinions. The first step in intervention is identifying problems early and offering help. You can be the one today, to offer a helping hand.
             </p>
         </div>
+        <!-- Close Banner_wr -->
     </div>
+    <!-- Close content-banner -->
   </div>
+  <!-- Close banner section (First section)-->
 
-  <!-- <div class="video-section"> -->
-    <!-- Insert Video Here -->
-    <!-- <img src="../dist/Images/end-homelessness-homeless.gif" alt="">
-  </div> -->
-
+  <!-- Second Content Section -->
   <div class="what_we_do">
     <div class="content content_what">
+        <!-- Header Section -->
         <h5>Who We Help</h5>
         <div class="box_wr">
+            <!-- Start of first box -->
             <div class="box_inner">
                 <div class="box">
                     <div class="box_top">
@@ -94,6 +102,7 @@
                     <p>Found while rough sleeping during pandemic, some self-referrals.</p>
                 </div>
                 <div class="box_underlay"></div>
+                <!-- Start of first box overlay hover -->
                 <div class="box_overlay">
                     <h4>Long Term Homeless<span>.</span></h4>
                     <ul>
@@ -103,7 +112,10 @@
                         <li>From a few months to many years, pre-dates pandemic.</li>
                     </ul>
                 </div>
+                <!-- End of first box overlay hover-->
             </div>
+            <!-- End of first box -->
+            <!-- Second Box -->
             <div class="box_inner">
                 <div class="box">
                     <div class="box_top">
@@ -113,6 +125,7 @@
                     <p>Self-referrals when pandemic disrupted housing arragements.</p>
                 </div>
                 <div class="box_underlay"></div>
+                <!-- Hover section overlay box 2 -->
                 <div class="box_overlay">
                     <h4>Short Term Homeless<span>.</span></h4>
                     <ul>
@@ -122,7 +135,10 @@
                         <li>No more than a few days when displaced during pandemic time.</li>
                     </ul>
                 </div>
+                <!-- End of hover section box 2-->
             </div>
+            <!-- End of second box -->
+            <!-- Third Box -->
             <div class="box_inner">
                 <div class="box">
                     <div class="box_top">
@@ -132,6 +148,7 @@
                     <p>Most were stopped at immigration checkpoint and directed to shelter after border closures.</p>
                 </div>
                 <div class="box_underlay"></div>
+                <!-- Hover Section box 3 overlay -->
                 <div class="box_overlay">
                     <h4>Transnational Homeless<span>.</span></h4>
                     <ul>
@@ -141,10 +158,13 @@
                         <li>Wide range of experiences, during trips to SG.</li>
                     </ul>
                 </div>
+                <!-- Hover Section box 3 overlay end -->
             </div>
+            <!-- End of Third Box -->
         </div>
     </div>
   </div>
+  <!-- End of Second Content Section -->
 
   <div id="our_statistics">
     <div class="container stats_container">
@@ -215,7 +235,7 @@
               </div>
             </div>
           </div>
-          <!-- End of Col 1-->
+          <!-- End of Col-->
   
   
         </div>
@@ -228,7 +248,7 @@
         <!--Start of a New Row-->
         <div class="row mt-3">
           <!--Start of a New Col-->
-          <!--Start of a Col 1-->
+          <!--Start of a Col-->
           <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3" v-for="jobless_homeless in jobless_homeless_array">
             <div class="card">
               <div class="imgBx">
@@ -246,7 +266,7 @@
               </div>
             </div>
           </div>
-          <!-- End of Col 1-->
+          <!-- End of Col-->
   
 
         </div>
