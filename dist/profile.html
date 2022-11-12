@@ -253,7 +253,7 @@
 
       methods: {
         populateProfileInformation() {
-          console.log("populateProfileInformation function called")
+          // console.log("populateProfileInformation function called")
           // get user id from session
           // let current_user_id = sessionStorage.getItem("userid")
           // console.log(current_user_id)
@@ -315,14 +315,16 @@
             "housing_type": this.housing_type
           }
 
-          console.log(update_details)
+          // console.log(update_details)
 
           axios.get(api_endpoint, {
             params: update_details
           })
             .then(response => {
               // this.populateProfileInformation()
-              console.log("here")
+              // console.log("here")
+              // alert update has been saved successfully
+              alert("Profile has been updated successfully!")
             })
             .catch(error => {
               console.log(error.message)
