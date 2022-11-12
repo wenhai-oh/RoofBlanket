@@ -26,11 +26,23 @@ spl_autoload_register(function ($class) {
 // initialize object
 $homelessDAO = new HomelessDAO();
 
+$task = $_GET["task"];
+
+if ( isset($_GET["host_id"]) && isset($_GET["id"])){
+    // means is offer_home
+    $result = $homelessDAO->offer_home($_GET["id"],$_GET["host_id"]);
+}
 
 // get search query
-if( isset($_GET["id"]) ) {
-    $result = $homelessDAO->update_complete($_GET["id"]);
-    // $result = false;
+else if( isset($_GET["id"]) ) {
+
+    if ($task == "rejectoffer"){
+        $result = $homelessDAO->reject_offer($_GET["id"]);
+    }
+
+    else if ($task == "acceptoffer"){
+        $result = $homelessDAO->update_complete($_GET["id"]);
+    }
 
 }
 else {

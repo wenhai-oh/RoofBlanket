@@ -50,6 +50,8 @@
                         "completed" => $completed,
                         "time_created" => $time_created,
                         "referral_id"=> $referral_id,
+                        "home_offered_by"=>$home_offered_by
+
                     );
 
                     array_push($result_arr["records"], $homeless);
@@ -110,6 +112,7 @@
                         "completed" => $completed,
                         "time_created" => $time_created,
                         "referral_id"=> $referral_id,
+                        "home_offered_by"=>$home_offered_by
                     );
                     array_push($result_arr["records"], $homeless);
                 }
@@ -170,6 +173,7 @@
                         "completed" => $completed,
                         "time_created" => $time_created,
                         "referral_id"=> $referral_id,
+                        "home_offered_by"=>$home_offered_by
                     );
                     array_push($result_arr["records"], $homeless);
                 }
@@ -228,6 +232,7 @@
                         "completed" => $completed,
                         "time_created" => $time_created,
                         "referral_id"=> $referral_id,
+                        "home_offered_by"=>$home_offered_by
                     );
                     array_push($result_arr["records"], $homeless);
                 }
@@ -243,7 +248,12 @@
 
         public function update_complete($id){
 
-            $datetime = date('Y-m-d H:i:s');
+
+            // update completed to 1, means referrer acknowledge
+            
+            // update home_offered_by to null
+
+            // update home_offered_by to user_id
 
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
@@ -253,6 +263,61 @@
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(":id",$id,PDO::PARAM_INT);
 
+            // ADD CODE TO GET HOMELESSID
+            
+            $result = $stmt->execute();
+
+            $stmt = null;
+            $pdo = null;
+
+            // return query result (Boolean)
+            return $result;
+
+        }
+
+        public function reject_offer($id){
+
+
+            // update completed to 1, means referrer acknowledge
+            
+            // update home_offered_by to null
+
+            // update home_offered_by to user_id
+
+            $conn_manager = new Database();
+            $pdo = $conn_manager->getConnection();
+            
+            $sql = "UPDATE homelessCollection SET home_offered_by = NULL WHERE id=:id";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+
+            // ADD CODE TO GET HOMELESSID
+            
+            $result = $stmt->execute();
+
+            $stmt = null;
+            $pdo = null;
+
+            // return query result (Boolean)
+            return $result;
+
+        }
+
+        public function offer_home($id, $host_id){
+
+            // update home_offered_by to user_id
+
+            $conn_manager = new Database();
+            $pdo = $conn_manager->getConnection();
+            
+            $sql = "UPDATE homelessCollection SET home_offered_by =:hostid WHERE id=:id";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+
+            $stmt->bindParam(":hostid",$host_id,PDO::PARAM_INT);
+            
             // ADD CODE TO GET HOMELESSID
             
             $result = $stmt->execute();
@@ -288,37 +353,16 @@
 
             // end of get homelessid
             
-
-
-
-    //         `id` int(11) NOT NULL,
-    // `fullname` varchar(256) NOT NULL,
-    // `age` int(11) NOT NULL,
-    // `gender` varchar(1) NOT NULL,
-    // `contact` int(8),
-    // `location` varchar(256) NOT NULL, 
-    // `special_needs` BOOLEAN NOT NULL,  # 0 normal, 1 special needs
-    // `duration` int(12) NOT NULL,
-    // `description` varchar(1000) NOT NULL,
-    // `photo_url` varchar(1000) NOT NULL,
-    // `employment` BOOLEAN NOT NULL,
-    // `education` varchar(100),
-    // `skills` varchar(1000),
-    // `employment_desc` varchar(1000),
-    // `completed` BOOLEAN NOT NULL,
-    // `time_created` DATETIME NOT NULL,
-    // `referral_id` int(11) NOT NULL
-
             if ($gender == 'M'){
-                $photo_url = "https://roof-blanket.000webhostapp.com/dist//Images/boy.png";
+                $photo_url = "https://roof-blanket.000webhostapp.com/dist/Images/boy.png";
             }else if($gender == 'F'){
-                $photo_url = "https://roof-blanket.000webhostapp.com/dist//Images/girl.png";
+                $photo_url = "https://roof-blanket.000webhostapp.com/dist/Images/girl.png";
             }else{
                 # random placeholder url
                 $photo_url = "";
             }
 
-            $sql = "INSERT INTO homelessCollection VALUES(?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, '', '','', 0, ?, ?)";
+            $sql = "INSERT INTO homelessCollection VALUES(?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, '', '','', 0, ?, ?, NULL)";
 
             $stmt = $pdo->prepare($sql);
 
