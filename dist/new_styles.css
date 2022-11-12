@@ -905,6 +905,7 @@ p {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    padding:0;
   }
   footer .social_icon li, footer .menu li {
     list-style: none;
