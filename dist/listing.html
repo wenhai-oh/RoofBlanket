@@ -91,7 +91,7 @@
         </div>
 
         <div class="gap-2 d-flex justify-content-md-center mb-3 text-center">
-          <span id="update_btn"></span>
+          <span id="update_btn_span"></span>
           <!-- <button class="btn btn-releasepop mb-3" type="button" @click="map_function()">Update</button> -->
           <button class="btn btn-releasepop mb-3" type="button" name="cancel" @click="closeUpdate()">Cancel</button>
         </div>
@@ -214,22 +214,22 @@
 
             <!-- First Two Notes -->
             <!-- First Note-->
-            <div class="row mt-2">
+            <!-- <div class="row mt-2"> -->
               <!-- First Note-->
-              <div class="card col-lg-5 mt-2">
+              <!-- <div class="card col-lg-5 mt-2">
                 <div class="card-body">
                   <h5 class="card-title">Waisoon's comment</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's
                     content.</p>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Separator -->
-              <div class="col-2"></div>
+              <!-- <div class="col-2"></div> -->
 
-              <!-- Second Note-->
-              <div class="card col-lg-5 mt-2">
+              <!-- Second Note -->
+              <!-- <div class="card col-lg-5 mt-2">
                 <div class="card-body">
                   <h5 class="card-title">Wenhai's comment</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -237,30 +237,30 @@
                     content.</p>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <div class="row mt-2">
+            <!-- <div class="row mt-2"> -->
               <!-- First Note-->
-              <div class="card col-lg-5 mt-2">
+              <!-- <div class="card col-lg-5 mt-2">
                 <div class="card-body">
                   <h5 class="card-title">Jia Ler's comment</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Separator -->
-              <div class="col-2"></div>
+              <!-- <div class="col-2"></div> -->
 
               <!-- Second Note-->
-              <div class="card col-lg-5 mt-2">
+              <!-- <div class="card col-lg-5 mt-2">
                 <div class="card-body">
                   <h5 class="card-title">Ren Kee's comment</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
+              </div> -->
+
+              <div class="card p-2 mt-2" v-for="note in db_note_list">
+                <p class="card-text"> {{ note }} </p>
               </div>
             </div>
 
@@ -346,9 +346,11 @@
                 dbLocationList.push(temp_location)
 
                 // retrieve note string from db here (not functional yet, require DB script to be updated first)
-                // this.db_note_list.push(row.note) // TO-ADD v-for for note div html
-
-
+                // this.db_note_list.push(row.notes) // TO-ADD v-for for note div html
+                // console.log(row.note)
+                if (row.note != "" && !this.db_note_list.includes(row.note)) {
+                  this.db_note_list.push(row.note)
+                }
               }
 
               /* another axios call to retrieve homeless information */
@@ -544,11 +546,13 @@
               }
 
               // create button element and send it to update_btn
-              let button_div = document.getElementById("update_btn")
+              let button_div = document.getElementById("update_btn_span")
               let btn = document.createElement("button");
               btn.type = "button";
               btn.innerText = "update";
+              btn.id = "update_btn"
               let button_style = `
+                background-color: #303C6C;
                 margin-top: 20px;
                 text-decoration: none;
                 border-radius: 4px;
@@ -608,7 +612,6 @@
                       .then(response => {
                         console.log("here")
                         // redirect to listing.html
-
                       })
                       .catch(error => {
                         console.log(error.message)
