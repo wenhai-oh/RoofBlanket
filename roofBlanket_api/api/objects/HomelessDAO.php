@@ -263,7 +263,81 @@
             // return query result (Boolean)
             return $result;
 
+        }
 
+
+        # function to add homeless person
+        public function add_homeless($fullname,$age,$gender,
+        $location,$special_needs,$duration,$employment,$description,$referral_id){
+
+            $conn_manager = new Database();
+            $pdo = $conn_manager->getConnection();
+
+
+            // ADD CODE TO GET HOMELESSID
+            $sql_get_id="SELECT id FROM homelessCollection ORDER BY id DESC LIMIT 1";
+            $stmt = $pdo->prepare($sql_get_id);
+            $result = $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            if($row = $stmt->fetch()){
+
+                extract($row);
+                $new_id = $id + 1;            
+            }
+
+            // end of get homelessid
+            
+
+
+
+    //         `id` int(11) NOT NULL,
+    // `fullname` varchar(256) NOT NULL,
+    // `age` int(11) NOT NULL,
+    // `gender` varchar(1) NOT NULL,
+    // `contact` int(8),
+    // `location` varchar(256) NOT NULL, 
+    // `special_needs` BOOLEAN NOT NULL,  # 0 normal, 1 special needs
+    // `duration` int(12) NOT NULL,
+    // `description` varchar(1000) NOT NULL,
+    // `photo_url` varchar(1000) NOT NULL,
+    // `employment` BOOLEAN NOT NULL,
+    // `education` varchar(100),
+    // `skills` varchar(1000),
+    // `employment_desc` varchar(1000),
+    // `completed` BOOLEAN NOT NULL,
+    // `time_created` DATETIME NOT NULL,
+    // `referral_id` int(11) NOT NULL
+
+            if ($gender == 'M'){
+                $photo_url = "https://roof-blanket.000webhostapp.com/dist//Images/boy.png";
+            }else if($gender == 'F'){
+                $photo_url = "https://roof-blanket.000webhostapp.com/dist//Images/girl.png";
+            }else{
+                # random placeholder url
+                $photo_url = "";
+            }
+
+            $sql = "INSERT INTO homelessCollection VALUES(?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, '', '','', 0, ?, ?)";
+
+            $stmt = $pdo->prepare($sql);
+
+            $datetime = date('Y-m-d H:i:s');
+            
+            $result = $stmt->execute([$new_id, $fullname, $age, $gender, $location, 
+            $special_needs, $duration, $description, $photo_url, $employment, $datetime,$referral_id]);
+
+            $stmt = null;
+            $pdo = null;
+
+            if ($result){
+                return $new_id;
+                
+            }
+
+
+            // return query result (Boolean)
+            return $result;
 
         }
 
