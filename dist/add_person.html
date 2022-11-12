@@ -53,21 +53,21 @@
           <h4>Who are you referring?</h4>
           <!--First Field (1st Row)-->
           <div class="input-group input-group-icon">
-            <input type="text" placeholder="Full Name" id="person_name" v-model="new_name" required/>
+            <input type="text" placeholder="Full Name" id="person_name" required/>
             <div class="input-icon">
               <i class="fa fa-user"></i>
             </div>
           </div>
           <!-- Second Field (2nd Row)-->
           <div class="input-group input-group-icon">
-            <input type="number" placeholder="Age" max="80" min="20" id="age" v-model="new_age" required />
+            <input type="number" placeholder="Age" max="80" min="20" id="age" required />
             <div class="input-icon">
               <i class="fa-solid fa-users"></i>
             </div>
           </div>
           <!-- Third Field (3rd Row)-->
           <div class="input-group input-group-icon">
-            <input type="text" placeholder="Location" id="location" required v-model="new_location"/>
+            <input type="text" placeholder="Location" id="location" required/>
             <div class="input-icon">
               <i class="fa-solid fa-location-dot"></i>
             </div>
@@ -80,9 +80,9 @@
           <div class="col-half">
             <h4>Special Needs?</h4>
             <div class="input-group">
-              <input id="special-yes" type="radio" name="specialneeds" value="yes" v-model="isSpecialNeeds" checked/>
+              <input id="special-yes" type="radio" name="specialneeds" value="yes" checked/>
               <label for="special-yes">Yes</label>
-              <input id="special-no" type="radio" name="specialneeds" value="no" v-model="isSpecialNeeds"/>
+              <input id="special-no" type="radio" name="specialneeds" value="no"/>
               <label for="special-no">No</label>
             </div>
           </div>
@@ -90,9 +90,9 @@
           <div class="col-half">
             <h4>Gender</h4>
             <div class="input-group">
-              <input id="gender-male" type="radio" name="gender" value="male" v-model="new_gender" checked/>
+              <input id="gender-male" type="radio" name="gender" value="male" checked/>
               <label for="gender-male">Male</label>
-              <input id="gender-female" type="radio" name="gender" value="female" v-model="new_gender"/>
+              <input id="gender-female" type="radio" name="gender" value="female"/>
               <label for="gender-female">Female</label>
             </div>
           </div>
@@ -105,8 +105,8 @@
           <div class="col-half">
             <h4>Duration of Stay (Months)</h4>
             <div class="input-group">
-              <select class="form-select" style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;" id='duration' v-model="new_duration">
-                <option v-for="duration_value in duration_values.slice(0,1)" :value="duration_value"  default>{{duration_value}}</option>
+              <select class="form-select" style="border-radius: 3px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #e5e5e5;" id='duration'>
+                <option v-for="duration_value in duration_values.slice(0,1)" :value="duration_value"  default >{{duration_value}}</option>
                 <option v-for="duration_value in duration_values.slice(1)" :value="duration_value">{{duration_value}}</option>
               </select>
             </div>
@@ -115,9 +115,9 @@
           <div class="col-half">
             <h4>Seeking Employment?</h4>
             <div class="input-group">
-              <input id="employment-yes" type="radio" name="employment" value="yes" v-model="new_employment" checked/>
+              <input id="employment-yes" type="radio" name="employment" value="yes"checked/>
               <label for="employment-yes">Yes</label>
-              <input id="employment-no" type="radio" name="employment" value="no" v-model="new_employment"/>
+              <input id="employment-no" type="radio" name="employment" value="no"/>
               <label for="employment-no">No</label>
             </div>
           </div>
@@ -129,7 +129,7 @@
             <h4>Description</h4>
             <div class="input-group">
               <div class="mb-3" name="description">
-                <textarea class="form-control" rows="6" cols="100" id="description" placeholder="Please describe the person of interest.." required style="color: black;" v-model="new_description"></textarea>
+                <textarea class="form-control" rows="6" cols="100" id="description" placeholder="Please describe the person of interest.." required style="color: black;"></textarea>
               </div>
             </div>
           </div>
@@ -149,8 +149,8 @@
 
       <!--Here We input Upload or cancel button-->
       <div class="listing-button d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-        <button class="list-btn" type="button" id="cancel">Cancel</button>
-        <button class="list-btn" type="button" id="upload" @click="create_homeless_instance(getLatLng)">Upload</button>
+        <button class="list-btn" type="button" id="cancel" onclick="trysomething()">Cancel</button>
+        <button class="list-btn" type="button" id="upload" onclick="getLatLng()">Upload</button>
       </div>
       <!-- End Of Form and Buttons Section-->
       </form>
@@ -175,29 +175,111 @@
       // GoogleAPI to auto complete location search and retrieve Lat and Lng values.
       var autocomplete = new google.maps.places.Autocomplete(document.getElementById('location'))
 
+      function trysomething(){
+        alert("you win")
+      }
   
       function getLatLng() {
           // console.log(autocomplete)
           // console.log(autocomplete.gm_accessors_.place.nj.formattedPrediction)
 
           var geocoder = new google.maps.Geocoder()
-          var address = autocomplete.gm_accessors_.place.nj.formattedPrediction
-          // console.log(address)
+          // var address = autocomplete.gm_accessors_.place.oj.formattedPrediction
+          var address = document.getElementById('location').value
+          console.log(address)
 
           geocoder.geocode({ 'address': address }, function (results, status) {
               if (status == 'OK') {
-                  let lat = results[0].geometry.location.lat()
-                  let lng = results[0].geometry.location.lng()
-                  console.log(lat)
-                  console.log(lng)
+                console.log('iamin')
+                let lat = results[0].geometry.location.lat()
+                let lng = results[0].geometry.location.lng()
+                console.log("lat" + lat)
+                console.log("long" + lng)}})
 
-                  return [lat,lng]
 
-                  // store [lat, lng] in DB as array
-              } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
-              }
-          });
+                // create instance of homeless person
+                // should have 9 attributes
+
+                fullname = document.getElementById("person_name").value
+                age = document.getElementById("age").value
+
+                location = document.getElementById('location').value
+
+                gender = document.querySelector('input[name="gender"]:checked').value;
+                specialneeds = document.querySelector('input[name="specialneeds"]:checked').value
+                employment = document.querySelector('input[name="employment"]:checked').value
+
+                duration = document.getElementById("duration").value
+                description = document.getElementById("description").value
+
+                referrerid = sessionStorage.getItem['userid']
+                
+                console.log('iamout')
+
+                console.log("fullname" + fullname)
+                console.log("gender" + gender)
+                console.log("specialneeds" + specialneeds)
+                console.log("employment" + employment)
+                console.log("duration" + duration)
+                console.log("description" + description)
+                console.log("location" + location)
+                // console.log("fullname" + fullname)
+                // console.log("fullname" + fullname)
+
+
+                // let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/addhomeless.php"
+
+                // let new_user = {
+
+                //     fullname: fullname,
+                //     age: age,
+                //     gender: gender,
+                //     specialneeds: specialneeds,
+                //     employment: employment,
+                //     duration: duration,
+                //     description: description
+
+
+                // }
+
+                // axios.get(api_endpoint, { 
+                //     params: new_user
+                // })
+                // .then(response => {
+                //   console.log( response.data.results[0] )
+
+
+                  // let api_endpoint2 = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/addhomeless.php"
+
+                  // let homeless_location = {
+
+                  //     fullname: fullname,
+                  //     age: age,
+                  //     gender: gender,
+                  //     specialneeds: specialneeds,
+                  //     employment: employment,
+                  //     duration: duration,
+                  //     description: description
+
+
+                  // }
+
+
+                
+
+                    
+              //   })
+              //   .catch(error => {
+              //       console.log( error.message )
+              //       this.error_msg = "Unable to create user"
+              //   })}
+          
+
+
+              // else {
+              //     alert('Geocode was not successful for the following reason: ' + status);
+              // }
+          // });
       }
     </script>
 
@@ -207,9 +289,9 @@
         $('#upload').prop("disabled", !this.checked);
       }).change()
 
-      document.getElementById("cancel").onclick = function () {
-        location.href = "index.html";
-      };
+      // document.getElementById("cancel").onclick = function () {
+      //   location.href = "index.html";
+      // };
     </script>
 
     <style>
