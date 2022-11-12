@@ -64,6 +64,17 @@
           left: 25%;
           z-index: 1;
         }
+        /* .rejectOffer{
+          background-color: beige;
+          border-radius: 5%;
+          padding: 20px;
+          position: absolute;
+          visibility: hidden;
+          width: 50%;
+          top: 10%;
+          left: 25%;
+          z-index: 1;
+        } */
         .open-complete {
           visibility: visible;
         }
@@ -141,13 +152,39 @@
     </div>
 
     <div id="chat">
-        <div class='markComplete mx-auto text-center' id='markComplete'>
-            <h5 style="margin:40px 0px">Has the Person been handed over to the GoodWill Host?</h5>
-            <div class="markComplete-position">
-                <button class="btn btn-releasepop mb-3" type="submit" name="yes" v-on:click="updateComplete()">Yes</button>
-                <button class="btn btn-releasepop mb-3" type="submit" name="no" onclick="closeComplete()">No</button>
+
+        <div class='markComplete mx-auto text-center' id='rejectOffer'>
+
+            <div v-if="status == 'pending acknowledgement'">
+                <h5 style="margin:40px 0px">Are you sure you want to reject this host?</h5>
+                <div class="markComplete-position">
+                    <button class="btn btn-releasepop mb-3" type="submit" name="yes" v-on:click="rejectOffer()">Yes</button>
+                    <button class="btn btn-releasepop mb-3" type="submit" name="no" onclick="closeReject()">No</button>
+                </div>
             </div>
+            
         </div>
+        
+        <div class='markComplete mx-auto text-center' id='markComplete'>
+
+            <div v-if="status == 'pending acknowledgement'">
+                <h5 style="margin:40px 0px">Do you wish to accept GoodWill Host offer?</h5>
+                <div class="markComplete-position">
+                    <button class="btn btn-releasepop mb-3" type="submit" name="yes" v-on:click="updateComplete()">Yes</button>
+                    <button class="btn btn-releasepop mb-3" type="submit" name="no" onclick="closeComplete()">No</button>
+                </div>
+            </div>
+            
+            <div v-else-if="status == 'available'">
+                <h5 style="margin:40px 0px">Do you wish to offer a place?</h5>
+                <div class="markComplete-position">
+                    <button class="btn btn-releasepop mb-3" type="submit" name="yes" v-on:click="offerHome()">Yes</button>
+                    <button class="btn btn-releasepop mb-3" type="submit" name="no" onclick="closeComplete()">No</button>
+                </div>
+            </div>
+
+        </div>
+
 
         <div id="main">
             <!-- START OF BODY CONTENT -->
@@ -204,8 +241,21 @@
                                         </a>
                                     </div>
                                     <div class="col align-items-center">
-                                        <button class="btn btn-primary mt-2" type="submit" style="float:right"onclick="openComplete()" id="offerHomeBtn" v-if="homeless_status == 0">Offer a home!</button>
-                                        <button class="btn btn-primary mt-2" type="submit" style="float:right" disabled v-else>Found a home!</button>
+
+                                        <!-- when user is referral -->
+                                        <button class="btn btn-primary mt-2" type="submit" style="float:right" onclick="openComplete()" id="offerHomeBtn" v-if="status == 'completed'" disabled>Completed!</button>
+ 
+                                        <button class="btn btn-primary mt-2" type="submit" style="float:right" onclick="openComplete()" id="offerHomeBtn" v-if="status == 'no offer'" disabled>No Offer</button>
+
+                                        <!-- only instance that both will display together -->
+                                        <button class="btn btn-primary mt-2" type="submit" style="float:right" onclick="openReject()" id="offerHomeBtn" v-if="status == 'pending acknowledgement'">Reject Offer</button>
+                                        <button class="btn btn-primary mt-2" type="submit" style="float:right" onclick="openComplete()" id="offerHomeBtn" v-if="status == 'pending acknowledgement'">Accept Offer</button>
+                                        
+
+                                        <!-- when user is host -->
+                                        <button class="btn btn-primary mt-2" type="submit" style="float:right" onclick="openComplete()" id="offerHomeBtn" v-if="status == 'pending confirmation'" disabled>Pending Acknowledgement</button>
+                                        <button class="btn btn-primary mt-2" type="submit" style="float:right" onclick="openComplete()" id="offerHomeBtn" v-if="status == 'available'">Offer a home!</button>
+                                        <button class="btn btn-primary mt-2" type="submit" style="float:right" onclick="openComplete()" id="offerHomeBtn" v-if="status == 'deal in progress'" disabled>Other user has offered their home! :D</button>
                                     </div>
                                 </div>
                                 <!-- End of Homeless Info -->
@@ -216,7 +266,7 @@
                                 <div class='container' id="bottomHalf">
                                     <div class="chat-panel" >
                                         <!-- Messages -->
-                                        <div class="conversation-box" style="height: 25em; overflow-y: auto; display:flex; flex-direction: column-reverse;">
+                                        <div class="conversation-box" style="height: 25em; overflow-y: auto;">
                                             <div v-for="message in message_records" class="row no-gutters" style="margin:0">
                                                 <div v-if="message.sender_id == current_user_id" class="col-md-4 offset-md-8">
                                                     <div class="chat-bubble chat-bubble--right">
@@ -275,6 +325,23 @@
             main.classList.add('blur')
 
         }
+
+        function openReject() {
+            let markComplete = document.getElementById('rejectOffer')
+            let main = document.getElementById('main')
+
+            markComplete.style.visibility = 'visible';
+            main.classList.add('blur')
+
+        }
+        function closeReject() {
+            let markComplete = document.getElementById('rejectOffer')
+            let main = document.getElementById('main')
+            markComplete.style.visibility = 'hidden';
+            main.classList.remove('blur')
+
+        }
+
         function closeComplete() {
             let markComplete = document.getElementById('markComplete')
             let main = document.getElementById('main')

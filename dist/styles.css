@@ -887,7 +887,7 @@ button[disabled], button[disabled]:hover{
   color: #303C6C;
 }
 
-.release, #markComplete{
+.release, #markComplete, #rejectOffer{
   background-color: #303C6C;
   border-radius: 10px;
   padding: 20px;

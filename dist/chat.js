@@ -15,7 +15,8 @@ const vuemain = Vue.createApp({
 
             homeless_name: '',
             homeless_status: '',
-            homeless_id: ''
+            homeless_id: '',
+            status: ''
         }
     },
 
@@ -51,6 +52,63 @@ const vuemain = Vue.createApp({
             .then(response => {
                 console.log( response.data.records )
                 this.message_records = response.data.records
+
+                let api_endpoint2 = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelessinfobyid.php"
+
+
+                let homeless = {
+                    id: homeless_id
+                }
+                axios.get(api_endpoint2,{
+                    params: homeless
+                }).then(response =>{
+
+                    console.log(response)
+                    completed = response.data.records[0].completed
+                    referral_id = response.data.records[0].referral_id
+                    home_offered_by = response.data.records[0].home_offered_by
+                    
+                    // get referrer ID
+                    // get offer_home
+                    
+                    if (referral_id == this.current_user_id){
+
+                        if (home_offered_by == other_user_id){
+
+                            if (completed == 1){
+                                this.status = "completed"
+                            }
+                            else{
+                                this.status = "pending acknowledgement"
+                            }
+                        }
+                        else{
+                            this.status = "no offer"
+                        }
+                    }
+                    else{
+
+                        
+                        if (home_offered_by == this.current_user_id){
+                            if (completed == 1){
+                                this. status = "completed"
+                            }else{
+                            this.status = "pending confirmation"}
+                        }
+                        else if (home_offered_by == null){
+                            this.status = "available"
+                        }
+                        else{
+                            this.status = "deal in progress"
+                        }
+
+                    }
+                    console.log(this.status)
+
+
+                }).catch(error=>{
+
+                })
                 
             })
             .catch(error => {
@@ -228,7 +286,111 @@ const vuemain = Vue.createApp({
             })
 
         },
+
+        // give referrer the opportunity to accept an offer
+
         updateComplete(){
+
+            console.log('iam called')
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+              });
+            let other_user_id = params.id; // "some_value"
+            let homeless_id = params.homelessid;
+
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/updatehomelessstatus.php"
+
+            let homeless = {
+                id: homeless_id,
+                task: "acceptoffer"
+            }
+
+            axios.get(api_endpoint, { 
+                params: homeless
+            })
+            .then(response => {
+                console.log(response)
+
+                window.location.href = "chat.html?id=" + other_user_id + "&homelessid=" + homeless_id
+                
+            })
+            .catch(error => {
+                console.log( error.message )
+            })
+
+            
+        },
+
+        // give goodwill host opportunity to offer their home
+        offerHome(){
+
+            console.log('iam called')
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+              });
+            let other_user_id = params.id; // "some_value"
+            let homeless_id = params.homelessid;
+
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/updatehomelessstatus.php"
+
+            let homeless = {
+                id: homeless_id,
+                host_id: this.current_user_id,
+                task: "offerhome"
+
+            }
+
+            axios.get(api_endpoint, { 
+                params: homeless
+            })
+            .then(response => {
+                console.log(response)
+
+                window.location.href = "chat.html?id=" + other_user_id + "&homelessid=" + homeless_id
+                
+            })
+            .catch(error => {
+                console.log( error.message )
+            })
+
+            
+        },
+
+        // give referrer  the opporunity to reject the host
+        rejectOffer(){
+
+            console.log('iam called')
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+              });
+            let other_user_id = params.id; // "some_value"
+            let homeless_id = params.homelessid;
+
+            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/updatehomelessstatus.php"
+
+            let homeless = {
+                id: homeless_id,
+                task: "rejectoffer"
+            }
+
+            axios.get(api_endpoint, { 
+                params: homeless
+            })
+            .then(response => {
+                console.log(response)
+
+                window.location.href = "chat.html?id=" + other_user_id + "&homelessid=" + homeless_id
+                
+            })
+            .catch(error => {
+                console.log( error.message )
+            })
+
+            
+        },
+
+        // give goodwill host the opportunity to retract their offer
+        retractOffer(){
 
             console.log('iam called')
             const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -258,6 +420,7 @@ const vuemain = Vue.createApp({
 
             
         },
+
 
     },
     beforeMount(){
