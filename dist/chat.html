@@ -203,7 +203,7 @@
                         <!-- End of Search Box -->
                         <!-- List of users messaged -->
                         <div v-on:click="view_chat(people.id, people.homeless_id)" v-for="people in chat_history_person" class="inbox-drawer mt-2 d-flex align-items-center" style="padding: 10px; width:100%">
-                            <img src="icons/colored_profile_b.png" style="float:left;height: 25%; width: 25%;" class="me-1">
+                            <img src="Images/colored_profile_b.png" style="float:left;height: 25%; width: 25%;" class="me-1">
                             <div style="font-size:100%">
                                 <a href="#topHalf" id="view_chat_container">
                                     <p class="fw-bold m-0" style="font-family: 'Raleway', sans-serif">{{people.username}}</p> 
@@ -223,7 +223,7 @@
                                 <!-- Samaritan Info -->
                                 <div class="row">
                                     <div class="col d-flex align-items-center">
-                                        <img src="icons/colored_profile_b.png" style="float:left;height:50px; width:50px" class="me-1">
+                                        <img src="Images/colored_profile_b.png" style="float:left;height:50px; width:50px" class="me-1">
                                         <p class="m-0"> <b>{{other_user.username}} </b></p>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@
                                 <div class="row">
                                     <div class="col-7">
                                         <a :href="`listing.html?id=${homeless_id}`" style="text-decoration:none; color:black;" class="d-flex align-items-center">
-                                            <img src="./icons/colored_profile.png" style="float:left; height:50px; width: 50px;" class="me-1">   
+                                            <img src="./Images/colored_profile.png" style="float:left; height:50px; width: 50px;" class="me-1">   
                                             <div id="homeless_redirect">
                                                 <p class="m-0 fw-bold ">Referring: {{homeless_name}}</p>
                                                 <p class="m-0" style="font-size:small">Click to view referral profile</p> 
