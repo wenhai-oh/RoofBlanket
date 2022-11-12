@@ -33,6 +33,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- end script needed for map -->
 
+  <!-- This section contains the script needed for Google autocomplete API -->
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDzYcc7UvCEeHuUgpcvplM0COLpkSrdl4&libraries=places"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+
   <!-- Axios -->
   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
@@ -82,6 +87,10 @@
         <div class='my-5' id="mapUpdate">
           <label for="map" class="form-label">Update Location</label>
         </div>
+
+        <!-- Google Geocode API here for location autocomplete -->
+        <label for="notes" class="form-label">Search Location</label>
+        <input type="text" id="location_autocomplete" placeholder="Enter Location" class="form-control mb-3">
 
         <!-- Custom Notes -->
         <div class="mb-4">
@@ -302,6 +311,7 @@
           duration: 1, // num of months
           referral_id: 0, // id of referrer
           samaritan_name: '',
+          location_autocomplete: '',
         }
       },
 
@@ -584,40 +594,72 @@
               btn.style = button_style
 
               btn.onclick = function () {
-                // console.log(locationsList)
-                let queryString = window.location.search
-                let urlParams = new URLSearchParams(queryString)
-                let id = urlParams.get('id')
+                let location_autocomplete = document.getElementById("location_autocomplete").value
+                // console.log(JSON.stringify(location_autocomplete))
+                if (location_autocomplete != "") {
+                  var geocoder = new google.maps.Geocoder()
 
-                let api_endpoint_update = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/addhomelesslocation.php"
-
-                if (locationsList != []) {
-                  for (index in locationsList) // [[..], [..], [..]]
-                  {
-                    // console.log(locationsList[index])
-                    // console.log(id)
-                    let lat = locationsList[index][0]
-                    let long = locationsList[index][1]
-
-                    let update_homeless_location = {
-                      "id": id,
-                      "long": long,
-                      "lat": lat,
-                      "notes": document.getElementById("notes").value
+                  geocoder.geocode({ 'address': location_autocomplete }, function (results, status) {
+                    if (status == 'OK') {
+                      let lat = results[0].geometry.location.lat()
+                      let lng = results[0].geometry.location.lng()
+                      // console.log(lat)
+                      // console.log(lng)
+                      // add location to list
+                      let location = [lat, lng]
+                      // console.log(location)
+                      locationsList.push(location)
+                      saveLocation()
+                    } else {
+                      alert('Geocode was not successful for the following reason: ' + status);
                     }
+                  });
+                  
+                }
+                else{
+                  console.log("outside")
+                  saveLocation()
+                }
 
-                    axios.get(api_endpoint_update, {
-                      params: update_homeless_location
-                    })
-                      .then(response => {
-                        console.log("here")
-                        // redirect to listing.html
+                function saveLocation() {
+                  let queryString = window.location.search
+                  let urlParams = new URLSearchParams(queryString)
+                  let id = urlParams.get('id')
+
+                  let api_endpoint_update = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/addhomelesslocation.php"
+
+                  // console.log(locationsList)
+                  if (locationsList.length != 0) {
+                    for (index in locationsList) // [[..], [..], [..]]
+                    {
+                      console.log(locationsList[index])
+                      // console.log(id)
+                      let lat = locationsList[index][0]
+                      let long = locationsList[index][1]
+
+                      let update_homeless_location = {
+                        "id": id,
+                        "long": long,
+                        "lat": lat,
+                        "notes": document.getElementById("notes").value
+                      }
+
+                      axios.get(api_endpoint_update, {
+                        params: update_homeless_location
                       })
-                      .catch(error => {
-                        console.log(error.message)
-                      })
+                        .then(response => {
+                          console.log("here")
+                          // redirect to listing.html
+                        })
+                        .catch(error => {
+                          console.log(error.message)
+                        })
+                    }
+                    window.location.href = "listing.html?id=" + id
                   }
-                  window.location.href = "listing.html?id=" + id
+                  else {
+                    alert("forgot to add a location? Search or click on the map to add a location.")
+                  }
                 }
               }
               button_div.appendChild(btn)
@@ -727,6 +769,8 @@
         // });
 
         this.map_function()
+        // allow location to be auto completed
+        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('location_autocomplete'));
       },
     });
     root.mount("#root")
