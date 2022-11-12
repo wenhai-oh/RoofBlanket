@@ -221,7 +221,8 @@
           <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3" v-for="incomplete_homeless in incomplete_homeless_array">
             <div class="card">
               <div class="imgBx">
-                <img src="./Images/boy.png" alt="">
+                <img src="./Images/boy.png" v-if="incomplete_homeless.gender == 'M'">
+                <img src="./Images/girl.png" v-if="incomplete_homeless.gender == 'F'">
               </div>
               <div class="contentBx">
                 <!-- <h2>{{incomplete_homeless.fullname}}</h2> -->
@@ -234,7 +235,13 @@
 
                 <div class="important">
                   <h3>Special Needs:</h3>
-                  <span>{{incomplete_homeless.special_needs}}</span>
+                  <span v-if="incomplete_homeless.special_needs == 1">Yes</span>
+                  <span v-if="incomplete_homeless.special_needs == 0">No</span>
+                </div>
+
+                <div class="important">
+                  <h3>Stay Duration (mths):</h3>
+                  <span> {{ incomplete_homeless.duration }} </span>
                 </div>
                 <a :href="`listing.html?id=${incomplete_homeless.id}`">More Info</a>
               </div>
@@ -257,7 +264,8 @@
           <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3" v-for="jobless_homeless in jobless_homeless_array">
             <div class="card">
               <div class="imgBx">
-                <img src="./Images/girl.png" alt="">
+                <img src="./Images/boy.png" v-if="jobless_homeless.gender == 'M'">
+                <img src="./Images/girl.png" v-if="jobless_homeless.gender == 'F'">
               </div>
               <div class="contentBx">
                 <h2>{{jobless_homeless.fullname}}</h2>
@@ -266,6 +274,10 @@
                   <span>{{jobless_homeless.gender}}</span>
                   <h3>Age:</h3>
                   <span>{{jobless_homeless.age}}</span>
+                </div>
+                <div class="important" v-if="jobless_homeless.skills != ''">
+                  <h3>Skills:</h3>
+                  <span> {{ jobless_homeless.skills }} </span>
                 </div>
                 <a :href="`listing.html?id=${jobless_homeless.id}`">More Info</a>
               </div>
