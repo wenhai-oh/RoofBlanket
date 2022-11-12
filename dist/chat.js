@@ -121,39 +121,93 @@ const vuemain = Vue.createApp({
             setInterval(() => {
                 
             
-            // console.log("userid now is " + this.current_user_id)
-
-            const params = new Proxy(new URLSearchParams(window.location.search), {
-                get: (searchParams, prop) => searchParams.get(prop),
-              });
-            let other_user_id = params.id; // "some_value"
-            let homeless_id = params.homelessid
-
-            if (other_user_id != null){
-            // console.log("other userid now is " + other_user_id)
-
-
-            let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/message/getusermessage.php"
-
-            let user_ids = {
-                current_user_id: this.current_user_id,
-                other_user_id: other_user_id,
-                homeless_id: homeless_id
-            }
-
-            axios.get(api_endpoint, { 
-                params: user_ids
-            })
-            .then(response => {
-                console.log( response.data.records )
-                this.message_records = response.data.records
-                
-            })
-            .catch(error => {
-                console.log( error.message )
-            })}else{
-                console.log('update not done as no user is selected')
-            }
+                const params = new Proxy(new URLSearchParams(window.location.search), {
+                    get: (searchParams, prop) => searchParams.get(prop),
+                  });
+                let other_user_id = params.id; // "some_value"
+                let homeless_id = params.homelessid;
+    
+                this.homeless_id = params.homelessid
+    
+                // console.log("other userid now is " + other_user_id)
+    
+    
+                let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/message/getusermessage.php"
+    
+                let user_ids = {
+                    current_user_id: this.current_user_id,
+                    other_user_id: other_user_id,
+                    homeless_id: homeless_id
+                }
+    
+                axios.get(api_endpoint, { 
+                    params: user_ids
+                })
+                .then(response => {
+                    console.log( response.data.records )
+                    this.message_records = response.data.records
+    
+                    let api_endpoint2 = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/homeless/gethomelessinfobyid.php"
+    
+    
+                    let homeless = {
+                        id: homeless_id
+                    }
+                    axios.get(api_endpoint2,{
+                        params: homeless
+                    }).then(response =>{
+    
+                        console.log(response)
+                        completed = response.data.records[0].completed
+                        referral_id = response.data.records[0].referral_id
+                        home_offered_by = response.data.records[0].home_offered_by
+                        
+                        // get referrer ID
+                        // get offer_home
+                        
+                        if (referral_id == this.current_user_id){
+    
+                            if (home_offered_by == other_user_id){
+    
+                                if (completed == 1){
+                                    this.status = "completed"
+                                }
+                                else{
+                                    this.status = "pending acknowledgement"
+                                }
+                            }
+                            else{
+                                this.status = "no offer"
+                            }
+                        }
+                        else{
+    
+                            
+                            if (home_offered_by == this.current_user_id){
+                                if (completed == 1){
+                                    this. status = "completed"
+                                }else{
+                                this.status = "pending confirmation"}
+                            }
+                            else if (home_offered_by == null){
+                                this.status = "available"
+                            }
+                            else{
+                                this.status = "deal in progress"
+                            }
+    
+                        }
+                        console.log(this.status)
+    
+    
+                    }).catch(error=>{
+    
+                    })
+                    
+                })
+                .catch(error => {
+                    console.log( error.message )
+                })
 
 
         }, 5000)},
