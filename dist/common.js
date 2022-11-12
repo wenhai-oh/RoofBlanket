@@ -35,7 +35,7 @@ vuenavbar.component('navbar-all',
 
 
     template: `
-
+    
     <nav class="navbar navbar-expand-lg px-5">
 
         <!-- Navbar Logo -->
@@ -58,11 +58,8 @@ vuenavbar.component('navbar-all',
                 <li class="nav-item">
                 <a class="nav-link" href="profile.html">Profile</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link" href="chat.html">Chat</a>
-                </li>
                 <li class="nav-item" style="margin-right: 30px;">
-                <a class="nav-link" href="task_list.html">Task List</a>
+                <a class="nav-link" href="chat.html">Chat</a>
                 </li>
                 <li class="nav-item">
                   <a href="login.html" v-if="userid != null">
@@ -93,7 +90,6 @@ vuefooter.component('footer-all',
 {
 
     template: `
-
     <!-- FOOTER -->
         <footer>
             <div class="waves">
@@ -111,8 +107,6 @@ vuefooter.component('footer-all',
             <ul class="menu">
             <li><a href="#">Home</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Task List</a></li>
-            <li><a href="#">Listing</a></li>
             <li><a href="#">Chat</a></li>
             </ul>
             <p>© 2022 RoofBlanket, Inc</p>
