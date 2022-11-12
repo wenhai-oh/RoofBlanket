@@ -701,7 +701,7 @@ p {
 .outer_container .card{
   position: relative;
   width: 320px;
-  height: 450px;
+  height: 550px;
   background: #303C6C;
   border-radius: 20px;
   overflow: hidden;
@@ -789,7 +789,6 @@ p {
   position: absolute;
   bottom: 80px;
   width: 100%;
-  height: 100px;
   text-align: center;
   transition: 1s;
   z-index: 10;
