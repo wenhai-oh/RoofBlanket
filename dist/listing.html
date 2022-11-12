@@ -215,8 +215,8 @@
             <!-- First Two Notes -->
             <!-- First Note-->
             <!-- <div class="row mt-2"> -->
-              <!-- First Note-->
-              <!-- <div class="card col-lg-5 mt-2">
+            <!-- First Note-->
+            <!-- <div class="card col-lg-5 mt-2">
                 <div class="card-body">
                   <h5 class="card-title">Waisoon's comment</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -225,11 +225,11 @@
                 </div>
               </div> -->
 
-              <!-- Separator -->
-              <!-- <div class="col-2"></div> -->
+            <!-- Separator -->
+            <!-- <div class="col-2"></div> -->
 
-              <!-- Second Note -->
-              <!-- <div class="card col-lg-5 mt-2">
+            <!-- Second Note -->
+            <!-- <div class="card col-lg-5 mt-2">
                 <div class="card-body">
                   <h5 class="card-title">Wenhai's comment</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -240,39 +240,39 @@
             </div> -->
 
             <!-- <div class="row mt-2"> -->
-              <!-- First Note-->
-              <!-- <div class="card col-lg-5 mt-2">
+            <!-- First Note-->
+            <!-- <div class="card col-lg-5 mt-2">
                 <div class="card-body">
                   <h5 class="card-title">Jia Ler's comment</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
               </div> -->
 
-              <!-- Separator -->
-              <!-- <div class="col-2"></div> -->
+            <!-- Separator -->
+            <!-- <div class="col-2"></div> -->
 
-              <!-- Second Note-->
-              <!-- <div class="card col-lg-5 mt-2">
+            <!-- Second Note-->
+            <!-- <div class="card col-lg-5 mt-2">
                 <div class="card-body">
                   <h5 class="card-title">Ren Kee's comment</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
               </div> -->
 
-              <div class="card p-2 mt-2" v-for="note in db_note_list">
-                <p class="card-text"> {{ note }} </p>
-              </div>
+            <div class="card p-2 mt-2" v-for="note in db_note_list">
+              <p class="card-text"> {{ note }} </p>
             </div>
-
           </div>
-          <!-- End of Notes-content -->
-        </div> <!-- End of Section -->
-        <!-- End Of Container Section-->
 
-      </div>
-
+        </div>
+        <!-- End of Notes-content -->
+      </div> <!-- End of Section -->
+      <!-- End Of Container Section-->
 
     </div>
+
+
+  </div>
   </div>
 
   <div id="footerdiv">
@@ -621,6 +621,49 @@
                 }
               }
               button_div.appendChild(btn)
+
+              // style for mouseover and mouseout (mimick hover)
+              let update_btn = document.getElementById("update_btn")
+              // console.log(update_btn)
+              let mouseover_style = `
+                background-color: #ffeba7;
+                color: #303C6C;
+                box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+                margin-top: 20px;
+                text-decoration: none;
+                border-radius: 4px;
+                height: 44px;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: uppercase;
+                -webkit-transition : all 200ms linear;
+                transition: all 200ms linear;
+                padding: 0 30px;
+                letter-spacing: 1px;
+                display: -webkit-inline-flex;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                -ms-align-items: center;
+                align-items: center;
+                -webkit-justify-content: center;
+                -moz-justify-content: center;
+                -ms-justify-content: center;
+                justify-content: center;
+                -ms-flex-pack: center;
+                text-align: center;
+                border: none;
+                border: 1px solid #FBE8A6;`
+              let mouseout_style = button_style
+
+              update_btn.addEventListener("mouseover", function (event) {
+                event.target.style = mouseover_style
+              }, false);
+
+              update_btn.addEventListener("mouseout", function (event) {
+                event.target.style = mouseout_style
+              }, false);
             })
             .catch(error => {
               // In case of any error, see what it's about
@@ -684,11 +727,10 @@
         // });
 
         this.map_function()
-      }
+      },
     });
     root.mount("#root")
   </script>
-
   <!-- Redirect to Chat  [MOVED TO VUE JS SCRIPT ABOVE THIS]-->
   <!-- <script>
     document.getElementById("listingSendMsg").onclick = function () {
