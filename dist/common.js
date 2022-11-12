@@ -105,9 +105,9 @@ vuefooter.component('footer-all',
             <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
             </ul>
             <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Chat</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="chat.html">Chat</a></li>
             </ul>
             <p>© 2022 RoofBlanket, Inc</p>
         </footer>
