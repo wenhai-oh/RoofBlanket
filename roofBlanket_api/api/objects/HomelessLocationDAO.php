@@ -79,6 +79,7 @@
                         "id" => $id,
                         "latitude"  => $latitude,
                         "longitude" => $longitude,
+                        "note" => $note,
                     );
 
                     array_push($result_arr["records"], $homeless_loc);
