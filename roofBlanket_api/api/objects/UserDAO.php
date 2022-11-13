@@ -174,13 +174,13 @@
         }
 
         // authenticate
-        public function authenticate($username, $check_password) {
+        public function authenticate($username, $password) {
 
             $conn_manager = new Database();
             $pdo = $conn_manager->getConnection();
         
             // select all query
-            $sql = "SELECT id,username FROM usersCollection WHERE username=:username";
+            $sql = "SELECT id,username FROM usersCollection WHERE username=:username AND password=:password";
         
             // prepare query statement
             $stmt = $pdo->prepare($sql);
@@ -202,17 +202,12 @@
 
                 extract($row);
 
-                if (password_verify($check_password, $password)){
+                $people = array(
+                    "id" => $id,
+                    "username" => $username
+                );
 
-                    $people = array(
-                        "id" => $id,
-                        "username" => $username
-                    );
-    
-                    array_push($user["records"], $people); 
-
-                }
-               
+                array_push($user["records"], $people);                
 
             }
             $stmt = null;
@@ -242,11 +237,9 @@
             $sql = "INSERT INTO usersCollection VALUES(?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ?)";
 
         
-            $hashed = password_hash($password, PASSWORD_DEFAULT);
-            
             $stmt = $pdo->prepare($sql);
             
-            $result = $stmt->execute([$new_id, $username, $hashed, $email, $firstname, $lastname, $datetime]);
+            $result = $stmt->execute([$new_id, $username, $password, $email, $firstname, $lastname, $datetime]);
 
             // $result = $stmt->execute([$new_id, $username, $password, $email, $name, contact, address,
             // housing_type, num_homeless_attached, num_homeless_helped, employer_status, $datetime]);
