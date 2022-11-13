@@ -28,7 +28,7 @@ const vuemain = Vue.createApp({
         }
     },
 
-    
+
 
     // created: function() {
     //     console.log("=== created ===")
@@ -45,49 +45,64 @@ const vuemain = Vue.createApp({
 
     methods: {
 
-        login(){
+        login() {
 
             let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/authenticate_login.php"
 
+            const salt = "ThisIsASalt"
+            var pwdObj = this.password
+            var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
+            hashObj.update(pwdObj.value + salt);
+            var hash = hashObj.getHash("HEX");
+            pwdObj.value = hash;
+
             let login_details = {
                 username: this.username,
-                password: this.password
+                password: hash
             }
 
-            axios.get(api_endpoint, { 
+            axios.get(api_endpoint, {
                 params: login_details
             })
-            .then(response => {
-                console.log( response.data )
-                user_id = response.data.records[0].id
-                username = response.data.records[0].username
-                console.log(username)
-                console.log(user_id)
-                sessionStorage.setItem("userid", user_id);
-                sessionStorage.setItem("username", username)
-                this.login_error_msg = ""
-                window.location.href = "index.html"
-                
-            })
-            .catch(error => {
-                console.log( error.message )
-                this.login_error_msg = "Invalid Username/Password"
-            })
+                .then(response => {
+                    console.log(response.data)
+                    user_id = response.data.records[0].id
+                    username = response.data.records[0].username
+                    console.log(username)
+                    console.log(user_id)
+                    sessionStorage.setItem("userid", user_id);
+                    sessionStorage.setItem("username", username)
+                    this.login_error_msg = ""
+                    window.location.href = "index.html"
+
+                })
+                .catch(error => {
+                    console.log(error.message)
+                    this.login_error_msg = "Invalid Username/Password"
+                })
 
 
         },
 
-        register_user(){
+        register_user() {
 
             // check if password == confirm password
 
             // check if all fields are filled 
 
-            if (this.new_firstname != '' & this.new_lastname != '' & this.new_username != '' & this.new_email != '' & 
-            this.new_password != '' & this.new_password == this.new_confirm_password){
+            if (this.new_firstname != '' & this.new_lastname != '' & this.new_username != '' & this.new_email != '' &
+                this.new_password != '' & this.new_password == this.new_confirm_password) {
 
 
                 let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/registeruser.php"
+
+                const salt = "ThisIsASalt"
+                var pwdObj = this.new_password
+                var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
+                hashObj.update(pwdObj.value + salt);
+                var hash = hashObj.getHash("HEX");
+                pwdObj.value = hash;
+                console.log(hash)
 
                 let new_user = {
 
@@ -95,37 +110,37 @@ const vuemain = Vue.createApp({
                     lastname: this.new_lastname,
                     username: this.new_username,
                     email: this.new_email,
-                    password: this.new_password,
+                    password: hash,
 
                 }
 
-                axios.get(api_endpoint, { 
+                axios.get(api_endpoint, {
                     params: new_user
                 })
-                .then(response => {
-                    console.log( response.data )
-                    this.success_msg = "Account created successfully"
+                    .then(response => {
+                        console.log(response.data)
+                        this.success_msg = "Account created successfully"
 
-                    this.registration_error_msg = ""
-                    this.success_msg = ""
-                    window.location.href = "login.html"
+                        this.registration_error_msg = ""
+                        this.success_msg = ""
+                        window.location.href = "login.html"
 
-                    
-                })
-                .catch(error => {
-                    console.log( error.message )
-                    this.registration_error_msg = "Unable to create account"
-                })
 
-                }
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                        this.registration_error_msg = "Unable to create account"
+                    })
 
-            else{
+            }
+
+            else {
                 this.registration_error_msg = "Invalid registration details "
             }
 
         }
 
-    
+
     },
 })
 
