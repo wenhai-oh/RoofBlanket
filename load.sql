@@ -38,7 +38,7 @@ drop table if exists usersCollection;
 CREATE TABLE if not exists `usersCollection` (
     `id` int(11) NOT NULL,
     `username` varchar(30) NOT NULL,
-    `password` varchar(30) NOT NULL,
+    `password` varchar(256) NOT NULL,
     `email` varchar(256) NOT NULL,
     `firstname` varchar(256) NOT NULL,
     `lastname` varchar(256) NOT NULL,
@@ -52,11 +52,11 @@ CREATE TABLE if not exists `usersCollection` (
     `time_created` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into usersCollection values(10001, 'charliemike9021', 'armyboyz21', 'cahr@gmail.com', 'Charlie', 'Kim', null, '98765432', 'yishun', '3-Room-HDB', '0', '2', 'Employer','2022-10-29 17:00:00');
-insert into usersCollection values(10005,  'weiweiwei1001z' ,'purplec0W', 'wei@gmail.com', 'Wei Wei', 'Sin', null, '92837465', 'Orchard', '5-Room-HDB', '1', '0', 'Samaritan','2022-10-29 17:20:00');
-insert into usersCollection values(20001, 'sl3episg00dd' ,'bambii00!', 'sleep@gmail.com', 'Good Sleep', 'Dei', null, '87456376', 'Bugis', '4-Room-HDB', '1', '1', 'Samaritan','2022-10-29 17:40:00');
-insert into usersCollection values(20005,  'slayslayslay29','OslayMG', 'slay@gmail.com', 'Slay Slay', 'Slay', null, '96775883', 'Jurong', '4-Room-HDB', '0', '1', 'GoodWill-Hosts','2022-10-29 18:00:00');
-insert into usersCollection values(20006, 'lim', 'lim', 'lim@lim.com', 'lim', 'lin', null, 98262632, '', '', null, null, 'Samaritan','2022-10-29 19:00:00');
+insert into usersCollection values(10001, 'charliemike9021', '856674d6c8a8327f86fcbc8b59d5e23470075b5bcbec22a0257f3f4f4e1110df9e544e77120dd991b899662e649b5ca4c154094e3e76760549b24cb58b8ef3f3', 'cahr@gmail.com', 'Charlie', 'Kim', null, '98765432', 'yishun', '3-Room-HDB', '0', '2', 'Employer','2022-10-29 17:00:00'); # armyboyz21
+insert into usersCollection values(10005,  'weiweiwei1001z' ,'0711f601eea668017e4780b645d6b764a24af0eee1d4aef503609bd1f2c5c051384cd0f86521e5a66f54170ac3ff2641cf0e1ce36816630c7f9e92c2985be80b', 'wei@gmail.com', 'Wei Wei', 'Sin', null, '92837465', 'Orchard', '5-Room-HDB', '1', '0', 'Samaritan','2022-10-29 17:20:00'); # purplec0W
+insert into usersCollection values(20001, 'sl3episg00dd' ,'6b95063dcae72174b2ce514ac717a5a4bb048837101aa7e2e99c38ca6e45fb85fbf167964329a957cf4968c1201b15416d3114fbce321b9c398da25f43455242!', 'sleep@gmail.com', 'Good Sleep', 'Dei', null, '87456376', 'Bugis', '4-Room-HDB', '1', '1', 'Samaritan','2022-10-29 17:40:00'); # bambii00!
+insert into usersCollection values(20005,  'slayslayslay29','bd3c090ea9427ba785b8846309754f7242b735999bd7020a4cdfe7e7c2399fbc84aad3ca2cff5008e724b0f910d5dbc07b89bbee1c564fb1e57ed2e394ab7df5', 'slay@gmail.com', 'Slay Slay', 'Slay', null, '96775883', 'Jurong', '4-Room-HDB', '0', '1', 'GoodWill-Hosts','2022-10-29 18:00:00'); # OslayMG
+insert into usersCollection values(20006, 'lim', '2fb6d966084a0a450fd31dd2eab316cce47e73dc32300220735527c1d44d795449ed1f673da5d309304266dce8ee2b4514318d7d049374dab93a24c38b870c4f', 'lim@lim.com', 'lim', 'lin', null, 98262632, '', '', null, null, 'Samaritan','2022-10-29 19:00:00'); # lim
 
 # homelessCollection (id, name, age, gender, contact, location, special_needs, duration, description, photo_url, employment, education, skills, employment_desc, completed)
 # usersCollection (id, username, password, email, name, contact, address, housing_type, num_homeless_attached, num_homeless_helped, employer_status)
