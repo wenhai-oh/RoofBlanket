@@ -37,5 +37,6 @@
 # Set up on Localhost on WAMP. 
 1. Move the files and folders listed above into the root (C:\wamp64\www) folder. 
 2. Start up the WAMP server. 
-3. Open load. sql with MySQL Workbench and run the file to initialise the database. 
-4. On the browser, go to http://localhost/ to access the website. 
+3. Open a browser, go to http://localhost/phpmyadmin and sign in.
+4. On phpmyadmin, select the SQL tab, paste and run the SQL query from load.sql.
+5. Open another tab, go to http://localhost/ to access the website. 
