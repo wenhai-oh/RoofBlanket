@@ -56,7 +56,7 @@ insert into usersCollection values(10001, 'charliemike9021', 'armyboyz21', 'cahr
 insert into usersCollection values(10005,  'weiweiwei1001z' ,'purplec0W', 'wei@gmail.com', 'Wei Wei', 'Sin', null, '92837465', 'Orchard', '5-Room-HDB', '1', '0', 'Samaritan','2022-10-29 17:20:00');
 insert into usersCollection values(20001, 'sl3episg00dd' ,'bambii00!', 'sleep@gmail.com', 'Good Sleep', 'Dei', null, '87456376', 'Bugis', '4-Room-HDB', '1', '1', 'Samaritan','2022-10-29 17:40:00');
 insert into usersCollection values(20005,  'slayslayslay29','OslayMG', 'slay@gmail.com', 'Slay Slay', 'Slay', null, '96775883', 'Jurong', '4-Room-HDB', '0', '1', 'GoodWill-Hosts','2022-10-29 18:00:00');
-insert into usersCollection values(20006, 'lim', 'lim', 'lim@lim.com', 'lim', 'lin', '98262632', null, '', '', null, null, 'Samaritan','2022-10-29 19:00:00');
+insert into usersCollection values(20006, 'lim', 'lim', 'lim@lim.com', 'lim', 'lin', null, 98262632, '', '', null, null, 'Samaritan','2022-10-29 19:00:00');
 
 # homelessCollection (id, name, age, gender, contact, location, special_needs, duration, description, photo_url, employment, education, skills, employment_desc, completed)
 # usersCollection (id, username, password, email, name, contact, address, housing_type, num_homeless_attached, num_homeless_helped, employer_status)
