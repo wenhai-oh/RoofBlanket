@@ -28,7 +28,7 @@ $userDAO = new UserDAO();
 
 $id = $_GET["id"];
 // $username = $_GET["username"];
-$password = $_GET["pasword"];
+$password = $_GET["password"];
 
 
 
