@@ -222,7 +222,29 @@
               <!-- Section for Samaritan Card (Left side of Row)  -->
               <div class="col-lg-3">
 
-                <div class="card mb-3" id="referrer">
+
+                <div class="card mb-3" id="goodwillhost" v-if="goodwillhost != ''">
+                  <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                      <img src="Images/fabian.jpg" class="img-fluid rounded-start">
+                    </div>
+
+                    <div class="col-12">
+                      <div class="card-body" style="font-size: 80%; height: auto;">
+                        <h5 class="card-title">Host: {{ goodwillhost.username }}</h5>
+                        <p class="card-text">"Don't say why me, say try me."</p>
+                        <p class="card-text"><small class="text-muted">Helped 3 people</small></p>
+                        <div class="row">
+                          <button type="button" class="btn btn-tasklist mt-1" v-on:click="gotochat()" id="talktohost">
+                            Send Message
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card mb-3" id="referrer" v-else>
                   <div class="row">
                     <div class="col-12 d-flex justify-content-center">
                       <img src="Images/fabian.jpg" class="img-fluid rounded-start">
@@ -242,6 +264,7 @@
                     </div>
                   </div>
                 </div>
+
               </div>
               <!-- End of Section for Samaritan Card -->
             </div>
@@ -303,6 +326,10 @@
           referral_id: 0, // id of referrer
           samaritan_name: '',
           location_autocomplete: '',
+
+
+          goodwillhostid: '',
+          goodwillhost: ''
         }
       },
 
@@ -321,6 +348,12 @@
           let main = document.getElementById('main')
           update.classList.remove('show-release')
           main.classList.remove('blur')
+        },
+
+        gotochat(){
+          
+          window.location.href = 'chat.html?id='+ this.goodwillhostid + '&homelessid=' + this.homeless_id
+
         },
         map_function() {
           // ****************************************************
@@ -365,6 +398,8 @@
                     this.name = row.fullname
                     this.age = row.age
 
+                    this.goodwillhostid = row.home_offered_by
+
                     // Gender If-else
                     if (row.gender == 'F') {
                       this.gender = 'Female'
@@ -405,6 +440,25 @@
                           // chat.html?id=referrerid&homelessid=homelessid
                           location.href = "chat.html?id=" + row.referral_id + "&homelessid=" + id;
                         }
+
+                        if (this.completed == 1){
+                          let api_endpoint4 = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/getuserinfobyid.php?id=" + this.goodwillhostid
+
+                          axios.get(api_endpoint4)
+                          .then(response =>{
+
+                            this.goodwillhost = response.data.records[0]
+
+
+                          }).catch(error=>{
+                            console.log(error.message)
+                          })
+
+
+
+                        }
+
+
                       })
                       .catch(error => {
                         // In case of any error, see what it's about
