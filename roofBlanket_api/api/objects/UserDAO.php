@@ -94,6 +94,7 @@
                     $people = array(
                         "id" => $id,
                         "username" => $username,
+                        "password" => $password,
                         "email" => $email,
                         "firstname" => $firstname,
                         "lastname" => $lastname,
