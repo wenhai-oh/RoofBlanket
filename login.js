@@ -52,9 +52,8 @@ const vuemain = Vue.createApp({
             const salt = "ThisIsASalt"
             var pwdObj = this.password
             var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
-            hashObj.update(pwdObj.value + salt);
+            hashObj.update(pwdObj + salt);
             var hash = hashObj.getHash("HEX");
-            pwdObj.value = hash;
 
             let login_details = {
                 username: this.username,
@@ -99,10 +98,8 @@ const vuemain = Vue.createApp({
                 const salt = "ThisIsASalt"
                 var pwdObj = this.new_password
                 var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
-                hashObj.update(pwdObj.value + salt);
+                hashObj.update(pwdObj + salt);
                 var hash = hashObj.getHash("HEX");
-                pwdObj.value = hash;
-                console.log(hash)
 
                 let new_user = {
 
