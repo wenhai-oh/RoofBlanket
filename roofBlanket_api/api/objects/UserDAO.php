@@ -287,5 +287,32 @@
 
         }
 
+        public function change_password($id, $new_password){
+
+            $conn_manager = new Database();
+            $pdo = $conn_manager->getConnection();
+            
+            $sql = "UPDATE usersCollection SET password=:password WHERE id=:id";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+            $stmt->bindParam(":password",$new_password,PDO::PARAM_STR);
+
+            // ADD CODE TO GET HOMELESSID
+            
+            $result = $stmt->execute();
+
+            $stmt = null;
+            $pdo = null;
+
+            // return query result (Boolean)
+            return $result;
+
+        }
+
+        
+
     }
+
+    
 ?>
