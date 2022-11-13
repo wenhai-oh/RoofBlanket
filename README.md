@@ -1,7 +1,7 @@
 # List of files and folders in the root directory. 
 
 ## Files
-1. Add_person.html
+1. add_person.html
 2. chat.html
 3. index.html
 4. listing.html
@@ -9,11 +9,13 @@
 6. profile.html
 7. task_list.html
 8. styles. css
-9. add_person.js
-10. chat.js
-11. login.js
-12. common.js
-13. load.sql
+9. new_styles.css
+10. add_person.js
+11. chat.js
+12. index.js
+13. login.js
+14. common.js
+15. load.sql
 
 ## Folders
 1. images
@@ -27,9 +29,9 @@
 2. Wei Wei Sin
    - Username: weiweiwei1001z
    - Password: purplec0W
-3. Lim Lim
-   - Username: lim
-   - Password: lim
+3. Slay Slay Slay
+   - Username: slayslayslay29
+   - Password: OslayMG
 
 
 # Set up on Localhost on WAMP. 
