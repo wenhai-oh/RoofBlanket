@@ -68,36 +68,36 @@
     }
 
     .update {
-    background-color: #303C6C;
-    border-radius: 10px;
-    padding: 20px;
-    position: absolute;
-    color: #FBE8A6;
-    visibility: hidden;
-    width: 50%;
-    left: 0;
-    right: 0;
-    z-index: 1;
-  }
+      background-color: #303C6C;
+      border-radius: 10px;
+      padding: 20px;
+      position: absolute;
+      color: #FBE8A6;
+      visibility: hidden;
+      width: 50%;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
 
-  .show-release {
-    visibility: visible;
-  }
+    .show-release {
+      visibility: visible;
+    }
 
-  .blur {
-    filter: blur(5px);
-  }
+    .blur {
+      filter: blur(5px);
+    }
 
-  #result {
-    padding: 10px 0;
-    display: inline-flex;
-  }
+    #result {
+      padding: 10px 0;
+      display: inline-flex;
+    }
 
-  .thumbnail {
-    width: 100px;
-    height: 100px;
-    margin-right: 10px;
-  }
+    .thumbnail {
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+    }
   </style>
 
 </head>
@@ -152,8 +152,8 @@
               <div class="card" style="border:transparent">
                 <div class="row d-flex" style="align-items:center">
                   <div class="col-md-4">
-                    <img src="./Images/colored_profile.png" class="img-fluid rounded-start;"
-                      style="height: auto; width: auto;">
+                    <img src="./Images/boy.png" class="img-fluid rounded-start;" style="height: auto; width: auto;" v-if="gender == 'Male'">
+                    <img src="./Images/girl.png" class="img-fluid rounded-start;" style="height: auto; width: auto;" v-if="gender == 'Female'">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body px-5">
@@ -184,7 +184,8 @@
                           <button type="button" class="btn btn-tasklist mt-1" @click="openUpdate()">Update Last
                             Seen</button>
                           <div class="card p-2 mt-2">
-                            <p class="card-text" v-if="completed == 0" style="color:#303C6C;"> <b>Status:</b> Looking for home </p>
+                            <p class="card-text" v-if="completed == 0" style="color:#303C6C;"> <b>Status:</b> Looking
+                              for home </p>
                             <p class="card-text" v-else style="color:#303C6C"><b>Status:</b> Home found! </p>
                           </div>
                         </div>
@@ -220,10 +221,10 @@
 
               <!-- Section for Samaritan Card (Left side of Row)  -->
               <div class="col-lg-3">
-                
+
                 <div class="card mb-3" id="referrer">
                   <div class="row">
-                    <div class="col-12 d-flex justify-content-center" >
+                    <div class="col-12 d-flex justify-content-center">
                       <img src="Images/fabian.jpg" class="img-fluid rounded-start">
                     </div>
 
@@ -254,7 +255,7 @@
               <h2>Notes</h2>
             </div>
             <!-- Section for individual Note -->
-            <div class="row mx-2" v-for="note in db_note_list" >
+            <div class="row mx-2" v-for="note in db_note_list">
               <div class="card p-2 mt-2" style="background-color:#303C6C">
                 <p class="card-text"> {{ note }} </p>
               </div>
@@ -265,7 +266,7 @@
 
         </div>
         <!-- End of Listing Content -->
-      </div> 
+      </div>
       <!-- End of Listing container -->
     </div>
     <!-- End of main body content -->
@@ -275,7 +276,7 @@
   <div id="footerdiv">
 
     <footer-all></footer-all>
-    
+
   </div>
 
 
@@ -774,4 +775,5 @@
     };
   </script> -->
 </body>
+
 </html>
