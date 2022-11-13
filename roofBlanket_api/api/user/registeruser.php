@@ -24,7 +24,7 @@ spl_autoload_register(function ($class) {
 });
   
 // initialize object
-$userDAO = new userDAO();
+$userDAO = new UserDAO();
 
 
 // get search query
