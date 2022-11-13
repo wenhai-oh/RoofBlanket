@@ -31,6 +31,9 @@
   <!-- Axios -->
   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
+  <!-- Password Hashing Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script>
+
   <script>
 
     if (sessionStorage.getItem('userid') == null) {
@@ -105,7 +108,7 @@
                     <i class="fa fa-user"></i>
                   </div>
                 </div>
-              </div>  
+              </div>
             </div>
 
             <div class="row">
@@ -132,7 +135,7 @@
 
             <div class="row">
               <div class="col-md-6">
-                 <!-- Contact Number -->
+                <!-- Contact Number -->
                 <div class="input-group input-group-icon">
                   <input type="text" placeholder="Contact No:" id="user_Contact" v-model="contact" />
                   <div class="input-icon">
@@ -140,7 +143,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="col-md-6">
                 <!-- Address -->
                 <div class="input-group input-group-icon">
@@ -191,11 +194,12 @@
                 </div>
               </div>
             </div>
-            
+
           </div>
 
           <div class="d-flex justify-content-end px-1 mt-4">
-            <button type="button" class="btn btn-primary list-btn" @click="updateProfileInformation()">Save Changes</button>
+            <button type="button" class="btn btn-primary list-btn" @click="updateProfileInformation()">Save
+              Changes</button>
           </div>
         </form>
         <!-- End of Edit Profile Form -->
@@ -206,21 +210,22 @@
 
           <!-- Current Password Textbox -->
           <div class="input-group input-group-icon">
-            <input type="password" placeholder="Old Password:" id="user_oldPassword" v-model="old_password"/>
+            <input type="password" placeholder="Old Password:" id="user_oldPassword" v-model="old_password" />
             <div class="input-icon">
               <i class="fa-solid fa-shield-halved"></i>
             </div>
           </div>
           <!-- New Password Textbox -->
           <div class="input-group input-group-icon">
-            <input type="password" placeholder="New Password:" id="user_newPassword" v-model="new_password"/>
+            <input type="password" placeholder="New Password:" id="user_newPassword" v-model="new_password" />
             <div class="input-icon">
               <i class="fa-solid fa-shield"></i>
             </div>
           </div>
           <!-- Confirm Password Textbox -->
           <div class="input-group input-group-icon">
-            <input type="password" placeholder="Confirm New Password:" id="user_confirmNewPassword" v-model="confirm_new_password"/>
+            <input type="password" placeholder="Confirm New Password:" id="user_confirmNewPassword"
+              v-model="confirm_new_password" />
             <div class="input-icon">
               <i class="fa-solid fa-shield"></i>
             </div>
@@ -277,6 +282,7 @@
           employer_status: "",
           housing_type: "",
 
+          db_hash_password: "",
           old_password: "",
           new_password: "",
           confirm_new_password: "",
@@ -308,7 +314,13 @@
               this.firstname = records.firstname
               this.lastname = records.lastname
               this.email = records.email
-              this.contact = records.contact
+              if (records.contact == null || records.contact == 0) {
+                this.contact = ""
+              }
+              else
+              {
+                this.contact = records.contact
+              }
               this.address = records.address
               this.employer_status = records.employer_status
               this.housing_type = records.housing_type
@@ -368,58 +380,85 @@
           let current_user_id = sessionStorage.getItem("userid")
           let api_endpoint_url = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/getuserinfobyid.php?id=" + current_user_id
 
+
+
           axios.get(api_endpoint_url)
             .then(response => {
-
               // Inspect the response.data
               let records = response.data.records[0]
               // console.log(records)
               this.id = records.id
-              this.old_password = records.password
+              this.db_hash_password = records.password
+
+              // do password checkings before update
+              // check new password and confirm new password are the same
+              if (this.new_password != this.confirm_new_password) {
+                alert("New password and confirm new password do not match!")
+                this.new_password = ""
+                this.confirm_new_password = ""
+              } else {
+                // hash old password and check it matches with db
+                const salt = "ThisIsASalt"
+                var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
+                hashObj.update(this.old_password + salt);
+                let hash_old_password = hashObj.getHash("HEX");
+
+                // if hash old password matches with db
+                if (this.db_hash_password == hash_old_password) {
+                  // hash new password
+                  var hashObj2 = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
+                  hashObj2.update(this.new_password + salt);
+                  let hash_new_password = hashObj2.getHash("HEX");
+
+                  // console.log(hash_old_password)
+                  // console.log(hash_new_password)
+
+                  // if old and new password are not the same
+                  if (hash_old_password != hash_new_password) {
+                    // update new password in db
+                    let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/changepassword.php"
+
+                    let update_details = {
+                      "id": this.id,
+                      "password": hash_new_password
+                    }
+                    // console.log(update_details)
+                    // console.log("updating...")
+
+                    axios.get(api_endpoint, {
+                      params: update_details
+                    })
+                      .then(response => {
+                        // this.populateProfileInformation()
+                        // console.log("here")
+                        // alert update has been saved successfully
+                        alert("Password has been updated successfully!")
+                        this.old_password = ""
+                        this.new_password = ""
+                        this.confirm_new_password = ""
+                      })
+                      .catch(error => {
+                        console.log(error.message)
+                      })
+                  } else {
+                    alert("New password cannot be the same as old password!")
+                    this.old_password = ""
+                    this.new_password = ""
+                    this.confirm_new_password = ""
+                  }
+                }
+                else {
+                  alert("Old password do not match!")
+                  this.old_password = ""
+                  this.new_password = ""
+                  this.confirm_new_password = ""
+                }
+              }
             })
             .catch(error => {
               // In case of any error, see what it's about
               console.log(error.message)
             })
-
-          // check new password and confirm new password are the same
-          if (this.new_password != this.confirm_new_password) {
-            alert("New password and confirm new password do not match!")
-            this.new_password = ""
-            this.confirm_new_password = ""
-          } else {
-            // check old password is correct
-            if (this.old_password != this.new_password) {
-              // update new password in db
-              let api_endpoint = "https://roof-blanket.000webhostapp.com/roofBlanket_api/api/user/updateuserprofile.php"
-
-              let update_details = {
-                "id": this.id,
-                "password": this.new_password
-              }
-
-              // console.log(update_details)
-
-              axios.get(api_endpoint, {
-                params: update_details
-              })
-                .then(response => {
-                  // this.populateProfileInformation()
-                  // console.log("here")
-                  // alert update has been saved successfully
-                  alert("Password has been updated successfully!")
-                  this.new_password = ""
-                  this.confirm_new_password = ""
-                })
-                .catch(error => {
-                  console.log(error.message)
-                })
-            } else {
-              alert("New password cannot be the same as old password!")
-              this.new_password = ""
-              this.confirm_new_password = ""
-            }
-          }
         }
       },
 
